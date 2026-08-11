@@ -144,36 +144,46 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   padding:15px 30px;border-radius:999px;transition:background .25s,transform .25s}
 .btn:hover{background:var(--blue-2);transform:translateY(-2px)}
 
-/* ============ capabilities ============ */
-.caps{padding:120px 0 100px;background:#fff}
-.caps__head{text-align:center;max-width:620px;margin:0 auto 64px}
-.caps__eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px}
-.caps__head h2{font-size:clamp(28px,3vw,44px);font-weight:300;line-height:1.18;color:var(--ink-soft);letter-spacing:-.015em;margin-bottom:18px}
-.caps__head p{font-size:16px;line-height:1.7;font-weight:300;color:var(--grey)}
-.hl{color:var(--yellow);font-weight:400}
-.hl-mark{background:linear-gradient(120deg,rgba(232,124,30,.15) 0%,rgba(245,166,35,.18) 100%);
-  border-radius:4px;padding:1px 4px;color:var(--dark);font-weight:400;-webkit-box-decoration-break:clone}
-.caps__formats{display:grid;grid-template-columns:repeat(2, 1fr);gap:24px 28px}
-.fmt{display:grid;grid-template-columns:50px 52px 1fr 24px;align-items:center;gap:18px;
-  padding:24px 20px;border:1px solid var(--line);border-radius:16px;position:relative;cursor:pointer;
-  transition:all .28s ease;background:#fff}
-.fmt:hover{background:rgba(232,124,30,.035);border-color:rgba(232,124,30,.4);
-  box-shadow:0 10px 30px rgba(0,0,0,.06);transform:translateY(-3px)}
-@media (max-width:860px){.caps__formats{grid-template-columns:1fr}}
-.fmt__num{font-size:38px;font-weight:800;color:var(--yellow);opacity:.22;line-height:1;
-  letter-spacing:-.04em;transition:opacity .2s}
-.fmt:hover .fmt__num{opacity:.55}
-.fmt__icon{width:52px;height:52px;border-radius:14px;background:var(--card);
-  display:grid;place-items:center;flex-shrink:0;
-  transition:background .2s,box-shadow .2s}
-.fmt:hover .fmt__icon{background:linear-gradient(135deg,#ff8300,#ffb347);
-  box-shadow:0 6px 18px rgba(232,124,30,.3)}
-.fmt__icon svg{fill:none;stroke:#666;stroke-width:1.5;transition:stroke .2s}
-.fmt:hover .fmt__icon svg{stroke:#fff}
-.fmt__body h3{font-size:18px;font-weight:600;color:var(--dark);margin-bottom:5px;letter-spacing:-.01em}
-.fmt__body p{font-size:14px;font-weight:300;color:var(--grey);line-height:1.55}
-.fmt__arrow{color:var(--line);flex-shrink:0;transition:color .2s,transform .2s}
-.fmt:hover .fmt__arrow{color:var(--yellow);transform:translateX(4px)}
+/* ============ capabilities (sticky 2-column layout) ============ */
+.caps{padding:120px 0 100px;background:#fff;position:relative}
+.caps__grid{display:grid;grid-template-columns:380px 1fr;gap:60px;align-items:flex-start}
+@media (max-width:1024px){.caps__grid{grid-template-columns:320px 1fr;gap:36px}}
+@media (max-width:860px){.caps__grid{grid-template-columns:1fr;gap:40px}}
+
+.caps__left-sticky{position:sticky;top:110px;align-self:flex-start;transition:all .3s ease}
+@media (max-width:860px){.caps__left-sticky{position:relative;top:0}}
+
+.caps__eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.caps__eyebrow::before{content:"";display:inline-block;width:18px;height:2px;background:var(--yellow);border-radius:2px}
+.caps__left h2{font-size:clamp(28px,3vw,42px);font-weight:300;line-height:1.18;color:var(--ink-soft);letter-spacing:-.015em;margin-bottom:18px}
+.caps__desc{font-size:15px;line-height:1.7;font-weight:300;color:var(--grey);margin-bottom:28px}
+
+.caps__nav-index{display:flex;flex-direction:column;gap:6px;margin-bottom:32px;padding-left:14px;border-left:2px solid var(--line)}
+.caps__nav-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;cursor:pointer;transition:all .25s ease;color:var(--grey);font-size:14px;font-weight:500;border-left:3px solid transparent}
+.caps__nav-num{font-size:12px;font-weight:700;color:var(--grey);opacity:.45;transition:color .25s,opacity .25s}
+.caps__nav-item:hover{color:var(--dark);background:rgba(232,124,30,.05)}
+.caps__nav-item.is-active{color:#d96d0d;background:rgba(232,124,30,.08);border-left-color:var(--yellow);margin-left:-17px;font-weight:600;padding-left:17px}
+.caps__nav-item.is-active .caps__nav-num{color:#d96d0d;opacity:1}
+
+.caps__cta-btn{padding:14px 32px;font-size:0.95rem;font-weight:600;background:linear-gradient(135deg,#e87c1e 0%,#f5a623 100%);color:#fff;border-radius:30px;box-shadow:0 8px 20px rgba(232,124,30,.28);display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.caps__cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(232,124,30,.38)}
+
+.caps__right{display:flex;flex-direction:column;gap:24px}
+.fmt-card{display:grid;grid-template-columns:60px 1fr;gap:20px;padding:28px 24px;border:1px solid var(--line);border-radius:18px;background:#fff;position:relative;transition:all .35s cubic-bezier(.16,1,.3,1)}
+.fmt-card.is-active{border-color:rgba(232,124,30,.45);background:linear-gradient(135deg,#ffffff 0%,#fffdf9 100%);box-shadow:0 14px 36px rgba(232,124,30,.12);transform:translateY(-2px)}
+.fmt-card__meta{display:flex;flex-direction:column;align-items:center;gap:10px}
+.fmt-card__num{font-size:30px;font-weight:800;color:var(--yellow);opacity:.3;line-height:1;letter-spacing:-.03em;transition:opacity .3s}
+.fmt-card.is-active .fmt-card__num{opacity:1}
+.fmt-card__icon{width:52px;height:52px;border-radius:14px;background:var(--card);display:grid;place-items:center;transition:all .3s ease}
+.fmt-card.is-active .fmt-card__icon{background:linear-gradient(135deg,#e87c1e 0%,#f5a623 100%);box-shadow:0 6px 18px rgba(232,124,30,.32)}
+.fmt-card__icon svg{stroke:#555;transition:stroke .3s ease}
+.fmt-card.is-active .fmt-card__icon svg{stroke:#fff}
+.fmt-card__body h3{font-size:20px;font-weight:600;color:var(--dark);margin-bottom:6px;letter-spacing:-.01em}
+.fmt-card__body p{font-size:14px;font-weight:300;color:var(--grey);line-height:1.6;margin-bottom:14px}
+.fmt-card__tags{display:flex;flex-wrap:wrap;gap:8px}
+.fmt-tag{font-size:12px;font-weight:500;padding:3px 10px;border-radius:20px;background:var(--card);color:#555;border:1px solid var(--line);transition:all .25s ease}
+.fmt-card.is-active .fmt-tag{background:rgba(232,124,30,.08);border-color:rgba(232,124,30,.22);color:#c9650d}
+
 .caps__banner{margin-top:48px;padding-top:32px;padding-bottom:80px;border-top:1px solid var(--line)}
 .caps__banner p{font-size:15px;font-weight:300;color:var(--grey);line-height:1.7}
 .caps__banner p strong{color:var(--dark);font-weight:500}
@@ -576,77 +586,173 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 </section>
 
 <!-- ================= CAPABILITIES ================= -->
-<section class="caps">
+<section class="caps" id="capabilities">
   <div class="container">
-    <div class="caps__head" data-jr>
-      <p class="caps__eyebrow">What we manufacture</p>
-      <h2><span class="hl">Production</span> &amp; <span class="hl">Packaging</span> Capabilities</h2>
-      <p>A wide range of product formats to suit diverse market requirements and species-specific delivery needs.</p>
-    </div>
-    <div class="caps__formats" data-jr-stagger>
-      <div class="fmt">
-        <span class="fmt__num">01</span>
-        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h10"/><rect x="2" y="4" width="20" height="16" rx="3"/></svg></div>
-        <div class="fmt__body">
-          <h3>Powders</h3>
-          <p>Fine-particle blends for rapid dispersion and easy feed mixing.</p>
+    <div class="caps__grid">
+      <!-- STICKY LEFT COLUMN -->
+      <div class="caps__left" data-jr>
+        <div class="caps__left-sticky">
+          <p class="caps__eyebrow">What we manufacture</p>
+          <h2><span class="hl">Production</span> &amp; <span class="hl">Packaging</span> Capabilities</h2>
+          <p class="caps__desc">A wide range of product formats to suit diverse market requirements and species-specific delivery needs.</p>
+
+          <!-- Interactive Sticky Index -->
+          <div class="caps__nav-index">
+            <div class="caps__nav-item is-active" data-step="0">
+              <span class="caps__nav-num">01</span>
+              <span class="caps__nav-name">Powders</span>
+            </div>
+            <div class="caps__nav-item" data-step="1">
+              <span class="caps__nav-num">02</span>
+              <span class="caps__nav-name">Tablets</span>
+            </div>
+            <div class="caps__nav-item" data-step="2">
+              <span class="caps__nav-num">03</span>
+              <span class="caps__nav-name">Boluses</span>
+            </div>
+            <div class="caps__nav-item" data-step="3">
+              <span class="caps__nav-num">04</span>
+              <span class="caps__nav-name">Granules</span>
+            </div>
+            <div class="caps__nav-item" data-step="4">
+              <span class="caps__nav-num">05</span>
+              <span class="caps__nav-name">Paste</span>
+            </div>
+            <div class="caps__nav-item" data-step="5">
+              <span class="caps__nav-num">06</span>
+              <span class="caps__nav-name">Liquids &amp; Solutions</span>
+            </div>
+          </div>
+
+          <div class="caps__cta-wrap">
+            <a class="caps__cta-btn" href="contact.html">
+              <span>Start Your Formulation</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
         </div>
-        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="fmt">
-        <span class="fmt__num">02</span>
-        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="4" y="3" width="5" height="8" rx="2.5"/><rect x="10" y="3" width="5" height="8" rx="2.5"/><rect x="16" y="3" width="4" height="8" rx="2"/><rect x="4" y="13" width="5" height="8" rx="2.5"/><rect x="10" y="13" width="5" height="8" rx="2.5"/></svg></div>
-        <div class="fmt__body">
-          <h3>Tablets</h3>
-          <p>Compressed solid forms for precise and consistent dosing.</p>
+
+      <!-- RIGHT SCROLLING COLUMN -->
+      <div class="caps__right">
+        <!-- 01 Powders -->
+        <div class="fmt-card is-active" data-fmt-step="0" id="fmt-01" data-jr>
+          <div class="fmt-card__meta">
+            <span class="fmt-card__num">01</span>
+            <div class="fmt-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 6h16M4 10h16M4 14h10"/><rect x="2" y="4" width="20" height="16" rx="3"/></svg>
+            </div>
+          </div>
+          <div class="fmt-card__body">
+            <h3>Powders</h3>
+            <p>Fine-particle blends for rapid dispersion and easy feed mixing.</p>
+            <div class="fmt-card__tags">
+              <span class="fmt-tag">Rapid Dispersion</span>
+              <span class="fmt-tag">Homogeneous Blending</span>
+              <span class="fmt-tag">Custom Particle Size</span>
+            </div>
+          </div>
         </div>
-        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="fmt">
-        <span class="fmt__num">03</span>
-        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="7" ry="4"/><path d="M5 12v4c0 2.2 3.1 4 7 4s7-1.8 7-4v-4"/></svg></div>
-        <div class="fmt__body">
-          <h3>Boluses</h3>
-          <p>Slow-release rumen-delivery systems for sustained effect.</p>
+
+        <!-- 02 Tablets -->
+        <div class="fmt-card" data-fmt-step="1" id="fmt-02" data-jr>
+          <div class="fmt-card__meta">
+            <span class="fmt-card__num">02</span>
+            <div class="fmt-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="3" width="5" height="8" rx="2.5"/><rect x="10" y="3" width="5" height="8" rx="2.5"/><rect x="16" y="3" width="4" height="8" rx="2"/><rect x="4" y="13" width="5" height="8" rx="2.5"/><rect x="10" y="13" width="5" height="8" rx="2.5"/></svg>
+            </div>
+          </div>
+          <div class="fmt-card__body">
+            <h3>Tablets</h3>
+            <p>Compressed solid forms for precise and consistent dosing.</p>
+            <div class="fmt-card__tags">
+              <span class="fmt-tag">Exact Dosage</span>
+              <span class="fmt-tag">Chewable &amp; Palatable</span>
+              <span class="fmt-tag">Moisture Protected</span>
+            </div>
+          </div>
         </div>
-        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="fmt">
-        <span class="fmt__num">04</span>
-        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.5"/><circle cx="13" cy="6" r="2"/><circle cx="10" cy="13" r="3"/><circle cx="17" cy="14" r="2"/><circle cx="6" cy="16" r="1.8"/></svg></div>
-        <div class="fmt__body">
-          <h3>Granules</h3>
-          <p>Free-flowing granulate formats with excellent shelf stability.</p>
+
+        <!-- 03 Boluses -->
+        <div class="fmt-card" data-fmt-step="2" id="fmt-03" data-jr>
+          <div class="fmt-card__meta">
+            <span class="fmt-card__num">03</span>
+            <div class="fmt-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><ellipse cx="12" cy="12" rx="7" ry="4"/><path d="M5 12v4c0 2.2 3.1 4 7 4s7-1.8 7-4v-4"/></svg>
+            </div>
+          </div>
+          <div class="fmt-card__body">
+            <h3>Boluses</h3>
+            <p>Slow-release rumen-delivery systems for sustained effect.</p>
+            <div class="fmt-card__tags">
+              <span class="fmt-tag">Sustained Rumen Release</span>
+              <span class="fmt-tag">High-Density Matrix</span>
+              <span class="fmt-tag">Targeted Delivery</span>
+            </div>
+          </div>
         </div>
-        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="fmt">
-        <span class="fmt__num">05</span>
-        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 4h12a2 2 0 012 2v1a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M8 9v9a2 2 0 002 2h4a2 2 0 002-2V9"/><path d="M10 13h4"/></svg></div>
-        <div class="fmt__body">
-          <h3>Paste</h3>
-          <p>Palatable semi-solid applications for oral delivery.</p>
+
+        <!-- 04 Granules -->
+        <div class="fmt-card" data-fmt-step="3" id="fmt-04" data-jr>
+          <div class="fmt-card__meta">
+            <span class="fmt-card__num">04</span>
+            <div class="fmt-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="6" cy="7" r="2.5"/><circle cx="13" cy="6" r="2"/><circle cx="10" cy="13" r="3"/><circle cx="17" cy="14" r="2"/><circle cx="6" cy="16" r="1.8"/></svg>
+            </div>
+          </div>
+          <div class="fmt-card__body">
+            <h3>Granules</h3>
+            <p>Free-flowing granulate formats with excellent shelf stability.</p>
+            <div class="fmt-card__tags">
+              <span class="fmt-tag">Dust-Free</span>
+              <span class="fmt-tag">Superior Flowability</span>
+              <span class="fmt-tag">Uniform Micro-Pellets</span>
+            </div>
+          </div>
         </div>
-        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="fmt">
-        <span class="fmt__num">06</span>
-        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2.5l7 3v5.4c0 5-3 8-7 9.1-4-1.1-7-4.1-7-9.1V5.5l7-3z"/><path d="M12 8v8M8 12h8"/></svg></div>
-        <div class="fmt__body">
-          <h3>Liquids &amp; Solutions</h3>
-          <p>High-purity liquid oral concentrates and micro-emulsions.</p>
+
+        <!-- 05 Paste -->
+        <div class="fmt-card" data-fmt-step="4" id="fmt-05" data-jr>
+          <div class="fmt-card__meta">
+            <span class="fmt-card__num">05</span>
+            <div class="fmt-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M6 4h12a2 2 0 012 2v1a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M8 9v9a2 2 0 002 2h4a2 2 0 002-2V9"/><path d="M10 13h4"/></svg>
+            </div>
+          </div>
+          <div class="fmt-card__body">
+            <h3>Paste</h3>
+            <p>Palatable semi-solid applications for oral delivery.</p>
+            <div class="fmt-card__tags">
+              <span class="fmt-tag">Dosing Syringe Ready</span>
+              <span class="fmt-tag">High Palatability</span>
+              <span class="fmt-tag">Rapid Oral Absorption</span>
+            </div>
+          </div>
         </div>
-        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+        <!-- 06 Liquids & Solutions -->
+        <div class="fmt-card" data-fmt-step="5" id="fmt-06" data-jr>
+          <div class="fmt-card__meta">
+            <span class="fmt-card__num">06</span>
+            <div class="fmt-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2.5l7 3v5.4c0 5-3 8-7 9.1-4-1.1-7-4.1-7-9.1V5.5l7-3z"/><path d="M12 8v8M8 12h8"/></svg>
+            </div>
+          </div>
+          <div class="fmt-card__body">
+            <h3>Liquids &amp; Solutions</h3>
+            <p>High-purity liquid oral concentrates and micro-emulsions.</p>
+            <div class="fmt-card__tags">
+              <span class="fmt-tag">High Bioavailability</span>
+              <span class="fmt-tag">Water Soluble</span>
+              <span class="fmt-tag">Stable Micro-Emulsion</span>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </div>
-    
-    <div class="caps__cta" style="text-align:center;margin-top:44px;" data-jr>
-      <a class="btn" href="contact.html" style="padding:16px 40px;font-size:1.05rem;font-weight:600;background:linear-gradient(135deg, #e87c1e 0%, #f5a623 100%);color:#fff;border-radius:30px;box-shadow:0 8px 24px rgba(232,124,30,0.3);display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:transform 0.25s, box-shadow 0.25s;">
-        <span>Start Your Formulation</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
     </div>
   </div>
+
   <div class="container">
     <div class="caps__banner">
       <p><strong>Every product is manufactured</strong> with a focus on quality, consistency, compliance, and scalability from first batch to full-scale production.</p>
@@ -1017,7 +1123,38 @@ function paintParallax(){
       }
     });
   }, {threshold:0, rootMargin:'0px 0px -10% 0px'});
-  els.forEach(function(el){ jrIo.observe(el); });
+/* ---------- sticky scroll capabilities observer ---------- */
+(function(){
+  const fmtCards = document.querySelectorAll('.fmt-card');
+  const navItems = document.querySelectorAll('.caps__nav-item');
+  if(!fmtCards.length || !navItems.length) return;
+
+  if('IntersectionObserver' in window) {
+    const capsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          const step = entry.target.getAttribute('data-fmt-step');
+          fmtCards.forEach(c => c.classList.remove('is-active'));
+          navItems.forEach(n => n.classList.remove('is-active'));
+          entry.target.classList.add('is-active');
+          const activeNav = document.querySelector('.caps__nav-item[data-step="' + step + '"]');
+          if(activeNav) activeNav.classList.add('is-active');
+        }
+      });
+    }, { root: null, rootMargin: '-20% 0px -40% 0px', threshold: 0.25 });
+
+    fmtCards.forEach(card => capsObserver.observe(card));
+  }
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const step = item.getAttribute('data-step');
+      const target = document.querySelector('.fmt-card[data-fmt-step="' + step + '"]');
+      if(target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
 })();
 
 /* ---------- raf loop ---------- */
