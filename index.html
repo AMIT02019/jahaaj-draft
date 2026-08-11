@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jahaaj Healthcare Your Manufacturing Partner for Feed Supplements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ tokens ============ */
+:root{
+  --ink:#111214;
+  --ink-soft:#3d3f42;
+  --grey:#6f7276;
+  --grey-2:#9b9ea1;
+  --line:#e6e7e9;
+  --card:#f4f4f5;
+  --dark:#101011;
+  --yellow:#ff8300;
+  --yellow-2:#ffb347;
+  --blue:#d3e9f7;
+  --blue-2:#c3e1f4;
+  --radius:22px;
+  --container:1200px;
+  --font:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:32px}
+:focus-visible{outline:2px solid #2b7fb8;outline-offset:3px}
+
+/* ============ nav ============ */
+.nav{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1500px;z-index:60;padding:20px 34px;display:flex;align-items:center;gap:18px;
+  transition:transform .38s cubic-bezier(.4,0,.2,1)}
+.nav.nav--hidden{transform:translate(-50%,-140px)}
+.nav__logo{display:block}
+.nav__logo img{height:42px;width:auto;display:block;
+  filter:drop-shadow(0 1px 2px rgba(255,255,255,.55)) drop-shadow(0 0 14px rgba(255,255,255,.35))}
+.nav__menu{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:1px;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(14px);border-radius:999px;padding:8px 16px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.nav__item{position:relative}
+.nav__link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:400;color:#26282b;
+  padding:9px 11px;border-radius:999px;white-space:nowrap;transition:background .2s;font-family:inherit}
+.nav__link:hover,.nav__item.open .nav__link{background:#eef0f2}
+.nav__link svg{width:9px;height:9px;opacity:.55;transition:transform .28s}
+.nav__item.open .nav__link svg{transform:rotate(180deg)}
+/* dropdown */
+.dropdown{position:absolute;top:100%;left:50%;min-width:236px;padding-top:16px;
+  transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .24s ease,transform .24s ease,visibility .24s;z-index:70}
+.nav__item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav__item:last-child .dropdown{left:auto;right:0;transform:translateX(0) translateY(8px)}
+.nav__item:last-child.open .dropdown{transform:translateX(0) translateY(0)}
+.dropdown ul{list-style:none;background:#fff;border-radius:16px;padding:9px;
+  box-shadow:0 18px 44px rgba(16,18,20,.16);border:1px solid rgba(0,0,0,.05)}
+.dropdown li a{display:block;font-size:13.5px;color:#3d3f42;padding:10px 14px;border-radius:10px;
+  white-space:nowrap;transition:background .18s,color .18s}
+.dropdown li a:hover{background:#f2f4f6;color:#111}
+/* mobile panel */
+.mnav{position:fixed;inset:76px 14px auto;z-index:59;background:#fff;border-radius:20px;
+  box-shadow:0 24px 60px rgba(0,0,0,.2);max-height:calc(100vh - 100px);overflow-y:auto}
+.mnav__inner{padding:14px}
+.mnav__group{border-bottom:1px solid var(--line)}
+.mnav__group:last-of-type{border-bottom:0}
+.mnav__top{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;
+  font-family:inherit;font-size:15px;color:#26282b;padding:15px 8px;text-align:left}
+.mnav__top svg{width:11px;height:11px;opacity:.5;flex:0 0 auto;transition:transform .28s}
+.mnav__top[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mnav__sub{list-style:none;max-height:0;overflow:hidden;transition:max-height .32s ease}
+.mnav__sub.open{max-height:340px}
+.mnav__sub li a{display:block;font-size:14px;color:var(--grey);padding:11px 8px 11px 18px}
+.mnav__cta{width:100%;justify-content:center;margin-top:14px}
+.nav__cta{margin-left:auto;background:var(--blue);color:#14171a;font-size:14.5px;padding:12px 26px;border-radius:999px;
+  transition:background .25s,transform .25s}
+.nav__cta:hover{background:var(--blue-2);transform:translateY(-1px)}
+.nav__burger{display:none;margin-left:auto;width:42px;height:42px;border-radius:999px;background:rgba(255,255,255,.9);
+  align-items:center;justify-content:center}
+.nav__burger span{display:block;width:16px;height:1.5px;background:#111;position:relative}
+.nav__burger span::before,.nav__burger span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#111}
+.nav__burger span::before{top:-5px}.nav__burger span::after{top:5px}
+.nav__burger.open span{background:transparent}
+.nav__burger.open span::before{top:0;transform:rotate(45deg)}
+.nav__burger.open span::after{top:0;transform:rotate(-45deg)}
+@media (min-width:1025px){.mnav{display:none!important}}
+@media (min-width:1025px) and (max-width:1500px){
+  .nav__menu{gap:2px;padding:7px 10px}
+  .nav__link{padding:8px 12px;font-size:12.5px}
+}
+
+/* ============ hero ============ */
+.hero{position:relative;min-height:720px;height:100vh;max-height:800px;display:flex;align-items:flex-end;
+  padding-bottom:74px;overflow:hidden}
+.hero__bg{position:absolute;inset:0;overflow:hidden;background:url('assets/hero.jpg') center 60%/cover no-repeat;transform:scale(1.06)}
+.hero__bg video{width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.30) 0%,rgba(0,0,0,.12) 40%,rgba(0,0,0,.42) 100%)}
+.hero .container{position:relative;z-index:2}
+.hero h1{font-size:clamp(40px,5.4vw,74px);font-weight:300;line-height:1.03;letter-spacing:-.02em;color:#fff;max-width:640px}
+.hero p{margin-top:22px;max-width:430px;font-size:17px;line-height:1.6;font-weight:300;color:rgba(255,255,255,.9)}
+
+/* ============ scroll reveal copy ============ */
+.reveal{font-weight:300;color:var(--ink)}
+
+/* ============ scroll appear (fade+rise) ============ */
+[data-jr]{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+[data-jr].jr-in{opacity:1;transform:translateY(0)}
+[data-jr-stagger]>*{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;transition-delay:calc(var(--i,0) * 110ms)}
+[data-jr-stagger].jr-in>*{opacity:1;transform:translateY(0)}
+.reveal span{color:rgba(17,18,20,.16);transition:color .18s linear}
+.reveal span.on{color:var(--ink)}
+
+.intro{padding:150px 0 110px;text-align:center}
+.intro .reveal{font-size:clamp(24px,2.6vw,34px);line-height:1.34;max-width:730px;margin-inline:auto;letter-spacing:-.01em}
+.intro__label{margin-top:66px;font-size:clamp(26px,3vw,38px);font-weight:300;letter-spacing:-.02em;color:var(--ink);
+  display:flex;align-items:center;justify-content:center;gap:12px}
+.intro__label-icon{height:1.15em;width:auto}
+.pillars{margin-top:38px;display:flex;justify-content:center;gap:58px;flex-wrap:wrap}
+.pillar{display:flex;flex-direction:column;align-items:center;gap:14px;width:118px}
+.pillar__ring{width:62px;height:62px;border:1px solid var(--line);border-radius:999px;display:grid;place-items:center;
+  transition:border-color .3s,transform .3s}
+.pillar:hover .pillar__ring{border-color:#b9bcbf;transform:translateY(-3px)}
+.pillar span{font-size:12.5px;color:var(--grey-2)}
+
+.formula{padding:110px 0 130px}
+.formula h2{text-align:center;font-size:clamp(34px,4.4vw,58px);font-weight:300;letter-spacing:-.02em}
+.formula .reveal{margin:76px auto 0;max-width:800px;font-size:clamp(17px,1.55vw,21px);line-height:1.55}
+
+/* ============ ready to market ============ */
+.rtm{position:relative;min-height:600px;display:flex;align-items:flex-end;overflow:hidden;background:#0b0b0c}
+.rtm__bg{position:absolute;inset:0;overflow:hidden;isolation:isolate;background:url('assets/rtm.jpg') center/cover no-repeat}
+.rtm__bg video{width:100%;height:100%;object-fit:cover}
+.rtm__bg video{width:100%;height:100%;object-fit:cover}
+.rtm__overlay{display:none}
+.rtm .container{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:26px;padding-bottom:64px}
+.rtm h2{position:absolute;top:52px;left:32px;z-index:2;font-size:clamp(30px,3.6vw,46px);font-weight:400;color:#fff;
+  text-shadow:0 2px 24px rgba(0,0,0,.9),0 0 60px rgba(0,0,0,.7)}
+.rtm p{max-width:460px;text-align:right;color:#fff;font-size:16.5px;line-height:1.6;font-weight:400;
+  text-shadow:0 1px 16px rgba(0,0,0,.9);
+  background:rgba(0,0,0,.38);backdrop-filter:blur(4px);padding:14px 18px;border-radius:10px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#14171a;font-size:15px;
+  padding:15px 30px;border-radius:999px;transition:background .25s,transform .25s}
+.btn:hover{background:var(--blue-2);transform:translateY(-2px)}
+
+/* ============ capabilities ============ */
+.caps{padding:120px 0 100px;background:#fff}
+.caps__head{text-align:center;max-width:620px;margin:0 auto 64px}
+.caps__eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px}
+.caps__head h2{font-size:clamp(28px,3vw,44px);font-weight:300;line-height:1.18;color:var(--ink-soft);letter-spacing:-.015em;margin-bottom:18px}
+.caps__head p{font-size:16px;line-height:1.7;font-weight:300;color:var(--grey)}
+.hl{color:var(--yellow);font-weight:400}
+.hl-mark{background:linear-gradient(120deg,rgba(232,124,30,.15) 0%,rgba(245,166,35,.18) 100%);
+  border-radius:4px;padding:1px 4px;color:var(--dark);font-weight:400;-webkit-box-decoration-break:clone}
+.caps__formats{display:flex;flex-direction:column}
+.fmt{display:grid;grid-template-columns:68px 56px 1fr 24px;align-items:center;gap:28px;
+  padding:26px 20px;border-top:1px solid var(--line);position:relative;cursor:default;
+  transition:background .2s ease}
+.fmt:last-child{border-bottom:1px solid var(--line)}
+.fmt::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,#e87c1e,#f5a623);
+  transform:scaleY(0);transform-origin:top;transition:transform .28s ease}
+.fmt:hover{background:rgba(232,124,30,.035)}
+.fmt:hover::before{transform:scaleY(1)}
+.fmt__num{font-size:38px;font-weight:800;color:var(--yellow);opacity:.22;line-height:1;
+  letter-spacing:-.04em;transition:opacity .2s}
+.fmt:hover .fmt__num{opacity:.55}
+.fmt__icon{width:52px;height:52px;border-radius:14px;background:var(--card);
+  display:grid;place-items:center;flex-shrink:0;
+  transition:background .2s,box-shadow .2s}
+.fmt:hover .fmt__icon{background:linear-gradient(135deg,#ff8300,#ffb347);
+  box-shadow:0 6px 18px rgba(232,124,30,.3)}
+.fmt__icon svg{fill:none;stroke:#666;stroke-width:1.5;transition:stroke .2s}
+.fmt:hover .fmt__icon svg{stroke:#fff}
+.fmt__body h3{font-size:18px;font-weight:600;color:var(--dark);margin-bottom:5px;letter-spacing:-.01em}
+.fmt__body p{font-size:14px;font-weight:300;color:var(--grey);line-height:1.55}
+.fmt__arrow{color:var(--line);flex-shrink:0;transition:color .2s,transform .2s}
+.fmt:hover .fmt__arrow{color:var(--yellow);transform:translateX(4px)}
+.caps__banner{margin-top:48px;padding-top:32px;padding-bottom:80px;border-top:1px solid var(--line)}
+.caps__banner p{font-size:15px;font-weight:300;color:var(--grey);line-height:1.7}
+.caps__banner p strong{color:var(--dark);font-weight:500}
+.car-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:52px}
+.car-arrow{width:38px;height:38px;flex:0 0 auto;border-radius:999px;border:1px solid var(--line);
+  display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s}
+.car-arrow:hover{background:var(--card);border-color:#b9bcbf;transform:translateY(-1px)}
+.car-arrow svg{width:12px;height:10px}
+.dots{display:flex;justify-content:center;gap:10px}
+.dots button{width:9px;height:9px;border-radius:999px;background:#d4d5d7;transition:background .3s,transform .3s}
+.dots button[aria-current="true"]{background:#111;transform:scale(1.12)}
+
+/* ============ why choose (dark) ============ */
+.why{background:var(--dark);color:#fff;padding:118px 0 130px}
+.why h2{text-align:center;font-size:clamp(30px,3.8vw,50px);font-weight:300;line-height:1.16;color:#e9e9ea;letter-spacing:.01em}
+.tl{position:relative;margin-top:96px;padding-left:1px}
+.tl::before{content:'';position:absolute;left:0;top:30px;bottom:60px;width:1px;background:rgba(255,255,255,.22)}
+.tl__items{display:flex;flex-direction:column;gap:56px}
+.tl__item{display:grid;grid-template-columns:320px minmax(0,1fr) 300px;gap:40px;align-items:center}
+.pill{display:flex;align-items:center;gap:16px;background:transparent;border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;padding:12px 28px 12px 12px;margin-left:-19px;color:rgba(255,255,255,.55);font-size:15.5px;
+  width:max-content;max-width:100%;transition:background .35s,color .35s,border-color .35s}
+.pill__n{width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.1);display:grid;place-items:center;
+  font-size:14px;flex:0 0 auto;transition:background .35s,color .35s}
+.pill.is-active{background:#fff;color:#111;border-color:#fff}
+.pill.is-active .pill__n{background:var(--yellow);color:#111}
+.tl__item figure{border-radius:16px;overflow:hidden;background:#1b1b1c}
+.tl__item img{width:100%;height:420px;object-fit:cover}
+.tl__item p{color:rgba(255,255,255,.62);font-size:17px;line-height:1.65;font-weight:300}
+
+/* ============ vision / mission ============ */
+.vm{padding:120px 0}
+.vm__row{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.vm__row+.vm__row{margin-top:130px}
+.vm__row.rev .vm__media{order:2}
+.vm__media img{width:100%;height:420px;object-fit:cover;border-radius:14px}
+.vm h2{font-size:clamp(34px,4.2vw,54px);font-weight:300;color:#b9bbbd;letter-spacing:-.015em}
+.vm__row.rev h2{color:var(--ink)}
+.vm p{margin-top:22px;color:var(--grey);font-size:17px;line-height:1.65;font-weight:300;max-width:430px}
+.chip{margin-top:34px;display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;padding:12px 20px 12px 12px;box-shadow:0 6px 22px rgba(0,0,0,.05)}
+.chip i{width:26px;height:26px;border-radius:7px;background:#111;display:grid;place-items:center}
+.chip span{font-size:15px}
+
+/* ============ core values ============ */
+.core{position:relative;padding:104px 0 96px;overflow:hidden;color:#fff}
+.core__bg{position:absolute;inset:0;background:url('assets/core1.jpg') center 62%/cover no-repeat}
+.core::after{content:'';position:absolute;inset:0;background:rgba(24,34,44,.30)}
+.core .container,.core__viewport,.core .car-nav{position:relative;z-index:2}
+.core h2{text-align:center;font-size:clamp(28px,3.5vw,46px);font-weight:300;line-height:1.2}
+.core__viewport{margin-top:56px;overflow:hidden}
+.core__track{display:flex;gap:26px;transition:transform .65s cubic-bezier(.4,.05,.15,1)}
+.value{flex:0 0 830px;background:#fff;color:var(--ink);border-radius:20px;padding:22px;display:grid;
+  grid-template-columns:390px minmax(0,1fr);gap:36px;align-items:center}
+.value img{width:100%;height:300px;object-fit:cover;border-radius:12px}
+.value__body{padding-right:26px}
+.value h3{font-size:13px;font-weight:400;color:var(--grey-2)}
+.value p{margin-top:22px;font-size:17.5px;line-height:1.6;font-weight:300}
+.core .car-nav{margin-top:38px}
+.core .car-arrow{background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.35);backdrop-filter:blur(4px)}
+.core .car-arrow:hover{background:rgba(0,0,0,.55);border-color:rgba(255,255,255,.6)}
+.core .car-arrow svg{stroke:#fff}
+.core .dots button{background:rgba(255,255,255,.55)}
+.core .dots button[aria-current="true"]{background:var(--yellow)}
+
+/* ============ brand + faq ============ */
+.brand{padding:126px 0 130px;text-align:center}
+.brand h2{font-size:clamp(28px,4.4vw,56px);font-weight:300;line-height:1.1;letter-spacing:-.02em;white-space:nowrap;margin-inline:auto}
+.brand .btn{margin-top:34px}
+.brand__note{margin-top:26px;font-size:15px;color:var(--grey-2)}
+.faq{margin:66px auto 0;max-width:700px;display:flex;flex-direction:column;gap:14px;text-align:left}
+.faq__item{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;transition:background .35s,border-color .35s}
+.faq__item.open{background:#5a5c5e;border-color:#5a5c5e}
+.faq__q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 26px;
+  font-size:18px;font-weight:400;text-align:left;color:var(--ink)}
+.faq__item.open .faq__q{color:#fff;padding-bottom:10px}
+.faq__q i{font-style:normal;font-size:20px;line-height:1;opacity:.8}
+.faq__a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:rgba(255,255,255,.86);font-size:15px;
+  line-height:1.6;font-weight:300;padding:0 26px}
+.faq__item.open .faq__a{max-height:220px;padding-bottom:24px}
+
+/* ============ closing cta ============ */
+.close{position:relative;padding:150px 0 210px;text-align:center;overflow:hidden}
+.close__bg{position:absolute;inset:0;background:url('assets/cta.jpg') center 40%/cover no-repeat}
+.close::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(0,0,0,.06))}
+.close .container{position:relative;z-index:2}
+.close h2{font-size:clamp(34px,4.6vw,58px);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:#141414;max-width:560px;margin-inline:auto}
+.close .btn{margin-top:36px;background:#fff;padding:9px 9px 9px 28px;gap:22px}
+.close .btn i{width:38px;height:38px;border-radius:999px;background:var(--blue);display:grid;place-items:center}
+
+/* ============ footer ============ */
+.foot{position:relative;z-index:3;margin-top:-90px;background:#fff;border-radius:28px 28px 0 0;padding:84px 0 96px}
+.foot__grid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px}
+.foot__logo{display:inline-block;margin-bottom:22px}
+.foot__logo img{height:60px;width:auto;display:block}
+.foot h3{font-size:22px;font-weight:300;line-height:1.35;color:var(--ink-soft);max-width:12ch}
+.news{margin-top:26px;display:flex;background:#f1f1f2;border-radius:8px;padding:5px;max-width:290px}
+.news input{flex:1;border:0;background:none;padding:10px 14px;font-family:inherit;font-size:13.5px;color:#111}
+.news input::placeholder{color:#a9abad}
+.news button{background:#8b8d8f;color:#fff;font-size:13.5px;padding:10px 18px;border-radius:6px;transition:background .25s}
+.news button:hover{background:#6f7173}
+.foot h4{font-size:13.5px;font-weight:400;color:var(--grey-2);margin-bottom:20px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+.foot li a{font-size:13.5px;color:var(--grey);transition:color .2s}
+.foot li a:hover{color:var(--ink)}
+.socials{display:flex;flex-direction:column;gap:12px}
+.socials a{width:34px;height:34px;border-radius:999px;background:#f1f1f2;display:grid;place-items:center;transition:background .25s}
+.socials a:hover{background:#e2e3e5}
+.socials svg{width:15px;height:15px;fill:#5f6265}
+
+/* ============ footer bottom bar + wordmark ============ */
+.foot__bottom{border-top:1px solid var(--line);margin-top:70px}
+.foot__bottom-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:26px 0}
+.foot__bottom-row a{font-size:13.5px;color:var(--grey);transition:color .2s}
+.foot__bottom-row a:hover{color:var(--ink)}
+.foot__bottom-row p{font-size:13.5px;color:var(--grey-2)}
+.foot__bottom-row p b{color:var(--grey);font-weight:500}
+
+/* ============ responsive ============ */
+@media (max-width:1240px){
+  .cap{flex:0 0 78vw}
+  .value{flex:0 0 88vw;grid-template-columns:300px minmax(0,1fr)}
+  .tl__item{grid-template-columns:270px minmax(0,1fr) 260px;gap:28px}
+}
+@media (max-width:1024px){
+  .nav__menu{display:none}
+  .nav__burger{display:flex}
+  .nav__cta{display:none}
+  .tl::before{display:none}
+  .pill{margin-left:0}
+  .tl__item{grid-template-columns:1fr;gap:20px}
+  .vm__row{grid-template-columns:1fr;gap:34px}
+  .vm__row.rev .vm__media{order:0}
+  .value{grid-template-columns:1fr;padding:18px}
+  .value__body{padding:0 6px 10px}
+}
+@media (max-width:640px){
+  .container{padding-inline:22px}
+  .hero{min-height:560px;padding-bottom:52px}
+  .hero h1{max-width:none}
+  .intro{padding:96px 0 76px}
+  .pillars{gap:26px}
+  .rtm h2{position:static;margin-bottom:24px;align-self:flex-start}
+  .rtm .container{align-items:flex-start;padding-block:80px}
+  .rtm p{text-align:left}
+  .caps__banner{margin-top:32px}
+  .fmt{grid-template-columns:48px 44px 1fr;gap:16px}
+  .fmt__arrow{display:none}
+  .caps,.formula,.why,.vm,.brand{padding-block:80px}
+  .foot__grid{grid-template-columns:1fr 1fr;gap:32px}
+  .socials{flex-direction:row}
+}
+@media (max-width:480px){
+  .foot__grid{grid-template-columns:1fr}
+  .news{max-width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html" aria-label="Jahaaj Healthcare home">
+    <img src="assets/logo.png" alt="Jahaaj Healthcare Pvt. Ltd.">
+  </a>
+  <nav class="nav__menu" id="navMenu">
+    <div class="nav__item"><a class="nav__link" href="index.html">Home</a></div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd1">Discover Jahaaj <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd1">
+        <ul>
+        <li><a href="about.html">Who we are</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Our Facility</a></li>
+        <li><a href="why-jahaaj.html">Why Jahaaj</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd2">Private Label &amp; Contract Manufacturing <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd2">
+        <ul>
+        <li><a href="#">Manufacturing Process</a></li>
+        <li><a href="#">Packaging Capabilities</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd3">Explore our Products <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd3">
+        <ul>
+        <li><a href="products-catalog-elementor.html">All Products</a></li>
+        <li><a href="poultry-category-elementor.html">Poultry</a></li>
+        <li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
+        <li><a href="pet-category-elementor.html">Pet</a></li>
+        <li><a href="aquaculture-category-elementor.html">Aquaculture</a></li>
+        <li><a href="swine-category-elementor.html">Swine</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd4">Quality &amp; Certifications <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd4">
+        <ul>
+        <li><a href="qc-qa-systems.html">QC / QA Systems</a></li>
+        <li><a href="#">Certifications</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd5">Connect <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd5">
+        <ul>
+        <li><a href="contact.html">Contact Details</a></li>
+        <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd6">Science &amp; Innovation <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd6">
+        <ul>
+        <li><a href="#">Our Approach towards R&amp;D</a></li>
+        <li><a href="#">Our Investment in Innovation</a></li>
+        <li><a href="#">New R&amp;D Office Showcase</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <button class="nav__burger" aria-label="Open menu"><span></span></button>
+  <a class="nav__cta" href="contact.html">Contact</a>
+</header>
+
+<div class="mnav" id="mnav" hidden>
+  <div class="mnav__inner">
+    <div class="mnav__group"><a class="mnav__top" href="index.html">Home</a></div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Discover Jahaaj <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="about.html">Who we are</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Our Facility</a></li>
+        <li><a href="why-jahaaj.html">Why Jahaaj</a></li>
+      </ul>
+    </div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Private Label &amp; Contract Manufacturing <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="#">Manufacturing Process</a></li>
+        <li><a href="#">Packaging Capabilities</a></li>
+      </ul>
+    </div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Explore our Products <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="products-catalog-elementor.html">All Products</a></li>
+        <li><a href="poultry-category-elementor.html">Poultry</a></li>
+        <li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
+        <li><a href="pet-category-elementor.html">Pet</a></li>
+        <li><a href="aquaculture-category-elementor.html">Aquaculture</a></li>
+        <li><a href="swine-category-elementor.html">Swine</a></li>
+      </ul>
+    </div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Quality &amp; Certifications <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="qc-qa-systems.html">QC / QA Systems</a></li>
+        <li><a href="#">Certifications</a></li>
+      </ul>
+    </div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Connect <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="contact.html">Contact Details</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Science &amp; Innovation <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="#">Our Approach towards R&amp;D</a></li>
+        <li><a href="#">Our Investment in Innovation</a></li>
+        <li><a href="#">New R&amp;D Office Showcase</a></li>
+      </ul>
+    </div>
+    <a class="btn mnav__cta" href="contact.html">Contact</a>
+  </div>
+</div>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero__bg">
+    <video autoplay muted loop playsinline poster="assets/hero.jpg">
+      <source src="assets/hero-cows.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="container">
+    <h1>Your Manufacturing Partner for Feed Supplements</h1>
+    <p>Jahaaj Healthcare specializes in the development and manufacturing of high-quality feed supplements for all animal species. We partner with brands to transform ideas into reliable, market-ready nutritional solutions.</p>
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="intro">
+  <div class="container">
+    <p class="reveal" data-reveal>Looking to launch a custom-formulated, high-performance product under your own brand? With strong in-house R&amp;D, an experienced leadership and deep expertise in functional ingredients, we create formulations tailored to your nutritional goals, market demands, and regulatory needs.</p>
+    <p class="intro__label" data-jr>Start a Custom Formula</p>
+    <div class="pillars" data-jr-stagger>
+      <div class="pillar">
+        <div class="pillar__ring">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3d3f42" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 2h5M10 2v5.2L5.6 15a2.4 2.4 0 002.1 3.6h8.6a2.4 2.4 0 002.1-3.6L14 7.2V2"/>
+            <path d="M8 14.5h8"/>
+          </svg>
+        </div><span>Custom Formulation</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar__ring">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3d3f42" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.5l7 3v5.4c0 5-3 8-7 9.1-4-1.1-7-4.1-7-9.1V5.5l7-3z"/>
+            <path d="M9 12l2.2 2.2L15.5 9.5"/>
+          </svg>
+        </div><span>Certified Quality</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar__ring">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3d3f42" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7.5l9-4 9 4-9 4-9-4z"/>
+            <path d="M3 7.5v9l9 4 9-4v-9M12 11.5v9"/>
+          </svg>
+        </div><span>Private Label Ready</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= START A CUSTOM FORMULA (hidden) =================
+<section class="formula">
+  <div class="container">
+    <h2 data-jr>Start a Custom Formula</h2>
+    <p class="reveal" data-reveal>We create formulations tailored to your nutritional goals, market demands, and regulatory needs. With strong in-house R&amp;D, an experienced leadership and deep expertise in functional ingredients. Looking to launch a custom-formulated, high-performance product under your own brand?</p>
+  </div>
+</section>
+================================================================= -->
+
+<!-- ================= READY TO MARKET ================= -->
+<section class="rtm">
+  <div class="rtm__bg">
+    <video autoplay muted loop playsinline poster="assets/rtm.jpg">
+      <source src="assets/rtm-farm-cows.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="rtm__overlay"></div>
+  <h2 data-jr>Ready-to-Market Products</h2>
+  <div class="container" data-jr>
+    <p>Want to enter the market quickly with your own brand? Choose from our real life adapted &amp; proven ready-for-market formulations, developed to meet global quality standards. We also support you through artwork &amp; packaging adaptations.</p>
+    <a class="btn" href="#">Contact us</a>
+  </div>
+</section>
+
+<!-- ================= CAPABILITIES ================= -->
+<section class="caps">
+  <div class="container">
+    <div class="caps__head" data-jr>
+      <p class="caps__eyebrow">What we manufacture</p>
+      <h2><span class="hl">Production</span> &amp; <span class="hl">Packaging</span> Capabilities</h2>
+      <p>A wide range of product formats to suit diverse market requirements and species-specific delivery needs.</p>
+    </div>
+    <div class="caps__formats" data-jr-stagger>
+      <div class="fmt">
+        <span class="fmt__num">01</span>
+        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h10"/><rect x="2" y="4" width="20" height="16" rx="3"/></svg></div>
+        <div class="fmt__body">
+          <h3>Powders</h3>
+          <p>Fine-particle blends for rapid dispersion and easy feed mixing.</p>
+        </div>
+        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="fmt">
+        <span class="fmt__num">02</span>
+        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="4" y="3" width="5" height="8" rx="2.5"/><rect x="10" y="3" width="5" height="8" rx="2.5"/><rect x="16" y="3" width="4" height="8" rx="2"/><rect x="4" y="13" width="5" height="8" rx="2.5"/><rect x="10" y="13" width="5" height="8" rx="2.5"/></svg></div>
+        <div class="fmt__body">
+          <h3>Tablets</h3>
+          <p>Compressed solid forms for precise and consistent dosing.</p>
+        </div>
+        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="fmt">
+        <span class="fmt__num">03</span>
+        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="7" ry="4"/><path d="M5 12v4c0 2.2 3.1 4 7 4s7-1.8 7-4v-4"/></svg></div>
+        <div class="fmt__body">
+          <h3>Boluses</h3>
+          <p>Slow-release rumen-delivery systems for sustained effect.</p>
+        </div>
+        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="fmt">
+        <span class="fmt__num">04</span>
+        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.5"/><circle cx="13" cy="6" r="2"/><circle cx="10" cy="13" r="3"/><circle cx="17" cy="14" r="2"/><circle cx="6" cy="16" r="1.8"/></svg></div>
+        <div class="fmt__body">
+          <h3>Granules</h3>
+          <p>Free-flowing granulate formats with excellent shelf stability.</p>
+        </div>
+        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="fmt">
+        <span class="fmt__num">05</span>
+        <div class="fmt__icon"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 4h12a2 2 0 012 2v1a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M8 9v9a2 2 0 002 2h4a2 2 0 002-2V9"/><path d="M10 13h4"/></svg></div>
+        <div class="fmt__body">
+          <h3>Paste</h3>
+          <p>Palatable semi-solid applications for oral delivery.</p>
+        </div>
+        <svg class="fmt__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="caps__banner">
+      <p><strong>Every product is manufactured</strong> with a focus on quality, consistency, compliance, and scalability from first batch to full-scale production.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE ================= -->
+<section class="why">
+  <div class="container">
+    <h2 data-jr>WHY CHOOSE<br>JAHAAJ ?</h2>
+    <div class="tl">
+      <div class="tl__items" id="tlItems" data-jr-stagger>
+        <div class="tl__item">
+          <div class="pill"><span class="pill__n">1</span>Assured quality</div>
+          <figure><img src="assets/t4.jpg" alt="Raw material quality inspection"></figure>
+          <p>Every batch moves through FAMI-QS aligned quality checks, from raw material inspection to finished-product testing, so what leaves our facility is consistent, safe, and audit-ready every time.</p>
+        </div>
+        <div class="tl__item">
+          <div class="pill"><span class="pill__n">2</span>Formulated by R&amp;D specialists</div>
+          <figure><img src="assets/vision.jpg" alt="Laboratory formulation analysis"></figure>
+          <p>An in-house R&amp;D team builds every formulation around your species, target performance, and budget, backed by functional-ingredient expertise rather than generic templates.</p>
+        </div>
+        <div class="tl__item">
+          <div class="pill"><span class="pill__n">3</span>Confidential private label model</div>
+          <figure><img src="assets/t3.jpg" alt="Confidential private label documents"></figure>
+          <p>Your formulation, branding, and business details stay yours. We manufacture under strict confidentiality agreements so your product goes to market under your name alone.</p>
+        </div>
+        <div class="tl__item">
+          <div class="pill"><span class="pill__n">4</span>Scalable supply</div>
+          <figure><img src="assets/t1.jpg" alt="Multi-species livestock production"></figure>
+          <p>From first small batch to full-scale reorders, our infrastructure scales batch sizes up without compromising turnaround time or the consistency you launched with.</p>
+        </div>
+        <div class="tl__item">
+          <div class="pill"><span class="pill__n">5</span>Located in Navi Mumbai for seamless logistics</div>
+          <figure><img src="assets/t5.jpg" alt="Navi Mumbai logistics corridor"></figure>
+          <p>Based at Rabale MIDC with direct access to Navi Mumbai's port and highway network, we move finished goods to distributors across India and export markets faster.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISION / MISSION ================= -->
+<section class="vm">
+  <div class="container">
+    <div class="vm__row" data-jr>
+      <div class="vm__media"><img src="assets/vision.jpg" alt="Laboratory analysis of feed ingredients"></div>
+      <div>
+        <h2>Vision</h2>
+        <p>To be the global leader in innovative, safe and sustainable animal feed solutions.</p>
+        <div class="chip">
+          <i><svg width="12" height="12" viewBox="0 0 12 12"><path d="M7 0L2 7h3l-1 5 5-7H6l1-5z" fill="#ff8300"/></svg></i>
+          <span>Feed solutions</span>
+        </div>
+      </div>
+    </div>
+    <div class="vm__row rev" data-jr>
+      <div class="vm__media"><img src="assets/mission.jpg" alt="Farmer caring for cattle"></div>
+      <div>
+        <h2>Mission</h2>
+        <p>To enhance animal health through science-driven nutrition, delivered with uncompromising quality and ethical practices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CORE VALUES ================= -->
+<section class="core">
+  <div class="core__bg" id="coreBg"></div>
+  <div class="container">
+    <h2 data-jr>CORE VALUES:<br>Values That Guide Us</h2>
+  </div>
+  <div class="core__viewport">
+    <div class="core__track" id="coreTrack" data-jr-stagger>
+      <article class="value">
+        <img src="assets/core1.jpg" alt="">
+        <div class="value__body"><h3>Reliability</h3><p>We believe in honest business practices, building trust through transparency and fairness.</p></div>
+      </article>
+      <article class="value">
+        <img src="assets/core2.jpg" alt="">
+        <div class="value__body"><h3>Integrity</h3><p>We hold ourselves to the highest standards at every stage, from raw material to finished supplement.</p></div>
+      </article>
+      <article class="value">
+        <img src="assets/core1.jpg" alt="">
+        <div class="value__body"><h3>Innovation</h3><p>We invest in research so every formulation answers a real nutritional need in the field.</p></div>
+      </article>
+      <article class="value">
+        <img src="assets/core2.jpg" alt="">
+        <div class="value__body"><h3>Partnership</h3><p>We work alongside brands from first concept to reorder, treating your product as our own.</p></div>
+      </article>
+    </div>
+  </div>
+  <div class="car-nav">
+    <button class="car-arrow" id="corePrev" aria-label="Previous value"><svg viewBox="0 0 14 12" fill="none" stroke="#111" stroke-width="1.4"><path d="M13 6H2M6 2L2 6l4 4"/></svg></button>
+    <div class="dots" id="coreDots"></div>
+    <button class="car-arrow" id="coreNext" aria-label="Next value"><svg viewBox="0 0 14 12" fill="none" stroke="#111" stroke-width="1.4"><path d="M1 6h11M8 2l4 4-4 4"/></svg></button>
+  </div>
+</section>
+
+<!-- ================= BRAND + FAQ ================= -->
+<section class="brand" id="contact">
+  <div class="container">
+    <h2 data-jr>Start Your Own Brand</h2>
+    <a class="btn" href="#" data-jr>Book 1-on-1 Session</a>
+    <p class="brand__note" data-jr>Let's connect in a dedicated 1-on-1 online session.</p>
+    <div class="faq" id="faq" data-jr-stagger>
+      <div class="faq__item open">
+        <button class="faq__q">How does the private label &amp; contract manufacturing process work? <i>−</i></button>
+        <div class="faq__a"><p>We handle everything from formulation and sourcing to production, packaging, and dispatch. You'll have one team managing every stage of your product's launch.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">Do I need to pay anything upfront? <i>+</i></button>
+        <div class="faq__a"><p>No. We scope your formulation and share full costing and a production timeline before any commitment is made.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">What's the minimum order quantity? <i>+</i></button>
+        <div class="faq__a"><p>It depends on the format (powder, tablet, bolus, liquid, or premix). We assess your target volume and recommend a batch size that keeps unit costs efficient.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">Can I use my own formulation instead of one of yours? <i>+</i></button>
+        <div class="faq__a"><p>Yes. Bring your own formulation, or work with our in-house R&amp;D team to build one from scratch or adapt an existing ready-for-market product.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">How long does it take from order to delivery? <i>+</i></button>
+        <div class="faq__a"><p>Timelines vary by format and order size, but we confirm a firm production and dispatch schedule upfront so you can plan your launch with confidence.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">What quality certifications does Jahaaj hold? <i>+</i></button>
+        <div class="faq__a"><p>We are FAMI-QS certified and manufacture under ISO and HACCP-aligned quality systems, with batch-level traceability on every order.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING CTA ================= -->
+<section class="close">
+  <div class="close__bg" id="closeBg"></div>
+  <div class="container" data-jr>
+    <h2>Let's Plan Your Formulation</h2>
+    <a class="btn" href="contact.html">Contact us
+      <i><svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="#14171a" stroke-width="1.3"><path d="M1 6h11M8 2l4 4-4 4"/></svg></i>
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot">
+  <div class="container">
+    <div class="foot__grid">
+      <div>
+        <a class="foot__logo" href="index.html" aria-label="Jahaaj Healthcare home">
+          <img src="assets/logo.png" alt="Jahaaj Healthcare Pvt. Ltd.">
+        </a>
+        <h3>Sign up for our newsletter today.</h3>
+        <form class="news" onsubmit="return false">
+          <input type="email" placeholder="Your email" aria-label="Your email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div><h4>Main Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products-catalog-elementor.html">Products</a></li><li><a href="poultry-category-elementor.html">Poultry Solutions</a></li></ul></div>
+      <div><h4>Categories</h4><ul><li><a href="poultry-category-elementor.html">Poultry</a></li><li><a href="ruminants-category-elementor.html">Ruminants</a></li><li><a href="pet-category-elementor.html">Pet</a></li><li><a href="aquaculture-category-elementor.html">Aquaculture</a></li><li><a href="swine-category-elementor.html">Swine</a></li></ul></div>
+      <div><h4>Utility Pages</h4><ul><li><a href="#">License</a></li><li><a href="#">Change Log</a></li><li><a href="sitemap.html">Site Map</a></li></ul></div>
+      <div>
+        <h4>Social Media</h4>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.5-4.05 4.2v2.2H7.5V13h2.7v8h3.3z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M21 5.9c-.7.3-1.4.5-2.2.6.8-.5 1.4-1.2 1.7-2.1-.75.45-1.6.77-2.5.95A3.9 3.9 0 0012 8.9c0 .3 0 .6.1.9-3.3-.2-6.2-1.7-8.1-4.1-.35.6-.55 1.2-.55 2 0 1.35.7 2.55 1.75 3.25-.65 0-1.25-.2-1.75-.5 0 1.9 1.35 3.5 3.1 3.85-.35.1-.7.15-1.05.15-.25 0-.5 0-.75-.05.5 1.6 1.95 2.75 3.7 2.8A7.9 7.9 0 013 18.8a11 11 0 006 1.75c7.2 0 11.1-5.95 11.1-11.1v-.5c.8-.55 1.45-1.25 1.9-2.05z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.4A4.6 4.6 0 1016.6 12 4.6 4.6 0 0012 7.4zm0 7.6a3 3 0 113-3 3 3 0 01-3 3zm5.85-7.8a1.07 1.07 0 11-1.07-1.07 1.07 1.07 0 011.07 1.07zM20.9 8.9c-.07-1.45-.4-2.73-1.46-3.79S17.1 3.72 15.65 3.65C14.16 3.57 9.84 3.57 8.35 3.65c-1.45.07-2.73.4-3.79 1.45S3.11 7.45 3.04 8.9c-.08 1.49-.08 5.81 0 7.3.07 1.45.4 2.73 1.46 3.79s2.34 1.39 3.79 1.46c1.49.08 5.81.08 7.3 0 1.45-.07 2.73-.4 3.79-1.46s1.39-2.34 1.46-3.79c.08-1.49.08-5.8 0-7.3zm-1.91 8.9a3 3 0 01-1.71 1.71c-1.18.47-4 .36-5.28.36s-4.11.1-5.28-.36a3 3 0 01-1.71-1.71c-.47-1.18-.36-4-.36-5.28s-.1-4.11.36-5.28a3 3 0 011.71-1.71c1.18-.47 4-.36 5.28-.36s4.11-.1 5.28.36a3 3 0 011.71 1.71c.47 1.18.36 4 .36 5.28s.11 4.1-.36 5.28z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot__bottom">
+    <div class="container foot__bottom-row">
+      <a href="#">Privacy policy</a>
+      <p>&copy; Jahaaj Healthcare Pvt. Ltd. <b>All rights reserved.</b></p>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- scroll-linked word reveal ---------- */
+document.querySelectorAll('[data-reveal]').forEach(el=>{
+  const words = el.textContent.trim().split(/\s+/);
+  el.innerHTML = words.map(w=>'<span>'+w+'</span>').join(' ');
+});
+const revealEls = [...document.querySelectorAll('[data-reveal]')];
+function paintReveal(){
+  const vh = innerHeight;
+  revealEls.forEach(el=>{
+    const r = el.getBoundingClientRect();
+    const start = vh*0.86, end = vh*0.28;
+    let p = (start - r.top) / (start - end + r.height*0.55);
+    p = Math.max(0, Math.min(1, p));
+    const spans = el.querySelectorAll('span');
+    const n = Math.round(p*spans.length);
+    spans.forEach((s,i)=> s.classList.toggle('on', i < n));
+  });
+}
+
+/* ---------- dropdown menus ---------- */
+const navItems = [...document.querySelectorAll('.nav__item[data-menu]')];
+function closeMenus(except){
+  navItems.forEach(it=>{
+    if(it===except) return;
+    it.classList.remove('open');
+    it.querySelector('.nav__link').setAttribute('aria-expanded','false');
+  });
+}
+navItems.forEach(item=>{
+  const trigger = item.querySelector('.nav__link');
+  const open = v =>{
+    item.classList.toggle('open', v);
+    trigger.setAttribute('aria-expanded', v ? 'true' : 'false');
+    if(v) closeMenus(item);
+  };
+  item.addEventListener('mouseenter', ()=> open(true));
+  item.addEventListener('mouseleave', ()=> open(false));
+  trigger.addEventListener('click', e=>{ e.preventDefault(); open(!item.classList.contains('open')); });
+  item.addEventListener('focusin', ()=> open(true));
+  item.addEventListener('focusout', e=>{ if(!item.contains(e.relatedTarget)) open(false); });
+});
+addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenus(null); });
+document.addEventListener('click', e=>{ if(!e.target.closest('.nav__item')) closeMenus(null); });
+
+/* ---------- mobile menu ---------- */
+const burger = document.querySelector('.nav__burger');
+const mnav = document.getElementById('mnav');
+burger.addEventListener('click', ()=>{
+  const open = mnav.hasAttribute('hidden');
+  mnav.toggleAttribute('hidden', !open);
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+});
+document.querySelectorAll('.mnav__top').forEach(t=>{
+  const sub = t.nextElementSibling;
+  if(!sub) return;
+  t.addEventListener('click', ()=>{
+    const open = !sub.classList.contains('open');
+    document.querySelectorAll('.mnav__sub').forEach(u=>u.classList.remove('open'));
+    document.querySelectorAll('.mnav__top').forEach(b=>b.setAttribute('aria-expanded','false'));
+    sub.classList.toggle('open', open);
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+mnav.addEventListener('click', e=>{
+  if(e.target.tagName==='A'){ mnav.setAttribute('hidden',''); burger.classList.remove('open'); }
+});
+
+/* ---------- nav state ---------- */
+const nav = document.getElementById('nav');
+let lastScrollY = scrollY;
+let navHidden = false;
+function paintNav(){
+  const y = Math.max(0, scrollY);
+  nav.classList.toggle('is-solid', y > innerHeight - 90);
+  const menuOpen = navItems.some(it => it.classList.contains('open')) || !mnav.hasAttribute('hidden');
+  const delta = y - lastScrollY;
+  if(menuOpen || y < 80){
+    navHidden = false;
+  } else if(delta > 6){
+    navHidden = true;
+  } else if(delta < -6){
+    navHidden = false;
+  }
+  nav.classList.toggle('nav--hidden', navHidden);
+  lastScrollY = y;
+}
+
+/* ---------- generic carousel ---------- */
+function carousel(trackId, dotsId, prevId, nextId){
+  const track = document.getElementById(trackId);
+  const dots  = document.getElementById(dotsId);
+  if(!track || !dots) return null;
+  const items = [...track.children];
+  let index = 0;
+  items.forEach((_,i)=>{
+    const b = document.createElement('button');
+    b.type='button'; b.setAttribute('aria-label','Go to slide '+(i+1));
+    b.addEventListener('click',()=>go(i));
+    dots.appendChild(b);
+  });
+  function go(i){
+    index = (i + items.length) % items.length;
+    const card = items[index];
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    const offset = (track.parentElement.clientWidth - card.offsetWidth)/2;
+    track.style.transform = 'translateX('+(offset - index*(card.offsetWidth+gap))+'px)';
+    [...dots.children].forEach((d,j)=> d.setAttribute('aria-current', j===index ? 'true':'false'));
+  }
+  addEventListener('resize', ()=>go(index));
+  go(0);
+  /* drag / swipe */
+  let x0=null;
+  track.addEventListener('pointerdown',e=>{x0=e.clientX});
+  addEventListener('pointerup',e=>{
+    if(x0===null) return;
+    const dx = e.clientX - x0; x0=null;
+    if(Math.abs(dx)>50) go(index + (dx<0?1:-1));
+  });
+  /* prev / next buttons */
+  const prevBtn = prevId && document.getElementById(prevId);
+  const nextBtn = nextId && document.getElementById(nextId);
+  if(prevBtn) prevBtn.addEventListener('click', ()=> go(index - 1));
+  if(nextBtn) nextBtn.addEventListener('click', ()=> go(index + 1));
+  return go;
+}
+/* capsTrack removed carousel replaced with grid */
+carousel('coreTrack','coreDots','corePrev','coreNext');
+
+/* ---------- timeline active pill ---------- */
+const pills = [...document.querySelectorAll('#tlItems .pill')];
+const tlItems = [...document.querySelectorAll('#tlItems .tl__item')];
+function paintTimeline(){
+  let active = 0;
+  tlItems.forEach((it,i)=>{
+    const r = it.getBoundingClientRect();
+    if(r.top < innerHeight*0.6) active = i;
+  });
+  pills.forEach((p,i)=> p.classList.toggle('is-active', i===active));
+}
+
+/* ---------- FAQ ---------- */
+document.querySelectorAll('#faq .faq__q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('#faq .faq__item').forEach(i=>{
+      i.classList.remove('open'); i.querySelector('i').textContent='+';
+    });
+    if(!wasOpen){ item.classList.add('open'); q.querySelector('i').textContent='−'; }
+  });
+});
+
+/* ---------- parallax backgrounds ---------- */
+const coreBg = document.getElementById('coreBg');
+const closeBg = document.getElementById('closeBg');
+function paintParallax(){
+  [[coreBg,0.12],[closeBg,0.10]].forEach(([el,k])=>{
+    if(!el) return;
+    const r = el.parentElement.getBoundingClientRect();
+    let shift = (r.top + r.height/2 - innerHeight/2) * -k;
+    shift = Math.max(-70, Math.min(70, shift));
+    el.style.transform = 'translate3d(0,'+shift.toFixed(1)+'px,0) scale(1.2)';
+  });
+}
+
+/* ---------- scroll appear (fade+rise) ---------- */
+(function(){
+  var els = document.querySelectorAll('[data-jr], [data-jr-stagger]');
+  if(!els.length) return;
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('jr-in'); });
+    return;
+  }
+  els.forEach(function(el){
+    if(el.hasAttribute('data-jr-stagger')){
+      Array.prototype.forEach.call(el.children, function(child,ci){ child.style.setProperty('--i', ci); });
+    }
+  });
+  var jrIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('jr-in');
+        jrIo.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0, rootMargin:'0px 0px -10% 0px'});
+  els.forEach(function(el){ jrIo.observe(el); });
+})();
+
+/* ---------- raf loop ---------- */
+let ticking = false;
+function onScroll(){
+  if(ticking) return; ticking = true;
+  requestAnimationFrame(()=>{
+    paintReveal(); paintNav(); paintTimeline(); paintParallax();
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+addEventListener('resize', onScroll);
+onScroll();
+</script>
+</body>
+</html>
