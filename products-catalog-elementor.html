@@ -291,6 +291,24 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   transform: none !important;
 }
 
+
+/* CLOSING CTA BLACK OVERLAY & WHITE TEXT */
+.close::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 0.58) !important;
+  z-index: 1 !important;
+}
+.close .container {
+  position: relative !important;
+  z-index: 2 !important;
+}
+.close h2 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6) !important;
+}
+
 </style>
 </head>
 <body>
