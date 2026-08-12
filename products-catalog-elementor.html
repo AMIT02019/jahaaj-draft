@@ -284,6 +284,13 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   color: #2b7fb8 !important;
 }
 
+
+/* GUARANTEE IMMEDIATE CONTENT VISIBILITY - NO BLANK PAGES */
+[data-jr], [data-jr-stagger]>* {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 </style>
 </head>
 <body>
@@ -1047,7 +1054,7 @@ onNavScroll();
       }
     });
   }, {threshold:0, rootMargin:'0px 0px -10% 0px'});
-  els.forEach(function(el){ io.observe(el); });
+  els.forEach(function(el){ el.classList.add('jr-in'); io.observe(el); });
 })();
 
 </script>
