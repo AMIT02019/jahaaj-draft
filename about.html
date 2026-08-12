@@ -597,6 +597,50 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   }
 }
 
+
+/* ENHANCED HIGHLIGHT CARD WITH INCREASED FONT SIZE */
+.mfg__highlight {
+  position: relative !important;
+  width: 100% !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 22px !important;
+  padding: 44px 36px !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25) !important;
+}
+.mfg__highlight h4 {
+  font-size: clamp(20px, 2.2vw, 25px) !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.3 !important;
+  color: #ffffff !important;
+}
+.mfg__highlight h4::before {
+  content: '' !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 999px !important;
+  background: #ff8300 !important;
+  flex: 0 0 auto !important;
+}
+.mfg__highlight p {
+  margin-top: 18px !important;
+  font-size: clamp(15px, 1.5vw, 17.5px) !important;
+  line-height: 1.65 !important;
+  font-weight: 400 !important;
+  opacity: 0.96 !important;
+  color: #f1f2f4 !important;
+  max-width: 480px !important;
+  margin-inline: auto !important;
+}
+
 </style>
 </head>
 <body>
