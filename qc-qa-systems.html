@@ -429,6 +429,52 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   line-height: 1 !important;
 }
 
+
+/* HEADER NAV OVERLAP FIX */
+.nav__menu {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(14px) !important;
+  border-radius: 999px !important;
+  padding: 4px 12px !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08) !important;
+  height: 52px !important;
+  max-width: calc(100% - 320px) !important;
+  white-space: nowrap !important;
+}
+.nav__link {
+  font-size: 13px !important;
+  padding: 8px 11px !important;
+  white-space: nowrap !important;
+}
+@media (max-width: 1400px) {
+  .nav__link {
+    font-size: 12px !important;
+    padding: 6px 8px !important;
+    gap: 4px !important;
+  }
+  .nav__menu {
+    padding: 4px 8px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .nav__menu {
+    display: none !important;
+  }
+  .nav__burger {
+    display: flex !important;
+  }
+  .nav__cta {
+    display: none !important;
+  }
+}
+
 </style>
 </head>
 <body>
