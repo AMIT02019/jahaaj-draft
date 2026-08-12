@@ -337,6 +337,23 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 .jhc-format-tag {
   display: none !important;
 }
+
+/* SEAMLESS DROPDOWN HOVER & SCROLL MARGIN FIX */
+.nav__item:hover .dropdown,
+.nav__item.open .dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+.nav__item:last-child:hover .dropdown,
+.nav__item:last-child.open .dropdown {
+  transform: translateX(0) translateY(0) !important;
+}
+[id] {
+  scroll-margin-top: 100px !important;
+}
+
 </style>
 </head>
 <body>
