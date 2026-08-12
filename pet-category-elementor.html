@@ -150,7 +150,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 .jhc-cat .jhc-badge{display:inline-flex;align-items:center;gap:8px;background:color-mix(in srgb, var(--jhc-gold) 28%, white);border:1px solid color-mix(in srgb, var(--jhc-gold) 50%, transparent);color:var(--jhc-dark-green);font-weight:700;font-size:0.78rem;letter-spacing:0.03em;text-transform:uppercase;padding:6px 14px;border-radius:var(--jhc-radius-full);margin-bottom:14px;}
 
 /* Hero */
-.jhc-cat .jhc-hero{background:linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.40) 40%, rgba(0,0,0,0.85) 100%), url('assets/pet_hero_hd.jpg?v=20260812v12') center 40%/cover no-repeat;color:#fff;min-height:720px;max-height:800px;display:flex;align-items:flex-end;padding:120px 0 56px;position:relative;}
+.jhc-cat .jhc-hero{background:linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.40) 40%, rgba(0,0,0,0.85) 100%), url('assets/pet_hero_hd.jpg?v=20260812v13') center 40%/cover no-repeat;color:#fff;min-height:720px;max-height:800px;display:flex;align-items:flex-end;padding:120px 0 56px;position:relative;}
 .jhc-cat .jhc-hero .jhc-container{width:100%;}
 .jhc-cat .jhc-breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:0.85rem;color:rgba(255,255,255,0.65);margin-bottom:18px;}
 .jhc-cat .jhc-breadcrumb a{color:rgba(255,255,255,0.85);font-weight:600;}
@@ -324,6 +324,100 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 .jhc-format-tag {
   display: none !important;
 }
+
+@media(max-width: 768px){
+  .jhc-ch-split{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .jhc-ch-list{
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 8px !important;
+    padding: 6px 4px 14px 4px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .jhc-ch-list::-webkit-scrollbar{
+    display: none !important;
+  }
+  .jhc-ch-row{
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 10px 16px !important;
+    border-radius: 999px !important;
+    border: 1px solid #e2e3e5 !important;
+    background: #fff !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+    font-size: 13.5px !important;
+    transition: all .2s ease !important;
+  }
+  .jhc-ch-row:hover{
+    background: #f5f6f8 !important;
+  }
+  .jhc-ch-row.active{
+    background: #c85000 !important;
+    border-color: #c85000 !important;
+    box-shadow: 0 4px 14px rgba(200,80,0,.28) !important;
+  }
+  .jhc-ch-row-num{
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #888 !important;
+    opacity: 0.8 !important;
+  }
+  .jhc-ch-row.active .jhc-ch-row-num{
+    color: rgba(255,255,255,0.85) !important;
+    opacity: 1 !important;
+  }
+  .jhc-ch-row-name{
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    color: #2b2c2e !important;
+  }
+  .jhc-ch-row.active .jhc-ch-row-name{
+    color: #ffffff !important;
+    font-weight: 600 !important;
+  }
+  .jhc-ch-row-arrow{
+    display: none !important;
+  }
+  .jhc-ch-panel{
+    position: static !important;
+    border-radius: 18px !important;
+    padding: 24px 20px !important;
+    min-height: auto !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,.06) !important;
+    background: #fff !important;
+    margin-top: 4px !important;
+  }
+  .jhc-ch-detail-icon{
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    font-size: 18px !important;
+    margin-bottom: 14px !important;
+  }
+  .jhc-ch-detail h3{
+    font-size: 18.5px !important;
+    line-height: 1.25 !important;
+  }
+  .jhc-ch-detail-hook{
+    margin-top: 10px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  .jhc-ch-detail-desc{
+    margin-top: 10px !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -331,7 +425,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
   <a class="nav__logo" href="index.html" aria-label="Jahaaj Healthcare home">
-    <img src="assets/logo.png?v=20260812v12" alt="Jahaaj Healthcare Pvt. Ltd.">
+    <img src="assets/logo.png?v=20260812v13" alt="Jahaaj Healthcare Pvt. Ltd.">
   </a>
   <nav class="nav__menu" id="navMenu">
     <div class="nav__item"><a class="nav__link" href="index.html">Home</a></div>
@@ -510,7 +604,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
             <span class="jhc-chip"><i class="fas fa-circle-check"></i> Calming &amp; Respiratory Aids</span>
           </div>
         </div>
-        <div class="jhc-intro-visual" data-jr style="overflow:hidden;border-radius:18px;height:240px;padding:0;"><img src="assets/pet_hero_hd.jpg?v=20260812v12" alt="Category visual" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="jhc-intro-visual" data-jr style="overflow:hidden;border-radius:18px;height:240px;padding:0;"><img src="assets/pet_hero_hd.jpg?v=20260812v13" alt="Category visual" style="width:100%;height:100%;object-fit:cover;"></div>
       </div>
     </div>
   </section>
@@ -523,7 +617,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
         <div class="jhc-grid" data-jr-stagger>
 
           <div class="jhc-card">
-            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_bolus.jpg?v=20260812v12" alt="Tablets formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
+            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_bolus.jpg?v=20260812v13" alt="Tablets formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
             <div class="jhc-card-body">
               <div class="jhc-card-title">Pet Urinary Health</div>
               <div class="jhc-actives-badge">Actives: L-Tryptophan + N-Acetyl D-Glucosamine + Cranberry Extract</div>
@@ -537,7 +631,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
           </div>
 
           <div class="jhc-card">
-            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_bolus.jpg?v=20260812v12" alt="Tablets formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
+            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_bolus.jpg?v=20260812v13" alt="Tablets formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
             <div class="jhc-card-body">
               <div class="jhc-card-title">Hip &amp; Joint Mobility</div>
               <div class="jhc-actives-badge">Actives: Glucosamine HCl + Chondroitin Sulphate + Boswellia serrata + Curcumin + EPA + DHA + ECM + Collagen + Lysozyme + Lactoferrins</div>
@@ -558,7 +652,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
         <div class="jhc-grid" data-jr-stagger>
 
           <div class="jhc-card">
-            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_bolus.jpg?v=20260812v12" alt="Tablets formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
+            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_bolus.jpg?v=20260812v13" alt="Tablets formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
             <div class="jhc-card-body">
               <div class="jhc-card-title">Dermal &amp; Skin Health</div>
               <div class="jhc-actives-badge">Actives: EPA + DHA + Vitamin E + Biotin + Collagen</div>
@@ -572,7 +666,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
           </div>
 
           <div class="jhc-card">
-            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_powder.jpg?v=20260812v12" alt="Powder formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
+            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_powder.jpg?v=20260812v13" alt="Powder formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
             <div class="jhc-card-body">
               <div class="jhc-card-title">Renal &amp; Kidney Support</div>
               <div class="jhc-actives-badge">Actives: EPA + DHA + Vitamin E + Chitosan + Lanthanum Carbonate + Activated Charcoal</div>
@@ -586,7 +680,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
           </div>
 
           <div class="jhc-card">
-            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_powder.jpg?v=20260812v12" alt="Powder formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
+            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_powder.jpg?v=20260812v13" alt="Powder formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
             <div class="jhc-card-body">
               <div class="jhc-card-title">Digestive &amp; Gut Health Powder</div>
               <div class="jhc-actives-badge">Actives: Prebiotics + Probiotics + Enzymes + Vitamins + Lysozymes</div>
@@ -607,7 +701,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
         <div class="jhc-grid" data-jr-stagger>
 
           <div class="jhc-card">
-            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_bolus.jpg?v=20260812v12" alt="Tablets formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
+            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_bolus.jpg?v=20260812v13" alt="Tablets formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
             <div class="jhc-card-body">
               <div class="jhc-card-title">Calming &amp; Stress Relief</div>
               <div class="jhc-actives-badge">Actives: Colostrum + Phyto-actives + Melatonin</div>
@@ -621,7 +715,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
           </div>
 
           <div class="jhc-card">
-            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_liquid.jpg?v=20260812v12" alt="Liquid formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
+            <div class="jhc-card-visual" style="overflow:hidden;"><img src="assets/prod_format_liquid.jpg?v=20260812v13" alt="Liquid formulation" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
             <div class="jhc-card-body">
               <div class="jhc-card-title">Respiratory Cough Relief</div>
               <div class="jhc-actives-badge">Actives: Lysine + Phyto-actives + Lactoferrins</div>
@@ -759,7 +853,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
     <div class="foot__grid">
       <div>
         <a class="foot__logo" href="index.html" aria-label="Jahaaj Healthcare home">
-          <img src="assets/logo.png?v=20260812v12" alt="Jahaaj Healthcare Pvt. Ltd.">
+          <img src="assets/logo.png?v=20260812v13" alt="Jahaaj Healthcare Pvt. Ltd.">
         </a>
         <h3>Sign up for our newsletter today.</h3>
         <form class="news" onsubmit="return false">
@@ -877,6 +971,7 @@ document.querySelectorAll('.jhc-ch-row').forEach(function(row){
     sec.querySelectorAll('.jhc-ch-detail').forEach(function(d){d.classList.remove('active');});
     row.classList.add('active');
     sec.querySelector('.jhc-ch-detail[data-idx="'+idx+'"]').classList.add('active');
+    if(window.innerWidth <= 768){ row.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}); }
   });
 });
 </script>
