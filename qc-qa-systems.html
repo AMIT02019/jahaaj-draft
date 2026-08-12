@@ -103,7 +103,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 
 /* ============ scroll reveal (word) ============ */
 .reveal{font-weight:300;color:var(--ink)}
-.reveal span{color:rgba(17,18,20,.16);transition:color .18s linear}
+.reveal span{color:var(--ink);opacity:1}
 .reveal span.on{color:var(--ink)}
 
 /* ============ scroll appear (fade+rise) ============ */
@@ -114,7 +114,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 
 /* ============ dark section wrapper + glows ============ */
 .qx{position:relative;background:var(--qx-bg);overflow:hidden}
-.qx-glow{position:absolute;width:820px;height:820px;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.qx-glow{display:none !important}
 .qx-glow--a{top:-260px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(211,233,247,.9),transparent 70%)}
 .qx-glow--b{top:1250px;left:65%;background:radial-gradient(circle,rgba(245,234,0,.22),transparent 70%)}
 .qx-glow--c{top:2500px;left:10%;background:radial-gradient(circle,rgba(211,233,247,.8),transparent 70%)}
