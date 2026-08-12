@@ -322,7 +322,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 }
 
 /* HERO TEXT LEGIBILITY OVERLAY FIX */
-.hero::after, .ab-hero::after, .why-hero::after, .qx-hero::after, .contact-hero::after, .products-hero::after {
+.hero::after, .ab-hero::after, .why-hero::after, .contact-hero::after, .products-hero::after {
   background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.50) 45%, rgba(0,0,0,0.80) 100%) !important;
 }
 .hero h1, .hero p, .hero-content, .jhc-hero h1, .jhc-hero-desc, .qx-hero h1, .qx-hero p, .why-hero h1, .ab-hero h1, .ab-hero p {
@@ -352,6 +352,20 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 }
 [id] {
   scroll-margin-top: 100px !important;
+}
+
+
+/* QC-QA & LIGHT HERO OVERLAY REMOVAL */
+.qx-hero::after {
+  display: none !important;
+  background: none !important;
+}
+.qx-hero h1, .qx-hero p {
+  color: #111214 !important;
+  text-shadow: none !important;
+}
+.qx-hero h1 em {
+  color: #2b7fb8 !important;
 }
 
 </style>
