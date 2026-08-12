@@ -515,6 +515,24 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6) !important;
 }
 
+
+/* ELEGANT WORD-BY-WORD SCROLL LIGHTING EFFECT */
+.reveal {
+  color: #111214 !important;
+  opacity: 1 !important;
+}
+.reveal span {
+  color: #bbbcbf !important;
+  transition: color 0.22s ease-in-out !important;
+  opacity: 1 !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+.reveal span.on {
+  color: #111214 !important;
+  font-weight: 500 !important;
+}
+
 </style>
 </head>
 <body>
@@ -668,7 +686,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   <div class="container">
     <div class="wwd__row" data-jr>
       <h2>What we do</h2>
-      <p class="reveal" >Our Purpose: We exist to bridge the gap between nutritional science and practical farming needs. Every formulation we manufacture is designed to improve animal performance, support farmer profitability, and meet global safety expectations without compromise. Who We Work With: We proudly serve nutrition brands, distributors, and exporters who value quality, consistency, and long-term collaboration. Our growing client base includes trusted names in animal health and nutrition.</p>
+      <p class="reveal" data-reveal>Our Purpose: We exist to bridge the gap between nutritional science and practical farming needs. Every formulation we manufacture is designed to improve animal performance, support farmer profitability, and meet global safety expectations without compromise. Who We Work With: We proudly serve nutrition brands, distributors, and exporters who value quality, consistency, and long-term collaboration. Our growing client base includes trusted names in animal health and nutrition.</p>
     </div>
     <div class="wwd__strip" data-jr-stagger>
       <div><h3>Discover</h3><p>Understand your brand's nutritional goals and market challenges.</p></div>

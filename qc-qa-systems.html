@@ -393,6 +393,24 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6) !important;
 }
 
+
+/* ELEGANT WORD-BY-WORD SCROLL LIGHTING EFFECT */
+.reveal {
+  color: #111214 !important;
+  opacity: 1 !important;
+}
+.reveal span {
+  color: #bbbcbf !important;
+  transition: color 0.22s ease-in-out !important;
+  opacity: 1 !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+.reveal span.on {
+  color: #111214 !important;
+  font-weight: 500 !important;
+}
+
 </style>
 </head>
 <body>
@@ -538,7 +556,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       <div class="qx-hero__grid">
         <div data-jr>
           <h1>QC / QA <em>Systems</em> at Jahaaj Healthcare</h1>
-          <p class="reveal" >The importance of Quality Control and Quality Assurance is never lost on us they form the guiding principles that help us produce safe, reliable and consistent animal health products that deliver the intended effect, every single time.</p>
+          <p class="reveal" data-reveal>The importance of Quality Control and Quality Assurance is never lost on us they form the guiding principles that help us produce safe, reliable and consistent animal health products that deliver the intended effect, every single time.</p>
           <div class="qx-hero__meta"><i>&#10003;</i><span>FAMI-QS Certified &middot; Since 2023</span></div>
           <div><a class="btn pink" href="#steps">See Our Quality Systems <svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="#1a0a0f" stroke-width="1.3"><path d="M1 6h11M8 2l4 4-4 4"/></svg></a></div>
         </div>

@@ -425,6 +425,24 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6) !important;
 }
 
+
+/* ELEGANT WORD-BY-WORD SCROLL LIGHTING EFFECT */
+.reveal {
+  color: #111214 !important;
+  opacity: 1 !important;
+}
+.reveal span {
+  color: #bbbcbf !important;
+  transition: color 0.22s ease-in-out !important;
+  opacity: 1 !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+.reveal span.on {
+  color: #111214 !important;
+  font-weight: 500 !important;
+}
+
 </style>
 </head>
 <body>
@@ -575,7 +593,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 <!-- ================= INTRO ================= -->
 <section class="intro">
   <div class="container">
-    <p class="reveal" >Looking to launch a custom-formulated, high-performance product under your own brand? With strong in-house R&amp;D, an experienced leadership and deep expertise in functional ingredients, we create formulations tailored to your nutritional goals, market demands, and regulatory needs.</p>
+    <p class="reveal" data-reveal>Looking to launch a custom-formulated, high-performance product under your own brand? With strong in-house R&amp;D, an experienced leadership and deep expertise in functional ingredients, we create formulations tailored to your nutritional goals, market demands, and regulatory needs.</p>
     <p class="intro__label" data-jr>Start a Custom Formula</p>
     <div class="pillars" data-jr-stagger>
       <div class="pillar">
@@ -610,7 +628,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 <section class="formula">
   <div class="container">
     <h2 data-jr>Start a Custom Formula</h2>
-    <p class="reveal" >We create formulations tailored to your nutritional goals, market demands, and regulatory needs. With strong in-house R&amp;D, an experienced leadership and deep expertise in functional ingredients. Looking to launch a custom-formulated, high-performance product under your own brand?</p>
+    <p class="reveal" data-reveal>We create formulations tailored to your nutritional goals, market demands, and regulatory needs. With strong in-house R&amp;D, an experienced leadership and deep expertise in functional ingredients. Looking to launch a custom-formulated, high-performance product under your own brand?</p>
   </div>
 </section>
 ================================================================= -->
