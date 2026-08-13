@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jahaaj Healthcare Your Manufacturing Partner for Feed Supplements</title>
+<title>Custom Animal Feed Supplement Manufacturer | Jahaaj Healthcare</title>
+<meta name="description" content="Jahaaj Healthcare is a private-label manufacturing partner for animal feed supplements, offering in-house R&D, custom formulation, and FAMI-QS aligned quality systems.">
+<link rel="canonical" href="https://jahaaj-homepage.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Custom Animal Feed Supplement Manufacturer | Jahaaj Healthcare">
+<meta property="og:description" content="Private-label manufacturing partner for animal feed supplements, offering in-house R&D, custom formulation, and FAMI-QS aligned quality systems.">
+<meta property="og:url" content="https://jahaaj-homepage.vercel.app/">
+<meta property="og:image" content="https://jahaaj-homepage.vercel.app/assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Custom Animal Feed Supplement Manufacturer | Jahaaj Healthcare">
+<meta name="twitter:description" content="Private-label manufacturing partner for animal feed supplements, offering in-house R&D, custom formulation, and FAMI-QS aligned quality systems.">
+<meta name="twitter:image" content="https://jahaaj-homepage.vercel.app/assets/logo.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Jahaaj Healthcare Pvt. Ltd.","url":"https://jahaaj-homepage.vercel.app/","logo":"https://jahaaj-homepage.vercel.app/assets/logo.png","email":"support@jahaajhealthcare.com","telephone":"+91-78794-91111","address":{"@type":"PostalAddress","streetAddress":"R-698, TTC Industrial Area, Rabale MIDC","addressLocality":"Navi Mumbai","postalCode":"400701","addressRegion":"Maharashtra","addressCountry":"IN"}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -131,6 +145,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 /* ============ ready to market ============ */
 .rtm{position:relative;min-height:600px;display:flex;align-items:flex-end;overflow:hidden;background:#0b0b0c}
 .rtm__bg{position:absolute;inset:0;overflow:hidden;isolation:isolate;background:url('assets/rtm.jpg?v=20260812v14') center/cover no-repeat}
+.rtm__bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.1);z-index:1}
 .rtm__bg video{width:100%;height:100%;object-fit:cover}
 .rtm__bg video{width:100%;height:100%;object-fit:cover}
 .rtm__overlay{display:none}
@@ -400,12 +415,6 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   color: #2b7fb8 !important;
 }
 
-
-/* GUARANTEE IMMEDIATE CONTENT VISIBILITY - NO BLANK PAGES */
-[data-jr], [data-jr-stagger]>* {
-  opacity: 1 !important;
-  transform: none !important;
-}
 
 
 /* CLOSING CTA BLACK OVERLAY & WHITE TEXT */
@@ -942,7 +951,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div><h4>Main Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products-catalog-elementor.html">Products</a></li><li><a href="poultry-category-elementor.html">Poultry Solutions</a></li></ul></div>
       <div><h4>Categories</h4><ul><li><a href="poultry-category-elementor.html">Poultry</a></li><li><a href="ruminants-category-elementor.html">Ruminants</a></li><li><a href="pet-category-elementor.html">Pet</a></li><li><a href="aquaculture-category-elementor.html">Aquaculture</a></li><li><a href="swine-category-elementor.html">Swine</a></li></ul></div>
-      <div><h4>Utility Pages</h4><ul><li><a href="#">License</a></li><li><a href="#">Change Log</a></li><li><a href="sitemap.html">Site Map</a></li></ul></div>
+      <div><h4>Utility Pages</h4><ul><li><a href="sitemap.html">Site Map</a></li></ul></div>
       <div>
         <h4>Social Media</h4>
         <div class="socials">
@@ -981,7 +990,6 @@ function paintReveal(){
     spans.forEach((s,i)=> s.classList.toggle('on', i < n));
   });
 }
-
 /* ---------- dropdown menus ---------- */
 const navItems = [...document.querySelectorAll('.nav__item[data-menu]')];
 function closeMenus(except){
@@ -1158,7 +1166,7 @@ let ticking = false;
 function onScroll(){
   if(ticking) return; ticking = true;
   requestAnimationFrame(()=>{
-    paintReveal(); paintNav(); paintTimeline(); paintParallax();
+    paintNav(); paintTimeline(); paintParallax();
     ticking = false;
   });
 }

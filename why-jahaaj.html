@@ -3,7 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Why Jahaaj Healthcare Jahaaj Healthcare Pvt. Ltd.</title>
+<title>Why Choose Jahaaj Healthcare | Private Label Manufacturing</title>
+<meta name="description" content="Discover why brands choose Jahaaj Healthcare for private-label feed supplement manufacturing: in-house R&D, confidential production, and scalable supply.">
+<link rel="canonical" href="https://jahaaj-homepage.vercel.app/why-jahaaj.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Why Choose Jahaaj Healthcare | Private Label Manufacturing">
+<meta property="og:description" content="Discover why brands choose Jahaaj Healthcare for private-label feed supplement manufacturing: in-house R&D, confidential production, and scalable supply.">
+<meta property="og:url" content="https://jahaaj-homepage.vercel.app/why-jahaaj.html">
+<meta property="og:image" content="https://jahaaj-homepage.vercel.app/assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Choose Jahaaj Healthcare | Private Label Manufacturing">
+<meta name="twitter:description" content="Discover why brands choose Jahaaj Healthcare for private-label feed supplement manufacturing: in-house R&D, confidential production, and scalable supply.">
+<meta name="twitter:image" content="https://jahaaj-homepage.vercel.app/assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -110,6 +121,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 .wjh-hero{position:relative;height:800px;display:flex;align-items:center;justify-content:center;
   text-align:center;overflow:hidden}
 .wjh-hero__bg{position:absolute;inset:0;background:url('assets/why_hero_bg.jpg?v=20260812v14') center 55%/cover no-repeat;transform:scale(1.06)}
+.wjh-hero__bg::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.1)}
 .wjh-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,10,.42) 0%,rgba(10,12,10,.2) 40%,rgba(10,12,10,.55) 100%)}
 .wjh-hero .container{position:relative;z-index:2}
 .wjh-hero h1{font-size:clamp(32px,4.6vw,54px);font-weight:300;letter-spacing:-.02em;color:#fff;max-width:760px;margin-inline:auto}
@@ -136,17 +148,23 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   border:1px solid rgba(255,255,255,.82);
   border-radius:20px;padding:32px 30px;
   box-shadow:0 4px 28px rgba(16,18,20,.07),inset 0 1px 0 rgba(255,255,255,.95);
-  transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s}
+  transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s,background .4s}
 .wjh-feat-item:hover{
-  transform:translateY(-6px);
-  box-shadow:0 22px 52px rgba(16,18,20,.13),inset 0 1px 0 rgba(255,255,255,.95)}
+  transform:translateY(-10px);
+  border-color:rgba(255,131,0,.55);
+  background:rgba(255,255,255,.78);
+  box-shadow:0 28px 60px rgba(200,80,0,.16),0 0 0 1px rgba(255,131,0,.12),inset 0 1px 0 rgba(255,255,255,.95)}
 .wjh-feat-num{
   display:inline-flex;align-items:center;justify-content:center;
   width:34px;height:34px;border-radius:10px;
   background:linear-gradient(135deg,#c85000 0%,#ff8300 100%);
   color:#fff;font-size:13px;font-weight:600;
   box-shadow:0 4px 14px rgba(200,80,0,.28);
-  margin-bottom:20px}
+  margin-bottom:20px;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s}
+.wjh-feat-item:hover .wjh-feat-num{
+  transform:scale(1.14) rotate(-6deg);
+  box-shadow:0 8px 22px rgba(200,80,0,.42)}
 .wjh-feat-item h3{font-size:17px;font-weight:500;letter-spacing:-.01em;margin-bottom:10px}
 .wjh-feat-item p{font-size:14.5px;line-height:1.65;color:var(--grey);font-weight:300}
 .wjh-feat-item ul{margin:12px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:7px}
@@ -325,12 +343,6 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   color: #2b7fb8 !important;
 }
 
-
-/* GUARANTEE IMMEDIATE CONTENT VISIBILITY - NO BLANK PAGES */
-[data-jr], [data-jr-stagger]>* {
-  opacity: 1 !important;
-  transform: none !important;
-}
 
 
 /* CLOSING CTA BLACK OVERLAY & WHITE TEXT */
@@ -777,7 +789,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div><h4>Main Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products-catalog-elementor.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div>
       <div><h4>Categories</h4><ul><li><a href="poultry-category-elementor.html">Poultry</a></li><li><a href="ruminants-category-elementor.html">Ruminants</a></li><li><a href="pet-category-elementor.html">Pet</a></li><li><a href="aquaculture-category-elementor.html">Aquaculture</a></li><li><a href="swine-category-elementor.html">Swine</a></li></ul></div>
-      <div><h4>Utility Pages</h4><ul><li><a href="#">License</a></li><li><a href="#">Change Log</a></li><li><a href="sitemap.html">Site Map</a></li></ul></div>
+      <div><h4>Utility Pages</h4><ul><li><a href="sitemap.html">Site Map</a></li></ul></div>
       <div>
         <h4>Social Media</h4>
         <div class="socials">
@@ -816,7 +828,6 @@ function paintReveal(){
     spans.forEach((s,i)=> s.classList.toggle('on', i < n));
   });
 }
-
 /* ---------- dropdown menus ---------- */
 const navItems = [...document.querySelectorAll('.nav__item[data-menu]')];
 function closeMenus(except){
@@ -914,7 +925,7 @@ let ticking = false;
 function onScroll(){
   if(ticking) return; ticking = true;
   requestAnimationFrame(()=>{
-    paintReveal(); paintNav();
+    paintNav();
     ticking = false;
   });
 }
