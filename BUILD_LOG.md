@@ -331,3 +331,43 @@ Verified in-browser on `index.html`: chip background computes to `rgb(255,131,0)
 **Files changed:** all 5 category pages + `products-catalog-elementor.html` (`.jhc-badge`)
 
 Per a reference screenshot of a peach-toned "Custom Formulation Builder" badge, increased `.jhc-badge`'s background tint from a 14% orange-on-transparent mix (rendered almost white) to 28% orange-on-white, and the border from 35%→50% opacity, so the badge reads as a clear warm peach with a defined orange outline instead of a barely-visible tint. This class is shared by every `.jhc-badge` instance (hero eyebrow, combo-builder badge, etc.) across the 6 `jhc-cat`-scoped pages. Verified in-browser on `poultry-category-elementor.html` and `aquaculture-category-elementor.html`: background computes to rgb(255,220,184), no console errors.
+
+## 2026-08-13 — SEO audit (no code changes)
+
+**Files analyzed:** all 12 HTML pages
+
+Ran a full SEO audit (crawlability, meta tags, headings, images, structured data, internal links, mobile). Score: 61/100. Critical: no robots.txt/sitemap.xml at root, no meta descriptions, no canonical tags, no JSON-LD anywhere. Warnings: unseparated/duplicated title tags, no OG/Twitter tags, dead `href="#"` footer links in `index.html`, render-blocking Font Awesome/Google Fonts CSS. Passing: single H1 per page, 100% image alt coverage, correct viewport meta, no broken internal links. Findings saved to memory for follow-up.
+
+## 2026-08-13 — Fixed site-breaking JS bug + full SEO remediation
+
+**Root cause found:** commit `e0e075e` (removing the word-reveal effect) left `document.querySelectorAll('[]')` — an invalid selector — in the main `<script>` block on `index.html`, `about.html`, `why-jahaaj.html`, and `qc-qa-systems.html`. This threw a `SyntaxError` on page load that silently killed the *entire* inline script on those pages, breaking the nav dropdown menus, mobile burger menu, FAQ accordion, and timeline/parallax scroll effects — the "site not working" the user reported. Removed the dead word-reveal block and its `paintReveal()` call on all 4 pages; verified zero console errors afterward on `index.html`.
+
+**Files changed:** `index.html`, `about.html`, `why-jahaaj.html`, `qc-qa-systems.html` (JS fix); all 12 HTML pages (SEO); new `robots.txt`, `sitemap.xml`.
+
+SEO remediation per the 2026-08-13 audit:
+- Added unique `<title>` (with `|` separator, fixed duplicated brand on why-jahaaj.html), meta description (150-160 chars), canonical URL, OG tags, and Twitter Card tags to all 12 pages, using domain `https://jahaaj-homepage.vercel.app` (confirmed by user).
+- Added `Organization` JSON-LD to `index.html` and `LocalBusiness` JSON-LD (with real address/phone/email from contact.html) to `contact.html`.
+- Created `robots.txt` (allow all, points to sitemap.xml) and `sitemap.xml` (all 12 pages) at repo root.
+- Removed dead `href="#"` "License"/"Change Log" footer links (leftover template boilerplate with no real destination) from all 11 pages that had them.
+
+Not yet done: self-hosting/deferring Font Awesome + Google Fonts to remove render-blocking CSS (flagged as a warning, not critical — left for a future pass).
+
+## 2026-08-13 — Restored scroll-reveal animations (all 12 pages)
+
+**Files changed:** all 12 HTML pages
+
+User reported animations/effects still not working after the JS-syntax-error fix above. Root cause: commit `563cdb7` (Aug 12) added a blanket CSS override `[data-jr], [data-jr-stagger]>* { opacity:1 !important; transform:none !important; }` to every page, as a band-aid for a "blank page" bug. That blank-page bug was actually caused by the `querySelectorAll('[]')` syntax error (fixed earlier the same day) killing the IntersectionObserver-based reveal script before it could ever add the `jr-in` class — so the real fix made this override obsolete, but it was still suppressing the intended fade+rise scroll animation on every page (forcing content to always-visible, never-animated).
+
+Removed the override block from all 12 pages. Verified on `index.html`: elements start at `opacity:0` and gain the `jr-in` class (revealing with fade+rise) once scrolled into view, confirmed via JS-driven scroll + class check — no blank-page regression, no console errors.
+
+## 2026-08-13 — Stronger hover effect on "Why Jahaaj" numbered cards
+
+**Files changed:** `why-jahaaj.html`
+
+The 5-card numbered feature grid (`.wjh-feat-item`, e.g. "Quality That Is Built into Every Step") already had a subtle lift+shadow hover. Per user request to make it more noticeable: increased lift to -10px, added an orange border glow and warm-tinted shadow on hover, lightened the glass background, and made the orange number badge (`.wjh-feat-num`) scale up 1.14x with a -6deg rotation and stronger shadow on hover. Verified in-browser, no console errors.
+
+## 2026-08-13 — Fixed Contact page 2-column alignment
+
+**Files changed:** `contact.html`
+
+Found a stray extra `</div>` right after the info column's markup (closing `.chero__meta`+`.chero__info` correctly, then one more unmatched `</div>`) that prematurely closed `.chero__grid` before the `<form class="cform">`. That pushed the form out to be a sibling of the grid instead of its second child, so it rendered full-width below the info column instead of beside it as a 2-column layout. Removed the stray tag. Verified at 1440px viewport: info column and form now sit side-by-side at the same `y` offset (form: x=705, info: x=144), matching the intended `1fr 1.15fr` grid; narrow-viewport (<900px) stacked layout still works correctly. No console errors.

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jahaaj-homepage.vercel.app/sitemap.xml

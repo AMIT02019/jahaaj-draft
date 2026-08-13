@@ -3,7 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Who We Are Jahaaj Healthcare Pvt. Ltd.</title>
+<title>Who We Are | Jahaaj Healthcare Pvt. Ltd.</title>
+<meta name="description" content="Learn about Jahaaj Healthcare's manufacturing facility, R&D expertise, and quality systems behind our private-label animal feed supplements.">
+<link rel="canonical" href="https://jahaaj-homepage.vercel.app/about.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Who We Are | Jahaaj Healthcare Pvt. Ltd.">
+<meta property="og:description" content="Learn about Jahaaj Healthcare's manufacturing facility, R&D expertise, and quality systems behind our private-label animal feed supplements.">
+<meta property="og:url" content="https://jahaaj-homepage.vercel.app/about.html">
+<meta property="og:image" content="https://jahaaj-homepage.vercel.app/assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Who We Are | Jahaaj Healthcare Pvt. Ltd.">
+<meta name="twitter:description" content="Learn about Jahaaj Healthcare's manufacturing facility, R&D expertise, and quality systems behind our private-label animal feed supplements.">
+<meta name="twitter:image" content="https://jahaaj-homepage.vercel.app/assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -491,12 +502,6 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 }
 
 
-/* GUARANTEE IMMEDIATE CONTENT VISIBILITY - NO BLANK PAGES */
-[data-jr], [data-jr-stagger]>* {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
 
 /* CLOSING CTA BLACK OVERLAY & WHITE TEXT */
 .close::after {
@@ -983,7 +988,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div><h4>Main Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products-catalog-elementor.html">Products</a></li><li><a href="poultry-category-elementor.html">Poultry Solutions</a></li></ul></div>
       <div><h4>Categories</h4><ul><li><a href="poultry-category-elementor.html">Poultry</a></li><li><a href="ruminants-category-elementor.html">Ruminants</a></li><li><a href="pet-category-elementor.html">Pet</a></li><li><a href="aquaculture-category-elementor.html">Aquaculture</a></li><li><a href="swine-category-elementor.html">Swine</a></li></ul></div>
-      <div><h4>Utility Pages</h4><ul><li><a href="#">License</a></li><li><a href="#">Change Log</a></li><li><a href="sitemap.html">Site Map</a></li></ul></div>
+      <div><h4>Utility Pages</h4><ul><li><a href="sitemap.html">Site Map</a></li></ul></div>
       <div>
         <h4>Social Media</h4>
         <div class="socials">
@@ -1006,25 +1011,6 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 
 
 <script>
-/* ---------- scroll-linked word reveal ---------- */
-document.querySelectorAll('[]').forEach(el=>{
-  const words = el.textContent.trim().split(/\s+/);
-  el.innerHTML = words.map(w=>'<span>'+w+'</span>').join(' ');
-});
-const revealEls = [...document.querySelectorAll('[]')];
-function paintReveal(){
-  const vh = innerHeight;
-  revealEls.forEach(el=>{
-    const r = el.getBoundingClientRect();
-    const start = vh*0.86, end = vh*0.28;
-    let p = (start - r.top) / (start - end + r.height*0.55);
-    p = Math.max(0, Math.min(1, p));
-    const spans = el.querySelectorAll('span');
-    const n = Math.round(p*spans.length);
-    spans.forEach((s,i)=> s.classList.toggle('on', i < n));
-  });
-}
-
 /* ---------- dropdown menus ---------- */
 const navItems = [...document.querySelectorAll('.nav__item[data-menu]')];
 function closeMenus(except){
@@ -1202,7 +1188,7 @@ let ticking = false;
 function onScroll(){
   if(ticking) return; ticking = true;
   requestAnimationFrame(()=>{
-    paintReveal(); paintNav(); paintTimeline(); paintParallax();
+    paintNav(); paintTimeline(); paintParallax();
     ticking = false;
   });
 }
