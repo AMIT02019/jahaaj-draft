@@ -799,11 +799,11 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 
 <script>
 /* ---------- scroll-linked word reveal ---------- */
-document.querySelectorAll('[]').forEach(el=>{
+document.querySelectorAll('[data-reveal]').forEach(el=>{
   const words = el.textContent.trim().split(/\s+/);
   el.innerHTML = words.map(w=>'<span>'+w+'</span>').join(' ');
 });
-const revealEls = [...document.querySelectorAll('[]')];
+const revealEls = [...document.querySelectorAll('[data-reveal]')];
 function paintReveal(){
   const vh = innerHeight;
   revealEls.forEach(el=>{

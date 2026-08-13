@@ -331,10 +331,10 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 .mfg__body{display:flex;align-items:center;gap:48px;padding-bottom:44px}
 .mfg__left{flex:1;min-width:0}
 .mfg__right{flex:0 0 330px;display:flex;flex-direction:column;align-items:center}
-.mfg__head{font-size:clamp(18px,1.8vw,21px);font-weight:400;line-height:1.5;max-width:640px}
-.mfg__label{margin-top:34px;font-size:15px;font-weight:400;opacity:.95}
-.mfg__list{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:6px}
-.mfg__list li{font-size:16px;line-height:1.6;font-weight:300;padding-left:14px;position:relative;max-width:560px}
+.mfg__head{font-size:clamp(20px,2vw,24px);font-weight:500;line-height:1.35;max-width:640px}
+.mfg__label{margin-top:24px;font-size:16px;font-weight:500;opacity:.95}
+.mfg__list{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.mfg__list li{font-size:15px;line-height:1.6;font-weight:300;padding-left:14px;position:relative;max-width:560px}
 .mfg__list li::before{content:'·';position:absolute;left:0}
 .mfg .btn{margin:30px 0 0;background:var(--blue);color:#14171a}
 .mfg .btn:hover{background:var(--blue-2)}
@@ -598,44 +598,44 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 }
 
 
-/* ENHANCED HIGHLIGHT CARD WITH INCREASED FONT SIZE */
+/* ENHANCED HIGHLIGHT CARD WITH BALANCED FONT SIZE */
 .mfg__highlight {
   position: relative !important;
   width: 100% !important;
   background: rgba(255, 255, 255, 0.12) !important;
   backdrop-filter: blur(16px) !important;
-  border-radius: 22px !important;
-  padding: 44px 36px !important;
+  border-radius: 20px !important;
+  padding: 30px 26px !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   color: #ffffff !important;
   text-align: center !important;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25) !important;
 }
 .mfg__highlight h4 {
-  font-size: clamp(20px, 2.2vw, 25px) !important;
-  font-weight: 600 !important;
+  font-size: clamp(20px, 2vw, 24px) !important;
+  font-weight: 500 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 12px !important;
+  gap: 10px !important;
   letter-spacing: -0.01em !important;
-  line-height: 1.3 !important;
+  line-height: 1.35 !important;
   color: #ffffff !important;
 }
 .mfg__highlight h4::before {
   content: '' !important;
-  width: 10px !important;
-  height: 10px !important;
+  width: 8px !important;
+  height: 8px !important;
   border-radius: 999px !important;
   background: #ff8300 !important;
   flex: 0 0 auto !important;
 }
 .mfg__highlight p {
-  margin-top: 18px !important;
-  font-size: clamp(15px, 1.5vw, 17.5px) !important;
-  line-height: 1.65 !important;
-  font-weight: 400 !important;
-  opacity: 0.96 !important;
+  margin-top: 14px !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  font-weight: 300 !important;
+  opacity: 0.92 !important;
   color: #f1f2f4 !important;
   max-width: 480px !important;
   margin-inline: auto !important;
@@ -1007,11 +1007,11 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 
 <script>
 /* ---------- scroll-linked word reveal ---------- */
-document.querySelectorAll('[]').forEach(el=>{
+document.querySelectorAll('[data-reveal]').forEach(el=>{
   const words = el.textContent.trim().split(/\s+/);
   el.innerHTML = words.map(w=>'<span>'+w+'</span>').join(' ');
 });
-const revealEls = [...document.querySelectorAll('[]')];
+const revealEls = [...document.querySelectorAll('[data-reveal]')];
 function paintReveal(){
   const vh = innerHeight;
   revealEls.forEach(el=>{
