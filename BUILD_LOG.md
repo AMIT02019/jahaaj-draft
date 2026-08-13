@@ -1,5 +1,11 @@
 # Build Log
 
+## 2026-08-13 — Sticky zone-label scroll effect on Our Team page
+
+**Files changed:** `team.html`
+
+Made `.tm-zone__label` (the "Zone 0N · Department" heading beside each crew grid) `position:sticky;top:120px`, so it stays pinned under the nav while that zone's cards scroll past — same sticky-column pattern used for the reference design and for `.chero__info` on the contact page. Disabled sticky below 760px (`position:static` in the mobile media query) since the layout collapses to a single stacked column there, where sticking would look broken. Verified in-browser: after scrolling 700px, the first zone label's `top` stays pinned at 120px instead of scrolling away.
+
 ## 2026-08-13 — Extended scroll-reveal animation across Our Team page
 
 **Files changed:** `team.html`
