@@ -1,5 +1,11 @@
 # Build Log
 
+## 2026-08-13 — Extended scroll-reveal animation across Our Team page
+
+**Files changed:** `team.html`
+
+Card grids and hero text already had scroll-reveal (`data-jr`/`data-jr-stagger`); added `data-jr` to the 7 zone labels (e.g. "Zone 01 · Leadership") and the hero stats row so every section fades/rises in on scroll, not just the card grids. Verified in-browser: 18 total reveal-tracked elements, no console errors, `jr-in` class applies correctly on scroll.
+
 ## 2026-08-13 — Added photo placeholders to Our Team cards
 
 **Files changed:** `team.html`
