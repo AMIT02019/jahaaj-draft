@@ -1,5 +1,16 @@
 # Build Log
 
+## 2026-08-13 — Fixed remaining dead nav anchors site-wide
+
+**Files changed:** `why-jahaaj.html`, `contact.html`
+
+Ran a full audit of every internal `href="...#id"` link across all 12 pages against the actual `id` attributes present on each target page, using a small Python script diffing the two sets. Found 3 more dead anchors beyond the `#packaging` one fixed earlier today (each duplicated across every page's desktop + mobile nav, so 6 broken links total):
+- `why-jahaaj.html#process` ("Manufacturing Process") — no `id="process"` existed. Renamed the existing `.wjh-band` section's id from `capabilities` to `process` (that section, "From formulation to scalable production," already covered manufacturing capabilities) and updated its own in-page "Explore Capabilities" button to match.
+- `why-jahaaj.html#facility` ("New R&D Office Showcase") — no matching id. Added `id="facility"` to the intro collage (`.wjh-collage`), the closest existing facility/office imagery on the page.
+- `contact.html#careers` ("Careers") — no Careers content existed at all. Added a minimal, honest Careers section (invite to meet the team via `team.html`, email CV) rather than inventing fake job listings.
+
+Re-ran the audit script after: 0 missing anchors across the whole site. Verified no console errors on `why-jahaaj.html` and `contact.html`.
+
 ## 2026-08-13 — Reconciled site content against Jahaaj Presentation (2).pptx
 
 **Files changed:** `index.html`, `qc-qa-systems.html`, `why-jahaaj.html`, `contact.html`
