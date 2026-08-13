@@ -381,12 +381,13 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 }
 
 
-/* ============ HEADER NAV NO-OVERLAP FIX ============ */
+/* ============ HEADER NAV NO-OVERLAP & ANIMATION FIX ============ */
 .nav {
   position: fixed !important;
   top: 0 !important;
   left: 50% !important;
-  transform: translateX(-50%) !important;
+  transform: translate(-50%, 0) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease !important;
   width: 100% !important;
   max-width: 1500px !important;
   z-index: 100 !important;
@@ -395,6 +396,15 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   align-items: center !important;
   justify-content: space-between !important;
   box-sizing: border-box !important;
+}
+.nav.nav--hidden {
+  transform: translate(-50%, -120%) !important;
+}
+.nav.is-solid {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
 }
 .nav__logo {
   position: relative !important;
