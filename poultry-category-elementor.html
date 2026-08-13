@@ -1217,24 +1217,32 @@ onNavScroll();
 (function(){
   var els = document.querySelectorAll('.jhc-cat [data-jr], .jhc-cat [data-jr-stagger]');
   if(!els.length) return;
-  if(!('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('jr-in'); });
-    return;
-  }
   els.forEach(function(el){
     if(el.hasAttribute('data-jr-stagger')){
       Array.prototype.forEach.call(el.children, function(child,ci){ child.style.setProperty('--i', ci); });
     }
   });
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('jr-in'); });
+    return;
+  }
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      if(entry.isIntersecting){
+      if(entry.isIntersecting || entry.boundingClientRect.top <= window.innerHeight){
         entry.target.classList.add('jr-in');
         io.unobserve(entry.target);
       }
     });
-  }, {threshold:0, rootMargin:'0px 0px -10% 0px'});
-  els.forEach(function(el){ el.classList.add('jr-in'); io.observe(el); });
+  }, {threshold:0, rootMargin:'0px 0px 60px 0px'});
+
+  els.forEach(function(el){
+    var rect = el.getBoundingClientRect();
+    if(rect.top <= (window.innerHeight || document.documentElement.clientHeight)){
+      el.classList.add('jr-in');
+    } else {
+      io.observe(el);
+    }
+  });
 })();
 
 
