@@ -1,5 +1,13 @@
 # Build Log
 
+## 2026-08-13 — Hotfix: duplicate scroll-loop declaration crashing index.html (PR #2)
+
+**Files changed:** `index.html`
+
+After PR #1 merged, a further commit (`9c1a8fb`, pushed straight to `main`, not through this session) added a new `initScrollAppear`/`onScroll` block to fix reveal animations, but left the old duplicate block (`let ticking`, `function onScroll`, old scroll-appear IIFE) in place lower in the same `<script>` tag. Redeclaring `let ticking` is a `SyntaxError` — crashed the whole inline script again on load, breaking nav dropdowns, FAQ, and all scroll animations sitewide (same failure class as the original bug fixed in PR #1). Removed the obsolete duplicate block. Verified: no console errors, scroll-reveal fires (`jr-in` added on scroll), nav dropdown items present. Pushed as [PR #2](https://github.com/AMIT02019/jahaaj-draft/pull/2), flagged as an urgent hotfix since it's live-breaking.
+
+**Lesson:** future direct edits to `main` outside this session should be pulled into the worktree and diffed before assuming reported "not working" issues are new — check `git log origin/main` first.
+
 ## 2026-08-10 — Homepage hero background video
 
 **Files changed:** `index.html`
