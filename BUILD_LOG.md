@@ -1,5 +1,19 @@
 # Build Log
 
+## 2026-08-13 — New "Our Team" page (team.html)
+
+**Files added:** `team.html`
+**Files changed:** all 11 pages with the shared nav (Our Team link retargeted), `sitemap.html`, `sitemap.xml`
+
+Built a new team directory page from a reference design the user supplied (`our-team.html`, a kraft-paper/serif aesthetic with 7 department "zones" and 18 team members as monogram cards), restyled entirely to match this site's design system instead of copying its palette/typography:
+- Reused this site's exact tokens (`--ink`, `--yellow`/orange accent, `--card`, Outfit font), nav/mobile-nav markup and CSS, footer, and the site's standard nav-dropdown/mobile-menu/scroll-reveal JS (single `onScroll`, no duplicate declarations — checked against the two prior script-crash bugs fixed today).
+- Kept the reference's structure (masthead with eyebrow badge + stats, 7 zone sections each with a code/name/count label and a card grid) but reskinned cards with the site's existing orange-gradient monogram style (same treatment as the "Why Jahaaj" numbered cards) and the site's rgba(255,131,0,.12) eyebrow-badge pattern instead of the reference's mono/serif tagging.
+- Added full SEO head (title/description/canonical/OG/Twitter) consistent with the rest of the site.
+- Retargeted the existing "Our Team" nav link (previously `about.html#team`, a 3-person highlight) to `team.html` in both the desktop dropdown and mobile nav across all 11 pages that carry the shared nav; left the small `about.html#team` highlight section itself in place as an on-page teaser.
+- Added `team.html` to `sitemap.html` (new card) and `sitemap.xml`.
+
+Verified in-browser: no console errors, 7 zones / 18 cards render, 3-column crew grid at desktop width, nav dropdown items present, scroll-reveal fires correctly.
+
 ## 2026-08-13 — Hotfix: duplicate scroll-loop declaration crashing index.html (PR #2)
 
 **Files changed:** `index.html`
