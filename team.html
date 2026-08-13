@@ -139,15 +139,19 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 .tm-zone__count{margin-top:8px;display:block;font-size:12.5px;color:var(--grey-2)}
 
 .tm-crew{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.tm-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s,background .3s}
+.tm-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 24px 26px;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s,background .3s}
 .tm-card:hover{transform:translateY(-5px);background:#fff;border-color:rgba(255,131,0,.35);box-shadow:0 18px 40px rgba(16,18,20,.1)}
-.tm-card__top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
-.tm-mono{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  background:linear-gradient(135deg,#c85000 0%,#ff8300 100%);color:#fff;font-size:14px;font-weight:600;
+.tm-photo{position:relative;width:calc(100% + 48px);margin:0 -24px 18px;aspect-ratio:16/11;border-radius:12px 12px 0 0;
+  overflow:hidden;background:linear-gradient(160deg,#eceded 0%,#e2e3e4 100%);display:flex;align-items:center;justify-content:center;
+  transition:background .3s}
+.tm-card:hover .tm-photo{background:linear-gradient(160deg,#f1f2f2 0%,#e7e8e9 100%)}
+.tm-photo__icon{width:30%;height:30%;color:var(--grey-2);opacity:.55}
+.tm-mono{position:absolute;left:12px;bottom:12px;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  background:linear-gradient(135deg,#c85000 0%,#ff8300 100%);color:#fff;font-size:13px;font-weight:600;
   box-shadow:0 4px 14px rgba(200,80,0,.28);transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
 .tm-card:hover .tm-mono{transform:scale(1.1) rotate(-4deg)}
-.tm-tag{font-size:10.5px;font-weight:600;letter-spacing:.05em;color:var(--grey-2);border:1px solid var(--line);
-  padding:3px 8px;border-radius:999px;white-space:nowrap}
+.tm-tag{position:absolute;top:12px;right:12px;font-size:10.5px;font-weight:600;letter-spacing:.05em;color:var(--grey-2);
+  background:rgba(255,255,255,.85);border:1px solid var(--line);padding:3px 8px;border-radius:999px;white-space:nowrap}
 .tm-card h3{font-size:16.5px;font-weight:500;color:var(--ink);margin-bottom:3px}
 .tm-card__role{font-size:12.5px;font-weight:500;color:#c85500;margin-bottom:12px;letter-spacing:.01em}
 .tm-card p{font-size:13.5px;line-height:1.6;color:var(--grey);font-weight:300}
@@ -364,19 +368,19 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div class="tm-crew" data-jr-stagger>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">NH</div><span class="tm-tag">LDR-01</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">NH</span><span class="tm-tag">LDR-01</span></div>
           <h3>Nikhilesh Hajare</h3>
           <p class="tm-card__role">Director &amp; Sales and Marketing Head</p>
           <p>Leads sustainable business growth by building strategic customer partnerships and shaping market positioning.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">AT</div><span class="tm-tag">LDR-02</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">AT</span><span class="tm-tag">LDR-02</span></div>
           <h3>Apurva Tapre</h3>
           <p class="tm-card__role">Director &amp; Purchase Head</p>
           <p>Oversees procurement strategy and administrative operations, ensuring seamless coordination and uninterrupted material supply across the organization.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">PT</div><span class="tm-tag">LDR-03</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">PT</span><span class="tm-tag">LDR-03</span></div>
           <h3>Prabhakar Thorat</h3>
           <p class="tm-card__role">Head of Product Development</p>
           <p>Leads product innovation and formulation development, ensuring new products meet market needs and quality standards.</p>
@@ -392,19 +396,19 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div class="tm-crew" data-jr-stagger>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">SB</div><span class="tm-tag">BIZ-01</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">SB</span><span class="tm-tag">BIZ-01</span></div>
           <h3>Sandesh Bankar</h3>
           <p class="tm-card__role">Sales &amp; Business Development Officer</p>
           <p>Expands market reach by generating new business opportunities, building distributor networks, and converting prospects into long-term partnerships.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">AD</div><span class="tm-tag">BIZ-02</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">AD</span><span class="tm-tag">BIZ-02</span></div>
           <h3>Akash Divekar</h3>
           <p class="tm-card__role">Techno-Commercial Officer</p>
           <p>Drives revenue growth through corporate sales and strategic client relationships, while supporting product innovation and digital transformation initiatives.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">SS</div><span class="tm-tag">BIZ-03</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">SS</span><span class="tm-tag">BIZ-03</span></div>
           <h3>Shelina Shaji</h3>
           <p class="tm-card__role">Product Executive</p>
           <p>Coordinates product documentation and cross-functional communication, ensuring accurate, consistent information across marketing, technical, and quality touchpoints.</p>
@@ -420,19 +424,19 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div class="tm-crew" data-jr-stagger>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">JI</div><span class="tm-tag">OPS-01</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">JI</span><span class="tm-tag">OPS-01</span></div>
           <h3>Javed Inamdar</h3>
           <p class="tm-card__role">Senior Production Manager</p>
           <p>Leads daily production operations, ensuring process discipline, workforce coordination, and consistent output quality across every batch.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">GS</div><span class="tm-tag">OPS-02</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">GS</span><span class="tm-tag">OPS-02</span></div>
           <h3>Gayatri Sutar</h3>
           <p class="tm-card__role">Junior Production Executive</p>
           <p>Coordinates shop-floor activities and production planning, maintaining batch consistency and strict adherence to GMP and safety standards.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">NP</div><span class="tm-tag">OPS-03</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">NP</span><span class="tm-tag">OPS-03</span></div>
           <h3>Nehaa Patil</h3>
           <p class="tm-card__role">Production Executive</p>
           <p>Executes manufacturing batches with precision, maintaining accurate documentation and material readiness to support efficient plant operations.</p>
@@ -448,13 +452,13 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div class="tm-crew" data-jr-stagger>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">AP</div><span class="tm-tag">LOG-01</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">AP</span><span class="tm-tag">LOG-01</span></div>
           <h3>Amit Padale</h3>
           <p class="tm-card__role">Logistics In-Charge</p>
           <p>Coordinates inbound and outbound logistics, ensuring timely dispatch and delivery while maintaining cost-efficient, reliable transportation across the network.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">SC</div><span class="tm-tag">LOG-02</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">SC</span><span class="tm-tag">LOG-02</span></div>
           <h3>Sanket Chavan</h3>
           <p class="tm-card__role">Supply Chain Executive</p>
           <p>Manages end-to-end supply chain coordination, aligning procurement, inventory, and dispatch schedules to ensure uninterrupted production and delivery flow.</p>
@@ -470,19 +474,19 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div class="tm-crew" data-jr-stagger>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">MB</div><span class="tm-tag">QC-01</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">MB</span><span class="tm-tag">QC-01</span></div>
           <h3>Mrunali Baikar</h3>
           <p class="tm-card__role">QC/QA Officer</p>
           <p>Manages quality control activities including raw material, in-process, and finished product testing while ensuring analytical accuracy, documentation, and batch compliance.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">RC</div><span class="tm-tag">QC-02</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">RC</span><span class="tm-tag">QC-02</span></div>
           <h3>Rachana Chavan</h3>
           <p class="tm-card__role">QC/QA Officer</p>
           <p>Supports quality assurance by conducting routine testing, reviewing batch documentation, monitoring manufacturing compliance, and maintaining quality standards across production.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">SR</div><span class="tm-tag">QC-03</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">SR</span><span class="tm-tag">QC-03</span></div>
           <h3>Sumitra Rane</h3>
           <p class="tm-card__role">Microbiologist &amp; QC Chemist</p>
           <p>Supported by two interns, manages microbiological testing, routine quality checks, sample verification, and documentation as per GLP &amp; regulatory standards.</p>
@@ -498,13 +502,13 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div class="tm-crew" data-jr-stagger>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">KB</div><span class="tm-tag">ACC-01</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">KB</span><span class="tm-tag">ACC-01</span></div>
           <h3>Karuna Bhave</h3>
           <p class="tm-card__role">Chief Accountant</p>
           <p>Oversees financial operations, statutory compliance, and vendor payments, ensuring accuracy and transparency across all accounting functions.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">MR</div><span class="tm-tag">ACC-02</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">MR</span><span class="tm-tag">ACC-02</span></div>
           <h3>Mugdha Railkar</h3>
           <p class="tm-card__role">Senior Account Executive</p>
           <p>Supports daily accounting operations and financial documentation, ensuring accurate records and seamless internal coordination.</p>
@@ -520,13 +524,13 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       </div>
       <div class="tm-crew" data-jr-stagger>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">SN</div><span class="tm-tag">INF-01</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">SN</span><span class="tm-tag">INF-01</span></div>
           <h3>Sagar Nagrale</h3>
           <p class="tm-card__role">Store In-Charge</p>
           <p>Maintains inventory accuracy and material traceability, ensuring controlled storage and uninterrupted supply to support production continuity.</p>
         </article>
         <article class="tm-card">
-          <div class="tm-card__top"><div class="tm-mono">RN</div><span class="tm-tag">INF-02</span></div>
+          <div class="tm-photo"><svg class="tm-photo__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg><span class="tm-mono">RN</span><span class="tm-tag">INF-02</span></div>
           <h3>Rajesh Naik</h3>
           <p class="tm-card__role">Maintenance In-Charge</p>
           <p>Ensures machine uptime and facility safety through proactive preventive maintenance and reliable equipment performance across the plant.</p>

@@ -1,5 +1,11 @@
 # Build Log
 
+## 2026-08-13 — Added photo placeholders to Our Team cards
+
+**Files changed:** `team.html`
+
+Added an image placeholder slot (`.tm-photo`, 16:11 grey gradient box with a generic person-silhouette SVG icon) to the top of all 18 team cards, since no real staff photos exist yet. Moved the orange initials badge to overlap the bottom-left corner of the placeholder and the tag chip to the top-right corner, both absolutely positioned over `.tm-photo`. When real photos are added, swap the placeholder `<div class="tm-photo">...</div>` contents for an `<img>` — the badge/tag positioning will still work since they're positioned relative to `.tm-photo`. Verified in-browser: no console errors, all 18 placeholders render at correct aspect ratio.
+
 ## 2026-08-13 — New "Our Team" page (team.html)
 
 **Files added:** `team.html`
