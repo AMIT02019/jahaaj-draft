@@ -1,5 +1,31 @@
 # Build Log
 
+## 2026-08-13 — Fixed remaining dead nav anchors site-wide
+
+**Files changed:** `why-jahaaj.html`, `contact.html`
+
+Ran a full audit of every internal `href="...#id"` link across all 12 pages against the actual `id` attributes present on each target page, using a small Python script diffing the two sets. Found 3 more dead anchors beyond the `#packaging` one fixed earlier today (each duplicated across every page's desktop + mobile nav, so 6 broken links total):
+- `why-jahaaj.html#process` ("Manufacturing Process") — no `id="process"` existed. Renamed the existing `.wjh-band` section's id from `capabilities` to `process` (that section, "From formulation to scalable production," already covered manufacturing capabilities) and updated its own in-page "Explore Capabilities" button to match.
+- `why-jahaaj.html#facility` ("New R&D Office Showcase") — no matching id. Added `id="facility"` to the intro collage (`.wjh-collage`), the closest existing facility/office imagery on the page.
+- `contact.html#careers` ("Careers") — no Careers content existed at all. Added a minimal, honest Careers section (invite to meet the team via `team.html`, email CV) rather than inventing fake job listings.
+
+Re-ran the audit script after: 0 missing anchors across the whole site. Verified no console errors on `why-jahaaj.html` and `contact.html`.
+
+## 2026-08-13 — Reconciled site content against Jahaaj Presentation (2).pptx
+
+**Files changed:** `index.html`, `qc-qa-systems.html`, `why-jahaaj.html`, `contact.html`
+
+Compared the site against a presentation deck the user supplied and implemented the confirmed changes (contact info was explicitly kept as-is per user decision; core values were confirmed for update):
+
+- **Core Values (index.html):** replaced Integrity/Partnership with Synergy/Efficiency to match the deck's "RISE" values (Reliability, Innovation, Synergy, Efficiency), updating descriptions to the deck's wording. Reused existing images (no new assets) with corrected alt text.
+- **Facility & compliance (qc-qa-systems.html):** added step 8, "Facility Infrastructure & Feed Safety Compliance" — HVAC-controlled environment, dedicated powder/bolus zones, semi-automatic repacking line, segregated warehousing (raw/finished/quarantine), FAMI-QS Code Version 6, the Feed Fraud Prevention and Defense Module, and the supplier qualification program — none of which were previously named on the site.
+- **Flexible packaging (why-jahaaj.html):** added a packaging-formats block under the existing product-format chips, and gave it `id="packaging"` — the nav's "Packaging Capabilities" link (`why-jahaaj.html#packaging`) was pointing at a nonexistent anchor; this both adds the missing content and fixes that dead link. (Note: `why-jahaaj.html#process`, linked from the same dropdown, is also missing its anchor — not fixed here, flagged for a follow-up.)
+- **Closing tagline (contact.html):** added the deck's closing line, *"We've shared our story. We'd love to be part of yours,"* as an italic kicker above the closing CTA heading.
+
+Not changed per user decision: contact email/phone numbers (deck listed different ones; user chose to keep the site's current `support@jahaajhealthcare.com` and existing phone numbers). Not changed: "Why Choose Us" 6-differentiator framing on `why-jahaaj.html` — deck uses different titles (Customized Formulations, Assured Quality, Transparent Process, Compliance First, Ethical Practices, Market Readiness) than the site's 6 cards; flagged in analysis but not reworked, since it's a messaging-alignment choice rather than a factual gap.
+
+Verified in-browser: no console errors on any of the 4 pages; qc-qa-systems.html has 8 `.qx-step` blocks; why-jahaaj.html's `#packaging` id resolves with 4 chips.
+
 ## 2026-08-13 — Sticky zone-label scroll effect on Our Team page
 
 **Files changed:** `team.html`
