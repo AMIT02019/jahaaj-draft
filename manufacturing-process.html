@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manufacturing Process &amp; 12-Step Private Label Workflow | Jahaaj Healthcare</title>
+  <meta name="description" content="Explore Jahaaj Healthcare's 12-step contract manufacturing &amp; private label workflow — from product idea briefing and R&amp;D formulation to commercial scale production and global dispatch.">
+  <meta name="keywords" content="Jahaaj Healthcare manufacturing process, 12 step private label workflow, animal feed contract manufacturing, FAMI-QS certified plant, Rabale MIDC Navi Mumbai">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Manufacturing Process &amp; 12-Step Private Label Workflow | Jahaaj Healthcare">
+  <meta property="og:description" content="From initial concept briefing to final commercial dispatch — how Jahaaj Healthcare transforms nutritional ideas into compliant, market-ready feed supplements.">
+  <meta property="og:image" content="images/manufacturing_workflow_diagram.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ============ HEADER NAVIGATION OVERRIDES ============ */
+    .nav {
+      position: fixed !important;
+      top: 16px !important;
+      left: 50% !important;
+      transform: translate(-50%, 0) !important;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease !important;
+      width: calc(100% - 32px) !important;
+      max-width: 1500px !important;
+      z-index: 100 !important;
+      padding: 16px 34px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      box-sizing: border-box !important;
+    }
+    .nav.nav--hidden {
+      transform: translate(-50%, -120%) !important;
+    }
+    .nav.is-solid {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    }
+    .nav__logo {
+      position: relative !important;
+      z-index: 110 !important;
+      flex: 0 0 auto !important;
+    }
+    .nav__menu {
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 2px !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      border-radius: 999px !important;
+      padding: 4px 10px !important;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08) !important;
+      height: 48px !important;
+      white-space: nowrap !important;
+      z-index: 105 !important;
+      box-sizing: border-box !important;
+    }
+    .nav__link {
+      font-size: 12.5px !important;
+      padding: 6px 10px !important;
+      white-space: nowrap !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      color: #26282b !important;
+      border-radius: 999px !important;
+      transition: background .2s !important;
+    }
+    .nav__link.is-active, .nav__link:hover {
+      background: rgba(0, 51, 193, 0.08) !important;
+      color: #0033c1 !important;
+    }
+    .nav__cta {
+      position: relative !important;
+      z-index: 110 !important;
+      margin-left: auto !important;
+      height: 48px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+    }
+
+    /* ============ HERO SECTION ============ */
+    .mp-hero {
+      padding: 150px 0 90px;
+      background: linear-gradient(180deg, #f4f6fb 0%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .mp-hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .mp-hero__tag {
+      background: rgba(0, 51, 193, 0.08);
+      color: #0033c1;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+    .mp-hero h1 {
+      font-size: clamp(34px, 4vw, 54px);
+      font-weight: 300;
+      letter-spacing: -.03em;
+      color: #111214;
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+    .mp-hero p {
+      font-size: 17px;
+      line-height: 1.65;
+      color: #555;
+      font-weight: 300;
+      margin-bottom: 30px;
+    }
+    .mp-hero__btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .mp-hero__art {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 48px rgba(0, 51, 193, 0.12);
+      border: 1px solid #e2e8f0;
+      background: #fff;
+    }
+    .mp-hero__art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ============ 12-STEP VISUAL WORKFLOW ============ */
+    .mp-workflow {
+      padding: 100px 0;
+      background: #f9fafc;
+      border-top: 1px solid #eef0f3;
+      border-bottom: 1px solid #eef0f3;
+    }
+    .mp-sec-head {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 60px;
+    }
+    .mp-sec-head .tag {
+      background: rgba(0, 51, 193, 0.08);
+      color: #0033c1;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .mp-sec-head h2 {
+      font-size: clamp(28px, 3.6vw, 44px);
+      font-weight: 300;
+      letter-spacing: -.02em;
+      color: #111214;
+      line-height: 1.15;
+    }
+    .mp-sec-head p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
+      margin-top: 14px;
+      font-weight: 300;
+    }
+    .mp-step-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .mp-step-card {
+      background: #ffffff;
+      border: 1px solid #e5e8ed;
+      border-radius: 20px;
+      padding: 24px;
+      transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .35s ease, border-color .35s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .mp-step-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09);
+      border-color: #0033c1;
+    }
+    .mp-step-card__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .mp-step-badge {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .mp-step-card.p1 .mp-step-badge { color: #0033c1; background: rgba(0, 51, 193, 0.08); }
+    .mp-step-card.p2 .mp-step-badge { color: #c85500; background: rgba(200, 85, 0, 0.1); }
+    .mp-step-card.p3 .mp-step-badge { color: #7c3aed; background: rgba(124, 58, 237, 0.1); }
+    .mp-step-card.p4 .mp-step-badge { color: #059669; background: rgba(5, 150, 105, 0.1); }
+
+    .mp-step-phase {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: #71717a;
+    }
+    .mp-step-img-box {
+      width: 100%;
+      height: 135px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f4f4f5;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #f0f0f2;
+    }
+    .mp-step-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .mp-step-card:hover .mp-step-img-box img {
+      transform: scale(1.05);
+    }
+    .mp-step-card h3 {
+      font-size: 17.5px;
+      font-weight: 500;
+      color: #111214;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .mp-step-card p {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #52525b;
+      font-weight: 300;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    /* ============ FACILITY CAPABILITIES GALLERY ============ */
+    .mp-facility {
+      padding: 100px 0;
+      background: #ffffff;
+    }
+    .mp-fac-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 50px;
+    }
+    .mp-fac-card {
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #e4e4e7;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .mp-fac-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+    }
+    .mp-fac-card__img {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mp-fac-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .mp-fac-card__body {
+      padding: 24px;
+    }
+    .mp-fac-card__body h4 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #111214;
+      margin-bottom: 8px;
+    }
+    .mp-fac-card__body p {
+      font-size: 14px;
+      line-height: 1.55;
+      color: #666;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    /* ============ RESPONSIVE MEDIA QUERIES ============ */
+    @media (max-width: 1200px) {
+      .mp-step-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .mp-fac-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .mp-hero__grid { grid-template-columns: 1fr; gap: 36px; }
+      .mp-step-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
+    @media (max-width: 560px) {
+      .mp-step-grid { grid-template-columns: 1fr; }
+      .mp-fac-grid { grid-template-columns: 1fr; }
+      .mp-hero { padding: 120px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER NAVIGATION ================= -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="index.html" aria-label="Jahaaj Healthcare home">
+      <img src="assets/logo.png?v=20260812v14" alt="Jahaaj Healthcare Pvt. Ltd.">
+    </a>
+    <nav class="nav__menu" aria-label="Main navigation">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link is-active" href="manufacturing-process.html">Manufacturing Process</a>
+      <a class="nav__link" href="why-jahaaj.html">Why Jahaaj</a>
+      <a class="nav__link" href="qc-qa-systems.html">Quality Systems</a>
+      <a class="nav__link" href="products-catalog-elementor.html">Products</a>
+      <a class="nav__link" href="contact.html">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn dark" href="contact.html">Start a Custom Formula
+        <i><svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="#fff" stroke-width="1.3"><path d="M1 6h11M8 2l4 4-4 4"/></svg></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="mp-hero">
+    <div class="container">
+      <div class="mp-hero__grid">
+        <div data-jr>
+          <span class="mp-hero__tag">End-to-End Contract Manufacturing</span>
+          <h1>Our 12-Step Manufacturing &amp; Private Label Process</h1>
+          <p>From initial concept briefing to final commercial dispatch, discover how Jahaaj Healthcare transforms animal nutrition ideas into audit-ready, high-performance feed supplements.</p>
+          <div class="mp-hero__btns">
+            <a class="btn dark" href="#workflow">Explore 12-Step Journey &rarr;</a>
+            <a class="btn" href="contact.html">Request Custom Formulation</a>
+          </div>
+        </div>
+        <div class="mp-hero__art" data-jr>
+          <img src="images/manufacturing_workflow_diagram.jpg" alt="12-Step Private Label &amp; Contract Manufacturing Process Workflow Diagram">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 12-STEP VISUAL WORKFLOW ================= -->
+  <section class="mp-workflow" id="workflow">
+    <div class="container">
+      <div class="mp-sec-head" data-jr>
+        <span class="tag">Complete Client Journey</span>
+        <h2>The 12 Steps of Our Manufacturing Process</h2>
+        <p>Each phase is executed under FAMI-QS certified quality management, rigorous R&amp;D oversight, and full batch traceability.</p>
+      </div>
+
+      <div class="mp-step-grid" data-jr-stagger>
+
+        <!-- STEP 01 -->
+        <article class="mp-step-card p1">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 01</span>
+            <span class="mp-step-phase">Phase 1: Discovery</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_01.jpg" alt="Step 01: Product Idea Discussion &amp; Briefing">
+          </div>
+          <h3>Product Idea Discussion &amp; Briefing</h3>
+          <p>Initial technical consultation to define nutritional targets, animal species focus, dosage format, cost parameters, and timeline requirements.</p>
+        </article>
+
+        <!-- STEP 02 -->
+        <article class="mp-step-card p1">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 02</span>
+            <span class="mp-step-phase">Phase 1: Formulation</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_02.jpg" alt="Step 02: Customized Product Development">
+          </div>
+          <h3>Customized Product Development</h3>
+          <p>In-house R&amp;D specialists formulate custom recipes using bio-available active ingredients, tailored for optimal palatability and stability.</p>
+        </article>
+
+        <!-- STEP 03 -->
+        <article class="mp-step-card p2">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 03</span>
+            <span class="mp-step-phase">Phase 2: Pilot Sampling</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_03.jpg" alt="Step 03: Sample Manufacturing">
+          </div>
+          <h3>Sample Manufacturing</h3>
+          <p>Production of bench-scale pilot samples to evaluate physical characteristics, powder flowability, solubility, and bulk density.</p>
+        </article>
+
+        <!-- STEP 04 -->
+        <article class="mp-step-card p2">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 04</span>
+            <span class="mp-step-phase">Phase 2: Laboratory QC</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_04.jpg" alt="Step 04: Laboratory Testing">
+          </div>
+          <h3>Laboratory Testing</h3>
+          <p>Comprehensive analytical, chemical, and microbiological testing in our certified quality lab to verify active potency and purity.</p>
+        </article>
+
+        <!-- STEP 05 -->
+        <article class="mp-step-card p2">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 05</span>
+            <span class="mp-step-phase">Phase 2: Client Approval</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_05.jpg" alt="Step 05: Sample Approval from Client">
+          </div>
+          <h3>Sample Approval from Client</h3>
+          <p>Sample dispatch to client for sensory evaluation, field trials, and formal technical sign-off prior to commercial scale-up.</p>
+        </article>
+
+        <!-- STEP 06 -->
+        <article class="mp-step-card p3">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 06</span>
+            <span class="mp-step-phase">Phase 3: Design &amp; Artwork</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_06.jpg" alt="Step 06: Artwork &amp; Label Finalization">
+          </div>
+          <h3>Artwork &amp; Label Finalization</h3>
+          <p>Collaborative packaging graphics design, regulatory label compliance verification, claims review, and final artwork sign-off.</p>
+        </article>
+
+        <!-- STEP 07 -->
+        <article class="mp-step-card p3">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 07</span>
+            <span class="mp-step-phase">Phase 3: Packaging Sourcing</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_07.jpg" alt="Step 07: Procurement of Packaging Materials">
+          </div>
+          <h3>Procurement of Packaging Materials</h3>
+          <p>Procurement of approved sachets, pouches, bottles, jars, or bulk drums according to client specifications and barrier needs.</p>
+        </article>
+
+        <!-- STEP 08 -->
+        <article class="mp-step-card p3">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 08</span>
+            <span class="mp-step-phase">Phase 3: cGMP Sourcing</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_08.jpg" alt="Step 08: Raw Materials Sourcing">
+          </div>
+          <h3>Raw Materials Sourcing</h3>
+          <p>Sourcing high-purity active ingredients from audited, cGMP certified vendors with complete Certificate of Analysis (COA) verification.</p>
+        </article>
+
+        <!-- STEP 09 -->
+        <article class="mp-step-card p4">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 09</span>
+            <span class="mp-step-phase">Phase 4: Commercial Scale</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_09.jpg" alt="Step 09: Commercial-Scale Production">
+          </div>
+          <h3>Commercial-Scale Production</h3>
+          <p>Full-scale automated manufacturing at our Rabale MIDC plant (1,200 TPA powders, 120 TPA boluses) under strict cGMP protocols.</p>
+        </article>
+
+        <!-- STEP 10 -->
+        <article class="mp-step-card p4">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 10</span>
+            <span class="mp-step-phase">Phase 4: Quality Inspection</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_10.jpg" alt="Step 10: Quality Inspection of Finished Product">
+          </div>
+          <h3>Quality Inspection of Finished Product</h3>
+          <p>Multi-point in-process checks and finished batch QA sampling against Certificate of Analysis (COA) safety benchmarks.</p>
+        </article>
+
+        <!-- STEP 11 -->
+        <article class="mp-step-card p4">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 11</span>
+            <span class="mp-step-phase">Phase 4: Customer Approval</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_11.jpg" alt="Step 11: Final Product Approval by Customer">
+          </div>
+          <h3>Final Product Approval by Customer</h3>
+          <p>Client review of batch inspection results and formal Certificate of Analysis (COA) approval prior to warehouse release.</p>
+        </article>
+
+        <!-- STEP 12 -->
+        <article class="mp-step-card p4">
+          <div class="mp-step-card__top">
+            <span class="mp-step-badge">STEP 12</span>
+            <span class="mp-step-phase">Phase 4: Global Dispatch</span>
+          </div>
+          <div class="mp-step-img-box">
+            <img src="images/workflow_icons/step_12.jpg" alt="Step 12: Dispatch of Finished Goods">
+          </div>
+          <h3>Dispatch of Finished Goods</h3>
+          <p>Protective palletization and dispatch from our Navi Mumbai hub via direct highway and port corridors across domestic &amp; export markets.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MANUFACTURING INFRASTRUCTURE & GALLERY ================= -->
+  <section class="mp-facility">
+    <div class="container">
+      <div class="mp-sec-head" data-jr>
+        <span class="tag">Rabale MIDC Facility</span>
+        <h2>Plant Capabilities &amp; Specialized Equipment</h2>
+        <p>Operating out of a 12,000 sq. ft. cGMP facility equipped with modern powder blending, compression, and analytical infrastructure.</p>
+      </div>
+
+      <div class="mp-fac-grid" data-jr-stagger>
+        <div class="mp-fac-card">
+          <div class="mp-fac-card__img">
+            <img src="images/Powder Mixing room  .png" alt="Powder Mixing &amp; Blending Room">
+          </div>
+          <div class="mp-fac-card__body">
+            <h4>Powder Blending &amp; Premix (1,200 TPA)</h4>
+            <p>High-capacity ribbon blenders and sifting units ensuring homogenous ingredient distribution across batch sizes.</p>
+          </div>
+        </div>
+
+        <div class="mp-fac-card">
+          <div class="mp-fac-card__img">
+            <img src="images/Bolus &amp; tablet Granulation room .png" alt="Bolus &amp; Tablet Granulation Line">
+          </div>
+          <div class="mp-fac-card__body">
+            <h4>Bolus &amp; Tablet Compression (120 TPA)</h4>
+            <p>Automated compression presses for veterinary boluses, tablets, and specialized chewable nutritional formats.</p>
+          </div>
+        </div>
+
+        <div class="mp-fac-card">
+          <div class="mp-fac-card__img">
+            <img src="images/Chemical Lab.png" alt="Chemical Analysis Laboratory">
+          </div>
+          <div class="mp-fac-card__body">
+            <h4>Chemical &amp; Analytical Testing Lab</h4>
+            <p>In-house quality control laboratory equipped for active assay verification, moisture analysis, and raw material purity testing.</p>
+          </div>
+        </div>
+
+        <div class="mp-fac-card">
+          <div class="mp-fac-card__img">
+            <img src="images/QC Instrument Room.png" alt="QC Instrument Room">
+          </div>
+          <div class="mp-fac-card__body">
+            <h4>QC Instrument &amp; Precision Testing Room</h4>
+            <p>Calibrated precision instruments ensuring audit-ready documentation and analytical accuracy for every production lot.</p>
+          </div>
+        </div>
+
+        <div class="mp-fac-card">
+          <div class="mp-fac-card__img">
+            <img src="images/Blister pack machine.png" alt="Blister &amp; Strip Packaging Machines">
+          </div>
+          <div class="mp-fac-card__body">
+            <h4>Blister &amp; Strip Packaging Lines</h4>
+            <p>Flexible packaging capabilities including blister packing, strip packing, sachets, jars, bottles, and bulk drums.</p>
+          </div>
+        </div>
+
+        <div class="mp-fac-card">
+          <div class="mp-fac-card__img">
+            <img src="images/Air Conditioned RM Store.png" alt="Air Conditioned Raw Material Storage">
+          </div>
+          <div class="mp-fac-card__body">
+            <h4>Air Conditioned Storage &amp; Warehousing</h4>
+            <p>Temperature-controlled raw material and finished goods warehousing maintaining ingredient stability and potency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DARK CTA BAND ================= -->
+  <section class="wjh-band">
+    <div class="container">
+      <div class="wjh-band__top" data-jr>
+        <h2>Ready to launch your custom animal feed product?</h2>
+        <a class="btn" href="contact.html">Start a Custom Formula
+          <i><svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="#14171a" stroke-width="1.3"><path d="M1 6h11M8 2l4 4-4 4"/></svg></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="foot">
+    <div class="container">
+      <div class="foot__grid">
+        <div>
+          <a class="foot__logo" href="index.html" aria-label="Jahaaj Healthcare home">
+            <img src="assets/logo.png?v=20260812v14" alt="Jahaaj Healthcare Pvt. Ltd.">
+          </a>
+          <h3>Sign up for our newsletter today.</h3>
+          <form class="news" onsubmit="return false">
+            <input type="email" placeholder="Your email" aria-label="Your email">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div>
+          <h4>Main Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="manufacturing-process.html">Manufacturing Process</a></li>
+            <li><a href="why-jahaaj.html">Why Jahaaj</a></li>
+            <li><a href="qc-qa-systems.html">Quality Systems</a></li>
+            <li><a href="products-catalog-elementor.html">Products</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="poultry-category-elementor.html">Poultry</a></li>
+            <li><a href="ruminants-category-elementor.html">Ruminants</a></li>
+            <li><a href="pet-category-elementor.html">Pet</a></li>
+            <li><a href="aquaculture-category-elementor.html">Aquaculture</a></li>
+            <li><a href="swine-category-elementor.html">Swine</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Utility Pages</h4>
+          <ul>
+            <li><a href="sitemap.html">Site Map</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Social Media</h4>
+          <div class="socials">
+            <a href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.5-4.05 4.2v2.2H7.5V13h2.7v8h3.3z"/></svg></a>
+            <a href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+            <a href="https://maps.app.goo.gl/921Udb96QATnVTGM8" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="foot__bottom">
+        <p>&copy; 2026 Jahaaj Healthcare Pvt. Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Header Hide/Reveal on Scroll
+    let lastY = 0;
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      const curY = window.scrollY;
+      if (curY > 100) {
+        nav.classList.add('is-solid');
+        if (curY > lastY && curY > 200) {
+          nav.classList.add('nav--hidden');
+        } else {
+          nav.classList.remove('nav--hidden');
+        }
+      } else {
+        nav.classList.remove('is-solid', 'nav--hidden');
+      }
+      lastY = curY;
+    });
+
+    // IntersectionObserver Scroll Reveal Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+
+    document.querySelectorAll('[data-jr], [data-jr-stagger]').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
