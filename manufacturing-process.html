@@ -1,358 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manufacturing Process &amp; 12-Step Private Label Workflow | Jahaaj Healthcare</title>
-  <meta name="description" content="Explore Jahaaj Healthcare's 12-step contract manufacturing &amp; private label workflow — from product idea briefing and R&amp;D formulation to commercial scale production and global dispatch.">
-  <meta name="keywords" content="Jahaaj Healthcare manufacturing process, 12 step private label workflow, animal feed contract manufacturing, FAMI-QS certified plant, Rabale MIDC Navi Mumbai">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manufacturing Process &amp; 12-Step Private Label Workflow | Jahaaj Healthcare</title>
+<meta name="description" content="Explore Jahaaj Healthcare's 12-step contract manufacturing &amp; private label workflow — from product idea briefing and R&amp;D formulation to commercial scale production and global dispatch.">
+<link rel="canonical" href="https://jahaaj-homepage.vercel.app/manufacturing-process.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Manufacturing Process &amp; 12-Step Private Label Workflow | Jahaaj Healthcare">
+<meta property="og:description" content="From initial concept briefing to final commercial dispatch — how Jahaaj Healthcare transforms nutritional ideas into compliant, market-ready feed supplements.">
+<meta property="og:url" content="https://jahaaj-homepage.vercel.app/manufacturing-process.html">
+<meta property="og:image" content="https://jahaaj-homepage.vercel.app/images/manufacturing_workflow_diagram.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Manufacturing Process &amp; 12-Step Private Label Workflow | Jahaaj Healthcare">
+<meta name="twitter:description" content="Explore Jahaaj Healthcare's 12-step contract manufacturing &amp; private label workflow.">
+<meta name="twitter:image" content="https://jahaaj-homepage.vercel.app/images/manufacturing_workflow_diagram.jpg">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Manufacturing Process &amp; 12-Step Private Label Workflow | Jahaaj Healthcare">
-  <meta property="og:description" content="From initial concept briefing to final commercial dispatch — how Jahaaj Healthcare transforms nutritional ideas into compliant, market-ready feed supplements.">
-  <meta property="og:image" content="images/manufacturing_workflow_diagram.jpg">
-  <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css">
+<style>
+/* ============ tokens ============ */
+:root{
+  --ink:#111214;
+  --ink-soft:#3d3f42;
+  --grey:#6f7276;
+  --grey-2:#9b9ea1;
+  --line:#e6e7e9;
+  --card:#f4f4f5;
+  --dark:#101011;
+  --yellow:#ff8300;
+  --yellow-2:#ffb347;
+  --blue:#d3e9f7;
+  --blue-2:#c3e1f4;
+  --radius:22px;
+  --container:1200px;
+  --font:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:32px}
+:focus-visible{outline:2px solid #2b7fb8;outline-offset:3px}
 
-  <style>
-    /* ============ HEADER NAV NO-OVERLAP & ANIMATION FIX ============ */
-    .nav {
-      position: fixed !important;
-      top: 0 !important;
-      left: 50% !important;
-      transform: translate(-50%, 0) !important;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease !important;
-      width: 100% !important;
-      max-width: 1500px !important;
-      z-index: 100 !important;
-      padding: 16px 34px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      box-sizing: border-box !important;
-    }
-    .nav.nav--hidden {
-      transform: translate(-50%, -120%) !important;
-    }
-    .nav.is-solid {
-      background: rgba(255, 255, 255, 0.95) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
-    }
-    .nav__logo {
-      position: relative !important;
-      z-index: 110 !important;
-      flex: 0 0 auto !important;
-    }
-    .nav__menu {
-      position: absolute !important;
-      left: 50% !important;
-      top: 50% !important;
-      transform: translate(-50%, -50%) !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 2px !important;
-      background: rgba(255, 255, 255, 0.95) !important;
-      backdrop-filter: blur(14px) !important;
-      -webkit-backdrop-filter: blur(14px) !important;
-      border-radius: 999px !important;
-      padding: 4px 10px !important;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08) !important;
-      height: 48px !important;
-      white-space: nowrap !important;
-      z-index: 105 !important;
-      box-sizing: border-box !important;
-    }
-    .nav__link {
-      font-size: 12.5px !important;
-      padding: 6px 10px !important;
-      white-space: nowrap !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 5px !important;
-      color: #26282b !important;
-      border-radius: 999px !important;
-      transition: background .2s !important;
-    }
-    .nav__cta {
-      position: relative !important;
-      z-index: 110 !important;
-      margin-left: auto !important;
-      height: 48px !important;
-      display: inline-flex !important;
-      align-items: center !important;
-    }
-    @media (max-width: 1240px) {
-      .nav__menu {
-        display: none !important;
-      }
-      .nav__burger {
-        display: flex !important;
-        margin-left: 12px !important;
-      }
-      .nav__cta {
-        display: inline-flex !important;
-        margin-left: auto !important;
-      }
-    }
+/* ============ nav ============ */
+.nav{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1500px;z-index:60;padding:20px 34px;display:flex;align-items:center;gap:18px;
+  transition:transform .38s cubic-bezier(.4,0,.2,1)}
+.nav.nav--hidden{transform:translate(-50%,-140px)}
+.nav.is-solid{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.nav__logo{display:block}
+.nav__logo img{height:42px;width:auto;display:block;
+  filter:drop-shadow(0 1px 2px rgba(255,255,255,.55)) drop-shadow(0 0 14px rgba(255,255,255,.35))}
+.nav__menu{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:1px;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(14px);border-radius:999px;padding:8px 16px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.nav__item{position:relative}
+.nav__link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:400;color:#26282b;
+  padding:9px 11px;border-radius:999px;white-space:nowrap;transition:background .2s;font-family:inherit}
+.nav__link:hover,.nav__item.open .nav__link,.nav__link.is-active{background:#eef0f2}
+.nav__link svg{width:9px;height:9px;opacity:.55;transition:transform .28s}
+.nav__item.open .nav__link svg{transform:rotate(180deg)}
+/* dropdown */
+.dropdown{position:absolute;top:100%;left:50%;min-width:236px;padding-top:16px;
+  transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .24s ease,transform .24s ease,visibility .24s;z-index:70}
+.nav__item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav__item:last-child .dropdown{left:auto;right:0;transform:translateX(0) translateY(8px)}
+.nav__item:last-child.open .dropdown{transform:translateX(0) translateY(0)}
+.dropdown ul{list-style:none;background:#fff;border-radius:16px;padding:9px;
+  box-shadow:0 18px 44px rgba(16,18,20,.16);border:1px solid rgba(0,0,0,.05)}
+.dropdown li a{display:block;font-size:13.5px;color:#3d3f42;padding:10px 14px;border-radius:10px;
+  white-space:nowrap;transition:background .18s,color .18s}
+.dropdown li a:hover{background:#f2f4f6;color:#111}
+/* mobile panel */
+.mnav{position:fixed;inset:76px 14px auto;z-index:59;background:#fff;border-radius:20px;
+  box-shadow:0 24px 60px rgba(0,0,0,.2);max-height:calc(100vh - 100px);overflow-y:auto}
+.mnav__inner{padding:14px}
+.mnav__group{border-bottom:1px solid var(--line)}
+.mnav__group:last-of-type{border-bottom:0}
+.mnav__top{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;
+  font-family:inherit;font-size:15px;color:#26282b;padding:15px 8px;text-align:left}
+.mnav__top svg{width:11px;height:11px;opacity:.5;flex:0 0 auto;transition:transform .28s}
+.mnav__top[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mnav__sub{list-style:none;max-height:0;overflow:hidden;transition:max-height .32s ease}
+.mnav__sub.open{max-height:340px}
+.mnav__sub li a{display:block;font-size:14px;color:var(--grey);padding:11px 8px 11px 18px}
+.mnav__cta{width:100%;justify-content:center;margin-top:14px}
+.nav__cta{margin-left:auto;background:var(--blue);color:#14171a;font-size:14.5px;padding:12px 26px;border-radius:999px;
+  transition:background .25s,transform .25s}
+.nav__cta:hover{background:var(--blue-2);transform:translateY(-1px)}
+.nav__burger{display:none;margin-left:auto;width:42px;height:42px;border-radius:999px;background:rgba(255,255,255,.9);
+  align-items:center;justify-content:center}
+.nav__burger span{display:block;width:16px;height:1.5px;background:#111;position:relative}
+.nav__burger span::before,.nav__burger span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#111}
+.nav__burger span::before{top:-5px}.nav__burger span::after{top:5px}
+.nav__burger.open span{background:transparent}
+.nav__burger.open span::before{top:0;transform:rotate(45deg)}
+.nav__burger.open span::after{top:0;transform:rotate(-45deg)}
+@media (min-width:1025px){.mnav{display:none!important}}
+@media (min-width:1025px) and (max-width:1500px){
+  .nav__menu{gap:2px;padding:7px 10px}
+  .nav__link{padding:8px 12px;font-size:12.5px}
+}
+@media (max-width:1024px){
+  .nav__menu{display:none}
+  .nav__burger{display:flex}
+  .nav__cta{display:none}
+}
 
-    /* ============ HERO SECTION ============ */
-    .mp-hero {
-      padding: 160px 0 90px;
-      background: linear-gradient(180deg, #f4f6fb 0%, #ffffff 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .mp-hero__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .mp-hero__tag {
-      background: rgba(0, 51, 193, 0.08);
-      color: #0033c1;
-      padding: 6px 18px;
-      border-radius: 999px;
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      display: inline-block;
-      margin-bottom: 18px;
-    }
-    .mp-hero h1 {
-      font-size: clamp(34px, 4vw, 54px);
-      font-weight: 300;
-      letter-spacing: -.03em;
-      color: #111214;
-      line-height: 1.12;
-      margin-bottom: 20px;
-    }
-    .mp-hero p {
-      font-size: 17px;
-      line-height: 1.65;
-      color: #555;
-      font-weight: 300;
-      margin-bottom: 30px;
-    }
-    .mp-hero__btns {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .mp-hero__art {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 20px 48px rgba(0, 51, 193, 0.12);
-      border: 1px solid #e2e8f0;
-      background: #fff;
-    }
-    .mp-hero__art img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+/* ============ scroll appear (fade+rise) ============ */
+[data-jr]{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+[data-jr].jr-in{opacity:1;transform:translateY(0)}
+[data-jr-stagger]>*{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;transition-delay:calc(var(--i,0) * 110ms)}
+[data-jr-stagger].jr-in>*{opacity:1;transform:translateY(0)}
 
-    /* ============ 12-STEP VISUAL WORKFLOW ============ */
-    .mp-workflow {
-      padding: 100px 0;
-      background: #f9fafc;
-      border-top: 1px solid #eef0f3;
-      border-bottom: 1px solid #eef0f3;
-    }
-    .mp-sec-head {
-      text-align: center;
-      max-width: 820px;
-      margin: 0 auto 60px;
-    }
-    .mp-sec-head .tag {
-      background: rgba(0, 51, 193, 0.08);
-      color: #0033c1;
-      padding: 6px 18px;
-      border-radius: 999px;
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      display: inline-block;
-      margin-bottom: 14px;
-    }
-    .mp-sec-head h2 {
-      font-size: clamp(28px, 3.6vw, 44px);
-      font-weight: 300;
-      letter-spacing: -.02em;
-      color: #111214;
-      line-height: 1.15;
-    }
-    .mp-sec-head p {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #666;
-      margin-top: 14px;
-      font-weight: 300;
-    }
-    .mp-step-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-    .mp-step-card {
-      background: #ffffff;
-      border: 1px solid #e5e8ed;
-      border-radius: 20px;
-      padding: 24px;
-      transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .35s ease, border-color .35s ease;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      box-sizing: border-box;
-      position: relative;
-    }
-    .mp-step-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09);
-      border-color: #0033c1;
-    }
-    .mp-step-card__top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-    .mp-step-badge {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .05em;
-      padding: 4px 12px;
-      border-radius: 999px;
-    }
-    .mp-step-card.p1 .mp-step-badge { color: #0033c1; background: rgba(0, 51, 193, 0.08); }
-    .mp-step-card.p2 .mp-step-badge { color: #c85500; background: rgba(200, 85, 0, 0.1); }
-    .mp-step-card.p3 .mp-step-badge { color: #7c3aed; background: rgba(124, 58, 237, 0.1); }
-    .mp-step-card.p4 .mp-step-badge { color: #059669; background: rgba(5, 150, 105, 0.1); }
+/* ============ button ============ */
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#14171a;font-size:15px;
+  padding:15px 30px;border-radius:999px;transition:background .25s,transform .25s}
+.btn:hover{background:var(--blue-2);transform:translateY(-2px)}
+.btn.dark{background:var(--ink);color:#fff}
+.btn.dark:hover{background:#292b2f}
 
-    .mp-step-phase {
-      font-size: 11.5px;
-      font-weight: 500;
-      color: #71717a;
-    }
-    .mp-step-img-box {
-      width: 100%;
-      height: 145px;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #ffffff;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #e4e4e7;
-    }
-    .mp-step-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 6px;
-      transition: transform .4s ease;
-      background: #fff;
-    }
-    .mp-step-card:hover .mp-step-img-box img {
-      transform: scale(1.06);
-    }
-    .mp-step-card h3 {
-      font-size: 17.5px;
-      font-weight: 500;
-      color: #111214;
-      margin-bottom: 10px;
-      line-height: 1.35;
-    }
-    .mp-step-card p {
-      font-size: 13.5px;
-      line-height: 1.55;
-      color: #52525b;
-      font-weight: 300;
-      margin: 0;
-      flex-grow: 1;
-    }
+/* ============ MANUFACTURING PROCESS SPECIFIC STYLES ============ */
+.mp-hero {
+  padding: 160px 0 90px;
+  background: linear-gradient(180deg, #f4f6fb 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+.mp-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.mp-hero__tag {
+  background: rgba(0, 51, 193, 0.08);
+  color: #0033c1;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+.mp-hero h1 {
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 300;
+  letter-spacing: -.03em;
+  color: #111214;
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+.mp-hero p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #555;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+.mp-hero__btns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.mp-hero__art {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0, 51, 193, 0.12);
+  border: 1px solid #e2e8f0;
+  background: #fff;
+}
+.mp-hero__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-    /* ============ FACILITY CAPABILITIES GALLERY ============ */
-    .mp-facility {
-      padding: 100px 0;
-      background: #ffffff;
-    }
-    .mp-fac-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 50px;
-    }
-    .mp-fac-card {
-      border-radius: 20px;
-      overflow: hidden;
-      background: #fff;
-      border: 1px solid #e4e4e7;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
-      transition: transform .3s ease, box-shadow .3s ease;
-    }
-    .mp-fac-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
-    }
-    .mp-fac-card__img {
-      height: 220px;
-      position: relative;
-      overflow: hidden;
-    }
-    .mp-fac-card__img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .mp-fac-card__body {
-      padding: 24px;
-    }
-    .mp-fac-card__body h4 {
-      font-size: 18px;
-      font-weight: 500;
-      color: #111214;
-      margin-bottom: 8px;
-    }
-    .mp-fac-card__body p {
-      font-size: 14px;
-      line-height: 1.55;
-      color: #666;
-      font-weight: 300;
-      margin: 0;
-    }
+/* ============ 12-STEP VISUAL WORKFLOW ============ */
+.mp-workflow {
+  padding: 100px 0;
+  background: #f9fafc;
+  border-top: 1px solid #eef0f3;
+  border-bottom: 1px solid #eef0f3;
+}
+.mp-sec-head {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 60px;
+}
+.mp-sec-head .tag {
+  background: rgba(0, 51, 193, 0.08);
+  color: #0033c1;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.mp-sec-head h2 {
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 300;
+  letter-spacing: -.02em;
+  color: #111214;
+  line-height: 1.15;
+}
+.mp-sec-head p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  margin-top: 14px;
+  font-weight: 300;
+}
+.mp-step-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.mp-step-card {
+  background: #ffffff;
+  border: 1px solid #e5e8ed;
+  border-radius: 20px;
+  padding: 24px;
+  transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .35s ease, border-color .35s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.mp-step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09);
+  border-color: #0033c1;
+}
+.mp-step-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.mp-step-badge {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+.mp-step-card.p1 .mp-step-badge { color: #0033c1; background: rgba(0, 51, 193, 0.08); }
+.mp-step-card.p2 .mp-step-badge { color: #c85500; background: rgba(200, 85, 0, 0.1); }
+.mp-step-card.p3 .mp-step-badge { color: #7c3aed; background: rgba(124, 58, 237, 0.1); }
+.mp-step-card.p4 .mp-step-badge { color: #059669; background: rgba(5, 150, 105, 0.1); }
 
-    /* ============ RESPONSIVE MEDIA QUERIES ============ */
-    @media (max-width: 1200px) {
-      .mp-step-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-      .mp-fac-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 860px) {
-      .mp-hero__grid { grid-template-columns: 1fr; gap: 36px; }
-      .mp-step-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    }
-    @media (max-width: 560px) {
-      .mp-step-grid { grid-template-columns: 1fr; }
-      .mp-fac-grid { grid-template-columns: 1fr; }
-      .mp-hero { padding: 130px 0 60px; }
-    }
-  </style>
+.mp-step-phase {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #71717a;
+}
+.mp-step-img-box {
+  width: 100%;
+  height: 145px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e4e4e7;
+}
+.mp-step-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+  transition: transform .4s ease;
+  background: #fff;
+}
+.mp-step-card:hover .mp-step-img-box img {
+  transform: scale(1.06);
+}
+.mp-step-card h3 {
+  font-size: 17.5px;
+  font-weight: 500;
+  color: #111214;
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+.mp-step-card p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #52525b;
+  font-weight: 300;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* ============ FACILITY CAPABILITIES GALLERY ============ */
+.mp-facility {
+  padding: 100px 0;
+  background: #ffffff;
+}
+.mp-fac-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 50px;
+}
+.mp-fac-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.mp-fac-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+}
+.mp-fac-card__img {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+.mp-fac-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mp-fac-card__body {
+  padding: 24px;
+}
+.mp-fac-card__body h4 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #111214;
+  margin-bottom: 8px;
+}
+.mp-fac-card__body p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #666;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ============ dark cta band ============ */
+.wjh-band {
+  background: var(--dark);
+  color: #fff;
+  padding: 90px 0;
+}
+.wjh-band__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.wjh-band__top h2 {
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 300;
+  color: #fff;
+}
+
+/* ============ footer ============ */
+.foot{position:relative;z-index:3;background:#fff;border-radius:28px 28px 0 0;padding:84px 0 96px;border-top:1px solid var(--line)}
+.foot__grid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px}
+.foot__logo{display:inline-block;margin-bottom:22px}
+.foot__logo img{height:60px;width:auto;display:block}
+.foot h3{font-size:22px;font-weight:300;line-height:1.35;color:var(--ink-soft);max-width:12ch}
+.news{margin-top:26px;display:flex;background:#f1f1f2;border-radius:8px;padding:5px;max-width:290px}
+.news input{flex:1;border:0;background:none;padding:10px 14px;font-family:inherit;font-size:13.5px;color:#111}
+.news input::placeholder{color:#a9abad}
+.news button{background:#8b8d8f;color:#fff;font-size:13.5px;padding:10px 18px;border-radius:6px;transition:background .25s}
+.news button:hover{background:#6f7173}
+.foot h4{font-size:13.5px;font-weight:400;color:var(--grey-2);margin-bottom:20px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+.foot li a{font-size:13.5px;color:var(--grey);transition:color .2s}
+.foot li a:hover{color:var(--ink)}
+.socials{display:flex;flex-direction:column;gap:12px}
+.socials a{width:34px;height:34px;border-radius:999px;background:#f1f1f2;display:grid;place-items:center;transition:background .25s}
+.socials a:hover{background:#e2e3e5}
+.socials svg{width:15px;height:15px;fill:#5f6265}
+.foot__bottom{border-top:1px solid var(--line);margin-top:70px;padding-top:26px}
+
+/* ============ RESPONSIVE MEDIA QUERIES ============ */
+@media (max-width: 1200px) {
+  .mp-step-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .mp-fac-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .mp-hero__grid { grid-template-columns: 1fr; gap: 36px; }
+  .mp-step-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (max-width: 560px) {
+  .mp-step-grid { grid-template-columns: 1fr; }
+  .mp-fac-grid { grid-template-columns: 1fr; }
+  .mp-hero { padding: 130px 0 60px; }
+  .foot__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+</style>
 </head>
 <body>
 
-  <!-- ================= HEADER NAVIGATION ================= -->
+  <!-- ================= NAV ================= -->
   <header class="nav" id="nav">
     <a class="nav__logo" href="index.html" aria-label="Jahaaj Healthcare home">
       <img src="assets/logo.png?v=20260812v14" alt="Jahaaj Healthcare Pvt. Ltd.">
@@ -363,9 +426,10 @@
         <button class="nav__link" aria-expanded="false" aria-controls="dd1">Discover Jahaaj <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
         <div class="dropdown" id="dd1">
           <ul>
-          <li><a href="about.html">About Jahaaj Healthcare</a></li>
-          <li><a href="team.html">Our Leadership &amp; Team</a></li>
-          <li><a href="why-jahaaj.html">Why Choose Jahaaj</a></li>
+          <li><a href="about.html">Who we are</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="about.html#facility">Our Facility</a></li>
+          <li><a href="why-jahaaj.html">Why Jahaaj</a></li>
           </ul>
         </div>
       </div>
@@ -379,7 +443,7 @@
         </div>
       </div>
       <div class="nav__item" data-menu>
-        <button class="nav__link" aria-expanded="false" aria-controls="dd3">Explore Products <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <button class="nav__link" aria-expanded="false" aria-controls="dd3">Explore our Products <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
         <div class="dropdown" id="dd3">
           <ul>
           <li><a href="products-catalog-elementor.html">All Products</a></li>
@@ -410,9 +474,47 @@
         </div>
       </div>
     </nav>
-    <button class="nav__burger" aria-label="Open menu"><span></span></button>
-    <a class="nav__cta btn dark" href="contact.html">Contact</a>
+    <button class="nav__burger" id="navBurger" aria-label="Open menu"><span></span></button>
+    <a class="nav__cta" href="contact.html">Contact</a>
   </header>
+
+  <!-- ================= MOBILE DRAWER ================= -->
+  <div class="mnav" id="mnav" style="display:none">
+    <div class="mnav__inner">
+      <div class="mnav__group">
+        <a class="mnav__top" href="index.html">Home</a>
+      </div>
+      <div class="mnav__group">
+        <button class="mnav__top" aria-expanded="false">Discover Jahaaj <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <ul class="mnav__sub">
+          <li><a href="about.html">Who we are</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="why-jahaaj.html">Why Jahaaj</a></li>
+        </ul>
+      </div>
+      <div class="mnav__group">
+        <button class="mnav__top" aria-expanded="false">Private Label &amp; Manufacturing <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <ul class="mnav__sub">
+          <li><a href="manufacturing-process.html">12-Step Manufacturing Process</a></li>
+          <li><a href="why-jahaaj.html#packaging">Packaging Capabilities</a></li>
+        </ul>
+      </div>
+      <div class="mnav__group">
+        <button class="mnav__top" aria-expanded="false">Explore Products <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <ul class="mnav__sub">
+          <li><a href="products-catalog-elementor.html">All Products</a></li>
+          <li><a href="poultry-category-elementor.html">Poultry</a></li>
+          <li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
+          <li><a href="pet-category-elementor.html">Pet</a></li>
+          <li><a href="aquaculture-category-elementor.html">Aquaculture</a></li>
+          <li><a href="swine-category-elementor.html">Swine</a></li>
+        </ul>
+      </div>
+      <div class="mnav__group">
+        <a class="mnav__top" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
 
   <!-- ================= HERO SECTION ================= -->
   <section class="mp-hero">
@@ -741,14 +843,17 @@
         </div>
       </div>
       <div class="foot__bottom">
-        <p>&copy; 2026 Jahaaj Healthcare Pvt. Ltd. All rights reserved.</p>
+        <div class="foot__bottom-row">
+          <p>&copy; 2026 <b>Jahaaj Healthcare Pvt. Ltd.</b> All rights reserved.</p>
+          <p>Navi Mumbai &middot; Maharashtra &middot; India</p>
+        </div>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script>
-    /* ---------- Navigation Dropdowns & Mobile Drawer ---------- */
+    /* ---------- Navigation Dropdowns & Sticky Header ---------- */
     (function(){
       const nav = document.getElementById('nav');
       let lastY = 0;
@@ -768,7 +873,7 @@
       }
       window.addEventListener('scroll', paintNav, {passive:true});
 
-      // Dropdowns
+      // Desktop Dropdowns
       document.querySelectorAll('[data-menu]').forEach(item=>{
         const btn = item.querySelector('button');
         if(!btn) return;
@@ -780,6 +885,24 @@
         });
       });
       document.addEventListener('click', ()=> document.querySelectorAll('[data-menu]').forEach(m=>m.classList.remove('open')));
+
+      // Mobile Drawer Toggle
+      const burger = document.getElementById('navBurger');
+      const mnav = document.getElementById('mnav');
+      if(burger && mnav){
+        burger.addEventListener('click', ()=>{
+          const open = burger.classList.toggle('open');
+          mnav.style.display = open ? 'block' : 'none';
+        });
+        document.querySelectorAll('.mnav__top[aria-expanded]').forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+            const exp = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', !exp);
+            const sub = btn.nextElementSibling;
+            if(sub) sub.classList.toggle('open', !exp);
+          });
+        });
+      }
     })();
 
     /* ---------- Scroll Appear (jr-in Engine) ---------- */
