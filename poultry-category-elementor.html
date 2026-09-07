@@ -20,409 +20,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
-/* ============ DEMO DESIGN SYSTEM TOKENS ============ */
-:root {
-  --ink: #1a1a1a;
-  --ink-soft: #333333;
-  --navy: #0e3252d9;
-  --navy-solid: #0e3252;
-  --terracotta: #c2410c;
-  --terracotta-dark: #9a3412;
-  --terracotta-hover: #ea580c;
-  --snow: snow;
-  --line: #e6e7e9;
-  --card-bg: #f8f9fa;
-  --font: 'Courier New', Courier, monospace;
-}
-* {
-  box-sizing: border-box;
-  font-family: var(--font);
-}
-body {
-  font-family: var(--font) !important;
-  background-color: #fefefe;
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* ============ FLOATING GLASSMORPHIC NAVBAR ============ */
-.navbar {
-  z-index: 1000;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  backdrop-filter: blur(12px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 50px;
-  justify-content: space-between;
-  align-items: center;
-  width: 90vw;
-  max-width: 1400px;
-  height: 70px;
-  padding: 0 30px;
-  display: flex;
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s ease, background-color 0.35s ease;
-}
-.nav-logo {
-  height: 100%;
-  color: inherit;
-  justify-content: center;
-  align-items: center;
-  margin-right: 30px;
-  text-decoration: none;
-  display: flex;
-  flex-shrink: 0;
-}
-.nav-logo img {
-  object-fit: contain;
-  width: auto;
-  height: 52px;
-}
-.nav-tabs {
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 12px;
-  height: 100%;
-  display: flex;
-}
-.nav-item {
-  position: relative;
-}
-.nav-tab {
-  word-spacing: -2px;
-  letter-spacing: 0;
-  cursor: pointer;
-  color: inherit;
-  padding: 10px 14px;
-  font-size: 13.5px;
-  text-decoration: none;
-  transition: all 0.2s;
-  border-radius: 30px;
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-}
-.nav-tab:hover {
-  color: #6b6b6b;
-  background: rgba(255, 255, 255, 0.5);
-}
-.nav-tab.activeTab {
-  color: #000;
-  text-shadow: 2px 2px 25px rgba(0, 0, 0, 0.5);
-  font-weight: 700;
-}
-.tab_chevron {
-  opacity: 0.6;
-  pointer-events: none;
-  vertical-align: middle;
-  margin-left: 5px;
-  font-size: 11px;
-  transition: transform 0.25s ease;
-}
-.nav-item.open .tab_chevron {
-  transform: rotate(180deg);
-}
-.nav-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  min-width: 240px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 16px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-  padding: 8px;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-  z-index: 1100;
-}
-.nav-item.open .nav-dropdown {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-}
-.nav-item:last-child .nav-dropdown {
-  left: auto;
-  right: 0;
-  transform: translateX(0) translateY(10px);
-}
-.nav-item:last-child.open .nav-dropdown {
-  transform: translateX(0) translateY(0);
-}
-.nav-dropdown ul {
-  list-style: none;
-}
-.nav-dropdown li a {
-  display: block;
-  padding: 10px 14px;
-  color: #2c2d30;
-  font-size: 13px;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
-  white-space: nowrap;
-}
-.nav-dropdown li a:hover {
-  background: #f1f3f5;
-  color: #000;
-  font-weight: 600;
-}
-.nav-burger {
-  display: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.8);
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 4px;
-}
-.nav-burger span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: #111;
-  transition: all 0.3s ease;
-}
-.nav-burger.open span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-.nav-burger.open span:nth-child(2) {
-  opacity: 0;
-}
-.nav-burger.open span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
-}
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: 95px;
-  left: 5vw;
-  width: 90vw;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 16px;
-  z-index: 999;
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
-}
-.mobile-menu.active {
-  display: block;
-}
-.mobile-group {
-  border-bottom: 1px solid #eee;
-  padding: 6px 0;
-}
-.mobile-group:last-child {
-  border-bottom: 0;
-}
-.mobile-top-btn {
-  width: 100%;
-  text-align: left;
-  padding: 12px 10px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #1a1a1a;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.mobile-sub-menu {
-  list-style: none;
-  padding-left: 14px;
-  display: none;
-}
-.mobile-sub-menu.open {
-  display: block;
-}
-.mobile-sub-menu li a {
-  display: block;
-  padding: 8px 10px;
-  font-size: 13.5px;
-  color: #555;
-}
-
-/* ============ TERRACOTTA BUTTONS & ACCENTS ============ */
-.btn, .explore_btn, .jhc-btn, .btn-formula {
-  box-sizing: border-box;
-  color: #fff !important;
-  letter-spacing: .3px;
-  cursor: pointer;
-  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  border-radius: 10px !important;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: fit-content;
-  padding: 14px 28px !important;
-  font-size: 15px !important;
-  font-weight: 600 !important;
-  text-decoration: none !important;
-  transition: all .25s cubic-bezier(.4, 0, .2, 1) !important;
-  display: inline-flex !important;
-  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.3) !important;
-}
-.btn:hover, .explore_btn:hover, .jhc-btn:hover, .btn-formula:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 20px rgba(194, 65, 12, 0.45) !important;
-  color: #fff !important;
-}
-
-/* ============ DEEP NAVY FOOTER ============ */
-.footer_section, .footer {
-  box-sizing: border-box;
-  color: #f0f0f0 !important;
-  text-shadow: 2px 2px 25px rgba(0, 0, 0, 0.5);
-  background-color: #0e3252d9 !important;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 60px 30px 24px;
-  display: flex;
-}
-.footer_first_section {
-  justify-content: space-between;
-  gap: 40px;
-  width: 100%;
-  max-width: 1200px;
-  padding-bottom: 40px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.logo_and_newsletter {
-  flex-direction: column;
-  flex: 1 1 280px;
-  gap: 18px;
-  display: flex;
-}
-.footer_logo {
-  cursor: pointer;
-  border-radius: 3px;
-  width: fit-content;
-  text-decoration: none;
-  display: inline-block;
-}
-.footer_logo_img {
-  object-fit: contain;
-  width: auto;
-  height: 70px;
-}
-.newsletter_input {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-radius: 6px;
-  width: 100%;
-  max-width: 270px;
-  padding: 10px 14px;
-  font-size: 13.5px;
-}
-.newsletter_input::placeholder {
-  color: #aaa;
-}
-.footer_navigation {
-  flex: 2 1 480px;
-  justify-content: space-around;
-  gap: 24px;
-  font-size: 14px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.segment {
-  display: flex;
-  flex-direction: column;
-}
-.contents_navig, .social_contents {
-  flex-direction: column;
-  gap: 10px;
-  display: flex;
-}
-.socials {
-  flex: 1 1 160px;
-  font-size: 14px;
-}
-.section_title {
-  color: #b6b6b6 !important;
-  margin: 0 0 16px;
-  font-weight: 700;
-  font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.footer_link {
-  color: #d4d4d4 !important;
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.3s;
-  font-size: 13.5px;
-}
-.footer_link:hover {
-  color: #ffffff !important;
-  text-decoration: underline;
-}
-.divider {
-  border: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  width: 100%;
-  max-width: 1200px;
-  margin: 0;
-}
-.footer_second_section {
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  padding-top: 24px;
-  font-size: 13.5px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.copyright_text {
-  color: #f0f0f0 !important;
-}
-
-@media (max-width: 1080px) {
-  .navbar {
-    width: 95vw;
-    padding: 0 20px;
-  }
-  .nav-tabs {
-    display: none;
-  }
-  .nav-burger {
-    display: flex;
-  }
-}
-@media (max-width: 768px) {
-  .footer_first_section {
-    flex-direction: column;
-  }
-  .footer_second_section {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
 /* ============ tokens ============ */
 :root{
   --ink:#111214;
@@ -672,7 +269,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 .jhc-cat [data-jr-stagger].jr-in>*{opacity:1;transform:translateY(0);}
 
 @media(max-width:640px){
-  .jhc-cat .jhc-hero{min-height:auto;max-height:none;padding: 140px 0 50px;}
+  .jhc-cat .jhc-hero{min-height:auto;max-height:none;padding:100px 0 40px;}
 }
 @media(prefers-reduced-motion:reduce){
   .jhc-cat [data-jr],.jhc-cat [data-jr-stagger]>*{transition:none;opacity:1;transform:none;}
@@ -1020,124 +617,142 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 }
 
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
 
-  <!-- ================= FLOATING GLASSMORPHIC NAVBAR ================= -->
-  <header class="navbar" id="nav">
-    <a class="nav-logo" href="index.html" aria-label="Jahaaj Healthcare Home">
-      <img src="assets/demo/Jahaaj_Logo-v9aWIgL2.png" alt="Jahaaj Logo">
-    </a>
-
-    <nav class="nav-tabs" id="navTabs">
-      <div class="nav-item">
-        <a class="nav-tab " href="index.html">Home</a>
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html" aria-label="Jahaaj Healthcare home">
+    <img src="assets/logo.png?v=20260812v14" alt="Jahaaj Healthcare Pvt. Ltd.">
+  </a>
+  <nav class="nav__menu" id="navMenu">
+    <div class="nav__item"><a class="nav__link" href="index.html">Home</a></div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd1">Discover Jahaaj <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd1">
+        <ul>
+        <li><a href="about.html">Who we are</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="about.html#facility">Our Facility</a></li>
+        <li><a href="why-jahaaj.html">Why Jahaaj</a></li>
+        </ul>
       </div>
-      
-      <div class="nav-item" data-dropdown>
-        <button class="nav-tab " type="button" aria-expanded="false">
-          Discover Jahaaj <span class="tab_chevron">▾</span>
-        </button>
-        <div class="nav-dropdown">
-          <ul>
-            <li><a href="about.html">Who We Are</a></li>
-            <li><a href="team.html">Our Leadership &amp; Team</a></li>
-            <li><a href="about.html#facility">Our Manufacturing Facility</a></li>
-            <li><a href="why-jahaaj.html">Why Choose Jahaaj</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav-item" data-dropdown>
-        <button class="nav-tab " type="button" aria-expanded="false">
-          Manufacturing &amp; Capabilities <span class="tab_chevron">▾</span>
-        </button>
-        <div class="nav-dropdown">
-          <ul>
-            <li><a href="manufacturing-process.html">12-Step Manufacturing Process</a></li>
-            <li><a href="why-jahaaj.html#packaging">Packaging Capabilities</a></li>
-            <li><a href="qc-qa-systems.html">Quality &amp; Lab Systems</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav-item" data-dropdown>
-        <button class="nav-tab activeTab" type="button" aria-expanded="false">
-          Explore Our Products <span class="tab_chevron">▾</span>
-        </button>
-        <div class="nav-dropdown">
-          <ul>
-            <li><a href="products-catalog-elementor.html">All Products Catalog</a></li>
-            <li><a href="poultry-category-elementor.html">Poultry Solutions</a></li>
-            <li><a href="ruminants-category-elementor.html">Ruminants &amp; Livestock</a></li>
-            <li><a href="pet-category-elementor.html">Companion Animals &amp; Pets</a></li>
-            <li><a href="aquaculture-category-elementor.html">Aquaculture Formulations</a></li>
-            <li><a href="swine-category-elementor.html">Swine Supplements</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav-item" data-dropdown>
-        <button class="nav-tab " type="button" aria-expanded="false">
-          Connect <span class="tab_chevron">▾</span>
-        </button>
-        <div class="nav-dropdown">
-          <ul>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="contact.html#careers">Careers</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Mobile Burger Toggle Button -->
-    <button class="nav-burger" id="navBurger" type="button" aria-label="Toggle navigation menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
-
-  <!-- ================= MOBILE MENU DRAWER ================= -->
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-group">
-      <a class="mobile-top-btn" href="index.html">Home</a>
     </div>
-    <div class="mobile-group">
-      <button class="mobile-top-btn" type="button">Discover Jahaaj <span>▾</span></button>
-      <ul class="mobile-sub-menu">
-        <li><a href="about.html">Who We Are</a></li>
-        <li><a href="team.html">Our Leadership &amp; Team</a></li>
-        <li><a href="about.html#facility">Our Manufacturing Facility</a></li>
-        <li><a href="why-jahaaj.html">Why Choose Jahaaj</a></li>
-      </ul>
-    </div>
-    <div class="mobile-group">
-      <button class="mobile-top-btn" type="button">Manufacturing &amp; Capabilities <span>▾</span></button>
-      <ul class="mobile-sub-menu">
-        <li><a href="manufacturing-process.html">12-Step Manufacturing Process</a></li>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd2">Private Label &amp; Contract Manufacturing <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd2">
+        <ul>
+        <li><a href="manufacturing-process.html">Manufacturing Process</a></li>
         <li><a href="why-jahaaj.html#packaging">Packaging Capabilities</a></li>
-        <li><a href="qc-qa-systems.html">Quality &amp; Lab Systems</a></li>
-      </ul>
+        </ul>
+      </div>
     </div>
-    <div class="mobile-group">
-      <button class="mobile-top-btn" type="button">Explore Our Products <span>▾</span></button>
-      <ul class="mobile-sub-menu">
-        <li><a href="products-catalog-elementor.html">All Products Catalog</a></li>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd3">Explore our Products <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd3">
+        <ul>
+        <li><a href="products-catalog-elementor.html">All Products</a></li>
         <li><a href="poultry-category-elementor.html">Poultry</a></li>
         <li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
-        <li><a href="pet-category-elementor.html">Companion Animals &amp; Pets</a></li>
+        <li><a href="pet-category-elementor.html">Pet</a></li>
+        <li><a href="aquaculture-category-elementor.html">Aquaculture</a></li>
+        <li><a href="swine-category-elementor.html">Swine</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd4">Quality &amp; Certifications <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd4">
+        <ul>
+        <li><a href="qc-qa-systems.html">QC / QA Systems</a></li>
+        <li><a href="qc-qa-systems.html#certifications">Certifications</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd5">Connect <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd5">
+        <ul>
+        <li><a href="contact.html">Contact Details</a></li>
+        <li><a href="contact.html#careers">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav__item" data-menu>
+      <button class="nav__link" aria-expanded="false" aria-controls="dd6">Science &amp; Innovation <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <div class="dropdown" id="dd6">
+        <ul>
+        <li><a href="index.html#rnd">Our Approach towards R&amp;D</a></li>
+        <li><a href="why-jahaaj.html#innovation">Our Investment in Innovation</a></li>
+        <li><a href="why-jahaaj.html#facility">New R&amp;D Office Showcase</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <button class="nav__burger" aria-label="Open menu"><span></span></button>
+  <a class="nav__cta" href="contact.html">Contact</a>
+</header>
+
+<div class="mnav" id="mnav" hidden>
+  <div class="mnav__inner">
+    <div class="mnav__group"><a class="mnav__top" href="index.html">Home</a></div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Discover Jahaaj <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="about.html">Who we are</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="about.html#facility">Our Facility</a></li>
+        <li><a href="why-jahaaj.html">Why Jahaaj</a></li>
+      </ul>
+    </div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Private Label &amp; Contract Manufacturing <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="manufacturing-process.html">Manufacturing Process</a></li>
+        <li><a href="why-jahaaj.html#packaging">Packaging Capabilities</a></li>
+      </ul>
+    </div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Explore our Products <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="products-catalog-elementor.html">All Products</a></li>
+        <li><a href="poultry-category-elementor.html">Poultry</a></li>
+        <li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
+        <li><a href="pet-category-elementor.html">Pet</a></li>
         <li><a href="aquaculture-category-elementor.html">Aquaculture</a></li>
         <li><a href="swine-category-elementor.html">Swine</a></li>
       </ul>
     </div>
-    <div class="mobile-group">
-      <a class="mobile-top-btn" href="contact.html">Connect</a>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Quality &amp; Certifications <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="qc-qa-systems.html">QC / QA Systems</a></li>
+        <li><a href="qc-qa-systems.html#certifications">Certifications</a></li>
+      </ul>
     </div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Connect <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="contact.html">Contact Details</a></li>
+        <li><a href="contact.html#careers">Careers</a></li>
+      </ul>
+    </div>
+    <div class="mnav__group">
+      <button class="mnav__top" aria-expanded="false">Science &amp; Innovation <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+      <ul class="mnav__sub">
+        <li><a href="index.html#rnd">Our Approach towards R&amp;D</a></li>
+        <li><a href="why-jahaaj.html#innovation">Our Investment in Innovation</a></li>
+        <li><a href="why-jahaaj.html#facility">New R&amp;D Office Showcase</a></li>
+      </ul>
+    </div>
+    <a class="btn mnav__cta" href="contact.html">Contact</a>
   </div>
+</div>
 
-<section class="jhc-hero">
+<div class="jhc-cat">
+
+  <!-- HERO -->
+  <section class="jhc-hero">
     <div class="jhc-container">
       <div class="jhc-breadcrumb">
         <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
@@ -1436,132 +1051,223 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 </div>
 
 <!-- ================= FOOTER ================= -->
-
-
-  <!-- ================= FOOTER SECTION ================= -->
-  <footer class="footer_section">
-    <div class="footer_first_section">
-      <div class="logo_and_newsletter">
-        <a class="footer_logo" href="index.html" aria-label="Jahaaj Healthcare Home">
-          <img class="footer_logo_img" src="assets/demo/Jahaaj_Footer_Logo-COd83Cre.png" alt="Jahaaj Logo">
+<footer class="foot">
+  <div class="container">
+    <div class="foot__grid">
+      <div>
+        <a class="foot__logo" href="index.html" aria-label="Jahaaj Healthcare home">
+          <img src="assets/logo.png?v=20260812v14" alt="Jahaaj Healthcare Pvt. Ltd.">
         </a>
+        <h3>Sign up for our newsletter today.</h3>
         <form class="news" onsubmit="return false">
-          <input class="newsletter_input" type="email" placeholder="Your email address" aria-label="Your email">
+          <input type="email" placeholder="Your email" aria-label="Your email">
+          <button type="submit">Subscribe</button>
         </form>
       </div>
-
-      <div class="footer_navigation">
-        <div class="segment">
-          <p class="section_title">Main Pages</p>
-          <nav class="contents_navig">
-            <a class="footer_link" href="index.html">Home</a>
-            <a class="footer_link" href="about.html">Discover Jahaaj</a>
-            <a class="footer_link" href="manufacturing-process.html">Manufacturing &amp; Capabilities</a>
-            <a class="footer_link" href="products-catalog-elementor.html">Explore Our Products</a>
-            <a class="footer_link" href="contact.html">Connect</a>
-          </nav>
-        </div>
-
-        <div class="segment">
-          <p class="section_title">Categories</p>
-          <nav class="contents_navig">
-            <a class="footer_link" href="poultry-category-elementor.html">Poultry</a>
-            <a class="footer_link" href="ruminants-category-elementor.html">Ruminants</a>
-            <a class="footer_link" href="pet-category-elementor.html">Pet</a>
-            <a class="footer_link" href="aquaculture-category-elementor.html">Aquaculture</a>
-            <a class="footer_link" href="swine-category-elementor.html">Swine</a>
-          </nav>
-        </div>
-
-        <div class="segment">
-          <p class="section_title">Utility Pages</p>
-          <nav class="contents_navig">
-            <a class="footer_link" href="sitemap.html">Site Map</a>
-          </nav>
-        </div>
-      </div>
-
-      <div class="socials">
-        <p class="section_title">Socials</p>
-        <div class="social_contents">
-          <a class="footer_link" href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener">Facebook</a>
-          <a class="footer_link" href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="footer_link" href="https://maps.app.goo.gl/921Udb96QATnVTGM8" target="_blank" rel="noopener">Google Maps</a>
-          <a class="footer_link" href="#" target="_blank" rel="noopener">Instagram</a>
-          <a class="footer_link" href="#" target="_blank" rel="noopener">x.com</a>
+      <div><h4>Main Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products-catalog-elementor.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Categories</h4><ul><li><a href="poultry-category-elementor.html">Poultry</a></li><li><a href="ruminants-category-elementor.html">Ruminants</a></li><li><a href="pet-category-elementor.html">Pet</a></li><li><a href="aquaculture-category-elementor.html">Aquaculture</a></li><li><a href="swine-category-elementor.html">Swine</a></li></ul></div>
+      <div><h4>Utility Pages</h4><ul><li><a href="sitemap.html">Site Map</a></li></ul></div>
+      <div>
+        <h4>Social Media</h4>
+        <div class="socials">
+          <a href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.5-4.05 4.2v2.2H7.5V13h2.7v8h3.3z"/></svg></a>
+          <a href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+          <a href="https://maps.app.goo.gl/921Udb96QATnVTGM8" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></a>
         </div>
       </div>
     </div>
-
-    <hr class="divider">
-
-    <div class="footer_second_section">
-      <a class="footer_link" href="#privacy">Privacy Policy</a>
-      <span class="copyright_text">&copy; Jahaaj Healthcare Pvt. Ltd. All rights reserved.</span>
-      <a class="footer_link" href="#terms">Terms of Use</a>
+  </div>
+  <div class="foot__bottom">
+    <div class="container foot__bottom-row">
+      <a href="#">Privacy policy</a>
+      <p>&copy; Jahaaj Healthcare Pvt. Ltd. <b>All rights reserved.</b></p>
+      <a href="#">Terms of Use</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- ================= SCRIPTS ================= -->
-  <script>
-    // Dropdown Toggles for Desktop
-    document.querySelectorAll('[data-dropdown]').forEach(item => {
-      const btn = item.querySelector('button');
-      if (!btn) return;
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('[data-dropdown]').forEach(d => d.classList.remove('open'));
-        if (!isOpen) {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        } else {
-          btn.setAttribute('aria-expanded', 'false');
-        }
+
+<script>
+/* ---------- dropdown menus ---------- */
+const navItems = [...document.querySelectorAll('.nav__item[data-menu]')];
+function closeMenus(except){
+  navItems.forEach(it=>{
+    if(it===except) return;
+    it.classList.remove('open');
+    it.querySelector('.nav__link').setAttribute('aria-expanded','false');
+  });
+}
+navItems.forEach(item=>{
+  const trigger = item.querySelector('.nav__link');
+  const open = v =>{
+    item.classList.toggle('open', v);
+    trigger.setAttribute('aria-expanded', v ? 'true' : 'false');
+    if(v) closeMenus(item);
+  };
+  item.addEventListener('mouseenter', ()=> open(true));
+  item.addEventListener('mouseleave', ()=> open(false));
+  trigger.addEventListener('click', e=>{ e.preventDefault(); open(!item.classList.contains('open')); });
+  item.addEventListener('focusin', ()=> open(true));
+  item.addEventListener('focusout', e=>{ if(!item.contains(e.relatedTarget)) open(false); });
+});
+addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenus(null); });
+document.addEventListener('click', e=>{ if(!e.target.closest('.nav__item')) closeMenus(null); });
+
+/* ---------- mobile menu ---------- */
+const burger = document.querySelector('.nav__burger');
+const mnav = document.getElementById('mnav');
+burger.addEventListener('click', ()=>{
+  const open = mnav.hasAttribute('hidden');
+  mnav.toggleAttribute('hidden', !open);
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+});
+document.querySelectorAll('.mnav__top').forEach(t=>{
+  const sub = t.nextElementSibling;
+  if(!sub) return;
+  t.addEventListener('click', ()=>{
+    const open = !sub.classList.contains('open');
+    document.querySelectorAll('.mnav__sub').forEach(u=>u.classList.remove('open'));
+    document.querySelectorAll('.mnav__top').forEach(b=>b.setAttribute('aria-expanded','false'));
+    sub.classList.toggle('open', open);
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+mnav.addEventListener('click', e=>{
+  if(e.target.tagName==='A'){ mnav.setAttribute('hidden',''); burger.classList.remove('open'); }
+});
+
+/* ---------- nav state ---------- */
+const nav = document.getElementById('nav');
+let lastScrollY = scrollY;
+let navHidden = false;
+function paintNav(){
+  const y = Math.max(0, scrollY);
+  const menuOpen = navItems.some(it => it.classList.contains('open')) || !mnav.hasAttribute('hidden');
+  const delta = y - lastScrollY;
+  if(menuOpen || y < 80){
+    navHidden = false;
+  } else if(delta > 6){
+    navHidden = true;
+  } else if(delta < -6){
+    navHidden = false;
+  }
+  nav.classList.toggle('nav--hidden', navHidden);
+  lastScrollY = y;
+}
+let navTicking = false;
+function onNavScroll(){
+  if(navTicking) return; navTicking = true;
+  requestAnimationFrame(()=>{ paintNav(); navTicking = false; });
+}
+addEventListener('scroll', onNavScroll, {passive:true});
+addEventListener('resize', onNavScroll);
+onNavScroll();
+
+
+(function(){
+  var host = document.getElementById('jhcComboOptions');
+  if(!host) return;
+  var emptyState = document.getElementById('jhcComboEmpty');
+  var content = document.getElementById('jhcComboContent');
+  var challengesBox = document.getElementById('jhcComboChallenges');
+  var activesBox = document.getElementById('jhcComboActives');
+  var requestBtn = document.getElementById('jhcComboRequestBtn');
+
+  function update(){
+    var checked = Array.prototype.slice.call(host.querySelectorAll('input:checked'));
+    host.querySelectorAll('.jhc-combo-item').forEach(function(item){
+      item.classList.toggle('jhc-checked', item.querySelector('input').checked);
+    });
+
+    if(checked.length === 0){
+      emptyState.style.display = 'block';
+      content.style.display = 'none';
+      return;
+    }
+    emptyState.style.display = 'none';
+    content.style.display = 'block';
+
+    var challenges = [], activesSet = [];
+    checked.forEach(function(cb){
+      var parts = cb.value.split('|');
+      challenges.push(parts[0]);
+      parts[2].split('+').forEach(function(a){
+        a = a.trim();
+        if(a && activesSet.indexOf(a) === -1) activesSet.push(a);
       });
     });
 
-    document.addEventListener('click', () => {
-      document.querySelectorAll('[data-dropdown]').forEach(d => {
-        d.classList.remove('open');
-        const btn = d.querySelector('button');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
-      });
+    challengesBox.innerHTML = challenges.map(function(c){ return '<span class="jhc-tag jhc-challenge">'+c+'</span>'; }).join('');
+    activesBox.innerHTML = activesSet.map(function(a){ return '<span class="jhc-tag">'+a+'</span>'; }).join('');
+
+    var subject = 'Custom Combination Formulation Request Poultry';
+    var bodyLines = [
+      'Hello Jahaaj Healthcare team,',
+      '',
+      "I'd like to request a custom combination formulation for Poultry, addressing the following challenges in a single product:",
+      '',
+    ].concat(challenges.map(function(c){ return '- ' + c; })).concat([
+      '',
+      'Combined active ingredients of interest:',
+      activesSet.join(', '),
+      '',
+      'Please share feasibility, MOQ, lead time, and next steps for private label manufacturing.',
+      '',
+      'Thank you.'
+    ]);
+    requestBtn.href = 'mailto:sales@jahaajhealthcare.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+  }
+
+  host.addEventListener('change', update);
+  update();
+})();
+
+/* ---------- scroll reveal ---------- */
+(function(){
+  var els = document.querySelectorAll('.jhc-cat [data-jr], .jhc-cat [data-jr-stagger]');
+  if(!els.length) return;
+  els.forEach(function(el){
+    if(el.hasAttribute('data-jr-stagger')){
+      Array.prototype.forEach.call(el.children, function(child,ci){ child.style.setProperty('--i', ci); });
+    }
+  });
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('jr-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting || entry.boundingClientRect.top <= window.innerHeight){
+        entry.target.classList.add('jr-in');
+        io.unobserve(entry.target);
+      }
     });
+  }, {threshold:0, rootMargin:'0px 0px 60px 0px'});
 
-    // Mobile Hamburger Toggle
-    const navBurger = document.getElementById('navBurger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (navBurger && mobileMenu) {
-      navBurger.addEventListener('click', () => {
-        navBurger.classList.toggle('open');
-        mobileMenu.classList.toggle('active');
-      });
-
-      document.querySelectorAll('.mobile-group button').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const sub = btn.nextElementSibling;
-          if (sub) {
-            sub.classList.toggle('open');
-          }
-        });
-      });
+  els.forEach(function(el){
+    var rect = el.getBoundingClientRect();
+    if(rect.top <= (window.innerHeight || document.documentElement.clientHeight)){
+      el.classList.add('jr-in');
+    } else {
+      io.observe(el);
     }
+  });
+})();
 
-    // Scroll Navbar effect
-    const navbar = document.getElementById('nav');
-    if (navbar) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
-          navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
-          navbar.style.boxShadow = '0 12px 36px rgba(0, 0, 0, 0.12)';
-        } else {
-          navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.45)';
-          navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.08)';
-        }
-      }, { passive: true });
-    }
-  </script>
 
+/* ---------- challenge split panel ---------- */
+document.querySelectorAll('.jhc-ch-row').forEach(function(row){
+  row.addEventListener('click',function(){
+    var idx=row.dataset.idx;
+    var sec=row.closest('.jhc-challenges');
+    sec.querySelectorAll('.jhc-ch-row').forEach(function(r){r.classList.remove('active');});
+    sec.querySelectorAll('.jhc-ch-detail').forEach(function(d){d.classList.remove('active');});
+    row.classList.add('active');
+    sec.querySelector('.jhc-ch-detail[data-idx="'+idx+'"]').classList.add('active');
+    if(window.innerWidth <= 768){ row.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}); }
+  });
+});
+</script>
 </body>
 </html>
