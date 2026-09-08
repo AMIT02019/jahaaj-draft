@@ -1355,7 +1355,10 @@ let ticking = false;
 function onScroll(){
   if(ticking) return; ticking = true;
   requestAnimationFrame(()=>{
-    paintReveal(); paintNav(); paintTimeline(); paintParallax();
+    if(typeof paintReveal === 'function') paintReveal();
+    if(typeof paintNav === 'function') paintNav();
+    if(typeof paintTimeline === 'function') paintTimeline();
+    if(typeof paintParallax === 'function') paintParallax();
     ticking = false;
   });
 }
