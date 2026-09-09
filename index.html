@@ -949,6 +949,319 @@ button {
     text-align: center;
   }
 }
+
+/* ============ PRIMARY FLOATING GLASS NAVBAR ============ */
+.nav {
+  position: fixed !important;
+  top: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 92vw !important;
+  max-width: 1440px !important;
+  height: 72px !important;
+  padding: 0 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(14px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08) !important;
+  z-index: 1000 !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease !important;
+  box-sizing: border-box !important;
+}
+
+.nav.nav--hidden {
+  transform: translate(-50%, -120%) !important;
+}
+
+.nav__logo {
+  display: flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+}
+
+.nav__logo img {
+  height: 52px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.08)) !important;
+}
+
+.nav__menu {
+  position: static !important;
+  transform: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.nav__item {
+  position: relative !important;
+}
+
+.nav__link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 14.5px !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  font-family: inherit !important;
+  text-decoration: none !important;
+  border: 0 !important;
+  background: none !important;
+  cursor: pointer !important;
+}
+
+.nav__link:hover,
+.nav__item.open .nav__link {
+  background: rgba(14, 50, 82, 0.06) !important;
+  color: #0e3252 !important;
+}
+
+.nav__link.active {
+  color: #000000 !important;
+  font-weight: 700 !important;
+  background: #f3f4f6 !important;
+}
+
+.nav__link svg {
+  width: 9px !important;
+  height: 9px !important;
+  opacity: 0.6 !important;
+  transition: transform 0.25s ease !important;
+}
+
+.nav__item.open .nav__link svg {
+  transform: rotate(180deg) !important;
+}
+
+.dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  min-width: 240px !important;
+  padding-top: 14px !important;
+  transform: translateX(-50%) translateY(8px) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s !important;
+  z-index: 1010 !important;
+}
+
+.nav__item.open .dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+.dropdown ul {
+  list-style: none !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  padding: 8px !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  margin: 0 !important;
+}
+
+.dropdown li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.dropdown li a {
+  display: block !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  padding: 10px 14px !important;
+  border-radius: 10px !important;
+  white-space: nowrap !important;
+  transition: background 0.18s ease, color 0.18s ease !important;
+  text-decoration: none !important;
+}
+
+.dropdown li a:hover {
+  background: #f3f4f6 !important;
+  color: #0e3252 !important;
+}
+
+.nav__cta-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 10px 22px !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.3) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  flex: 0 0 auto !important;
+}
+
+.nav__cta-btn:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(194, 65, 12, 0.45) !important;
+}
+
+.nav__burger {
+  display: none !important;
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid #e5e7eb !important;
+  cursor: pointer !important;
+  margin-left: auto !important;
+}
+
+.nav__burger span {
+  display: block !important;
+  width: 18px !important;
+  height: 2px !important;
+  background: #111 !important;
+  position: relative !important;
+}
+
+.nav__burger span::before,
+.nav__burger span::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  width: 18px !important;
+  height: 2px !important;
+  background: #111 !important;
+  transition: 0.25s ease !important;
+}
+
+.nav__burger span::before { top: -6px !important; }
+.nav__burger span::after { top: 6px !important; }
+
+.nav__burger.open span { background: transparent !important; }
+.nav__burger.open span::before { top: 0 !important; transform: rotate(45deg) !important; }
+.nav__burger.open span::after { top: 0 !important; transform: rotate(-45deg) !important; }
+
+/* Mobile Drawer Menu */
+.mnav {
+  position: fixed !important;
+  inset: 86px 16px auto !important;
+  z-index: 999 !important;
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  max-height: calc(100vh - 110px) !important;
+  overflow-y: auto !important;
+}
+
+.mnav__inner {
+  padding: 16px !important;
+}
+
+.mnav__group {
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.mnav__group:last-of-type {
+  border-bottom: 0 !important;
+}
+
+.mnav__top {
+  display: flex !important;
+  width: 100% !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 15.5px !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  padding: 14px 8px !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  background: none !important;
+  border: 0 !important;
+  cursor: pointer !important;
+}
+
+.mnav__top svg {
+  width: 12px !important;
+  height: 12px !important;
+  opacity: 0.5 !important;
+  transition: transform 0.25s ease !important;
+}
+
+.mnav__top[aria-expanded="true"] svg {
+  transform: rotate(180deg) !important;
+}
+
+.mnav__sub {
+  list-style: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  transition: max-height 0.3s ease !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.mnav__sub.open {
+  max-height: 320px !important;
+}
+
+.mnav__sub li a {
+  display: block !important;
+  font-size: 14px !important;
+  color: #4b5563 !important;
+  padding: 10px 8px 10px 18px !important;
+  text-decoration: none !important;
+}
+
+.mnav__cta {
+  width: 100% !important;
+  justify-content: center !important;
+  margin-top: 14px !important;
+  display: inline-flex !important;
+}
+
+@media (max-width: 1240px) {
+  .nav__menu {
+    display: none !important;
+  }
+  .nav__burger {
+    display: flex !important;
+  }
+  .nav__cta-btn {
+    display: none !important;
+  }
+  .mnav__cta {
+    display: inline-flex !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -965,7 +1278,7 @@ button {
     </div>
 
     <div class="nav__item" data-menu>
-      <button class="nav__link" aria-expanded="false" aria-controls="dd-discover">
+      <button class="nav__link " aria-expanded="false" aria-controls="dd-discover">
         Discover Jahaaj <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg>
       </button>
       <div class="dropdown" id="dd-discover">
@@ -979,7 +1292,7 @@ button {
     </div>
 
     <div class="nav__item" data-menu>
-      <button class="nav__link" aria-expanded="false" aria-controls="dd-mfg">
+      <button class="nav__link " aria-expanded="false" aria-controls="dd-mfg">
         Manufacturing &amp; Capabilities <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg>
       </button>
       <div class="dropdown" id="dd-mfg">
@@ -992,7 +1305,7 @@ button {
     </div>
 
     <div class="nav__item" data-menu>
-      <button class="nav__link" aria-expanded="false" aria-controls="dd-products">
+      <button class="nav__link " aria-expanded="false" aria-controls="dd-products">
         Explore Our Products <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg>
       </button>
       <div class="dropdown" id="dd-products">
@@ -1008,7 +1321,7 @@ button {
     </div>
 
     <div class="nav__item" data-menu>
-      <button class="nav__link" aria-expanded="false" aria-controls="dd-connect">
+      <button class="nav__link " aria-expanded="false" aria-controls="dd-connect">
         Connect <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg>
       </button>
       <div class="dropdown" id="dd-connect">
@@ -1070,7 +1383,7 @@ button {
       </ul>
     </div>
 
-    <a class="explore-btn mnav__cta" href="contact.html">Start With Us <span class="btn-arrow">&rarr;</span></a>
+    <a class="nav__cta-btn mnav__cta" href="contact.html">Start With Us</a>
   </div>
 </div>
 
