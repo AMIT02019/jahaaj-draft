@@ -1194,7 +1194,70 @@
       align-items: center;
       gap: 8px;
     }
-  </style>
+  
+    .jhc-table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+    .jhc-packaging-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    @media (max-width: 992px) {
+      .jhc-gallery-card {
+        position: static;
+        top: auto;
+        margin-bottom: 24px;
+      }
+    }
+    @media (max-width: 600px) {
+      .jhc-tab-nav {
+        flex-direction: column;
+        border-bottom: none;
+        gap: 6px;
+      }
+      .jhc-tab-btn {
+        width: 100%;
+        justify-content: flex-start;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-color);
+      }
+      .jhc-tab-btn.active::after {
+        display: none;
+      }
+      .jhc-tab-btn.active {
+        border-color: var(--accent);
+        background: rgba(255, 107, 53, 0.08);
+      }
+      .jhc-action-row {
+        flex-direction: column;
+      }
+      .jhc-btn-primary-quote, .jhc-btn-secondary-catalog {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+      .jhc-card-actions {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .jhc-btn-details, .jhc-btn-quick, .jhc-btn-quote {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+</style>
 
   <!-- OpenGraph & Structured Data -->
   <meta property="og:type" content="product">
@@ -1374,7 +1437,7 @@
             </div>
 
             <div class="jhc-packaging-card">
-              <h4><i class="fas fa-box-open"></i> Standard Packaging Formats:</h4>
+              <div class="jhc-packaging-title"><i class="fas fa-box-open"></i> Standard Packaging Formats:</div>
               <ul id="detailPackagingList">
                 <li><i class="fas fa-check"></i> 1kg Aluminum Foil Pouch</li>
                 <li><i class="fas fa-check"></i> 25kg Poly-Lined Kraft Paper Bag</li>

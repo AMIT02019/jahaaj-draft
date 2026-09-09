@@ -901,7 +901,40 @@
       align-items: center;
       gap: 8px;
     }
-  </style>
+  
+    @media (max-width: 600px) {
+      .jhc-species-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .jhc-tab-pill {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .jhc-format-pills {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .jhc-format-pill {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .jhc-card-actions {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .jhc-btn-details, .jhc-btn-quick, .jhc-btn-quote {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+</style>
 </head>
 <body>
 <div id="scrollProgress"></div>
