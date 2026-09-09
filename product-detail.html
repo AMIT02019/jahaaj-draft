@@ -1195,6 +1195,35 @@
       gap: 8px;
     }
   </style>
+
+  <!-- OpenGraph & Structured Data -->
+  <meta property="og:type" content="product">
+  <meta property="og:site_name" content="Jahaaj Healthcare">
+  <meta property="og:title" content="Veterinary & Animal Health Product Specification | Jahaaj Healthcare">
+  <meta property="og:description" content="Detailed technical specifications, active ingredients composition, biological mechanism, dosage guide, and CDMO private labeling options for Jahaaj Healthcare formulations.">
+  <meta property="og:image" content="https://jahaaj-homepage.vercel.app/assets/prod_format_powder.jpg">
+  <meta property="og:url" content="https://jahaaj-homepage.vercel.app/product-detail.html">
+  
+  <script type="application/ld+json" id="productJsonLd">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Precision Veterinary Formulation",
+    "brand": {
+      "@type": "Brand",
+      "name": "Jahaaj Healthcare"
+    },
+    "description": "Science-backed animal health and feed nutrition formulation manufactured under GMP+ and ISO 9001:2015 certified standards.",
+    "category": "Veterinary Supplement / Feed Additive",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "USD",
+      "price": "Contact for Quote"
+    }
+  }
+  </script>
+
 </head>
 <body>
   <div id="scrollProgress"></div>
@@ -1833,6 +1862,30 @@
       document.getElementById('inqProduct').value = `${p.title} (${p.format})`;
       document.getElementById('inqMessage').placeholder = `Inquiring about ${p.title}. Please provide MOQ, technical dossier, sample availability, and custom private label packaging details for our business.`;
 
+      
+      // Update Schema.org JSON-LD dynamically
+      const jsonLdEl = document.getElementById('productJsonLd');
+      if (jsonLdEl) {
+        jsonLdEl.textContent = JSON.stringify({
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": p.title,
+          "brand": {
+            "@type": "Brand",
+            "name": "Jahaaj Healthcare"
+          },
+          "description": p.description,
+          "category": p.speciesCategory,
+          "image": "https://jahaaj-homepage.vercel.app/" + p.image.split('?')[0],
+          "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceCurrency": "USD",
+            "price": "Contact for Quote"
+          }
+        }, null, 2);
+      }
+    
       // Load Related Products from same species (or other species if count is small)
       loadRelatedProducts(p);
     }
