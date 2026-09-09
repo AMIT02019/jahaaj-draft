@@ -1194,6 +1194,346 @@
 }
 
 </style>
+<style id="canonical-navbar-style">
+
+/* ==========================================================================
+   PRIMARY FLOATING GLASS NAVBAR (CANONICAL)
+   ========================================================================== */
+.nav {
+  position: fixed !important;
+  top: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 92vw !important;
+  max-width: 1440px !important;
+  height: 72px !important;
+  padding: 0 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08) !important;
+  z-index: 1000 !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease !important;
+  box-sizing: border-box !important;
+}
+
+.nav.nav--hidden {
+  transform: translate(-50%, -120%) !important;
+}
+
+.nav__logo {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+}
+
+.nav__logo img {
+  height: 52px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.08)) !important;
+  display: block !important;
+  transition: transform 0.3s ease !important;
+}
+
+.nav__logo:hover img {
+  transform: scale(1.03) !important;
+}
+
+.nav__menu {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.nav__item {
+  position: relative !important;
+}
+
+.nav__link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 14.5px !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  border: none !important;
+  text-decoration: none !important;
+  font-family: inherit !important;
+}
+
+.nav__link:hover,
+.nav__item.open .nav__link {
+  background: rgba(14, 50, 82, 0.06) !important;
+  color: #0e3252 !important;
+}
+
+.nav__link.active {
+  color: #000000 !important;
+  font-weight: 700 !important;
+  background: #f3f4f6 !important;
+}
+
+.nav__link svg {
+  width: 9px !important;
+  height: 9px !important;
+  opacity: 0.6 !important;
+  transition: transform 0.25s ease !important;
+}
+
+.nav__item.open .nav__link svg {
+  transform: rotate(180deg) !important;
+}
+
+.dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  min-width: 240px !important;
+  padding-top: 14px !important;
+  transform: translateX(-50%) translateY(8px) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s !important;
+  z-index: 1010 !important;
+}
+
+.nav__item.open .dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+.dropdown ul {
+  list-style: none !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  padding: 8px !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  margin: 0 !important;
+}
+
+.dropdown li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.dropdown li a {
+  display: block !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  padding: 10px 14px !important;
+  border-radius: 10px !important;
+  white-space: nowrap !important;
+  transition: background 0.18s ease, color 0.18s ease !important;
+  text-decoration: none !important;
+}
+
+.dropdown li a:hover {
+  background: #f3f4f6 !important;
+  color: #0e3252 !important;
+}
+
+.nav__cta-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 10px 22px !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.3) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  white-space: nowrap !important;
+  position: relative !important;
+  overflow: hidden !important;
+  text-decoration: none !important;
+}
+
+.nav__cta-btn:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(194, 65, 12, 0.45) !important;
+  color: #ffffff !important;
+}
+
+.nav__burger {
+  display: none !important;
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid #e5e7eb !important;
+  cursor: pointer !important;
+}
+
+.nav__burger span {
+  display: block !important;
+  width: 18px !important;
+  height: 2px !important;
+  background: #111 !important;
+  position: relative !important;
+}
+
+.nav__burger span::before,
+.nav__burger span::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  width: 18px !important;
+  height: 2px !important;
+  background: #111 !important;
+  transition: 0.25s ease !important;
+}
+
+.nav__burger span::before { top: -6px !important; }
+.nav__burger span::after { top: 6px !important; }
+
+.nav__burger.open span { background: transparent !important; }
+.nav__burger.open span::before { top: 0 !important; transform: rotate(45deg) !important; }
+.nav__burger.open span::after { top: 0 !important; transform: rotate(-45deg) !important; }
+
+@media (max-width: 992px) {
+  .nav {
+    top: 12px !important;
+    width: calc(100vw - 24px) !important;
+    height: 64px !important;
+    padding: 0 16px !important;
+  }
+  .nav__menu { display: none !important; }
+  .nav__burger { display: flex !important; }
+  .nav__cta-btn { display: none !important; }
+}
+
+</style>
+<style id="canonical-alignment-style">
+
+/* ==========================================================================
+   CANONICAL SITE-WIDE ALIGNMENT & LAYOUT HARMONIZATION
+   ========================================================================== */
+html, body {
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+/* Standardized 1280px Page Container */
+.container,
+.jhc-container {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+  .container,
+  .jhc-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* Master Footer Alignment with 1280px Container */
+.footer-section {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.footer-first-section,
+.footer-second-section,
+.foot__grid,
+.foot__bottom-row {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+  .footer-first-section,
+  .footer-second-section,
+  .foot__grid,
+  .foot__bottom-row {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* Universal Card Flex Height & Bottom Button Alignment */
+.jhc-card,
+.team-card,
+.pillar-card,
+.pipe-card,
+.step-card,
+.sizes-card,
+.idea-card,
+.tri-card,
+.fami-card,
+.dir-card,
+.val-card,
+.info-card,
+.map-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.jhc-card-body,
+.dir-card-body,
+.team-card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+}
+
+.jhc-card-desc,
+.team-bio,
+.step-desc,
+.pillar-desc,
+.card-desc,
+.dir-card-desc {
+  flex-grow: 1 !important;
+}
+
+.jhc-card-footer,
+.jhc-card-actions,
+.dir-card-action,
+.team-contact {
+  margin-top: auto !important;
+}
+
+</style>
 </head>
 <body>
 <div id="scrollProgress"></div>
@@ -1204,7 +1544,7 @@
 </a>
 <nav class="nav__menu" id="navMenu">
 <div class="nav__item">
-<a class="nav__link active" href="index.html">Home</a>
+<a class="nav__link" href="index.html">Home</a>
 </div>
 <div class="nav__item" data-menu="">
 <button aria-controls="dd-discover" aria-expanded="false" class="nav__link">
@@ -1232,7 +1572,7 @@
 </div>
 </div>
 <div class="nav__item" data-menu="">
-<button aria-controls="dd-products" aria-expanded="false" class="nav__link">
+<button aria-controls="dd-products" aria-expanded="false" class="nav__link active">
         Explore Our Products <svg aria-hidden="true" viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg>
 </button>
 <div class="dropdown" id="dd-products">
