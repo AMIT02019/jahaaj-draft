@@ -929,9 +929,355 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   }
 }
 
+
+
+/* ============ JAHAJ MODERN DESIGN SYSTEM HARMONIZATION ============ */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --navy: #0e3252;
+  --navy-dark: #071f33;
+  --navy-deep: #0a253e;
+  --orange: #c2410c;
+  --orange-bright: #ea580c;
+  --orange-light: #fff7ed;
+  --amber: #f59e0b;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+  --white: #ffffff;
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --jhc-navy: var(--navy);
+  --jhc-navy-dark: var(--navy-dark);
+  --jhc-orange: var(--orange);
+  --jhc-orange-bright: var(--orange-bright);
+  --jhc-amber: var(--amber);
+  --jhc-dark-green: var(--navy);
+  --jhc-forest: var(--navy);
+  --jhc-olive: var(--orange);
+  --jhc-lime: var(--orange-bright);
+  --jhc-accent: var(--orange-bright);
+  --jhc-bg: var(--gray-50);
+  --jhc-card-bg: #ffffff;
+  --jhc-text: var(--gray-800);
+  --jhc-muted: var(--gray-500);
+  --jhc-border: var(--gray-200);
+  --jhc-subtle: #f8fafc;
+  --jhc-font: var(--font-main);
+}
+
+html, body {
+  font-family: var(--font-main) !important;
+  background-color: var(--gray-50) !important;
+  color: var(--gray-800) !important;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ SCROLL PROGRESS BAR ============ */
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #ea580c, #f59e0b, #c2410c);
+  width: 0%;
+  z-index: 10001;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(234, 88, 12, 0.6);
+}
+
+/* ============ HERO HARMONIZATION ============ */
+.jhc-hero, .jhc-catalog-hero {
+  position: relative !important;
+  background: radial-gradient(circle at 50% 15%, rgba(234, 88, 12, 0.15) 0%, rgba(14, 50, 82, 0) 70%),
+              linear-gradient(180deg, #0e3252 0%, #071f33 100%) !important;
+  padding: 160px 0 85px !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  overflow: hidden;
+}
+
+.jhc-hero h1, .jhc-catalog-hero h1 {
+  font-size: clamp(34px, 4.8vw, 54px) !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  line-height: 1.15 !important;
+  margin-bottom: 20px !important;
+  letter-spacing: -0.02em !important;
+}
+
+.jhc-hero p, .jhc-catalog-hero p {
+  font-size: clamp(16px, 1.8vw, 18.5px) !important;
+  line-height: 1.68 !important;
+  color: rgba(241, 245, 249, 0.9) !important;
+  max-width: 860px !important;
+  margin: 0 auto 36px !important;
+}
+
+.jhc-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 7px 20px !important;
+  border-radius: 9999px !important;
+  background: rgba(234, 88, 12, 0.15) !important;
+  border: 1px solid rgba(234, 88, 12, 0.35) !important;
+  color: #fb923c !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  margin-bottom: 20px !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* ============ BUTTON HARMONIZATION ============ */
+.jhc-btn, .jhc-pill-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
+  color: #ffffff !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  padding: 12px 28px !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 8px 22px rgba(194, 65, 12, 0.35) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  text-decoration: none !important;
+}
+
+.jhc-btn::after, .jhc-pill-cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+}
+
+.jhc-btn:hover::after, .jhc-pill-cta:hover::after {
+  left: 140%;
+}
+
+.jhc-btn:hover, .jhc-pill-cta:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 12px 28px rgba(194, 65, 12, 0.5) !important;
+  color: #ffffff !important;
+}
+
+/* ============ CARD HARMONIZATION ============ */
+.jhc-card {
+  background: #ffffff !important;
+  border: 1px solid var(--gray-200) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 14px rgba(14, 50, 82, 0.04) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.jhc-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 45px rgba(14, 50, 82, 0.12) !important;
+  border-color: rgba(234, 88, 12, 0.3) !important;
+}
+
+.jhc-cap-item {
+  background: #ffffff !important;
+  border: 1px solid var(--gray-200) !important;
+  border-radius: 18px !important;
+  padding: 24px 20px !important;
+  box-shadow: 0 4px 14px rgba(14, 50, 82, 0.04) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.jhc-cap-item:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 36px rgba(14, 50, 82, 0.1) !important;
+  border-color: rgba(234, 88, 12, 0.3) !important;
+}
+
+/* ============ TABS & TOOLBAR ============ */
+.jhc-tab-btn {
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 10px 20px !important;
+  transition: all 0.25s ease !important;
+  border: 1px solid var(--gray-200) !important;
+  background: #ffffff !important;
+  color: var(--gray-700) !important;
+  cursor: pointer;
+}
+
+.jhc-tab-btn:hover {
+  border-color: var(--orange-bright) !important;
+  color: var(--orange) !important;
+}
+
+.jhc-tab-btn.jhc-active {
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.3) !important;
+}
+
+.jhc-search-box input {
+  font-family: inherit !important;
+  border-radius: 9999px !important;
+  padding: 14px 22px 14px 44px !important;
+  border: 1px solid var(--gray-300) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+  outline: none;
+}
+
+.jhc-search-box input:focus {
+  border-color: var(--orange-bright) !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15) !important;
+}
+
+/* ============ FOOTER HARMONIZATION ============ */
+.footer-section {
+  background: var(--navy) !important;
+  color: var(--white) !important;
+  padding: 80px 4% 30px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.footer-first-section {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 48px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+.logo-and-newsletter {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  max-width: 320px !important;
+}
+
+.footer-logo-img {
+  height: 48px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+.newsletter-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.newsletter-input {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: var(--white) !important;
+  padding: 12px 18px !important;
+  border-radius: 9999px !important;
+  outline: none !important;
+  font-size: 14px !important;
+  font-family: inherit !important;
+}
+
+.newsletter-input:focus {
+  border-color: var(--orange-bright) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.footer-navigation {
+  display: flex !important;
+  gap: 64px !important;
+}
+
+.contents-navig,
+.socials {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.contents-navig .section-title,
+.socials .section-title {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--orange-bright) !important;
+  margin-bottom: 6px !important;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+}
+
+.footer-link:hover {
+  color: var(--white) !important;
+  transform: translateX(4px) !important;
+}
+
+.social-contents {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.footer-divider {
+  border: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  margin: 60px auto 24px !important;
+  max-width: 1400px !important;
+}
+
+.footer-second-section {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  font-size: 13px !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+@media (max-width: 900px) {
+  .footer-first-section { flex-direction: column !important; gap: 36px !important; }
+}
+@media (max-width: 640px) {
+  .footer-navigation { flex-direction: column !important; gap: 24px !important; }
+  .footer-second-section { flex-direction: column !important; gap: 12px !important; text-align: center !important; }
+}
+
 </style>
 </head>
 <body>
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scrollProgress"></div>
+
 
 <!-- ================= FLOATING GLASS NAVBAR ================= -->
 <header class="nav" id="nav">
@@ -978,7 +1324,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       <div class="dropdown" id="dd-products">
         <ul>
           <li><a href="products-catalog-elementor.html">All Products</a></li>
-          <li><a href="poultry-category-elementor.html">Poultry</a></li>
+          <li><a href="poultry-category-elementor.html" style="color: #c2410c; font-weight: 700; background: rgba(194,65,12,0.08);">Poultry &bull;</a></li>
           <li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
           <li><a href="pet-category-elementor.html">Companion Animals</a></li>
           <li><a href="swine-category-elementor.html">Swine</a></li>
@@ -1033,7 +1379,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
       <button class="mnav__top" aria-expanded="false">Explore Our Products <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
       <ul class="mnav__sub">
         <li><a href="products-catalog-elementor.html">All Products</a></li>
-        <li><a href="poultry-category-elementor.html">Poultry</a></li>
+        <li><a href="poultry-category-elementor.html" style="color: #c2410c; font-weight: 700; background: rgba(194,65,12,0.08);">Poultry &bull;</a></li>
         <li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
         <li><a href="pet-category-elementor.html">Companion Animals</a></li>
         <li><a href="swine-category-elementor.html">Swine</a></li>
@@ -1350,43 +1696,244 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   </section>
 
 <!-- ================= FOOTER ================= -->
-<footer class="foot">
-  <div class="container">
-    <div class="foot__grid">
-      <div>
-        <a class="foot__logo" href="index.html" aria-label="Jahaaj Healthcare home">
-          <img src="assets/logo.png?v=20260812v14" alt="Jahaaj Healthcare Pvt. Ltd.">
-        </a>
-        <h3>Sign up for our newsletter today.</h3>
-        <form class="news" onsubmit="return false">
-          <input type="email" placeholder="Your email" aria-label="Your email">
-          <button type="submit">Subscribe</button>
-        </form>
+<!-- ================= FOOTER ================= -->
+<footer class="footer-section">
+  <div class="footer-first-section">
+    <!-- Brand & Newsletter -->
+    <div class="logo-and-newsletter">
+      <a href="index.html" class="footer-logo" aria-label="Jahaaj Healthcare Home">
+        <img src="assets/Jahaaj_Footer_Logo-COd83Cre.png" alt="Jahaaj Healthcare Pvt. Ltd." class="footer-logo-img" oncontextmenu="return false;">
+      </a>
+      <form class="newsletter-form" onsubmit="return false">
+        <input type="email" placeholder="Your email address" class="newsletter-input" aria-label="Your email address">
+      </form>
+    </div>
+
+    <!-- Nav Columns -->
+    <div class="footer-navigation">
+      <div class="contents-navig">
+        <p class="section-title">Main Pages</p>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">Discover Jahaaj</a>
+        <a href="manufacturing-process.html" class="footer-link">Manufacturing &amp; Capabilities</a>
+        <a href="products-catalog-elementor.html" class="footer-link">Explore Our Products</a>
+        <a href="contact.html" class="footer-link">Connect</a>
       </div>
-      <div><h4>Main Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products-catalog-elementor.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-      <div><h4>Categories</h4><ul><li><a href="poultry-category-elementor.html">Poultry</a></li><li><a href="ruminants-category-elementor.html">Ruminants</a></li><li><a href="pet-category-elementor.html">Pet</a></li><li><a href="aquaculture-category-elementor.html">Aquaculture</a></li><li><a href="swine-category-elementor.html">Swine</a></li></ul></div>
-      <div><h4>Utility Pages</h4><ul><li><a href="sitemap.html">Site Map</a></li></ul></div>
-      <div>
-        <h4>Social Media</h4>
-        <div class="socials">
-          <a href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.5-4.05 4.2v2.2H7.5V13h2.7v8h3.3z"/></svg></a>
-          <a href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
-          <a href="https://maps.app.goo.gl/921Udb96QATnVTGM8" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></a>
-        </div>
+
+      <div class="contents-navig">
+        <p class="section-title">Categories</p>
+        <a href="poultry-category-elementor.html" class="footer-link">Poultry</a>
+        <a href="ruminants-category-elementor.html" class="footer-link">Ruminants</a>
+        <a href="pet-category-elementor.html" class="footer-link">Pet</a>
+        <a href="aquaculture-category-elementor.html" class="footer-link">Aquaculture</a>
+        <a href="swine-category-elementor.html" class="footer-link">Swine</a>
+      </div>
+
+      <div class="contents-navig">
+        <p class="section-title">Utility Pages</p>
+        <a href="sitemap.html" class="footer-link">Site Map</a>
+      </div>
+    </div>
+
+    <!-- Socials -->
+    <div class="socials">
+      <p class="section-title">Socials</p>
+      <div class="social-contents">
+        <a href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener" class="footer-link">Facebook</a>
+        <a href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-link">Instagram</a>
+        <a href="https://x.com" target="_blank" rel="noopener" class="footer-link">x.com</a>
       </div>
     </div>
   </div>
-  <div class="foot__bottom">
-    <div class="container foot__bottom-row">
-      <a href="#">Privacy policy</a>
-      <p>&copy; Jahaaj Healthcare Pvt. Ltd. <b>All rights reserved.</b></p>
-      <a href="#">Terms of Use</a>
-    </div>
+
+  <hr class="footer-divider">
+
+  <div class="footer-second-section">
+    <a href="#privacy" class="footer-link">Privacy Policy</a>
+    <span class="copyright-text">&copy; Jahaaj Healthcare Pvt. Ltd. All rights reserved.</span>
+    <a href="#terms" class="footer-link">Terms of Use</a>
   </div>
 </footer>
 
 
 <script>
+
+    /* ---------- Dropdown Navigation ---------- */
+    const navItems = [...document.querySelectorAll('.nav__item[data-menu]')];
+    function closeMenus(except) {
+      navItems.forEach(it => {
+        if (it === except) return;
+        it.classList.remove('open');
+        const btn = it.querySelector('.nav__link');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    navItems.forEach(item => {
+      const trigger = item.querySelector('.nav__link');
+      const open = v => {
+        item.classList.toggle('open', v);
+        if (trigger) trigger.setAttribute('aria-expanded', v ? 'true' : 'false');
+        if (v) closeMenus(item);
+      };
+      item.addEventListener('mouseenter', () => open(true));
+      item.addEventListener('mouseleave', () => open(false));
+      if (trigger) {
+        trigger.addEventListener('click', e => {
+          e.preventDefault();
+          open(!item.classList.contains('open'));
+        });
+      }
+      item.addEventListener('focusin', () => open(true));
+      item.addEventListener('focusout', e => {
+        if (!item.contains(e.relatedTarget)) open(false);
+      });
+    });
+
+    addEventListener('keydown', e => { if (e.key === 'Escape') closeMenus(null); });
+    document.addEventListener('click', e => { if (!e.target.closest('.nav__item')) closeMenus(null); });
+
+    /* ---------- Mobile Drawer Navigation ---------- */
+    const burger = document.querySelector('.nav__burger');
+    const mnav = document.getElementById('mnav');
+    if (burger && mnav) {
+      burger.addEventListener('click', () => {
+        const open = mnav.hasAttribute('hidden');
+        mnav.toggleAttribute('hidden', !open);
+        burger.classList.toggle('open', open);
+        burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+    }
+
+    document.querySelectorAll('.mnav__top').forEach(t => {
+      const sub = t.nextElementSibling;
+      if (!sub) return;
+      t.addEventListener('click', () => {
+        const open = !sub.classList.contains('open');
+        document.querySelectorAll('.mnav__sub').forEach(u => u.classList.remove('open'));
+        document.querySelectorAll('.mnav__top').forEach(b => b.setAttribute('aria-expanded', 'false'));
+        sub.classList.toggle('open', open);
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+
+    if (mnav) {
+      mnav.addEventListener('click', e => {
+        if (e.target.tagName === 'A') {
+          mnav.setAttribute('hidden', '');
+          if (burger) burger.classList.remove('open');
+        }
+      });
+    }
+
+    /* ---------- Scroll Progress & Navbar Auto-Hide ---------- */
+    const nav = document.getElementById('nav');
+    const scrollProgress = document.getElementById('scrollProgress');
+    let lastScrollY = scrollY;
+    let navHidden = false;
+
+    function handleScrollEffects() {
+      const y = Math.max(0, scrollY);
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      
+      // Progress Bar
+      if (scrollProgress && docHeight > 0) {
+        const progress = (y / docHeight) * 100;
+        scrollProgress.style.width = progress + '%';
+      }
+
+      // Navbar Hide/Show
+      const menuOpen = navItems.some(it => it.classList.contains('open')) || (mnav && !mnav.hasAttribute('hidden'));
+      const delta = y - lastScrollY;
+      if (menuOpen || y < 80) {
+        navHidden = false;
+      } else if (delta > 6) {
+        navHidden = true;
+      } else if (delta < -6) {
+        navHidden = false;
+      }
+      if (nav) nav.classList.toggle('nav--hidden', navHidden);
+      lastScrollY = y;
+    }
+
+    /* ---------- Scroll-Triggered Animations (Intersection Observer) ---------- */
+    function initScrollAnimations() {
+      const animEls = document.querySelectorAll('[data-animate], [data-stagger], .jhc-card, .jhc-cap-item');
+      if (!animEls.length) return;
+
+      if (!('IntersectionObserver' in window)) {
+        animEls.forEach(el => el.classList.add('animated'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting || entry.boundingClientRect.top <= window.innerHeight) {
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px 40px 0px'
+      });
+
+      animEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= (window.innerHeight || document.documentElement.clientHeight)) {
+          el.classList.add('animated');
+        } else {
+          observer.observe(el);
+        }
+      });
+    }
+
+    /* ---------- 3D Interactive Card Tilt on Hover ---------- */
+    function init3DTilt() {
+      const tiltCards = document.querySelectorAll('.jhc-card, .jhc-cap-item');
+      tiltCards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -6;
+          const rotateY = ((x - centerX) / centerX) * 6;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.01)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    }
+
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        handleScrollEffects();
+        ticking = false;
+      });
+    }
+
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initScrollAnimations();
+      init3DTilt();
+      handleScrollEffects();
+    });
+
+    initScrollAnimations();
+    init3DTilt();
+    handleScrollEffects();
+
+
 /* ---------- dropdown menus ---------- */
 const navItems = [...document.querySelectorAll('.nav__item[data-menu]')];
 function closeMenus(except){
@@ -1605,6 +2152,7 @@ if (document.readyState === 'loading') {
   initScrollAppear();
 }
 window.addEventListener('load', initScrollAppear);
+
 
 </script>
 </body>
