@@ -1490,5 +1490,59 @@ a {
     init3DTilt();
     handleScrollEffects();
   </script>
+
+  <script>
+    // Handle URL query parameters for product quote inquiries
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const product = params.get('product');
+      const species = params.get('species');
+      const subject = params.get('subject');
+
+      const projectScope = document.getElementById('projectScope');
+      const targetSpecies = document.getElementById('targetSpecies');
+      const dosageFormat = document.getElementById('dosageFormat');
+
+      if (product && projectScope) {
+        projectScope.value = `I am inquiring about the ready-to-market formulation: "${product}". Please provide technical specifications, private label MOQ, batch turnaround times, and pricing details.`;
+        
+        // Auto-select species if detectable
+        const prodLower = product.toLowerCase();
+        if (targetSpecies) {
+          if (prodLower.includes('poultry') || prodLower.includes('chick') || prodLower.includes('egg') || prodLower.includes('broiler')) {
+            targetSpecies.value = 'Poultry';
+          } else if (prodLower.includes('ruminant') || prodLower.includes('cow') || prodLower.includes('milk') || prodLower.includes('rumen') || prodLower.includes('mastitis')) {
+            targetSpecies.value = 'Ruminants';
+          } else if (prodLower.includes('pet') || prodLower.includes('dog') || prodLower.includes('cat') || prodLower.includes('hip') || prodLower.includes('joint') || prodLower.includes('skin') || prodLower.includes('dermal') || prodLower.includes('calm')) {
+            targetSpecies.value = 'Pets';
+          } else if (prodLower.includes('aqua') || prodLower.includes('pond') || prodLower.includes('shrimp') || prodLower.includes('fish') || prodLower.includes('sludge')) {
+            targetSpecies.value = 'Aquaculture';
+          } else if (prodLower.includes('swine') || prodLower.includes('pig')) {
+            targetSpecies.value = 'Swine';
+          }
+        }
+
+        // Auto-select format if detectable
+        if (dosageFormat) {
+          if (prodLower.includes('liquid') || prodLower.includes('tonic') || prodLower.includes('syrup') || prodLower.includes('drench')) {
+            dosageFormat.value = 'Liquid';
+          } else if (prodLower.includes('bolus') || prodLower.includes('tablet') || prodLower.includes('chewable')) {
+            dosageFormat.value = 'Bolus';
+          } else if (prodLower.includes('powder') || prodLower.includes('premix') || prodLower.includes('digestor')) {
+            dosageFormat.value = 'Powder';
+          }
+        }
+      } else if (species && targetSpecies) {
+        if (species.toLowerCase().includes('poultry')) targetSpecies.value = 'Poultry';
+        else if (species.toLowerCase().includes('ruminant')) targetSpecies.value = 'Ruminants';
+        else if (species.toLowerCase().includes('pet')) targetSpecies.value = 'Pets';
+        else if (species.toLowerCase().includes('aqua')) targetSpecies.value = 'Aquaculture';
+        else if (species.toLowerCase().includes('swine')) targetSpecies.value = 'Swine';
+      } else if (subject && projectScope) {
+        projectScope.value = `Inquiring regarding ${subject}. Please share details on custom CDMO and private label manufacturing capabilities.`;
+      }
+    });
+  </script>
+
 </body>
 </html>

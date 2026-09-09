@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Product Specification | Jahaaj Healthcare Pvt. Ltd.</title>
+  <meta name="description" content="Detailed technical specifications, active ingredients composition, biological mechanism, dosage guide, and CDMO private labeling options for Jahaaj Healthcare formulations.">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    /* ==========================================================================
+       JAHAAJ HEALTHCARE - PRODUCT DETAIL PAGE STYLES
+       Design System: Deep Navy #0e3252 | Emerald #10b981 | Vibrant Orange #ff6b35
+       ========================================================================== */
+    :root {
+      --primary: #0e3252;
+      --primary-light: #164e63;
+      --primary-dark: #071e33;
+      --accent: #ff6b35;
+      --accent-hover: #e8590c;
+      --emerald: #10b981;
+      --emerald-dark: #059669;
+      --emerald-light: #ecfdf5;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --bg-light: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(14, 50, 82, 0.06);
+      --shadow-md: 0 8px 24px rgba(14, 50, 82, 0.08);
+      --shadow-lg: 0 16px 40px rgba(14, 50, 82, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-top: 80px;
+    }
+
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ff6b35, #10b981, #0284c7);
+      width: 0%;
+      z-index: 99999;
+      transition: width 0.1s linear;
+    }
+
+    /* Global Nav & Footer Overrides from Global Style */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+    .nav__inner {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+    .nav__list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+    .nav__link, .nav__btn {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .nav__link:hover, .nav__btn:hover, .nav__item.open .nav__btn {
+      color: var(--accent);
+      background: rgba(255, 107, 53, 0.08);
+    }
+    .nav__item {
+      position: relative;
+    }
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      background: #ffffff;
+      min-width: 240px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: var(--transition);
+      z-index: 100;
+    }
+    .nav__item.open .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .dropdown li a:hover {
+      background: var(--bg-light);
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+    .nav__cta {
+      background: linear-gradient(135deg, #ff6b35, #ff8c42);
+      color: #ffffff !important;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
+    }
+    .nav__cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+      background: linear-gradient(135deg, #e8590c, #ff6b35);
+    }
+    .nav__burger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+    .mnav {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      padding: 24px;
+      overflow-y: auto;
+      z-index: 999;
+    }
+    .mnav.open {
+      display: block;
+    }
+
+    @media (max-width: 992px) {
+      .nav__list { display: none; }
+      .nav__burger { display: block; }
+    }
+
+    /* Container */
+    .jhc-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Breadcrumbs Bar */
+    .jhc-breadcrumbs {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 0;
+      font-size: 0.9rem;
+    }
+    .jhc-breadcrumbs ul {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+      color: var(--text-muted);
+    }
+    .jhc-breadcrumbs a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .jhc-breadcrumbs a:hover {
+      color: var(--accent);
+    }
+    .jhc-breadcrumbs .separator {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+    .jhc-breadcrumbs .current {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Product Main Hero Split */
+    .jhc-product-hero {
+      padding: 40px 0 60px;
+    }
+    .jhc-product-grid {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    @media (max-width: 992px) {
+      .jhc-product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Column: Visual Card */
+    .jhc-gallery-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      padding: 24px;
+      position: sticky;
+      top: 100px;
+    }
+    .jhc-gallery-image-box {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #0e3252;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+    }
+    .jhc-gallery-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .jhc-gallery-image-box:hover img {
+      transform: scale(1.04);
+    }
+    .jhc-gallery-format-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(14, 50, 82, 0.9);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .jhc-gallery-cert-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .jhc-cert-pill {
+      background: var(--emerald-light);
+      color: var(--emerald-dark);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .jhc-packaging-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 20px;
+      border: 1px dashed #cbd5e1;
+    }
+    .jhc-packaging-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .jhc-packaging-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .jhc-packaging-card li {
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .jhc-packaging-card li i {
+      color: var(--emerald);
+      font-size: 0.8rem;
+    }
+    .jhc-brochure-download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: #ffffff;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .jhc-brochure-download-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Right Column: Specification Details */
+    .jhc-details-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      padding: 36px 40px;
+    }
+
+    @media (max-width: 600px) {
+      .jhc-details-card {
+        padding: 24px 20px;
+      }
+    }
+
+    .jhc-species-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 50, 82, 0.08);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .jhc-product-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .jhc-product-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* Challenge Box */
+    .jhc-challenge-banner {
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+    }
+    .jhc-challenge-banner-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #9a3412;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .jhc-challenge-banner-text {
+      font-size: 0.88rem;
+      color: #7c2d12;
+      line-height: 1.5;
+    }
+
+    /* Active Ingredients Matrix Box */
+    .jhc-actives-section {
+      background: #f1f5f9;
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      border: 1px solid #e2e8f0;
+    }
+    .jhc-actives-header {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .jhc-actives-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .jhc-active-chip {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    /* Description & Clinical Rationale */
+    .jhc-description-text {
+      font-size: 1.05rem;
+      color: #334155;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    /* Key Benefits Checklist */
+    .jhc-benefits-section {
+      margin-bottom: 30px;
+    }
+    .jhc-benefits-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .jhc-benefits-grid {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .jhc-benefits-grid li {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      font-weight: 500;
+      display: flex;
+      align-items: start;
+      gap: 12px;
+    }
+    .jhc-benefits-grid li i {
+      color: var(--emerald);
+      font-size: 1.1rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Dosage & Customization Boxes */
+    .jhc-spec-summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 600px) {
+      .jhc-spec-summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .jhc-spec-box {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      border: 1px solid var(--border-color);
+    }
+    .jhc-spec-box h4 {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .jhc-spec-box p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Action Buttons Row */
+    .jhc-action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+    }
+    .jhc-btn-primary-quote {
+      background: linear-gradient(135deg, #ff6b35, #ff8c42);
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
+      transition: var(--transition);
+    }
+    .jhc-btn-primary-quote:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(255, 107, 53, 0.4);
+    }
+    .jhc-btn-secondary-catalog {
+      background: #ffffff;
+      color: var(--primary);
+      border: 1.5px solid #cbd5e1;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    .jhc-btn-secondary-catalog:hover {
+      border-color: var(--primary);
+      background: var(--bg-light);
+    }
+
+    /* Tabbed Technical Specifications Section */
+    .jhc-tech-section {
+      padding: 60px 0;
+      background: #ffffff;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .jhc-section-header-center {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
+    }
+    .jhc-section-header-center h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .jhc-section-header-center p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .jhc-tabs-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .jhc-tab-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+    .jhc-tab-btn {
+      background: none;
+      border: none;
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .jhc-tab-btn:hover {
+      color: var(--primary);
+      background: var(--bg-light);
+    }
+    .jhc-tab-btn.active {
+      color: var(--accent);
+      background: #ffffff;
+    }
+    .jhc-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .jhc-tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .jhc-tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .jhc-tab-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      padding: 28px 32px;
+    }
+    .jhc-tab-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .jhc-tab-card p {
+      color: var(--text-dark);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .jhc-tab-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      background: #ffffff;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .jhc-tab-table th, .jhc-tab-table td {
+      padding: 12px 18px;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .jhc-tab-table th {
+      background: #f1f5f9;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Related Products Section */
+    .jhc-related-section {
+      padding: 60px 0 80px;
+    }
+    .jhc-related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    /* Card styling in related grid */
+    .jhc-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+    .jhc-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: #cbd5e1;
+    }
+    .jhc-card-visual {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #0e3252;
+      overflow: hidden;
+    }
+    .jhc-card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .jhc-card:hover .jhc-card-visual img {
+      transform: scale(1.06);
+    }
+    .jhc-format-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(14, 50, 82, 0.9);
+      backdrop-filter: blur(4px);
+    }
+    .badge-liquid { background: rgba(2, 132, 199, 0.9); }
+    .badge-powder { background: rgba(217, 119, 6, 0.9); }
+    .badge-bolus { background: rgba(124, 58, 237, 0.9); }
+    .jhc-species-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(16, 185, 129, 0.9);
+      backdrop-filter: blur(4px);
+    }
+    .jhc-card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .jhc-species-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .jhc-card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .jhc-actives-box {
+      background: #f8fafc;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+    }
+    .jhc-actives-label {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+    .jhc-actives-text {
+      color: var(--text-dark);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .jhc-challenge-row {
+      font-size: 0.8rem;
+      color: #b45309;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: start;
+      gap: 4px;
+    }
+    .jhc-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .jhc-card-footer {
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+    }
+    .jhc-card-actions {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 6px;
+    }
+    .jhc-btn-details {
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+    .jhc-btn-details:hover {
+      background: var(--primary-light);
+    }
+    .jhc-btn-quick {
+      background: #f1f5f9;
+      color: var(--text-dark);
+      border: 1px solid #cbd5e1;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .jhc-btn-quick:hover {
+      background: #e2e8f0;
+    }
+    .jhc-btn-quote {
+      background: rgba(255, 107, 53, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(255, 107, 53, 0.3);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+    .jhc-btn-quote:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    /* Dedicated Inquiry Form Section */
+    .jhc-inquiry-section {
+      background: linear-gradient(135deg, #0e3252, #164e63);
+      color: #ffffff;
+      padding: 70px 0;
+      position: relative;
+    }
+    .jhc-inquiry-box {
+      max-width: 840px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      color: var(--text-dark);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 600px) {
+      .jhc-inquiry-box {
+        padding: 24px 20px;
+      }
+    }
+
+    .jhc-inquiry-box h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .jhc-inquiry-box p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+    .jhc-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .jhc-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .jhc-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .jhc-form-group.full {
+      grid-column: 1 / -1;
+    }
+    .jhc-form-group label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .jhc-form-group input, .jhc-form-group select, .jhc-form-group textarea {
+      font-family: inherit;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      background: #ffffff;
+      transition: var(--transition);
+    }
+    .jhc-form-group input:focus, .jhc-form-group select:focus, .jhc-form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+    }
+    .jhc-form-submit {
+      background: linear-gradient(135deg, #ff6b35, #ff8c42);
+      color: #ffffff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
+      transition: var(--transition);
+      margin-top: 10px;
+    }
+    .jhc-form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    }
+
+    /* Global Quick Modal Styles */
+    .jhc-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 50, 82, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+    .jhc-modal-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .jhc-modal-dialog {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 920px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      transform: scale(0.95);
+      transition: var(--transition);
+    }
+    .jhc-modal-backdrop.active .jhc-modal-dialog {
+      transform: scale(1);
+    }
+    .jhc-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      line-height: 1;
+      transition: var(--transition);
+    }
+    .jhc-modal-close:hover {
+      color: var(--accent);
+    }
+    .jhc-modal-header {
+      padding: 24px 30px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .jhc-modal-species {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .jhc-modal-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .jhc-modal-challenge {
+      font-size: 0.9rem;
+      color: #9a3412;
+      margin-top: 4px;
+    }
+    .jhc-modal-body {
+      padding: 24px 30px;
+    }
+    .jhc-modal-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .jhc-modal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .jhc-modal-visual img {
+      width: 100%;
+      border-radius: var(--radius-md);
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+    .jhc-modal-cert-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .jhc-modal-cert-pills .cert-pill {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      background: var(--emerald-light);
+      color: var(--emerald-dark);
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .jhc-modal-pack-info h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .jhc-modal-pack-info ul {
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .jhc-modal-sec {
+      margin-bottom: 16px;
+    }
+    .jhc-modal-sec h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .jhc-modal-sec p {
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+    .modal-actives-highlight {
+      font-weight: 600;
+      color: var(--primary-light);
+      background: #f1f5f9;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+    .modal-benefits-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.85rem;
+    }
+    .modal-benefits-list li {
+      display: flex;
+      align-items: start;
+      gap: 8px;
+    }
+    .modal-benefits-list li i {
+      color: var(--emerald);
+      margin-top: 3px;
+    }
+    .jhc-modal-footer {
+      padding: 16px 30px 24px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+    .jhc-modal-btn-page {
+      background: #f1f5f9;
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .jhc-modal-btn-quote {
+      background: linear-gradient(135deg, #ff6b35, #ff8c42);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="scrollProgress"></div>
+
+  <!-- Header Navigation -->
+  <header class="nav" id="nav">
+<a aria-label="Jahaaj Healthcare Home" class="nav__logo" href="index.html">
+<img alt="Jahaaj Healthcare Pvt. Ltd." src="assets/Jahaaj_Logo-v9aWIgL2.png"/>
+</a>
+<nav class="nav__menu" id="navMenu">
+<div class="nav__item">
+<a class="nav__link active" href="index.html">Home</a>
+</div>
+<div class="nav__item" data-menu="">
+<button aria-controls="dd-discover" aria-expanded="false" class="nav__link">
+        Discover Jahaaj <svg aria-hidden="true" viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg>
+</button>
+<div class="dropdown" id="dd-discover">
+<ul>
+<li><a href="about.html">Who we are</a></li>
+<li><a href="team.html">Our Team</a></li>
+<li><a href="about.html#facility">Our Facility</a></li>
+<li><a href="why-jahaaj.html">Why Jahaaj</a></li>
+</ul>
+</div>
+</div>
+<div class="nav__item" data-menu="">
+<button aria-controls="dd-mfg" aria-expanded="false" class="nav__link">
+        Manufacturing &amp; Capabilities <svg aria-hidden="true" viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg>
+</button>
+<div class="dropdown" id="dd-mfg">
+<ul>
+<li><a href="manufacturing-process.html">Manufacturing Process</a></li>
+<li><a href="why-jahaaj.html#packaging">Packaging Capabilities</a></li>
+<li><a href="qc-qa-systems.html">QC / QA Systems</a></li>
+</ul>
+</div>
+</div>
+<div class="nav__item" data-menu="">
+<button aria-controls="dd-products" aria-expanded="false" class="nav__link">
+        Explore Our Products <svg aria-hidden="true" viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg>
+</button>
+<div class="dropdown" id="dd-products">
+<ul>
+<li><a href="products-catalog-elementor.html">All Products</a></li>
+<li><a href="poultry-category-elementor.html">Poultry</a></li>
+<li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
+<li><a href="pet-category-elementor.html">Companion Animals</a></li>
+<li><a href="swine-category-elementor.html">Swine</a></li>
+<li><a href="aquaculture-category-elementor.html">Aquaculture</a></li>
+</ul>
+</div>
+</div>
+<div class="nav__item" data-menu="">
+<button aria-controls="dd-connect" aria-expanded="false" class="nav__link">
+        Connect <svg aria-hidden="true" viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg>
+</button>
+<div class="dropdown" id="dd-connect">
+<ul>
+<li><a href="contact.html">Contact Us</a></li>
+<li><a href="contact.html#locations">Global Network</a></li>
+<li><a href="contact.html#form">Enquire Formulation</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<a class="nav__cta-btn" href="contact.html">Start With Us</a>
+<button aria-expanded="false" aria-label="Open menu" class="nav__burger"><span></span></button>
+</header>
+  <div class="mnav" hidden="" id="mnav">
+<div class="mnav__inner">
+<div class="mnav__group"><a class="mnav__top" href="index.html">Home</a></div>
+<div class="mnav__group">
+<button aria-expanded="false" class="mnav__top">Discover Jahaaj <svg viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+<ul class="mnav__sub">
+<li><a href="about.html">Who we are</a></li>
+<li><a href="team.html">Our Team</a></li>
+<li><a href="about.html#facility">Our Facility</a></li>
+<li><a href="why-jahaaj.html">Why Jahaaj</a></li>
+</ul>
+</div>
+<div class="mnav__group">
+<button aria-expanded="false" class="mnav__top">Manufacturing &amp; Capabilities <svg viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+<ul class="mnav__sub">
+<li><a href="manufacturing-process.html">Manufacturing Process</a></li>
+<li><a href="why-jahaaj.html#packaging">Packaging Capabilities</a></li>
+<li><a href="qc-qa-systems.html">QC / QA Systems</a></li>
+</ul>
+</div>
+<div class="mnav__group">
+<button aria-expanded="false" class="mnav__top">Explore Our Products <svg viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+<ul class="mnav__sub">
+<li><a href="products-catalog-elementor.html">All Products</a></li>
+<li><a href="poultry-category-elementor.html">Poultry</a></li>
+<li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
+<li><a href="pet-category-elementor.html">Companion Animals</a></li>
+<li><a href="swine-category-elementor.html">Swine</a></li>
+<li><a href="aquaculture-category-elementor.html">Aquaculture</a></li>
+</ul>
+</div>
+<div class="mnav__group">
+<button aria-expanded="false" class="mnav__top">Connect <svg viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+<ul class="mnav__sub">
+<li><a href="contact.html">Contact Us</a></li>
+<li><a href="contact.html#locations">Global Network</a></li>
+<li><a href="contact.html#form">Enquire Formulation</a></li>
+</ul>
+</div>
+<a class="nav__cta-btn mnav__cta" href="contact.html">Start With Us</a>
+</div>
+</div>
+
+  <!-- Breadcrumbs Bar -->
+  <div class="jhc-breadcrumbs">
+    <div class="jhc-container">
+      <ul id="breadcrumbList">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li class="separator"><i class="fas fa-chevron-right"></i></li>
+        <li><a href="products-catalog-elementor.html">Explore Products</a></li>
+        <li class="separator"><i class="fas fa-chevron-right"></i></li>
+        <li><a href="#" id="breadcrumbSpecies">Category</a></li>
+        <li class="separator"><i class="fas fa-chevron-right"></i></li>
+        <li class="current" id="breadcrumbCurrent">Product Specification</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Product Detail Split Section -->
+  <section class="jhc-product-hero">
+    <div class="jhc-container">
+      <div class="jhc-product-grid">
+        
+        <!-- Left Column: Media & Packaging Visuals -->
+        <div class="jhc-gallery-col">
+          <div class="jhc-gallery-card">
+            <div class="jhc-gallery-image-box">
+              <img id="detailImg" src="assets/prod_format_powder.jpg?v=20260812v14" alt="Product Formulation">
+              <div class="jhc-gallery-format-badge" id="detailFormatBadge">
+                <i class="fas fa-mortar-pestle"></i> Powder Formulation
+              </div>
+            </div>
+
+            <div class="jhc-gallery-cert-row" id="detailCertRow">
+              <span class="jhc-cert-pill"><i class="fas fa-shield-check"></i> GMP+ Certified</span>
+              <span class="jhc-cert-pill"><i class="fas fa-certificate"></i> ISO 9001:2015</span>
+              <span class="jhc-cert-pill"><i class="fas fa-check-double"></i> HACCP Compliant</span>
+              <span class="jhc-cert-pill"><i class="fas fa-barcode"></i> 100% Traceable</span>
+            </div>
+
+            <div class="jhc-packaging-card">
+              <h4><i class="fas fa-box-open"></i> Standard Packaging Formats:</h4>
+              <ul id="detailPackagingList">
+                <li><i class="fas fa-check"></i> 1kg Aluminum Foil Pouch</li>
+                <li><i class="fas fa-check"></i> 25kg Poly-Lined Kraft Paper Bag</li>
+              </ul>
+            </div>
+
+            <a href="javascript:void(0)" onclick="window.print()" class="jhc-brochure-download-btn">
+              <i class="fas fa-file-pdf"></i> Print / Save Technical Spec Sheet
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Product Overview & Clinical Rationale -->
+        <div class="jhc-details-col">
+          <div class="jhc-details-card">
+            
+            <div class="jhc-species-badge" id="detailSpeciesBadge">
+              <i class="fas fa-feather-pointed"></i> Poultry Solutions
+            </div>
+
+            <h1 class="jhc-product-title" id="detailTitle">Digestive & Gut Health Probiotic Complex</h1>
+
+            <!-- Challenge Banner -->
+            <div class="jhc-challenge-banner">
+              <div class="jhc-challenge-banner-title">
+                <i class="fas fa-bullseye"></i> Primary Production Challenge Solved:
+              </div>
+              <div class="jhc-challenge-banner-text" id="detailChallengeText">
+                Gut Dysbiosis & Suboptimal FCR — Poor nutrient absorption and enteric stress reduce bird uniformity and increase feed consumption.
+              </div>
+            </div>
+
+            <!-- Actives Matrix -->
+            <div class="jhc-actives-section">
+              <div class="jhc-actives-header">
+                <i class="fas fa-dna"></i> Active Ingredients Composition:
+              </div>
+              <div class="jhc-actives-pills" id="detailActivesList">
+                <span class="jhc-active-chip">Bacillus subtilis</span>
+                <span class="jhc-active-chip">Lactobacillus acidophilus</span>
+                <span class="jhc-active-chip">Prebiotic MOS</span>
+              </div>
+            </div>
+
+            <!-- Product Overview -->
+            <p class="jhc-description-text" id="detailDescription">
+              Loading technical product details...
+            </p>
+
+            <!-- Key Benefits Checklist -->
+            <div class="jhc-benefits-section">
+              <h3 class="jhc-benefits-title"><i class="fas fa-award"></i> Key Commercial & Performance Advantages:</h3>
+              <ul class="jhc-benefits-grid" id="detailBenefitsList">
+                <li><i class="fas fa-circle-check"></i> Improves Feed Conversion Ratio (FCR) significantly</li>
+                <li><i class="fas fa-circle-check"></i> Enhances natural disease resistance and flock uniformity</li>
+              </ul>
+            </div>
+
+            <!-- Dosage & CDMO Customization Grid -->
+            <div class="jhc-spec-summary-grid">
+              <div class="jhc-spec-box">
+                <h4><i class="fas fa-prescription-bottle-medical"></i> Recommended Dosage:</h4>
+                <p id="detailDosage">250g - 500g per metric tonne of finished feed.</p>
+              </div>
+              <div class="jhc-spec-box">
+                <h4><i class="fas fa-sliders"></i> Private Label Options:</h4>
+                <p id="detailCustom">Custom potency, carrier variations, private brand labeling.</p>
+              </div>
+            </div>
+
+            <!-- CTA Action Row -->
+            <div class="jhc-action-row">
+              <a href="#inquiryFormSection" class="jhc-btn-primary-quote">
+                <i class="fas fa-paper-plane"></i> Request Formulation Quote / Sample
+              </a>
+              <a href="products-catalog-elementor.html" class="jhc-btn-secondary-catalog">
+                <i class="fas fa-arrow-left"></i> Back to All 28 Products
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabbed Technical Documentation Section -->
+  <section class="jhc-tech-section">
+    <div class="jhc-container">
+      <div class="jhc-section-header-center">
+        <h2>Complete Technical Specifications & CDMO Standards</h2>
+        <p>Comprehensive scientific data, biological mode of action, and manufacturing parameters for commercial veterinary and feed milling operations.</p>
+      </div>
+
+      <div class="jhc-tabs-wrapper">
+        <div class="jhc-tab-nav">
+          <button type="button" class="jhc-tab-btn active" onclick="switchTechTab('tabMechanism')">
+            <i class="fas fa-microscope"></i> Biological Mechanism
+          </button>
+          <button type="button" class="jhc-tab-btn" onclick="switchTechTab('tabAdministration')">
+            <i class="fas fa-clipboard-check"></i> Target Species & Usage
+          </button>
+          <button type="button" class="jhc-tab-btn" onclick="switchTechTab('tabPackaging')">
+            <i class="fas fa-box-archive"></i> Packaging & Shelf Life
+          </button>
+          <button type="button" class="jhc-tab-btn" onclick="switchTechTab('tabQuality')">
+            <i class="fas fa-shield-virus"></i> Quality & Traceability
+          </button>
+        </div>
+
+        <!-- Tab 1: Mechanism -->
+        <div id="tabMechanism" class="jhc-tab-content active">
+          <div class="jhc-tab-card">
+            <h3><i class="fas fa-atom"></i> Biological Mode of Action & Biochemical Rationale</h3>
+            <p id="detailMechanism">Detailed biological pathway and enzymatic interaction rationale.</p>
+            <table class="jhc-tab-table">
+              <thead>
+                <tr>
+                  <th>Component Type</th>
+                  <th>Target Biological Site</th>
+                  <th>Observed Mode of Action</th>
+                </tr>
+              </thead>
+              <tbody id="mechanismTableBody">
+                <tr>
+                  <td>Active Probiotic Strains</td>
+                  <td>Intestinal Microflora</td>
+                  <td>Competitive exclusion of enteric pathogens & lactic acid secretion</td>
+                </tr>
+                <tr>
+                  <td>Enzyme / Phyto Matrix</td>
+                  <td>Duodenal Brush Border</td>
+                  <td>Digestive catalysis, villi height increase & nutrient absorption</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 2: Administration -->
+        <div id="tabAdministration" class="jhc-tab-content">
+          <div class="jhc-tab-card">
+            <h3><i class="fas fa-paw"></i> Target Species & Feeding Program Guidelines</h3>
+            <p>Our formulations are engineered for seamless compatibility with automated commercial feed mills, premix plants, and on-farm drinking water dosatron systems.</p>
+            <table class="jhc-tab-table">
+              <thead>
+                <tr>
+                  <th>Target Sector</th>
+                  <th>Application Method</th>
+                  <th>Standard Inclusion Guideline</th>
+                </tr>
+              </thead>
+              <tbody id="administrationTableBody">
+                <tr>
+                  <td id="adminSpecies">Target Species</td>
+                  <td>Feed Premix / Water Dosing</td>
+                  <td id="adminDosage">Recommended standard dose</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 3: Packaging & Shelf Life -->
+        <div id="tabPackaging" class="jhc-tab-content">
+          <div class="jhc-tab-card">
+            <h3><i class="fas fa-warehouse"></i> Packaging Integrity, Storage & Shelf Life</h3>
+            <p>All Jahaaj Healthcare products are packed under temperature and humidity-controlled cleanroom conditions with multi-layer barrier seals to preserve potency throughout the supply chain.</p>
+            <table class="jhc-tab-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Standard Specification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Shelf Life</strong></td>
+                  <td>24 to 36 months from manufacturing date under recommended storage conditions</td>
+                </tr>
+                <tr>
+                  <td><strong>Storage Condition</strong></td>
+                  <td>Store in a cool, dry, well-ventilated area away from direct sunlight (below 25°C / 77°F)</td>
+                </tr>
+                <tr>
+                  <td><strong>Packaging Options</strong></td>
+                  <td id="tablePackagingOptions">Foil Pouches, HDPE Bottles, Drums, Kraft Bags</td>
+                </tr>
+                <tr>
+                  <td><strong>Tamper Evidence</strong></td>
+                  <td>Induction-sealed liners, zip-lock barriers, and hologram batch authenticity seals</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 4: Quality & Compliance -->
+        <div id="tabQuality" class="jhc-tab-content">
+          <div class="jhc-tab-card">
+            <h3><i class="fas fa-award"></i> Quality Assurance, Certifications & CDMO Standards</h3>
+            <p>Every commercial batch produced by Jahaaj Healthcare undergoes comprehensive multi-parameter testing before release. A full Certificate of Analysis (COA) is issued with each shipment.</p>
+            <table class="jhc-tab-table">
+              <thead>
+                <tr>
+                  <th>Testing Standard</th>
+                  <th>Verification Method</th>
+                  <th>Acceptance Limit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Active Assay / CFU Count</strong></td>
+                  <td>HPLC / Microbial Colony Plate Count</td>
+                  <td>&ge; 100.0% of label claim</td>
+                </tr>
+                <tr>
+                  <td><strong>Heavy Metals (Pb, Cd, As, Hg)</strong></td>
+                  <td>ICP-MS / AAS Testing</td>
+                  <td>Strictly below EU & US Pharmacopeia limits</td>
+                </tr>
+                <tr>
+                  <td><strong>Pathogen Screening</strong></td>
+                  <td>Salmonella & E. coli Selective Enrichment</td>
+                  <td>Absent in 25g / Negative</td>
+                </tr>
+                <tr>
+                  <td><strong>Batch Traceability</strong></td>
+                  <td>End-to-End ERP Digital Logging</td>
+                  <td>100% raw-material to finished pallet tracking</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Formulations Section -->
+  <section class="jhc-related-section">
+    <div class="jhc-container">
+      <div class="jhc-section-header-center">
+        <h2>Explore Complementary Formulations</h2>
+        <p>Combine multiple targeted solutions to address comprehensive animal health and production challenges.</p>
+      </div>
+
+      <div class="jhc-related-grid" id="relatedProductsGrid">
+        <!-- Dynamically injected related product cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Formulation Inquiry Section -->
+  <section class="jhc-inquiry-section" id="inquiryFormSection">
+    <div class="jhc-container">
+      <div class="jhc-inquiry-box">
+        <h3><i class="fas fa-file-contract"></i> Request Formulation Quote / Custom Formulation</h3>
+        <p>Speak directly with our technical formulation team for private label manufacturing, customized dosage formats, or commercial distributor bulk quotes.</p>
+
+        <form id="productInquiryForm" onsubmit="handleInquirySubmit(event)">
+          <div class="jhc-form-grid">
+            <div class="jhc-form-group">
+              <label for="inqName">Full Name *</label>
+              <input type="text" id="inqName" placeholder="e.g. Dr. Rajesh Sharma" required>
+            </div>
+            <div class="jhc-form-group">
+              <label for="inqEmail">Business Email *</label>
+              <input type="email" id="inqEmail" placeholder="e.g. rajesh@agrivet.com" required>
+            </div>
+            <div class="jhc-form-group">
+              <label for="inqPhone">Phone / WhatsApp *</label>
+              <input type="tel" id="inqPhone" placeholder="e.g. +91 98765 43210" required>
+            </div>
+            <div class="jhc-form-group">
+              <label for="inqCompany">Company / Farm Name *</label>
+              <input type="text" id="inqCompany" placeholder="e.g. Pioneer Agro Feeds" required>
+            </div>
+            <div class="jhc-form-group">
+              <label for="inqProduct">Selected Formulation *</label>
+              <input type="text" id="inqProduct" readonly style="background: #f8fafc; font-weight: 700; color: var(--primary);">
+            </div>
+            <div class="jhc-form-group">
+              <label for="inqType">Inquiry Type *</label>
+              <select id="inqType">
+                <option value="private-label">Private Label / Contract Manufacturing</option>
+                <option value="bulk-order">Bulk Commercial Order</option>
+                <option value="custom-formulation">Custom Formulation Development</option>
+                <option value="sample-request">Technical Sample Request</option>
+                <option value="distribution">Distributorship Inquiry</option>
+              </select>
+            </div>
+            <div class="jhc-form-group full">
+              <label for="inqMessage">Your Project Requirements / Target Quantity</label>
+              <textarea id="inqMessage" rows="4" placeholder="Please specify your target batch size, preferred packaging format, or any custom active ingredient requirements..."></textarea>
+            </div>
+            <div class="jhc-form-group full">
+              <button type="submit" class="jhc-form-submit">
+                <i class="fas fa-paper-plane"></i> Submit Formulation Inquiry
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unified Footer -->
+  <footer class="footer-section">
+<div class="footer-first-section">
+<!-- Brand & Newsletter -->
+<div class="logo-and-newsletter">
+<a aria-label="Jahaaj Healthcare Home" class="footer-logo" href="index.html">
+<img alt="Jahaaj Healthcare Pvt. Ltd." class="footer-logo-img" oncontextmenu="return false;" src="assets/Jahaaj_Footer_Logo-COd83Cre.png"/>
+</a>
+<form class="newsletter-form" onsubmit="return false">
+<input aria-label="Your email address" class="newsletter-input" placeholder="Your email address" type="email"/>
+</form>
+</div>
+<!-- Nav Columns -->
+<div class="footer-navigation">
+<div class="contents-navig">
+<p class="section-title">Main Pages</p>
+<a class="footer-link" href="index.html">Home</a>
+<a class="footer-link" href="about.html">Discover Jahaaj</a>
+<a class="footer-link" href="manufacturing-process.html">Manufacturing &amp; Capabilities</a>
+<a class="footer-link" href="products-catalog-elementor.html">Explore Our Products</a>
+<a class="footer-link" href="contact.html">Connect</a>
+</div>
+<div class="contents-navig">
+<p class="section-title">Categories</p>
+<a class="footer-link" href="poultry-category-elementor.html">Poultry</a>
+<a class="footer-link" href="ruminants-category-elementor.html">Ruminants</a>
+<a class="footer-link" href="pet-category-elementor.html">Pet</a>
+<a class="footer-link" href="aquaculture-category-elementor.html">Aquaculture</a>
+<a class="footer-link" href="swine-category-elementor.html">Swine</a>
+</div>
+<div class="contents-navig">
+<p class="section-title">Utility Pages</p>
+<a class="footer-link" href="sitemap.html">Site Map</a>
+</div>
+</div>
+<!-- Socials -->
+<div class="socials">
+<p class="section-title">Socials</p>
+<div class="social-contents">
+<a class="footer-link" href="https://www.facebook.com/profile.php?id=61584592767323" rel="noopener" target="_blank">Facebook</a>
+<a class="footer-link" href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" rel="noopener" target="_blank">LinkedIn</a>
+<a class="footer-link" href="https://instagram.com" rel="noopener" target="_blank">Instagram</a>
+<a class="footer-link" href="https://x.com" rel="noopener" target="_blank">x.com</a>
+</div>
+</div>
+</div>
+<hr class="footer-divider"/>
+<div class="footer-second-section">
+<a class="footer-link" href="#privacy">Privacy Policy</a>
+<span class="copyright-text">© Jahaaj Healthcare Pvt. Ltd. All rights reserved.</span>
+<a class="footer-link" href="#terms">Terms of Use</a>
+</div>
+</footer>
+
+  <!-- Scripts -->
+  <script src="assets/products-data.js"></script>
+  <script>
+    /* ---------- Scroll Progress Bar ---------- */
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+
+    /* ---------- Dropdown Navigation ---------- */
+    const navItems = [...document.querySelectorAll('.nav__item[data-menu]')];
+    function closeMenus(except) {
+      navItems.forEach(it => {
+        if (it === except) return;
+        it.classList.remove('open');
+        const btn = it.querySelector('.nav__btn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+    navItems.forEach(it => {
+      const btn = it.querySelector('.nav__btn');
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = it.classList.contains('open');
+        closeMenus(it);
+        it.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      });
+    });
+    document.addEventListener('click', () => closeMenus(null));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMenus(null);
+    });
+
+    /* ---------- Mobile Menu Toggle ---------- */
+    const burger = document.getElementById('navBurger');
+    const mnav = document.getElementById('mnav');
+    if (burger && mnav) {
+      burger.addEventListener('click', () => {
+        mnav.classList.toggle('open');
+        burger.setAttribute('aria-expanded', mnav.classList.contains('open'));
+      });
+    }
+
+    /* ---------- Tab Switcher ---------- */
+    function switchTechTab(tabId) {
+      document.querySelectorAll('.jhc-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.jhc-tab-content').forEach(c => c.classList.remove('active'));
+      
+      const targetContent = document.getElementById(tabId);
+      if (targetContent) targetContent.classList.add('active');
+
+      const clickedBtn = Array.from(document.querySelectorAll('.jhc-tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (clickedBtn) clickedBtn.classList.add('active');
+    }
+
+    /* ---------- Product Loader Logic ---------- */
+    function loadProductDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodId = urlParams.get('id') || 'poultry-digestive-gut-health';
+      
+      let p = getJahaajProduct(prodId);
+      if (!p) {
+        p = window.JAHAAJ_PRODUCTS[0]; // default fallback
+      }
+
+      // Update Page Meta & Title
+      document.title = `${p.title} | Jahaaj Healthcare Technical Specs`;
+
+      // Update Breadcrumbs
+      const bcSpecies = document.getElementById('breadcrumbSpecies');
+      const speciesPageMap = {
+        'poultry': 'poultry-category-elementor.html',
+        'ruminants': 'ruminants-category-elementor.html',
+        'pets': 'pet-category-elementor.html',
+        'aqua': 'aquaculture-category-elementor.html',
+        'swine': 'swine-category-elementor.html',
+        'equine': 'products-catalog-elementor.html'
+      };
+      bcSpecies.textContent = p.speciesCategory;
+      bcSpecies.href = speciesPageMap[p.species] || 'products-catalog-elementor.html';
+      document.getElementById('breadcrumbCurrent').textContent = p.title;
+
+      // Update Gallery & Badge
+      document.getElementById('detailImg').src = p.image;
+      document.getElementById('detailImg').alt = p.title;
+
+      const formatIcon = p.format.toLowerCase().includes('liquid') ? 'fa-droplet' : (p.format.toLowerCase().includes('bolus') || p.format.toLowerCase().includes('tablet') ? 'fa-tablets' : 'fa-mortar-pestle');
+      document.getElementById('detailFormatBadge').innerHTML = `<i class="fas ${formatIcon}"></i> ${p.format} Formulation`;
+
+      // Update Packaging List
+      const packList = document.getElementById('detailPackagingList');
+      packList.innerHTML = p.packaging.map(pk => `<li><i class="fas fa-check"></i> ${pk}</li>`).join('');
+      document.getElementById('tablePackagingOptions').textContent = p.packaging.join('; ');
+
+      // Update Header & Details
+      document.getElementById('detailSpeciesBadge').innerHTML = `<i class="fas ${p.speciesIcon}"></i> ${p.speciesCategory}`;
+      document.getElementById('detailTitle').textContent = p.title;
+      document.getElementById('detailChallengeText').innerHTML = `<strong>${p.challenge}</strong> — ${p.challengeDesc}`;
+
+      // Update Actives Chips
+      const activesBox = document.getElementById('detailActivesList');
+      activesBox.innerHTML = p.activesList.map(a => `<span class="jhc-active-chip"><i class="fas fa-check-circle" style="color:var(--emerald);font-size:0.75rem;"></i> ${a}</span>`).join('');
+
+      // Description & Benefits
+      document.getElementById('detailDescription').textContent = p.description;
+      const benefitsList = document.getElementById('detailBenefitsList');
+      benefitsList.innerHTML = p.keyBenefits.map(b => `<li><i class="fas fa-circle-check"></i> ${b}</li>`).join('');
+
+      // Dosage & Customization
+      document.getElementById('detailDosage').textContent = p.dosage;
+      document.getElementById('detailCustom').textContent = p.customOptions;
+
+      // Biological Mechanism Tab
+      document.getElementById('detailMechanism').textContent = p.mechanism;
+      document.getElementById('adminSpecies').textContent = p.speciesCategory;
+      document.getElementById('adminDosage').textContent = p.dosage;
+
+      // Inquiry Form Pre-population
+      document.getElementById('inqProduct').value = `${p.title} (${p.format})`;
+      document.getElementById('inqMessage').placeholder = `Inquiring about ${p.title}. Please provide MOQ, technical dossier, sample availability, and custom private label packaging details for our business.`;
+
+      // Load Related Products from same species (or other species if count is small)
+      loadRelatedProducts(p);
+    }
+
+    function loadRelatedProducts(currentProduct) {
+      const grid = document.getElementById('relatedProductsGrid');
+      let related = window.JAHAAJ_PRODUCTS.filter(p => p.species === currentProduct.species && p.id !== currentProduct.id);
+      
+      // If less than 3, grab complementary products
+      if (related.length < 3) {
+        const other = window.JAHAAJ_PRODUCTS.filter(p => p.id !== currentProduct.id && !related.includes(p));
+        related = related.concat(other.slice(0, 3 - related.length));
+      }
+
+      grid.innerHTML = related.slice(0, 3).map(p => renderProductCardHTML(p)).join('');
+    }
+
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const prod = document.getElementById('inqProduct').value;
+      const name = document.getElementById('inqName').value;
+      alert(`Thank you, ${name}! Your formulation inquiry for "${prod}" has been received. Our veterinary technical team will contact you within 24 business hours.`);
+      e.target.reset();
+      document.getElementById('inqProduct').value = prod;
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', loadProductDetails);
+  </script>
+</body>
+</html>
