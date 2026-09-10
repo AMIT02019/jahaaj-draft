@@ -2448,19 +2448,26 @@ html, body {
       navItems.forEach(it => {
         if (it === except) return;
         it.classList.remove('open');
-        const btn = it.querySelector('.nav__btn');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
+        const trigger = it.querySelector('.nav__link, .nav__btn');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
       });
     }
-    navItems.forEach(it => {
-      const btn = it.querySelector('.nav__btn');
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        const isOpen = it.classList.contains('open');
-        closeMenus(it);
-        it.classList.toggle('open', !isOpen);
-        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
-      });
+    navItems.forEach(item => {
+      const trigger = item.querySelector('.nav__link, .nav__btn');
+      const open = v => {
+        item.classList.toggle('open', v);
+        if (trigger) trigger.setAttribute('aria-expanded', v ? 'true' : 'false');
+        if (v) closeMenus(item);
+      };
+      item.addEventListener('mouseenter', () => open(true));
+      item.addEventListener('mouseleave', () => open(false));
+      if (trigger) {
+        trigger.addEventListener('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          open(!item.classList.contains('open'));
+        });
+      }
     });
     document.addEventListener('click', () => closeMenus(null));
     document.addEventListener('keydown', e => {
@@ -2468,12 +2475,20 @@ html, body {
     });
 
     /* ---------- Mobile Menu Toggle ---------- */
-    const burger = document.getElementById('navBurger');
+    const burger = document.querySelector('.nav__burger') || document.getElementById('navBurger');
     const mnav = document.getElementById('mnav');
     if (burger && mnav) {
       burger.addEventListener('click', () => {
-        mnav.classList.toggle('open');
-        burger.setAttribute('aria-expanded', mnav.classList.contains('open'));
+        const isHidden = mnav.hasAttribute('hidden');
+        if (isHidden) {
+          mnav.removeAttribute('hidden');
+          burger.classList.add('open');
+          burger.setAttribute('aria-expanded', 'true');
+        } else {
+          mnav.setAttribute('hidden', '');
+          burger.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
       });
     }
 

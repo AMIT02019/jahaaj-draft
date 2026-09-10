@@ -2891,7 +2891,8 @@ html, body {
       const winScroll = document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrolled = (winScroll / height) * 100;
-      document.getElementById('scrollProgress').style.width = scrolled + '%';
+      const prog = document.getElementById('scrollProgress');
+      if (prog) prog.style.width = scrolled + '%';
     });
 
     /* ---------- Dropdown Navigation ---------- */
@@ -2900,19 +2901,27 @@ html, body {
       navItems.forEach(it => {
         if (it === except) return;
         it.classList.remove('open');
-        const btn = it.querySelector('.nav__btn');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
+        const trigger = it.querySelector('.nav__link, .nav__btn');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
       });
     }
-    navItems.forEach(it => {
-      const btn = it.querySelector('.nav__btn');
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        const isOpen = it.classList.contains('open');
-        closeMenus(it);
-        it.classList.toggle('open', !isOpen);
-        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
-      });
+
+    navItems.forEach(item => {
+      const trigger = item.querySelector('.nav__link, .nav__btn');
+      const open = v => {
+        item.classList.toggle('open', v);
+        if (trigger) trigger.setAttribute('aria-expanded', v ? 'true' : 'false');
+        if (v) closeMenus(item);
+      };
+      item.addEventListener('mouseenter', () => open(true));
+      item.addEventListener('mouseleave', () => open(false));
+      if (trigger) {
+        trigger.addEventListener('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          open(!item.classList.contains('open'));
+        });
+      }
     });
     document.addEventListener('click', () => closeMenus(null));
     document.addEventListener('keydown', e => {
@@ -2920,12 +2929,20 @@ html, body {
     });
 
     /* ---------- Mobile Menu Toggle ---------- */
-    const burger = document.getElementById('navBurger');
+    const burger = document.querySelector('.nav__burger') || document.getElementById('navBurger');
     const mnav = document.getElementById('mnav');
     if (burger && mnav) {
       burger.addEventListener('click', () => {
-        mnav.classList.toggle('open');
-        burger.setAttribute('aria-expanded', mnav.classList.contains('open'));
+        const isHidden = mnav.hasAttribute('hidden');
+        if (isHidden) {
+          mnav.removeAttribute('hidden');
+          burger.classList.add('open');
+          burger.setAttribute('aria-expanded', 'true');
+        } else {
+          mnav.setAttribute('hidden', '');
+          burger.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
       });
     }
 
@@ -2934,36 +2951,76 @@ html, body {
     let currentFormat = 'all';
     let searchQuery = '';
 
+    function getProducts() {
+      return (typeof window !== 'undefined' && Array.isArray(window.JAHAAJ_PRODUCTS)) ? window.JAHAAJ_PRODUCTS : [];
+    }
+
     function renderCatalog() {
       const grid = document.getElementById('catalogGrid');
       const emptyState = document.getElementById('catalogEmptyState');
       const countEl = document.getElementById('visibleCount');
+      if (!grid) return;
 
-      const filtered = window.JAHAAJ_PRODUCTS.filter(p => {
-        const matchSpecies = (currentSpecies === 'all' || p.species === currentSpecies);
+      const products = getProducts();
+      const filtered = products.filter(p => {
+        // Species match
+        let matchSpecies = true;
+        if (currentSpecies !== 'all') {
+          const pSpecies = (p.species || '').toLowerCase();
+          const targetSpecies = currentSpecies.toLowerCase();
+          matchSpecies = (pSpecies === targetSpecies || 
+                          pSpecies.startsWith(targetSpecies) || 
+                          targetSpecies.startsWith(pSpecies));
+        }
         
+        // Format match
         let matchFormat = true;
-        if (currentFormat === 'powder') matchFormat = p.format.toLowerCase().includes('powder');
-        else if (currentFormat === 'liquid') matchFormat = p.format.toLowerCase().includes('liquid');
-        else if (currentFormat === 'bolus') matchFormat = (p.format.toLowerCase().includes('bolus') || p.format.toLowerCase().includes('tablet'));
+        if (currentFormat !== 'all') {
+          const pFormat = (p.format || '').toLowerCase();
+          const targetFormat = currentFormat.toLowerCase();
+          if (targetFormat === 'powder') {
+            matchFormat = pFormat.includes('powder');
+          } else if (targetFormat === 'liquid') {
+            matchFormat = pFormat.includes('liquid') || pFormat.includes('syrup') || pFormat.includes('suspension');
+          } else if (targetFormat === 'bolus') {
+            matchFormat = pFormat.includes('bolus') || pFormat.includes('tablet');
+          } else {
+            matchFormat = pFormat.includes(targetFormat);
+          }
+        }
 
+        // Search match
         let matchSearch = true;
         if (searchQuery) {
-          const target = (p.title + ' ' + p.actives + ' ' + p.challenge + ' ' + p.summary + ' ' + p.speciesCategory).toLowerCase();
-          matchSearch = target.includes(searchQuery);
+          const haystack = [
+            p.title || '',
+            p.actives || '',
+            p.challenge || '',
+            p.summary || '',
+            p.speciesCategory || '',
+            p.species || '',
+            p.format || ''
+          ].join(' ').toLowerCase();
+          matchSearch = haystack.includes(searchQuery);
         }
 
         return matchSpecies && matchFormat && matchSearch;
       });
 
-      countEl.textContent = filtered.length;
+      if (countEl) countEl.textContent = filtered.length;
 
       if (filtered.length === 0) {
         grid.innerHTML = '';
-        emptyState.classList.add('active');
+        if (emptyState) emptyState.classList.add('active');
       } else {
-        emptyState.classList.remove('active');
-        grid.innerHTML = filtered.map(p => renderProductCardHTML(p)).join('');
+        if (emptyState) emptyState.classList.remove('active');
+        const renderCard = (typeof window.renderProductCardHTML === 'function') 
+          ? window.renderProductCardHTML 
+          : (typeof renderProductCardHTML === 'function' ? renderProductCardHTML : null);
+
+        if (renderCard) {
+          grid.innerHTML = filtered.map(p => renderCard(p)).join('');
+        }
       }
     }
 
@@ -2971,7 +3028,8 @@ html, body {
       currentSpecies = 'all';
       currentFormat = 'all';
       searchQuery = '';
-      document.getElementById('catalogSearchInput').value = '';
+      const searchInput = document.getElementById('catalogSearchInput');
+      if (searchInput) searchInput.value = '';
 
       document.querySelectorAll('.jhc-tab-pill').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-filter') === 'all');
@@ -2982,41 +3040,70 @@ html, body {
 
       renderCatalog();
     }
+    window.resetAllFilters = resetAllFilters;
 
-    // Event Listeners
-    document.addEventListener('DOMContentLoaded', () => {
-      // Parse URL parameters for initial filter (e.g. ?species=poultry)
+    function initCatalog() {
+      // 1. Check URL parameters
       const params = new URLSearchParams(window.location.search);
       if (params.get('species')) {
-        currentSpecies = params.get('species').toLowerCase();
+        const spec = params.get('species').toLowerCase();
+        let matched = false;
         document.querySelectorAll('.jhc-tab-pill').forEach(btn => {
-          btn.classList.toggle('active', btn.getAttribute('data-filter') === currentSpecies);
+          const filterVal = btn.getAttribute('data-filter');
+          if (filterVal && (filterVal === spec || spec.startsWith(filterVal) || filterVal.startsWith(spec))) {
+            document.querySelectorAll('.jhc-tab-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentSpecies = filterVal;
+            matched = true;
+          }
+        });
+        if (!matched && spec) currentSpecies = spec;
+      }
+
+      if (params.get('format')) {
+        const fmt = params.get('format').toLowerCase();
+        document.querySelectorAll('.jhc-format-pill').forEach(btn => {
+          const fmtVal = btn.getAttribute('data-format');
+          if (fmtVal && (fmtVal === fmt || fmt.startsWith(fmtVal) || fmtVal.startsWith(fmt))) {
+            document.querySelectorAll('.jhc-format-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFormat = fmtVal;
+          }
         });
       }
 
+      if (params.get('q')) {
+        searchQuery = params.get('q').toLowerCase().trim();
+        const searchInput = document.getElementById('catalogSearchInput');
+        if (searchInput) searchInput.value = searchQuery;
+      }
+
+      // 2. Initial Render
       renderCatalog();
 
-      // Species Tabs Click
+      // 3. Species Filter Tabs Click
       document.querySelectorAll('.jhc-tab-pill').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
           document.querySelectorAll('.jhc-tab-pill').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          currentSpecies = btn.getAttribute('data-filter');
+          currentSpecies = btn.getAttribute('data-filter') || 'all';
           renderCatalog();
         });
       });
 
-      // Format Filter Click
+      // 4. Format Filter Chips Click
       document.querySelectorAll('.jhc-format-pill').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
           document.querySelectorAll('.jhc-format-pill').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          currentFormat = btn.getAttribute('data-format');
+          currentFormat = btn.getAttribute('data-format') || 'all';
           renderCatalog();
         });
       });
 
-      // Search Input
+      // 5. Search Input
       const searchInput = document.getElementById('catalogSearchInput');
       if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -3024,7 +3111,13 @@ html, body {
           renderCatalog();
         });
       }
-    });
-  </script>
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCatalog);
+    } else {
+      initCatalog();
+    }
+</script>
 </body>
 </html>

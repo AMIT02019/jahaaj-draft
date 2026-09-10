@@ -1403,3 +1403,9 @@ window.closeProductQuickModal = function() {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeProductQuickModal();
 });
+
+
+// Global Window Assignments
+window.renderProductCardHTML = renderProductCardHTML;
+window.getJahaajProduct = getJahaajProduct;
+window.getJahaajProductsBySpecies = getJahaajProductsBySpecies;
