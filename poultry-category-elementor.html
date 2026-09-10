@@ -2228,7 +2228,9 @@ html, body {
 .dir-card,
 .val-card,
 .info-card,
-.map-card {
+.map-card,
+.fac-photo-card,
+.lab-card {
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
@@ -2256,6 +2258,30 @@ html, body {
 .dir-card-action,
 .team-contact {
   margin-top: auto !important;
+}
+
+/* Facility & Laboratory Photo Grids Responsive */
+.facility-photo-grid,
+.qc-labs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 24px !important;
+}
+
+@media (max-width: 992px) {
+  .facility-photo-grid,
+  .qc-labs-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .facility-photo-grid,
+  .qc-labs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
 }
 
 </style>

@@ -1700,7 +1700,9 @@ html, body {
 .dir-card,
 .val-card,
 .info-card,
-.map-card {
+.map-card,
+.fac-photo-card,
+.lab-card {
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
@@ -1728,6 +1730,30 @@ html, body {
 .dir-card-action,
 .team-contact {
   margin-top: auto !important;
+}
+
+/* Facility & Laboratory Photo Grids Responsive */
+.facility-photo-grid,
+.qc-labs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 24px !important;
+}
+
+@media (max-width: 992px) {
+  .facility-photo-grid,
+  .qc-labs-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .facility-photo-grid,
+  .qc-labs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
 }
 
 </style>
@@ -2118,6 +2144,40 @@ html, body {
           </a>
         </div>
       </div>
+    
+      <!-- Machinery & Packaging Line Showcase -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;" data-stagger>
+        <div class="demo-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+          <div style="aspect-ratio: 16/10; overflow: hidden;">
+            <img src="assets/facility/blister-pack-machine.png" alt="Blister Pack Machine" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 18px;">
+            <h4 style="font-size: 16.5px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">Blister Packaging Line</h4>
+            <p style="font-size: 13px; color: var(--gray-600); margin: 0;">Automated thermoforming Alu-PVC and Alu-Alu blisters with precise optical blister verification.</p>
+          </div>
+        </div>
+
+        <div class="demo-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+          <div style="aspect-ratio: 16/10; overflow: hidden;">
+            <img src="assets/facility/strip-packing-machine.png" alt="Strip Packaging Line" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 18px;">
+            <h4 style="font-size: 16.5px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">Veterinary Strip Packaging</h4>
+            <p style="font-size: 13px; color: var(--gray-600); margin: 0;">Multi-lane continuous foil strip packing delivering maximum barrier protection for large animal boluses.</p>
+          </div>
+        </div>
+
+        <div class="demo-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+          <div style="aspect-ratio: 16/10; overflow: hidden;">
+            <img src="assets/facility/packing-dept-first-floor.png" alt="Secondary Packaging Department" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 18px;">
+            <h4 style="font-size: 16.5px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">Cartoning &amp; Dispatch Floor</h4>
+            <p style="font-size: 13px; color: var(--gray-600); margin: 0;">Cleanroom cartoning, inkjet batch coding, tamper-evident sealing, and export shrink-wrapping.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 

@@ -1666,7 +1666,9 @@ html, body {
 .dir-card,
 .val-card,
 .info-card,
-.map-card {
+.map-card,
+.fac-photo-card,
+.lab-card {
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
@@ -1694,6 +1696,30 @@ html, body {
 .dir-card-action,
 .team-contact {
   margin-top: auto !important;
+}
+
+/* Facility & Laboratory Photo Grids Responsive */
+.facility-photo-grid,
+.qc-labs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 24px !important;
+}
+
+@media (max-width: 992px) {
+  .facility-photo-grid,
+  .qc-labs-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .facility-photo-grid,
+  .qc-labs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
 }
 
 </style>
@@ -1978,6 +2004,90 @@ html, body {
           </ul>
         </div>
       </div>
+    
+      <!-- Facility & Laboratory Visual Showcase -->
+      <div class="facility-gallery-wrapper" style="margin-top: 56px;" data-animate="fade-up">
+        <div class="section-header" style="text-align: center; margin-bottom: 32px;">
+          <span class="section-pill">Photographic Tour</span>
+          <h3 style="font-size: clamp(24px, 2.8vw, 32px); font-weight: 800; color: var(--navy); margin-bottom: 12px;">Inside Our GMP Manufacturing Complex</h3>
+          <p style="font-size: 15.5px; color: var(--gray-600); max-width: 680px; margin: 0 auto;">Take an authentic tour of our analytical testing laboratories, cleanroom processing suites, automated packaging lines, and HVAC-controlled storage.</p>
+        </div>
+
+        <div class="facility-photo-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+          <!-- Card 1: Main Plant -->
+          <div class="fac-photo-card demo-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+            <div style="aspect-ratio: 16/10; overflow: hidden; position: relative;">
+              <img src="assets/facility/jahaaj-building-exterior.png" alt="Jahaaj Healthcare Headquarters and Manufacturing Plant" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;">
+              <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(14, 50, 82, 0.88); backdrop-filter: blur(8px); color: #fff; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Manufacturing Plant</span>
+            </div>
+            <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Jahaaj Facility &amp; Exterior</h4>
+              <p style="font-size: 13.5px; color: var(--gray-600); line-height: 1.55; margin: 0;">State-of-the-art veterinary pharmaceutical and nutraceutical production complex built to cGMP and ISO standards.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Chemical Lab -->
+          <div class="fac-photo-card demo-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+            <div style="aspect-ratio: 16/10; overflow: hidden; position: relative;">
+              <img src="assets/facility/chemical-lab.png" alt="Analytical Chemical Testing Laboratory" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;">
+              <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(14, 50, 82, 0.88); backdrop-filter: blur(8px); color: #fff; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Analytical Testing</span>
+            </div>
+            <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Analytical Chemical Lab</h4>
+              <p style="font-size: 13.5px; color: var(--gray-600); line-height: 1.55; margin: 0;">Comprehensive testing suite equipped for active ingredient assays, titration, pH, and physical formulation integrity.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Microbiology Lab -->
+          <div class="fac-photo-card demo-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+            <div style="aspect-ratio: 16/10; overflow: hidden; position: relative;">
+              <img src="assets/facility/micro-lab.jpg" alt="Microbiology Testing Suite" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;">
+              <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(14, 50, 82, 0.88); backdrop-filter: blur(8px); color: #fff; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Microbiology Lab</span>
+            </div>
+            <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Microbiology Suite</h4>
+              <p style="font-size: 13.5px; color: var(--gray-600); line-height: 1.55; margin: 0;">Laminar flow bio-workstations and incubation chambers ensuring zero pathogen contamination (Salmonella, E. coli) across batches.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Powder Mixing -->
+          <div class="fac-photo-card demo-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+            <div style="aspect-ratio: 16/10; overflow: hidden; position: relative;">
+              <img src="assets/facility/powder-mixing-room.png" alt="Powder Mixing & Blending Suite" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;">
+              <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(14, 50, 82, 0.88); backdrop-filter: blur(8px); color: #fff; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Cleanroom Mixing</span>
+            </div>
+            <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Powder Blending Suite</h4>
+              <p style="font-size: 13.5px; color: var(--gray-600); line-height: 1.55; margin: 0;">Epoxy-floored dry blending suite with differential pressure airlocks preventing cross-contamination during active micro-dosing.</p>
+            </div>
+          </div>
+
+          <!-- Card 5: Blister Packaging -->
+          <div class="fac-photo-card demo-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+            <div style="aspect-ratio: 16/10; overflow: hidden; position: relative;">
+              <img src="assets/facility/blister-pack-machine.png" alt="High-Speed Blister Packaging Line" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;">
+              <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(14, 50, 82, 0.88); backdrop-filter: blur(8px); color: #fff; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Packaging Automation</span>
+            </div>
+            <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Blister Packaging Line</h4>
+              <p style="font-size: 13.5px; color: var(--gray-600); line-height: 1.55; margin: 0;">Automated blister sealing and optical inspection line delivering tamper-evident moisture-barrier packaging for tablets.</p>
+            </div>
+          </div>
+
+          <!-- Card 6: Air Conditioned RM Store -->
+          <div class="fac-photo-card demo-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+            <div style="aspect-ratio: 16/10; overflow: hidden; position: relative;">
+              <img src="assets/facility/air-conditioned-rm-store.png" alt="Air Conditioned Raw Material Storage" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;">
+              <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(14, 50, 82, 0.88); backdrop-filter: blur(8px); color: #fff; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Quarantine Storage</span>
+            </div>
+            <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Climate-Controlled Storage</h4>
+              <p style="font-size: 13.5px; color: var(--gray-600); line-height: 1.55; margin: 0;">HVAC-regulated storage rooms protecting heat-sensitive vitamins, probiotics, and bio-actives from ambient degradation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
