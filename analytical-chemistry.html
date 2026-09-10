@@ -243,6 +243,277 @@
     .footer-second-section { max-width: 1280px; margin: 0 auto; padding: 24px 24px 0; display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; color: #71717a; flex-wrap: wrap; gap: 14px; }
     .footer-legal-links { display: flex; align-items: center; gap: 14px; }
   </style>
+<style id="canonical-redesign-unified-style">
+/* ==========================================================================
+   UNIFIED MINIMALIST ORANGE DESIGN SYSTEM & CANONICAL MASTER FOOTER
+   ========================================================================== */
+:root {
+  --brand-orange: #ea580c !important;
+  --brand-orange-light: #f97316 !important;
+  --brand-orange-dark: #c2410c !important;
+  --brand-orange-subtle: #fff7ed !important;
+  --brand-orange-border: #fed7aa !important;
+  --brand-orange-glow: rgba(234, 88, 12, 0.12) !important;
+  --primary-navy: #0e3252;
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a, span, button, input, select {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Firm Left-Aligned Header Logo & Footer Logo */
+.nav__logo {
+  margin-left: 0 !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+.logo-and-newsletter {
+  max-width: 340px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+}
+
+.footer-logo {
+  display: block !important;
+  margin-bottom: 16px !important;
+  margin-left: 0 !important;
+  text-align: left !important;
+}
+
+.footer-logo-img {
+  height: 52px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.footer-tagline {
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+  color: #a1a1aa !important;
+  margin-bottom: 20px !important;
+  text-align: left !important;
+}
+
+/* Master Footer Styling */
+.footer-section {
+  background: #18181b !important;
+  color: #a1a1aa !important;
+  padding: 70px 0 30px !important;
+  border-top: 1px solid #27272a !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.footer-first-section {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 48px !important;
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 24px 48px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 992px) {
+  .footer-first-section {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+}
+
+.footer-social-strip {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 24px !important;
+}
+
+.footer-social-strip a,
+.footer-social-strip .social-btn {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 9999px !important;
+  background: #27272a !important;
+  border: 1px solid #3f3f46 !important;
+  color: #e4e4e7 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 15px !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+}
+
+.footer-social-strip a:hover,
+.footer-social-strip .social-btn:hover {
+  background: #ea580c !important;
+  border-color: #ea580c !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+.newsletter-form {
+  width: 100% !important;
+  margin-top: 0 !important;
+}
+
+.newsletter-input-wrap {
+  display: flex !important;
+  align-items: center !important;
+  background: #27272a !important;
+  border: 1px solid #3f3f46 !important;
+  border-radius: 9999px !important;
+  padding: 4px 6px 4px 16px !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.newsletter-input-wrap:focus-within {
+  border-color: #ea580c !important;
+}
+
+.newsletter-input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #ffffff !important;
+  font-size: 0.88rem !important;
+  width: 100% !important;
+  font-family: inherit !important;
+}
+
+.newsletter-btn {
+  background: #ea580c !important;
+  border: none !important;
+  color: #ffffff !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 9999px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  transition: all 0.2s ease !important;
+}
+
+.newsletter-btn:hover {
+  background: #f97316 !important;
+}
+
+.footer-navigation {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 36px !important;
+  flex-grow: 1 !important;
+}
+
+@media (max-width: 640px) {
+  .footer-navigation {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}
+
+.footer-col-title {
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 16px !important;
+}
+
+.footer-col-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.footer-col-links a {
+  font-size: 0.88rem !important;
+  color: #a1a1aa !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.footer-col-links a:hover {
+  color: #f97316 !important;
+  transform: translateX(3px) !important;
+}
+
+.footer-col-links a i {
+  font-size: 11px !important;
+  color: #ea580c !important;
+}
+
+.footer-divider {
+  border: none !important;
+  border-top: 1px solid #27272a !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+}
+
+.footer-second-section {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 24px 24px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 0.82rem !important;
+  color: #71717a !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+  box-sizing: border-box !important;
+}
+
+.footer-legal-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.footer-legal-links a {
+  color: #71717a !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.footer-legal-links a:hover {
+  color: #d4d4d8 !important;
+}
+
+/* Minimalist Orange Accent Enhancements */
+.nav__cta-btn,
+.btn-primary,
+.explore-btn,
+.hero-btn,
+.jhc-btn {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.section-badge,
+.hero-pill,
+.jhc-badge {
+  background: #fff7ed !important;
+  border: 1px solid #fed7aa !important;
+  color: #c2410c !important;
+}
+</style>
 </head>
 <body>
 
@@ -520,8 +791,9 @@
   </section>
 
   <!-- Master Footer -->
-  <footer class="footer-section">
+    <footer class="footer-section">
     <div class="footer-first-section">
+      <!-- Brand & Newsletter (Left Aligned) -->
       <div class="logo-and-newsletter">
         <a class="footer-logo" href="index.html" aria-label="Jahaaj Healthcare Home">
           <img class="footer-logo-img" src="assets/Jahaaj_Footer_Logo-COd83Cre.png" alt="Jahaaj Healthcare Pvt. Ltd.">
@@ -529,12 +801,15 @@
         <p class="footer-tagline">
           Your trusted CDMO & private label manufacturing partner for precision animal health & nutrition formulations.
         </p>
+
+        <!-- Social Media Row -->
         <div class="footer-social-strip">
           <a href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" class="social-btn" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
           <a href="https://www.facebook.com/profile.php?id=61584592767323" class="social-btn" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
           <a href="https://instagram.com" class="social-btn" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://x.com" class="social-btn" target="_blank" rel="noopener" aria-label="X Twitter"><i class="fab fa-x-twitter"></i></a>
         </div>
+
         <form class="newsletter-form" onsubmit="alert('Thank you for subscribing to Jahaaj Healthcare industry updates!'); this.reset(); return false;">
           <div class="newsletter-input-wrap">
             <input class="newsletter-input" type="email" placeholder="Your email address" aria-label="Your email address" required>
@@ -543,6 +818,7 @@
         </form>
       </div>
 
+      <!-- Navigation Columns -->
       <div class="footer-navigation">
         <div>
           <p class="footer-col-title">R&D & Infrastructure</p>

@@ -1974,6 +1974,277 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input, select {
 }
 
 </style>
+<style id="canonical-redesign-unified-style">
+/* ==========================================================================
+   UNIFIED MINIMALIST ORANGE DESIGN SYSTEM & CANONICAL MASTER FOOTER
+   ========================================================================== */
+:root {
+  --brand-orange: #ea580c !important;
+  --brand-orange-light: #f97316 !important;
+  --brand-orange-dark: #c2410c !important;
+  --brand-orange-subtle: #fff7ed !important;
+  --brand-orange-border: #fed7aa !important;
+  --brand-orange-glow: rgba(234, 88, 12, 0.12) !important;
+  --primary-navy: #0e3252;
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a, span, button, input, select {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Firm Left-Aligned Header Logo & Footer Logo */
+.nav__logo {
+  margin-left: 0 !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+.logo-and-newsletter {
+  max-width: 340px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+}
+
+.footer-logo {
+  display: block !important;
+  margin-bottom: 16px !important;
+  margin-left: 0 !important;
+  text-align: left !important;
+}
+
+.footer-logo-img {
+  height: 52px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.footer-tagline {
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+  color: #a1a1aa !important;
+  margin-bottom: 20px !important;
+  text-align: left !important;
+}
+
+/* Master Footer Styling */
+.footer-section {
+  background: #18181b !important;
+  color: #a1a1aa !important;
+  padding: 70px 0 30px !important;
+  border-top: 1px solid #27272a !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.footer-first-section {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 48px !important;
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 24px 48px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 992px) {
+  .footer-first-section {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+}
+
+.footer-social-strip {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 24px !important;
+}
+
+.footer-social-strip a,
+.footer-social-strip .social-btn {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 9999px !important;
+  background: #27272a !important;
+  border: 1px solid #3f3f46 !important;
+  color: #e4e4e7 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 15px !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+}
+
+.footer-social-strip a:hover,
+.footer-social-strip .social-btn:hover {
+  background: #ea580c !important;
+  border-color: #ea580c !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+.newsletter-form {
+  width: 100% !important;
+  margin-top: 0 !important;
+}
+
+.newsletter-input-wrap {
+  display: flex !important;
+  align-items: center !important;
+  background: #27272a !important;
+  border: 1px solid #3f3f46 !important;
+  border-radius: 9999px !important;
+  padding: 4px 6px 4px 16px !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.newsletter-input-wrap:focus-within {
+  border-color: #ea580c !important;
+}
+
+.newsletter-input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #ffffff !important;
+  font-size: 0.88rem !important;
+  width: 100% !important;
+  font-family: inherit !important;
+}
+
+.newsletter-btn {
+  background: #ea580c !important;
+  border: none !important;
+  color: #ffffff !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 9999px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  transition: all 0.2s ease !important;
+}
+
+.newsletter-btn:hover {
+  background: #f97316 !important;
+}
+
+.footer-navigation {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 36px !important;
+  flex-grow: 1 !important;
+}
+
+@media (max-width: 640px) {
+  .footer-navigation {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}
+
+.footer-col-title {
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 16px !important;
+}
+
+.footer-col-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.footer-col-links a {
+  font-size: 0.88rem !important;
+  color: #a1a1aa !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.footer-col-links a:hover {
+  color: #f97316 !important;
+  transform: translateX(3px) !important;
+}
+
+.footer-col-links a i {
+  font-size: 11px !important;
+  color: #ea580c !important;
+}
+
+.footer-divider {
+  border: none !important;
+  border-top: 1px solid #27272a !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+}
+
+.footer-second-section {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 24px 24px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 0.82rem !important;
+  color: #71717a !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+  box-sizing: border-box !important;
+}
+
+.footer-legal-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.footer-legal-links a {
+  color: #71717a !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.footer-legal-links a:hover {
+  color: #d4d4d8 !important;
+}
+
+/* Minimalist Orange Accent Enhancements */
+.nav__cta-btn,
+.btn-primary,
+.explore-btn,
+.hero-btn,
+.jhc-btn {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.section-badge,
+.hero-pill,
+.jhc-badge {
+  background: #fff7ed !important;
+  border: 1px solid #fed7aa !important;
+  color: #c2410c !important;
+}
+</style>
 </head>
 <body>
   <div id="scrollProgress"></div>
@@ -2462,95 +2733,90 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input, select {
   </section>
 
   <!-- Unified Footer -->
-  <footer class="footer-section">
-  <div class="footer-first-section">
-    <!-- Brand & Newsletter -->
-    <div class="logo-and-newsletter">
-      <a class="footer-logo" href="index.html" aria-label="Jahaaj Healthcare Home">
-        <img class="footer-logo-img" src="assets/Jahaaj_Footer_Logo-COd83Cre.png" alt="Jahaaj Healthcare Pvt. Ltd." oncontextmenu="return false;">
-      </a>
-      <p class="footer-tagline">
-        Your trusted CDMO & private label manufacturing partner for precision animal health & nutrition formulations.
-      </p>
-            <!-- Dedicated Social Media Strip -->
-      <div class="footer-social-strip">
-        <a href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Twitter"><i class="fab fa-x-twitter"></i></a>
-      </div>
-      <form class="newsletter-form" onsubmit="alert('Thank you for subscribing to Jahaaj Healthcare industry updates!'); this.reset(); return false;">
-        <div class="newsletter-input-wrap">
-          <input class="newsletter-input" type="email" placeholder="Your email address" aria-label="Your email address" required>
-          <button class="newsletter-btn" type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+    <footer class="footer-section">
+    <div class="footer-first-section">
+      <!-- Brand & Newsletter (Left Aligned) -->
+      <div class="logo-and-newsletter">
+        <a class="footer-logo" href="index.html" aria-label="Jahaaj Healthcare Home">
+          <img class="footer-logo-img" src="assets/Jahaaj_Footer_Logo-COd83Cre.png" alt="Jahaaj Healthcare Pvt. Ltd.">
+        </a>
+        <p class="footer-tagline">
+          Your trusted CDMO & private label manufacturing partner for precision animal health & nutrition formulations.
+        </p>
+
+        <!-- Social Media Row -->
+        <div class="footer-social-strip">
+          <a href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" class="social-btn" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61584592767323" class="social-btn" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com" class="social-btn" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com" class="social-btn" target="_blank" rel="noopener" aria-label="X Twitter"><i class="fab fa-x-twitter"></i></a>
         </div>
-      </form>
-    </div>
 
-    <!-- Nav Columns -->
-    <div class="footer-navigation">
-      <div class="contents-navig">
-        <p class="section-title">Main Pages</p>
-        <a class="footer-link" href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
-        <a class="footer-link" href="about.html"><i class="fas fa-chevron-right"></i> Discover Jahaaj</a>
-        <a class="footer-link" href="manufacturing-process.html"><i class="fas fa-chevron-right"></i> Manufacturing & Capabilities</a>
-        <a class="footer-link" href="why-jahaaj.html"><i class="fas fa-chevron-right"></i> Why Jahaaj</a>
-        <a class="footer-link" href="products-catalog-elementor.html"><i class="fas fa-chevron-right"></i> Explore Our Products</a>
-        <a class="footer-link" href="contact.html"><i class="fas fa-chevron-right"></i> Connect With Us</a>
+        <form class="newsletter-form" onsubmit="alert('Thank you for subscribing to Jahaaj Healthcare industry updates!'); this.reset(); return false;">
+          <div class="newsletter-input-wrap">
+            <input class="newsletter-input" type="email" placeholder="Your email address" aria-label="Your email address" required>
+            <button class="newsletter-btn" type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </form>
       </div>
 
-      <div class="contents-navig">
-        <p class="section-title">Species Solutions</p>
-        <a class="footer-link" href="poultry-category-elementor.html"><i class="fas fa-feather-pointed"></i> Poultry Solutions</a>
-        <a class="footer-link" href="ruminants-category-elementor.html"><i class="fas fa-cow"></i> Ruminants & Dairy</a>
-        <a class="footer-link" href="pet-category-elementor.html"><i class="fas fa-paw"></i> Companion Animals (Pets)</a>
-        <a class="footer-link" href="aquaculture-category-elementor.html"><i class="fas fa-fish"></i> Aquaculture Feed Solutions</a>
-        <a class="footer-link" href="swine-category-elementor.html"><i class="fas fa-piggy-bank"></i> Swine Solutions</a>
-      </div>
+      <!-- Navigation Columns -->
+      <div class="footer-navigation">
+        <div>
+          <p class="footer-col-title">R&D & Infrastructure</p>
+          <div class="footer-col-links">
+            <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+            <a href="discovery.html"><i class="fas fa-chevron-right"></i> Discoveries Hub</a>
+            <a href="analytical-chemistry.html"><i class="fas fa-chevron-right"></i> Analytical Chemistry Lab</a>
+            <a href="microbiology.html"><i class="fas fa-chevron-right"></i> Microbiology Cleanroom</a>
+            <a href="manufacturing-process.html"><i class="fas fa-chevron-right"></i> Cleanroom Engineering</a>
+            <a href="about.html#facility"><i class="fas fa-chevron-right"></i> Facility Photographic Tour</a>
+          </div>
+        </div>
 
-      <div class="contents-navig">
-        <p class="section-title">Quality & Utilities</p>
-        <a class="footer-link" href="qc-qa-systems.html"><i class="fas fa-shield-halved"></i> QC / QA Systems</a>
-        <a class="footer-link" href="team.html"><i class="fas fa-users"></i> Leadership Team</a>
-        <a class="footer-link" href="product-detail.html?id=poultry-digestive-gut-health"><i class="fas fa-file-invoice"></i> Product Specifications</a>
-        <a class="footer-link" href="sitemap.html"><i class="fas fa-sitemap"></i> Site Map</a>
+        <div>
+          <p class="footer-col-title">Species Solutions</p>
+          <div class="footer-col-links">
+            <a href="poultry-category-elementor.html"><i class="fas fa-feather-pointed"></i> Poultry Solutions</a>
+            <a href="ruminants-category-elementor.html"><i class="fas fa-cow"></i> Ruminants & Dairy</a>
+            <a href="pet-category-elementor.html"><i class="fas fa-paw"></i> Companion Animals (Pets)</a>
+            <a href="aquaculture-category-elementor.html"><i class="fas fa-fish"></i> Aquaculture Feed Solutions</a>
+            <a href="swine-category-elementor.html"><i class="fas fa-piggy-bank"></i> Swine Solutions</a>
+            <a href="products-catalog-elementor.html"><i class="fas fa-layer-group"></i> All 28 Formulations</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Company & Quality</p>
+          <div class="footer-col-links">
+            <a href="about.html"><i class="fas fa-chevron-right"></i> Who We Are</a>
+            <a href="team.html"><i class="fas fa-users"></i> Leadership Team</a>
+            <a href="why-jahaaj.html"><i class="fas fa-gem"></i> Why Choose Jahaaj</a>
+            <a href="qc-qa-systems.html"><i class="fas fa-chevron-right"></i> QC / QA Compliance</a>
+            <a href="contact.html"><i class="fas fa-chevron-right"></i> Connect With Us</a>
+            <a href="sitemap.html"><i class="fas fa-chevron-right"></i> Site Map</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Socials & Certifications -->
-    <div class="socials">
-      <p class="section-title">Connect & Socials</p>
-      <div class="social-contents">
-        <a class="footer-link" href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a class="footer-link" href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Facebook</a>
-        <a class="footer-link" href="https://instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
-        <a class="footer-link" href="https://x.com" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
-      </div>
-      <div class="footer-cert-badges">
-        <span class="f-cert-pill"><i class="fas fa-shield-check"></i> GMP+ Certified</span>
-        <span class="f-cert-pill"><i class="fas fa-certificate"></i> ISO 9001:2015</span>
-      </div>
-    </div>
-  </div>
+    <hr class="footer-divider">
 
-  <hr class="footer-divider">
-
-  <div class="footer-second-section">
-    <div class="footer-legal-links">
-      <a class="footer-link" href="contact.html#privacy">Privacy Policy</a>
-      <span class="footer-sep">&bull;</span>
-      <a class="footer-link" href="contact.html#terms">Terms of Use</a>
-      <span class="footer-sep">&bull;</span>
-      <a class="footer-link" href="sitemap.html">Sitemap</a>
+    <div class="footer-second-section">
+      <div class="footer-legal-links">
+        <a href="contact.html#privacy">Privacy Policy</a>
+        <span>&bull;</span>
+        <a href="contact.html#terms">Terms of Use</a>
+        <span>&bull;</span>
+        <a href="sitemap.html">Sitemap</a>
+      </div>
+      <span>&copy; 2026 Jahaaj Healthcare Pvt. Ltd. All rights reserved.</span>
+      <div style="display: flex; gap: 8px;">
+        <span style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 999px; font-size: 0.76rem; border: 1px solid rgba(255,255,255,0.1);">GMP+ Certified</span>
+        <span style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 999px; font-size: 0.76rem; border: 1px solid rgba(255,255,255,0.1);">ISO 9001:2015</span>
+      </div>
     </div>
-    <span class="copyright-text">
-      &copy; 2026 Jahaaj Healthcare Pvt. Ltd. All rights reserved.
-    </span>
-    <div class="footer-made-tag">
-      <span>Built for What's Next in Animal Health</span>
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <!-- Scripts -->
   <script src="assets/products-data.js"></script>
