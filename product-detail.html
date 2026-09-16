@@ -1957,7 +1957,6 @@ html, body {
 </button>
 <div class="dropdown" id="dd-products">
 <ul>
-<li><a href="products-catalog-elementor.html">All Products</a></li>
 <li><a href="poultry-category-elementor.html">Poultry</a></li>
 <li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
 <li><a href="pet-category-elementor.html">Companion Animals</a></li>
@@ -2005,7 +2004,6 @@ html, body {
 <div class="mnav__group">
 <button aria-expanded="false" class="mnav__top">Explore Our Products <svg viewbox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
 <ul class="mnav__sub">
-<li><a href="products-catalog-elementor.html">All Products</a></li>
 <li><a href="poultry-category-elementor.html">Poultry</a></li>
 <li><a href="ruminants-category-elementor.html">Ruminants / Livestock</a></li>
 <li><a href="pet-category-elementor.html">Companion Animals</a></li>
@@ -2030,8 +2028,6 @@ html, body {
     <div class="jhc-container">
       <ul id="breadcrumbList">
         <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li class="separator"><i class="fas fa-chevron-right"></i></li>
-        <li><a href="products-catalog-elementor.html">Explore Products</a></li>
         <li class="separator"><i class="fas fa-chevron-right"></i></li>
         <li><a href="#" id="breadcrumbSpecies">Category</a></li>
         <li class="separator"><i class="fas fa-chevron-right"></i></li>
@@ -2139,9 +2135,7 @@ html, body {
               <a href="#inquiryFormSection" class="jhc-btn-primary-quote">
                 <i class="fas fa-paper-plane"></i> Request Formulation Quote / Sample
               </a>
-              <a href="products-catalog-elementor.html" class="jhc-btn-secondary-catalog">
-                <i class="fas fa-arrow-left"></i> Back to All 28 Products
-              </a>
+              <a href="poultry-category-elementor.html" class="jhc-btn-secondary-catalog" id="btnBackToCategory"><i class="fas fa-arrow-left"></i> Back to Category Solutions</a>
             </div>
 
           </div>
@@ -2400,7 +2394,6 @@ html, body {
         <a class="footer-link" href="about.html"><i class="fas fa-chevron-right"></i> Discover Jahaaj</a>
         <a class="footer-link" href="manufacturing-process.html"><i class="fas fa-chevron-right"></i> Manufacturing & Capabilities</a>
         <a class="footer-link" href="why-jahaaj.html"><i class="fas fa-chevron-right"></i> Why Jahaaj</a>
-        <a class="footer-link" href="products-catalog-elementor.html"><i class="fas fa-chevron-right"></i> Explore Our Products</a>
         <a class="footer-link" href="contact.html"><i class="fas fa-chevron-right"></i> Connect With Us</a>
       </div>
 
@@ -2551,10 +2544,16 @@ html, body {
         'pets': 'pet-category-elementor.html',
         'aqua': 'aquaculture-category-elementor.html',
         'swine': 'swine-category-elementor.html',
-        'equine': 'products-catalog-elementor.html'
+        'equine': 'poultry-category-elementor.html'
       };
+      const catUrl = speciesPageMap[p.species] || 'poultry-category-elementor.html';
       bcSpecies.textContent = p.speciesCategory;
-      bcSpecies.href = speciesPageMap[p.species] || 'products-catalog-elementor.html';
+      bcSpecies.href = catUrl;
+      const btnBack = document.getElementById('btnBackToCategory') || document.querySelector('.jhc-btn-secondary-catalog');
+      if (btnBack) {
+        btnBack.href = catUrl;
+        btnBack.innerHTML = `<i class="fas fa-arrow-left"></i> Back to ${p.speciesCategory} Solutions`;
+      }
       document.getElementById('breadcrumbCurrent').textContent = p.title;
 
       // Update Gallery & Badge
