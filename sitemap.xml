@@ -2,18 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://jahaaj-homepage.vercel.app/</loc></url>
   <url><loc>https://jahaaj-homepage.vercel.app/about.html</loc></url>
-  <url><loc>https://jahaaj-homepage.vercel.app/manufacturing-process.html</loc></url>
   <url><loc>https://jahaaj-homepage.vercel.app/team.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/our-facility.html</loc></url>
   <url><loc>https://jahaaj-homepage.vercel.app/why-jahaaj.html</loc></url>
-  <url><loc>https://jahaaj-homepage.vercel.app/contact.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/manufacturing-process.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/packaging-capabilities.html</loc></url>
   <url><loc>https://jahaaj-homepage.vercel.app/qc-qa-systems.html</loc></url>
-  <url><loc>https://jahaaj-homepage.vercel.app/products-catalog-elementor.html</loc></url>
-  <url><loc>https://jahaaj-homepage.vercel.app/aquaculture-category-elementor.html</loc></url>
-  <url><loc>https://jahaaj-homepage.vercel.app/pet-category-elementor.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/science-and-innovation.html</loc></url>
   <url><loc>https://jahaaj-homepage.vercel.app/poultry-category-elementor.html</loc></url>
   <url><loc>https://jahaaj-homepage.vercel.app/ruminants-category-elementor.html</loc></url>
-  <url><loc>https://jahaaj-homepage.vercel.app/swine-category-elementor.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/pet-category-elementor.html</loc></url>
   <url><loc>https://jahaaj-homepage.vercel.app/equine-category-elementor.html</loc></url>
-  <url><loc>https://jahaaj-homepage.vercel.app/sitemap.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/swine-category-elementor.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/aquaculture-category-elementor.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/contact.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/global-network.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/enquire-formulation.html</loc></url>
   <url><loc>https://jahaaj-homepage.vercel.app/product-detail.html</loc></url>
+  <url><loc>https://jahaaj-homepage.vercel.app/sitemap.html</loc></url>
 </urlset>
