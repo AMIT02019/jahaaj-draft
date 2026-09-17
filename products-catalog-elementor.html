@@ -541,9 +541,125 @@
 </head>
 <body>
 
-  
+  <!-- Top Scroll Progress Bar -->
+  <div id="scrollProgress"></div>
 
-  <main class="container">
+  <!-- ================= PRIMARY FLOATING GLASS NAVBAR ================= -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="index.html" aria-label="Jahaaj Healthcare home">
+      <img src="assets/Jahaaj_Logo-v9aWIgL2.png" alt="Jahaaj Healthcare Pvt. Ltd." oncontextmenu="return false;">
+    </a>
+
+    <!-- Desktop Navigation Items -->
+    <nav class="nav__menu" aria-label="Main menu">
+      <div class="nav__item"><a class="nav__link " href="index.html">Home</a></div>
+      
+      <div class="nav__item" data-menu="discover">
+        <button class="nav__link" aria-expanded="false">Discover Jahaaj <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <div class="dropdown">
+          <ul>
+            <li><a href="about.html" >Who we are</a></li>
+            <li><a href="team.html" >Our Team</a></li>
+            <li><a href="our-facility.html" >Our Facility</a></li>
+            <li><a href="why-jahaaj.html" >Why Jahaaj</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item" data-menu="manufacturing">
+        <button class="nav__link " aria-expanded="false">Manufacturing &amp; Capabilities <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <div class="dropdown">
+          <ul>
+            <li><a href="manufacturing-process.html" >Manufacturing Process</a></li>
+            <li><a href="packaging-capabilities.html" >Packaging Capabilities</a></li>
+            <li><a href="qc-qa-systems.html" >QC / QA Systems</a></li>
+            <li><a href="science-and-innovation.html" >Science &amp; Innovation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item" data-menu="products">
+        <button class="nav__link active" aria-expanded="false">Explore Our Products <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <div class="dropdown">
+          <ul>
+            <li><a href="products-catalog-elementor.html" style="font-weight:700; color:#c2410c;"><i class="fas fa-list"></i> All Formulations (41)</a></li>
+            <li><a href="poultry-category-elementor.html" >Poultry</a></li>
+            <li><a href="ruminants-category-elementor.html" >Ruminants / Livestock</a></li>
+            <li><a href="pet-category-elementor.html" >Companion Animals</a></li>
+            <li><a href="equine-category-elementor.html" >Equine</a></li>
+            <li><a href="swine-category-elementor.html" >Swine</a></li>
+            <li><a href="aquaculture-category-elementor.html" >Aquaculture</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item" data-menu="connect">
+        <button class="nav__link " aria-expanded="false">Connect <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <div class="dropdown">
+          <ul>
+            <li><a href="contact.html" >Contact Us</a></li>
+            <li><a href="global-network.html" >Global Network</a></li>
+            <li><a href="enquire-formulation.html" >Enquire Formulation</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <a class="nav__cta-btn" href="enquire-formulation.html">Start With Us</a>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </header>
+
+  <!-- ================= MOBILE MENU DRAWER ================= -->
+  <div class="mnav" id="mnav" hidden>
+    <div class="mnav__inner">
+      <div class="mnav__group"><a class="mnav__top" href="index.html">Home</a></div>
+      
+      <div class="mnav__group">
+        <button class="mnav__top" aria-expanded="false">Discover Jahaaj <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <ul class="mnav__sub">
+          <li><a href="about.html" >Who we are</a></li>
+          <li><a href="team.html" >Our Team</a></li>
+          <li><a href="our-facility.html" >Our Facility</a></li>
+          <li><a href="why-jahaaj.html" >Why Jahaaj</a></li>
+        </ul>
+      </div>
+
+      <div class="mnav__group">
+        <button class="mnav__top" aria-expanded="false">Manufacturing &amp; Capabilities <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <ul class="mnav__sub">
+          <li><a href="manufacturing-process.html" >Manufacturing Process</a></li>
+          <li><a href="packaging-capabilities.html" >Packaging Capabilities</a></li>
+          <li><a href="qc-qa-systems.html" >QC / QA Systems</a></li>
+          <li><a href="science-and-innovation.html" >Science &amp; Innovation</a></li>
+        </ul>
+      </div>
+
+      <div class="mnav__group">
+        <button class="mnav__top" aria-expanded="false">Explore Our Products <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <ul class="mnav__sub">
+          <li><a href="products-catalog-elementor.html" style="font-weight:700; color:#c2410c;"><i class="fas fa-list"></i> All Formulations (41)</a></li>
+            <li><a href="poultry-category-elementor.html" >Poultry</a></li>
+          <li><a href="ruminants-category-elementor.html" >Ruminants / Livestock</a></li>
+          <li><a href="pet-category-elementor.html" >Companion Animals</a></li>
+          <li><a href="equine-category-elementor.html" >Equine</a></li>
+          <li><a href="swine-category-elementor.html" >Swine</a></li>
+          <li><a href="aquaculture-category-elementor.html" >Aquaculture</a></li>
+        </ul>
+      </div>
+
+      <div class="mnav__group">
+        <button class="mnav__top" aria-expanded="false">Connect <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <ul class="mnav__sub">
+          <li><a href="contact.html" >Contact Us</a></li>
+          <li><a href="global-network.html" >Global Network</a></li>
+          <li><a href="enquire-formulation.html" >Enquire Formulation</a></li>
+        </ul>
+      </div>
+
+      <a class="nav__cta-btn mnav__cta" href="enquire-formulation.html">Start With Us</a>
+    </div>
+  </div>
+<main class="container">
     <!-- Breadcrumbs -->
     <div class="breadcrumbs">
       <a href="index.html"><i class="fas fa-home"></i> Home</a>
