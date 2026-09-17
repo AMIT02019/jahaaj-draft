@@ -1336,13 +1336,13 @@
         </div>
 
         <div class="showcase-tabs">
-          <button class="tab-btn active" data-species="all"><i class="fas fa-border-all"></i> Featured Formulations</button>
-          <button class="tab-btn" data-species="poultry"><i class="fas fa-feather-pointed"></i> Poultry (11)</button>
-          <button class="tab-btn" data-species="ruminants"><i class="fas fa-cow"></i> Ruminants (11)</button>
-          <button class="tab-btn" data-species="pet"><i class="fas fa-paw"></i> Pets (8)</button>
-          <button class="tab-btn" data-species="aquaculture"><i class="fas fa-fish"></i> Aquaculture (4)</button>
-          <button class="tab-btn" data-species="swine"><i class="fas fa-piggy-bank"></i> Swine (4)</button>
-          <button class="tab-btn" data-species="equine"><i class="fas fa-horse"></i> Equine (3)</button>
+          <button class="tab-btn active" data-species="all"><i class="fas fa-border-all"></i> All Featured (12)</button>
+          <button class="tab-btn" data-species="poultry"><i class="fas fa-feather-pointed"></i> Poultry (12)</button>
+          <button class="tab-btn" data-species="ruminants"><i class="fas fa-cow"></i> Ruminants (10)</button>
+          <button class="tab-btn" data-species="pets"><i class="fas fa-paw"></i> Pets (7)</button>
+          <button class="tab-btn" data-species="aqua"><i class="fas fa-fish"></i> Aquaculture (5)</button>
+          <button class="tab-btn" data-species="swine"><i class="fas fa-piggy-bank"></i> Swine (2)</button>
+          <button class="tab-btn" data-species="equine"><i class="fas fa-horse"></i> Equine (5)</button>
         </div>
 
         <div class="showcase-grid" id="homepageShowcaseGrid">
@@ -1518,7 +1518,7 @@
           <a href="poultry-category-elementor.html" class="sp-card">
             <div class="sp-img-box">
               <img src="assets/poultry_hero_hd.jpg" alt="Poultry Nutrition and Supplements">
-              <span class="sp-count-badge">11 Formulations</span>
+              <span class="sp-count-badge">12 Formulations</span>
             </div>
             <div class="sp-content">
               <h3 class="sp-title">Poultry Solutions</h3>
@@ -1530,7 +1530,7 @@
           <a href="ruminants-category-elementor.html" class="sp-card">
             <div class="sp-img-box">
               <img src="assets/ruminant_hero_hd.jpg" alt="Ruminants and Dairy Livestock Nutrition">
-              <span class="sp-count-badge">11 Formulations</span>
+              <span class="sp-count-badge">10 Formulations</span>
             </div>
             <div class="sp-content">
               <h3 class="sp-title">Ruminants &amp; Livestock</h3>
@@ -1542,7 +1542,7 @@
           <a href="pet-category-elementor.html" class="sp-card">
             <div class="sp-img-box">
               <img src="assets/pet_hero_hd.jpg" alt="Companion Animal and Pet Healthcare">
-              <span class="sp-count-badge">8 Formulations</span>
+              <span class="sp-count-badge">7 Formulations</span>
             </div>
             <div class="sp-content">
               <h3 class="sp-title">Companion Animals (Pets)</h3>
@@ -1554,7 +1554,7 @@
           <a href="aquaculture-category-elementor.html" class="sp-card">
             <div class="sp-img-box">
               <img src="assets/aqua_hero_hd.jpg" alt="Aquaculture Shrimp and Fish Health">
-              <span class="sp-count-badge">4 Formulations</span>
+              <span class="sp-count-badge">5 Formulations</span>
             </div>
             <div class="sp-content">
               <h3 class="sp-title">Aquaculture Solutions</h3>
@@ -1566,7 +1566,7 @@
           <a href="swine-category-elementor.html" class="sp-card">
             <div class="sp-img-box">
               <img src="assets/swine_hero_hd.jpg" alt="Swine Feed Supplements and Nutrition">
-              <span class="sp-count-badge">4 Formulations</span>
+              <span class="sp-count-badge">2 Formulations</span>
             </div>
             <div class="sp-content">
               <h3 class="sp-title">Swine Solutions</h3>
@@ -1578,7 +1578,7 @@
           <a href="equine-category-elementor.html" class="sp-card">
             <div class="sp-img-box">
               <img src="assets/equine_hero_hd.jpg" alt="Equine Athletic Nutrition and Care">
-              <span class="sp-count-badge">3 Formulations</span>
+              <span class="sp-count-badge">5 Formulations</span>
             </div>
             <div class="sp-content">
               <h3 class="sp-title">Equine Solutions</h3>
@@ -1820,17 +1820,28 @@
       const featuredIds = [
         "poultry-feed-conversion-ratio-fcr",
         "poultry-digestive-gut-health",
-        "poultry-respiratory-health",
-        "ruminants-rumen-health-acidosis",
-        "ruminants-transition-period-management",
-        "ruminants-reproductive-health-fertility",
-        "pets-joint-health-mobility",
-        "pets-digestive-health-probiotics",
-        "aquaculture-gut-health-digestion",
-        "aquaculture-hepatopancreas-protection",
-        "swine-gut-health-diarrhea",
-        "equine-joint-mobility"
+        "poultry-mycotoxin-management",
+        "ruminant-fcr-feed-efficiency",
+        "ruminant-digestion-live-yeast",
+        "ruminant-transition-cow-support",
+        "pet-hip-joint-mobility",
+        "pet-digestive-oral-health",
+        "pet-dermal-skin-health",
+        "aqua-growth-immunity-booster",
+        "aqua-soil-probiotic-sludge-reducer",
+        "swine-gut-health-diarrhea-control",
+        "swine-weight-gain-natural-growth-promoter",
+        "equine-joint-soundness-care",
+        "equine-electrolyte-stamina"
       ];
+
+      function matchesSpecies(pSpecies, filter) {
+        if (filter === 'all') return true;
+        if (pSpecies === filter) return true;
+        if ((filter === 'pet' || filter === 'pets') && (pSpecies === 'pet' || pSpecies === 'pets')) return true;
+        if ((filter === 'aqua' || filter === 'aquaculture') && (pSpecies === 'aqua' || pSpecies === 'aquaculture')) return true;
+        return false;
+      }
 
       function renderShowcase(speciesFilter) {
         const allProds = window.JAHAAJ_PRODUCTS || [];
@@ -1843,7 +1854,7 @@
             prodsToDisplay = allProds.slice(0, 9);
           }
         } else {
-          prodsToDisplay = allProds.filter(p => p.species === speciesFilter).slice(0, 6);
+          prodsToDisplay = allProds.filter(p => matchesSpecies(p.species, speciesFilter));
         }
 
         if (prodsToDisplay.length === 0) {
@@ -1906,30 +1917,8 @@
     })();
   </script>
 
-  <!-- Mobile Drawer Toggle Script -->
-  <script>
-    (function() {
-      const burger = document.querySelector('.nav__burger');
-      const drawer = document.getElementById('mnav');
-      if (burger && drawer) {
-        burger.addEventListener('click', function() {
-          const isOpened = drawer.classList.toggle('open');
-          drawer.hidden = !isOpened;
-          burger.setAttribute('aria-expanded', isOpened);
-          burger.classList.toggle('active', isOpened);
-        });
-      }
-      document.querySelectorAll('.mnav__top').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const expanded = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', !expanded);
-          const sub = this.nextElementSibling;
-          if (sub && sub.classList.contains('mnav__sub')) {
-            sub.classList.toggle('open');
-          }
-        });
-      });
-    })();
-  </script>
+
+  <!-- Canonical Navigation Controller -->
+  <script src="assets/nav-and-footer.js" defer></script>
 </body>
 </html>

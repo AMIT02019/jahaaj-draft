@@ -694,12 +694,12 @@
 
       <div class="filter-pills-row">
         <button class="filter-pill active" data-species="all"><i class="fas fa-border-all"></i> All Formulations (41)</button>
-        <button class="filter-pill" data-species="poultry"><i class="fas fa-feather-pointed"></i> Poultry (11)</button>
-        <button class="filter-pill" data-species="ruminants"><i class="fas fa-cow"></i> Ruminants (11)</button>
-        <button class="filter-pill" data-species="pet"><i class="fas fa-paw"></i> Pets / Companion (8)</button>
-        <button class="filter-pill" data-species="aquaculture"><i class="fas fa-fish"></i> Aquaculture (4)</button>
-        <button class="filter-pill" data-species="swine"><i class="fas fa-piggy-bank"></i> Swine (4)</button>
-        <button class="filter-pill" data-species="equine"><i class="fas fa-horse"></i> Equine (3)</button>
+        <button class="filter-pill" data-species="poultry"><i class="fas fa-feather-pointed"></i> Poultry (12)</button>
+        <button class="filter-pill" data-species="ruminants"><i class="fas fa-cow"></i> Ruminants (10)</button>
+        <button class="filter-pill" data-species="pets"><i class="fas fa-paw"></i> Pets / Companion (7)</button>
+        <button class="filter-pill" data-species="aqua"><i class="fas fa-fish"></i> Aquaculture (5)</button>
+        <button class="filter-pill" data-species="swine"><i class="fas fa-piggy-bank"></i> Swine (2)</button>
+        <button class="filter-pill" data-species="equine"><i class="fas fa-horse"></i> Equine (5)</button>
       </div>
 
       <div class="format-pills-row">
@@ -843,18 +843,28 @@
         all: 'All Formulations',
         poultry: 'Poultry Solutions',
         ruminants: 'Ruminants & Livestock',
+        pets: 'Companion Animals (Pets)',
         pet: 'Companion Animals (Pets)',
+        aqua: 'Aquaculture Solutions',
         aquaculture: 'Aquaculture Solutions',
         swine: 'Swine Solutions',
         equine: 'Equine Solutions'
       };
+
+      function matchesSpecies(pSpecies, filter) {
+        if (filter === 'all') return true;
+        if (pSpecies === filter) return true;
+        if ((filter === 'pet' || filter === 'pets') && (pSpecies === 'pet' || pSpecies === 'pets')) return true;
+        if ((filter === 'aqua' || filter === 'aquaculture') && (pSpecies === 'aqua' || pSpecies === 'aquaculture')) return true;
+        return false;
+      }
 
       function renderProducts() {
         const allProducts = window.JAHAAJ_PRODUCTS || [];
         
         const filtered = allProducts.filter(p => {
           // Species filter
-          if (currentSpecies !== 'all' && p.species !== currentSpecies) return false;
+          if (!matchesSpecies(p.species, currentSpecies)) return false;
           
           // Format filter
           if (currentFormat !== 'all') {
@@ -997,31 +1007,8 @@
     })();
   </script>
 
-  <!-- Mobile Drawer Toggle Script -->
-  <script>
-    (function() {
-      const burger = document.querySelector('.nav__burger');
-      const drawer = document.getElementById('mnav');
-      if (burger && drawer) {
-        burger.addEventListener('click', function() {
-          const isOpened = drawer.classList.toggle('open');
-          drawer.hidden = !isOpened;
-          burger.setAttribute('aria-expanded', isOpened);
-          burger.classList.toggle('active', isOpened);
-        });
-      }
-      // Accordions in mobile drawer
-      document.querySelectorAll('.mnav__top').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const expanded = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', !expanded);
-          const sub = this.nextElementSibling;
-          if (sub && sub.classList.contains('mnav__sub')) {
-            sub.classList.toggle('open');
-          }
-        });
-      });
-    })();
-  </script>
+
+  <!-- Canonical Navigation Controller -->
+  <script src="assets/nav-and-footer.js" defer></script>
 </body>
 </html>

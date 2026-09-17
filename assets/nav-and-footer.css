@@ -144,6 +144,30 @@
   z-index: 1010 !important;
 }
 
+
+/* Desktop Hover & Focus-Within Support */
+@media (min-width: 993px) {
+  .nav__item:hover .dropdown,
+  .nav__item:focus-within .dropdown,
+  .nav__item.open .dropdown {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+  }
+  .nav__item:hover .nav__link svg,
+  .nav__item:focus-within .nav__link svg,
+  .nav__item.open .nav__link svg {
+    transform: rotate(180deg) !important;
+  }
+  .nav__item:hover .nav__link,
+  .nav__item:focus-within .nav__link,
+  .nav__item.open .nav__link {
+    background: rgba(14, 50, 82, 0.06) !important;
+    color: var(--navy) !important;
+  }
+}
+
 .nav__item.open .dropdown {
   opacity: 1 !important;
   visibility: visible !important;
