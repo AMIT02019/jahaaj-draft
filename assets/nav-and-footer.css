@@ -624,3 +624,20 @@
   font-size: 11.5px !important;
   font-weight: 600 !important;
 }
+
+/* ==========================================================================
+   CONTENT VISIBILITY GUARANTEE: NEVER HIDE PAGE SECTIONS & CONTENT
+   Ensures sections, cards, stats, containers, and text are 100% visible across all pages.
+   ========================================================================== */
+[data-animate],
+[data-animate="fade-up"],
+[data-animate="fade-down"],
+[data-animate="fade-left"],
+[data-animate="fade-right"],
+[data-animate="zoom-in"],
+[data-stagger] > * {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+

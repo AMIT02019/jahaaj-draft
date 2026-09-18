@@ -101,6 +101,17 @@
         progressBar.style.width = pct + '%';
       }, { passive: true });
     }
+
+    // Scroll Animations & Visibility Tagging
+    const animEls = document.querySelectorAll('[data-animate], [data-stagger]');
+    document.querySelectorAll('[data-stagger]').forEach(container => {
+      Array.from(container.children).forEach((child, idx) => {
+        child.style.setProperty('--i', idx);
+        child.classList.add('animated');
+      });
+      container.classList.add('animated');
+    });
+    animEls.forEach(el => el.classList.add('animated'));
   }
 
   if (document.readyState === 'loading') {
