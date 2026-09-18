@@ -657,23 +657,51 @@ a {
 
 .team-avatar-box {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
-.team-avatar-circle {
-  width: 58px;
-  height: 58px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--navy), #164e63);
+.team-photo-frame {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(14, 50, 82, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.team-card:hover .team-photo-frame {
+  border-color: rgba(234, 88, 12, 0.4);
+  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.18);
+  transform: translateY(-2px);
+}
+
+.team-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-initials-badge {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: rgba(14, 50, 82, 0.92);
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
+  font-size: 11px;
   font-weight: 800;
-  box-shadow: 0 4px 12px rgba(14, 50, 82, 0.2);
+  padding: 2px 7px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  line-height: 1.3;
 }
 
 .team-tag-pill {
@@ -1192,30 +1220,39 @@ a {
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">NH</div>
-            <span class="team-tag-pill">LDR-01</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Nikhilesh Hajare - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">NH</span>
           </div>
-          <h3 class="team-name">Nikhilesh Hajare</h3>
+          <span class="team-tag-pill">LDR-01</span>
+        </div>
+        <h3 class="team-name">Nikhilesh Hajare</h3>
           <p class="team-role">Director &amp; Sales and Marketing Head</p>
           <p class="team-bio">Leads sustainable business growth by building strategic customer partnerships, overseeing international market expansion, and shaping company positioning.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">AT</div>
-            <span class="team-tag-pill">LDR-02</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Apurva Tapre - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">AT</span>
           </div>
-          <h3 class="team-name">Apurva Tapre</h3>
+          <span class="team-tag-pill">LDR-02</span>
+        </div>
+        <h3 class="team-name">Apurva Tapre</h3>
           <p class="team-role">Director &amp; Purchase Head</p>
           <p class="team-bio">Directs global ingredient procurement, vendor qualification, and contract negotiations to secure premium, cost-efficient raw material pipelines.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">PT</div>
-            <span class="team-tag-pill">LDR-03</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Prabhakar Thorat - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">PT</span>
           </div>
-          <h3 class="team-name">Prabhakar Thorat</h3>
+          <span class="team-tag-pill">LDR-03</span>
+        </div>
+        <h3 class="team-name">Prabhakar Thorat</h3>
           <p class="team-role">Head of Product Development</p>
           <p class="team-bio">Drives veterinary formulation research, recipe optimization, active ingredient synergy, and technical transfer across production lines.</p>
         </div>
@@ -1238,30 +1275,39 @@ a {
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">SB</div>
-            <span class="team-tag-pill">BIZ-01</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Sandesh Bankar - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">SB</span>
           </div>
-          <h3 class="team-name">Sandesh Bankar</h3>
+          <span class="team-tag-pill">BIZ-01</span>
+        </div>
+        <h3 class="team-name">Sandesh Bankar</h3>
           <p class="team-role">Sales &amp; Business Development Officer</p>
           <p class="team-bio">Expands client relationships across agricultural, veterinary, and animal feed distributor networks across domestic and global zones.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">AD</div>
-            <span class="team-tag-pill">BIZ-02</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Akash Divekar - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">AD</span>
           </div>
-          <h3 class="team-name">Akash Divekar</h3>
+          <span class="team-tag-pill">BIZ-02</span>
+        </div>
+        <h3 class="team-name">Akash Divekar</h3>
           <p class="team-role">Techno-Commercial Officer</p>
           <p class="team-bio">Bridges technical product specifications with client commercial models, ensuring formulations deliver maximum nutritional and financial ROI.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">SS</div>
-            <span class="team-tag-pill">BIZ-03</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Shelina Shaji - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">SS</span>
           </div>
-          <h3 class="team-name">Shelina Shaji</h3>
+          <span class="team-tag-pill">BIZ-03</span>
+        </div>
+        <h3 class="team-name">Shelina Shaji</h3>
           <p class="team-role">Product Executive</p>
           <p class="team-bio">Coordinates customer briefs, artwork compliance, and product documentation to ensure smooth onboarding from concept to packaging.</p>
         </div>
@@ -1284,30 +1330,39 @@ a {
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">JI</div>
-            <span class="team-tag-pill">OPS-01</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Javed Inamdar - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">JI</span>
           </div>
-          <h3 class="team-name">Javed Inamdar</h3>
+          <span class="team-tag-pill">OPS-01</span>
+        </div>
+        <h3 class="team-name">Javed Inamdar</h3>
           <p class="team-role">Senior Production Manager</p>
           <p class="team-bio">Supervises shop-floor operations, production schedules, machine throughput, and cGMP compliance across powder, liquid, and bolus suites.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">GS</div>
-            <span class="team-tag-pill">OPS-02</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Gayatri Sutar - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">GS</span>
           </div>
-          <h3 class="team-name">Gayatri Sutar</h3>
+          <span class="team-tag-pill">OPS-02</span>
+        </div>
+        <h3 class="team-name">Gayatri Sutar</h3>
           <p class="team-role">Junior Production Executive</p>
           <p class="team-bio">Manages daily batch logs, equipment readiness, and in-line process monitoring for uninterrupted manufacturing flow.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">NP</div>
-            <span class="team-tag-pill">OPS-03</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Nehaa Patil - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">NP</span>
           </div>
-          <h3 class="team-name">Nehaa Patil</h3>
+          <span class="team-tag-pill">OPS-03</span>
+        </div>
+        <h3 class="team-name">Nehaa Patil</h3>
           <p class="team-role">Production Executive</p>
           <p class="team-bio">Assists in recipe execution, ingredient staging, and operator safety protocols to maintain high manufacturing standards.</p>
         </div>
@@ -1330,20 +1385,26 @@ a {
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">AP</div>
-            <span class="team-tag-pill">LOG-01</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Amit Padale - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">AP</span>
           </div>
-          <h3 class="team-name">Amit Padale</h3>
+          <span class="team-tag-pill">LOG-01</span>
+        </div>
+        <h3 class="team-name">Amit Padale</h3>
           <p class="team-role">Logistics In-Charge</p>
           <p class="team-bio">Oversees domestic and cross-border transport, carrier coordination, and consignment dispatch to ensure zero delivery delays.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">SC</div>
-            <span class="team-tag-pill">LOG-02</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Sanket Chavan - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">SC</span>
           </div>
-          <h3 class="team-name">Sanket Chavan</h3>
+          <span class="team-tag-pill">LOG-02</span>
+        </div>
+        <h3 class="team-name">Sanket Chavan</h3>
           <p class="team-role">Supply Chain Executive</p>
           <p class="team-bio">Tracks shipment manifests, manages freight paperwork, and optimizes distribution routes for cost-effective logistics.</p>
         </div>
@@ -1366,30 +1427,39 @@ a {
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">MB</div>
-            <span class="team-tag-pill">QA-01</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Mrunali Baikar - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">MB</span>
           </div>
-          <h3 class="team-name">Mrunali Baikar</h3>
+          <span class="team-tag-pill">QA-01</span>
+        </div>
+        <h3 class="team-name">Mrunali Baikar</h3>
           <p class="team-role">QC / QA Officer</p>
           <p class="team-bio">Conducts in-process quality audits, verifies batch manufacturing records, and monitors SOP compliance across processing lines.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">RC</div>
-            <span class="team-tag-pill">QA-02</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Rachana Chavan - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">RC</span>
           </div>
-          <h3 class="team-name">Rachana Chavan</h3>
+          <span class="team-tag-pill">QA-02</span>
+        </div>
+        <h3 class="team-name">Rachana Chavan</h3>
           <p class="team-role">QC / QA Officer</p>
           <p class="team-bio">Performs analytical assays, chemical purity tests, and finished batch clearance evaluations before releasing Certificates of Analysis.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">SR</div>
-            <span class="team-tag-pill">QA-03</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Sumitra Rane - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">SR</span>
           </div>
-          <h3 class="team-name">Sumitra Rane</h3>
+          <span class="team-tag-pill">QA-03</span>
+        </div>
+        <h3 class="team-name">Sumitra Rane</h3>
           <p class="team-role">Microbiologist &amp; QC Chemist</p>
           <p class="team-bio">Conducts bio-burden screening, pathogen testing, and environmental monitoring to ensure zero microbiological contamination.</p>
         </div>
@@ -1412,20 +1482,26 @@ a {
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">KB</div>
-            <span class="team-tag-pill">ACC-01</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Karuna Bhave - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">KB</span>
           </div>
-          <h3 class="team-name">Karuna Bhave</h3>
+          <span class="team-tag-pill">ACC-01</span>
+        </div>
+        <h3 class="team-name">Karuna Bhave</h3>
           <p class="team-role">Chief Accountant</p>
           <p class="team-bio">Directs financial governance, tax compliance, and commercial auditing with total operational transparency.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">MR</div>
-            <span class="team-tag-pill">ACC-02</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Mugdha Railkar - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">MR</span>
           </div>
-          <h3 class="team-name">Mugdha Railkar</h3>
+          <span class="team-tag-pill">ACC-02</span>
+        </div>
+        <h3 class="team-name">Mugdha Railkar</h3>
           <p class="team-role">Senior Account Executive</p>
           <p class="team-bio">Manages billing workflows, client accounts, payment processing, and ledger reconciliations.</p>
         </div>
@@ -1448,20 +1524,26 @@ a {
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">SN</div>
-            <span class="team-tag-pill">INV-01</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Sagar Nagrale - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">SN</span>
           </div>
-          <h3 class="team-name">Sagar Nagrale</h3>
+          <span class="team-tag-pill">INV-01</span>
+        </div>
+        <h3 class="team-name">Sagar Nagrale</h3>
           <p class="team-role">Store In-Charge</p>
           <p class="team-bio">Maintains temperature-controlled warehouse zones, ingredient staging, and real-time inventory tracking.</p>
         </div>
 
         <div class="team-card demo-card">
           <div class="team-avatar-box">
-            <div class="team-avatar-circle">RN</div>
-            <span class="team-tag-pill">INV-02</span>
+            <div class="team-photo-frame">
+            <img src="assets/team-avatar-placeholder.svg" alt="Rajesh Naik - Photo Placeholder" class="team-photo-img" loading="lazy">
+            <span class="team-initials-badge">RN</span>
           </div>
-          <h3 class="team-name">Rajesh Naik</h3>
+          <span class="team-tag-pill">INV-02</span>
+        </div>
+        <h3 class="team-name">Rajesh Naik</h3>
           <p class="team-role">Maintenance In-Charge</p>
           <p class="team-bio">Executes preventive maintenance schedules, calibration, and utility uptime for 24/7 manufacturing readiness.</p>
         </div>
