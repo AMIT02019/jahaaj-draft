@@ -1972,9 +1972,6 @@ function renderProductCardHTML(p) {
             <a href="product-detail.html?id=${p.id}" class="jhc-btn-details">
               <i class="fas fa-circle-info"></i> View Specs
             </a>
-            <button type="button" class="jhc-btn-quick" onclick="openProductQuickModal('${p.id}')" title="Quick Technical View">
-              <i class="fas fa-eye"></i> Quick Specs
-            </button>
             <a href="enquire-formulation.html?product=${encodeURIComponent(p.title)}" class="jhc-btn-quote" title="Request Quote / Sample">
               <i class="fas fa-file-invoice"></i> Quote
             </a>
