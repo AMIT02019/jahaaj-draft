@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
 /* ============ BASE & DESIGN TOKENS ============ */
@@ -1285,6 +1285,457 @@ a {
   }
 }
 
+/* ============ SECTION 4 REDESIGN: IN-HOUSE EXPERTISE & CUSTOMIZED FORMULATIONS ============ */
+.exp-grid-modern {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.exp-card-vet {
+  background: linear-gradient(170deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: 38px 32px;
+  box-shadow: 0 10px 30px rgba(14, 50, 82, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.exp-card-vet:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(14, 50, 82, 0.1);
+  border-color: rgba(234, 88, 12, 0.35);
+}
+
+.exp-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.exp-icon-badge {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: rgba(234, 88, 12, 0.1);
+  color: var(--orange-600);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.exp-kicker {
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #ffedd5;
+}
+
+.exp-card-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.exp-hero-stat {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #fff7ed;
+  border: 1px solid #ffedd5;
+  border-left: 4px solid var(--orange);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.exp-hero-stat .stat-num {
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  font-feature-settings: "tnum";
+}
+
+.exp-hero-stat .stat-meta strong {
+  display: block;
+  font-size: 14.5px;
+  color: var(--navy);
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.exp-hero-stat .stat-meta span {
+  font-size: 12.5px;
+  color: var(--gray-600);
+  line-height: 1.4;
+  display: block;
+}
+
+.exp-intro-text {
+  font-size: 14.5px;
+  color: var(--gray-600);
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+.exp-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.exp-pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.exp-pillar-item:hover {
+  border-color: rgba(234, 88, 12, 0.4);
+  background: #fdfaf7;
+  transform: translateX(4px);
+}
+
+.exp-pillar-icon {
+  font-size: 16px;
+  color: var(--orange);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.exp-pillar-text strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+.exp-pillar-text p {
+  font-size: 12.5px;
+  color: var(--gray-600);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Custom Card (Right) */
+.exp-card-custom {
+  background: linear-gradient(165deg, #0e3252 0%, #082138 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: 38px 32px;
+  box-shadow: 0 16px 40px rgba(14, 50, 82, 0.18);
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-card-custom::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(234, 88, 12, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.exp-card-custom:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(14, 50, 82, 0.3);
+  border-color: rgba(251, 146, 60, 0.4);
+}
+
+.exp-card-custom .exp-icon-badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fb923c;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.exp-card-custom .exp-kicker {
+  background: rgba(234, 88, 12, 0.25);
+  color: #fed7aa;
+  border: 1px solid rgba(251, 146, 60, 0.35);
+}
+
+.exp-card-custom .exp-card-title {
+  color: #ffffff;
+}
+
+.exp-card-custom .exp-intro-text {
+  color: rgba(241, 245, 249, 0.88);
+}
+
+.spec-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: auto;
+}
+
+.spec-matrix-tile {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 18px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.spec-matrix-tile:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(251, 146, 60, 0.45);
+  transform: translateY(-3px);
+}
+
+.spec-tile-icon {
+  font-size: 20px;
+  color: #fb923c;
+  margin-bottom: 10px;
+}
+
+.spec-tile-title {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.spec-tile-desc {
+  font-size: 12.5px;
+  color: rgba(226, 232, 240, 0.8);
+  line-height: 1.45;
+}
+
+/* ============ SECTION 7 PACKAGING FORMATS REDESIGN ============ */
+.pack-showcase-container {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-bottom: 36px;
+}
+
+.pack-showcase-panel {
+  background: #ffffff;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.pack-showcase-panel:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.pack-panel-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 26px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.pack-panel-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(234, 88, 12, 0.1);
+  color: var(--orange-600);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.pack-panel-info h4 {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.pack-panel-info p {
+  font-size: 14.5px;
+  color: var(--gray-600);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Primary Packaging 7-Tile Grid */
+.pack-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.pack-tile-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f8fafc;
+  border: 1px solid var(--gray-200);
+  border-radius: 14px;
+  padding: 16px 18px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pack-tile-item:hover {
+  background: #ffffff;
+  border-color: rgba(234, 88, 12, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(14, 50, 82, 0.08);
+}
+
+.pack-tile-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(14, 50, 82, 0.06);
+  color: var(--navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.pack-tile-item:hover .pack-tile-icon-box {
+  background: var(--orange);
+  color: #ffffff;
+}
+
+.pack-tile-content strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.35;
+  margin-bottom: 3px;
+}
+
+.pack-tile-content span {
+  display: block;
+  font-size: 12px;
+  color: var(--gray-500);
+  font-weight: 600;
+}
+
+/* Secondary Packaging 4-Stage Pipeline */
+.sec-pipeline-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.sec-pipe-card {
+  background: #f8fafc;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.sec-pipe-card:hover {
+  background: #ffffff;
+  border-color: rgba(234, 88, 12, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(14, 50, 82, 0.08);
+}
+
+.sec-pipe-badge {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--orange-600);
+  background: #fff7ed;
+  border: 1px solid #ffedd5;
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 14px;
+}
+
+.sec-pipe-icon {
+  font-size: 24px;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.sec-pipe-card:hover .sec-pipe-icon {
+  color: var(--orange);
+}
+
+.sec-pipe-card h5 {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.sec-pipe-card p {
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .exp-grid-modern {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .sec-pipeline-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .spec-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+  .pack-tiles-grid {
+    grid-template-columns: 1fr;
+  }
+  .sec-pipeline-grid {
+    grid-template-columns: 1fr;
+  }
+  .pack-panel-header {
+    flex-direction: column;
+  }
+}
+
 </style>
 
 
@@ -1570,32 +2021,86 @@ a {
         <p class="section-desc">Formulations developed around specific requirements — not limited to a fixed product catalogue.</p>
       </div>
 
-      <div class="values-grid" style="grid-template-columns: repeat(2, 1fr);" data-stagger>
-        <!-- Expertise Card -->
-        <div class="val-card demo-card" style="padding: 32px;">
-          <div class="val-icon-box"><i class="fa-solid fa-user-doctor"></i></div>
-          <span class="val-letter" style="color: var(--orange-600); font-size: 13px; text-transform: uppercase;">Scientific Leadership</span>
-          <h3 class="val-title" style="font-size: 22px; margin-top: 8px;">Veterinary R&amp;D Expertise</h3>
-          <p class="val-text" style="font-size: 15px; line-height: 1.65;">Formulation expertise supported by a veterinary doctor with <strong>40+ years of formulation experience</strong> — contributing to ingredient selection, product optimization, dosage-form decisions, and manufacturing feasibility.</p>
-          <ul class="cap-specs" style="margin-top: 16px;">
-            <li><i class="fa-solid fa-check-circle"></i> 40+ years formulation mastery</li>
-            <li><i class="fa-solid fa-check-circle"></i> Rigorous ingredient bioavailability screening</li>
-            <li><i class="fa-solid fa-check-circle"></i> Feasibility analysis for commercial scale-up</li>
-          </ul>
+      <div class="exp-grid-modern" data-stagger>
+        <!-- Card 1: Veterinary R&D Expertise -->
+        <div class="exp-card-vet demo-card">
+          <div class="exp-card-header">
+            <div class="exp-icon-badge"><i class="fa-solid fa-user-doctor"></i></div>
+            <span class="exp-kicker">Scientific Leadership</span>
+          </div>
+          
+          <h3 class="exp-card-title">Veterinary R&amp;D Expertise</h3>
+          
+          <div class="exp-hero-stat">
+            <div class="stat-num">40+</div>
+            <div class="stat-meta">
+              <strong>Years Formulation Mastery</strong>
+              <span>Direct oversight by veterinary clinical experts driving ingredient efficacy &amp; safety</span>
+            </div>
+          </div>
+          
+          <p class="exp-intro-text">Formulation expertise contributing to rigorous ingredient selection, active optimization, targeted dosage-form decisions, and rapid commercial manufacturing feasibility.</p>
+          
+          <div class="exp-pillars">
+            <div class="exp-pillar-item">
+              <div class="exp-pillar-icon"><i class="fa-solid fa-flask-vial"></i></div>
+              <div class="exp-pillar-text">
+                <strong>Bioavailability &amp; Absorption Screening</strong>
+                <p>Ensuring active minerals, vitamins, and nutrients survive digestion and deliver maximum biological uptake.</p>
+              </div>
+            </div>
+            <div class="exp-pillar-item">
+              <div class="exp-pillar-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="exp-pillar-text">
+                <strong>Commercial Scale-Up Feasibility</strong>
+                <p>Preventing industrial-scale production bottlenecks through early pilot batch formulation trials.</p>
+              </div>
+            </div>
+            <div class="exp-pillar-item">
+              <div class="exp-pillar-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <div class="exp-pillar-text">
+                <strong>Species-Targeted Palatability &amp; Tolerance</strong>
+                <p>Refining aroma, flavor, and texture for high consumption adherence across target species.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Customization Card -->
-        <div class="val-card demo-card" style="padding: 32px;">
-          <div class="val-icon-box"><i class="fa-solid fa-sliders"></i></div>
-          <span class="val-letter" style="color: var(--orange-600); font-size: 13px; text-transform: uppercase;">Tailored Solutions</span>
-          <h3 class="val-title" style="font-size: 22px; margin-top: 8px;">Customized Formulations</h3>
-          <p class="val-text" style="font-size: 15px; line-height: 1.65;">Formulations developed around your exact brand and market requirements, covering all critical product dimensions:</p>
-          <ul class="cap-specs" style="margin-top: 16px;">
-            <li><i class="fa-solid fa-check-circle"></i> <strong>Ingredient profile:</strong> Inclusion levels &amp; target species</li>
-            <li><i class="fa-solid fa-check-circle"></i> <strong>Nutritional objectives:</strong> Functional targets &amp; performance</li>
-            <li><i class="fa-solid fa-check-circle"></i> <strong>Physical characteristics:</strong> Format, flowability &amp; cost targets</li>
-            <li><i class="fa-solid fa-check-circle"></i> <strong>Packaging requirements:</strong> Tailored barrier and pack style</li>
-          </ul>
+        <!-- Card 2: Customized Formulations Matrix -->
+        <div class="exp-card-custom demo-card">
+          <div class="exp-card-header">
+            <div class="exp-icon-badge"><i class="fa-solid fa-sliders"></i></div>
+            <span class="exp-kicker">Tailored Solutions</span>
+          </div>
+          
+          <h3 class="exp-card-title">Customized Formulations</h3>
+          <p class="exp-intro-text">Formulations developed around your exact brand and market requirements — covering all four critical product dimensions with zero off-the-shelf catalog compromises.</p>
+          
+          <div class="spec-matrix-grid">
+            <div class="spec-matrix-tile">
+              <div class="spec-tile-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+              <div class="spec-tile-title">Ingredient Profile</div>
+              <div class="spec-tile-desc">Targeted inclusion levels, bioactives, botanical extracts &amp; species-specific tolerance limits.</div>
+            </div>
+            
+            <div class="spec-matrix-tile">
+              <div class="spec-tile-icon"><i class="fa-solid fa-bullseye"></i></div>
+              <div class="spec-tile-title">Nutritional Objectives</div>
+              <div class="spec-tile-desc">Functional gut health, metabolic performance, lactation support, immunity &amp; growth metrics.</div>
+            </div>
+            
+            <div class="spec-matrix-tile">
+              <div class="spec-tile-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
+              <div class="spec-tile-title">Physical Characteristics</div>
+              <div class="spec-tile-desc">Engineered powder flowability, dissolution kinetics, particle density, suspension stability &amp; aroma.</div>
+            </div>
+            
+            <div class="spec-matrix-tile">
+              <div class="spec-tile-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="spec-tile-title">Packaging Requirements</div>
+              <div class="spec-tile-desc">Tailored moisture/oxygen barrier foil, induction seals &amp; climate-resilient pack protection.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1728,35 +2233,116 @@ a {
           <p style="font-size: 15.5px; color: var(--gray-600); max-width: 760px; margin: 0 auto;">Your packaging is the first touchpoint of your brand. At Jahaaj Healthcare, we combine functionality, protection, compliance, and visual appeal to create packaging that is ready for both shelf and shipment.</p>
         </div>
 
-        <!-- Formats Grid -->
-        <div class="values-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 32px;" data-stagger>
-          <!-- Primary Packaging -->
-          <div class="val-card demo-card" style="padding: 28px;">
-            <div class="val-icon-box"><i class="fa-solid fa-box-archive"></i></div>
-            <h4 style="font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">Primary Packaging Formats</h4>
-            <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 16px;">From retail packs to bulk supply — built around your product to preserve quality and simplify handling.</p>
-            <ul class="cap-specs">
-              <li><i class="fa-solid fa-check-circle"></i> Pouches &amp; Foil Packs</li>
-              <li><i class="fa-solid fa-check-circle"></i> Bottles &amp; Jars</li>
-              <li><i class="fa-solid fa-check-circle"></i> Containers &amp; Buckets</li>
-              <li><i class="fa-solid fa-check-circle"></i> Sachets</li>
-              <li><i class="fa-solid fa-check-circle"></i> Blister &amp; Strip Packs</li>
-              <li><i class="fa-solid fa-check-circle"></i> Jerry Cans &amp; Industrial Drums</li>
-              <li><i class="fa-solid fa-check-circle"></i> Tablet &amp; Bolus Containers</li>
-            </ul>
+        <!-- Modern Packaging Formats Showcase -->
+        <div class="pack-showcase-container" data-stagger>
+          <!-- Primary Packaging Showcase Panel -->
+          <div class="pack-showcase-panel demo-card">
+            <div class="pack-panel-header">
+              <div class="pack-panel-icon"><i class="fa-solid fa-box-archive"></i></div>
+              <div class="pack-panel-info">
+                <h4>Primary Packaging Formats</h4>
+                <p>Direct-barrier packaging engineered around your formulation to protect bio-active potency, lock out atmospheric moisture/oxygen, and simplify field dosing.</p>
+              </div>
+            </div>
+
+            <div class="pack-tiles-grid">
+              <div class="pack-tile-item">
+                <div class="pack-tile-icon-box"><i class="fa-solid fa-box-archive"></i></div>
+                <div class="pack-tile-content">
+                  <strong>Pouches &amp; Foil Packs</strong>
+                  <span>Multi-layer nitrogen barrier</span>
+                </div>
+              </div>
+
+              <div class="pack-tile-item">
+                <div class="pack-tile-icon-box"><i class="fa-solid fa-bottle-droplet"></i></div>
+                <div class="pack-tile-content">
+                  <strong>Bottles &amp; Jars</strong>
+                  <span>HDPE &amp; UV-proof amber</span>
+                </div>
+              </div>
+
+              <div class="pack-tile-item">
+                <div class="pack-tile-icon-box"><i class="fa-solid fa-bucket"></i></div>
+                <div class="pack-tile-content">
+                  <strong>Containers &amp; Buckets</strong>
+                  <span>Heavy-duty pails (1kg–25kg)</span>
+                </div>
+              </div>
+
+              <div class="pack-tile-item">
+                <div class="pack-tile-icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <div class="pack-tile-content">
+                  <strong>Single-Dose Sachets</strong>
+                  <span>Exact pre-measured dosing</span>
+                </div>
+              </div>
+
+              <div class="pack-tile-item">
+                <div class="pack-tile-icon-box"><i class="fa-solid fa-capsules"></i></div>
+                <div class="pack-tile-content">
+                  <strong>Blister &amp; Strip Packs</strong>
+                  <span>Push-through tamper barrier</span>
+                </div>
+              </div>
+
+              <div class="pack-tile-item">
+                <div class="pack-tile-icon-box"><i class="fa-solid fa-oil-can"></i></div>
+                <div class="pack-tile-content">
+                  <strong>Jerry Cans &amp; Drums</strong>
+                  <span>UN-grade liquids (1L–50L)</span>
+                </div>
+              </div>
+
+              <div class="pack-tile-item">
+                <div class="pack-tile-icon-box"><i class="fa-solid fa-prescription-bottle-medical"></i></div>
+                <div class="pack-tile-content">
+                  <strong>Tablet &amp; Bolus Bottles</strong>
+                  <span>Induction foil safety seal</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Secondary Packaging -->
-          <div class="val-card demo-card" style="padding: 28px;">
-            <div class="val-icon-box"><i class="fa-solid fa-boxes-packing"></i></div>
-            <h4 style="font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">Secondary Packaging Formats</h4>
-            <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 16px;">Industrial-strength protective outer packaging designed for secure transit and retail display.</p>
-            <ul class="cap-specs">
-              <li><i class="fa-solid fa-check-circle"></i> Printed Folding Cartons</li>
-              <li><i class="fa-solid fa-check-circle"></i> Corrugated &amp; Master Cartons</li>
-              <li><i class="fa-solid fa-check-circle"></i> Shrink Wrapping</li>
-              <li><i class="fa-solid fa-check-circle"></i> Export-Ready Palletization</li>
-            </ul>
+          <!-- Secondary Packaging Showcase Panel -->
+          <div class="pack-showcase-panel demo-card">
+            <div class="pack-panel-header">
+              <div class="pack-panel-icon"><i class="fa-solid fa-boxes-packing"></i></div>
+              <div class="pack-panel-info">
+                <h4>Secondary Packaging &amp; Transit Systems</h4>
+                <p>Industrial-strength protective outer packaging and palletization systems built for supply chain resilience, zero transit damage, and polished retail merchandising.</p>
+              </div>
+            </div>
+
+            <div class="sec-pipeline-grid">
+              <div class="sec-pipe-card">
+                <span class="sec-pipe-badge">Stage 01 &bull; Retail</span>
+                <div class="sec-pipe-icon"><i class="fa-solid fa-box"></i></div>
+                <h5>Printed Folding Cartons</h5>
+                <p>High-definition commercial cartons with custom branding, anti-counterfeit holograms &amp; regulatory coding.</p>
+              </div>
+
+              <div class="sec-pipe-card">
+                <span class="sec-pipe-badge">Stage 02 &bull; Logistics</span>
+                <div class="sec-pipe-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                <h5>Corrugated Master Shippers</h5>
+                <p>Heavy-fluted burst-resistant shipper boxes built to withstand heavy warehouse stacking and freight transit.</p>
+              </div>
+
+              <div class="sec-pipe-card">
+                <span class="sec-pipe-badge">Stage 03 &bull; Protection</span>
+                <div class="sec-pipe-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h5>Shrink Wrapping &amp; Bundles</h5>
+                <p>Thermal multi-pack collation wrap sealing interior units against humidity, transit friction, and dust.</p>
+              </div>
+
+              <div class="sec-pipe-card">
+                <span class="sec-pipe-badge">Stage 04 &bull; Dispatch</span>
+                <div class="sec-pipe-icon"><i class="fa-solid fa-pallet"></i></div>
+                <h5>Export-Ready Palletization</h5>
+                <p>Corner-board stabilized, stretch-wrapped uniform pallets formatted for international air and ocean cargo.</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1882,12 +2468,12 @@ a {
 
       <div class="contents-navig">
         <p class="section-title">Species Solutions</p>
-        <a class="footer-link" href="poultry-category-elementor.html"><i class="fas fa-feather-pointed"></i> Poultry Solutions</a>
-        <a class="footer-link" href="ruminants-category-elementor.html"><i class="fas fa-cow"></i> Ruminants &amp; Dairy</a>
-        <a class="footer-link" href="pet-category-elementor.html"><i class="fas fa-paw"></i> Companion Animals (Pets)</a>
-        <a class="footer-link" href="equine-category-elementor.html"><i class="fas fa-horse"></i> Equine Solutions</a>
-        <a class="footer-link" href="swine-category-elementor.html"><i class="fas fa-piggy-bank"></i> Swine Solutions</a>
-        <a class="footer-link" href="aquaculture-category-elementor.html"><i class="fas fa-fish"></i> Aquaculture Feed Solutions</a>
+        <a class="footer-link" href="poultry-category-elementor.html"><i class="fas fa-chevron-right"></i> Poultry Solutions</a>
+        <a class="footer-link" href="ruminants-category-elementor.html"><i class="fas fa-chevron-right"></i> Ruminants &amp; Dairy</a>
+        <a class="footer-link" href="pet-category-elementor.html"><i class="fas fa-chevron-right"></i> Companion Animals (Pets)</a>
+        <a class="footer-link" href="equine-category-elementor.html"><i class="fas fa-chevron-right"></i> Equine Solutions</a>
+        <a class="footer-link" href="swine-category-elementor.html"><i class="fas fa-chevron-right"></i> Swine Solutions</a>
+        <a class="footer-link" href="aquaculture-category-elementor.html"><i class="fas fa-chevron-right"></i> Aquaculture Feed Solutions</a>
       </div>
     </div>
 
