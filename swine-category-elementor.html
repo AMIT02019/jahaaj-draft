@@ -799,10 +799,12 @@ a {
 }
 
 .social-contents {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 24px !important;
+  flex-wrap: wrap !important;
 }
 
 .footer-cert-badges {
@@ -2294,10 +2296,10 @@ a {
     <div class="socials">
       <p class="section-title">Connect & Socials</p>
       <div class="social-contents">
-        <a class="footer-link" href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a class="footer-link" href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Facebook</a>
-        <a class="footer-link" href="https://instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
-        <a class="footer-link" href="https://x.com" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+        <a class="social-icon-link" href="https://www.linkedin.com/company/jahaaj-healthcare-pvt-td" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a class="social-icon-link" href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a class="social-icon-link" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a class="social-icon-link" href="https://x.com" target="_blank" rel="noopener" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
       </div>
       <div class="footer-cert-badges">
         <span class="f-cert-pill"><i class="fas fa-shield-check"></i> FAMI-QS Certified</span>

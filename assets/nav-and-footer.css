@@ -563,9 +563,52 @@
 
 .social-contents {
   display: flex !important;
-  flex-direction: column !important;
-  gap: 10px !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
   margin-bottom: 24px !important;
+  flex-wrap: wrap !important;
+}
+
+.social-icon-link,
+.social-contents a {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #e2e8f0 !important;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.social-icon-link i,
+.social-contents a i {
+  font-size: 16px !important;
+  color: #e2e8f0 !important;
+  transition: transform 0.25s ease, color 0.25s ease !important;
+  margin: 0 !important;
+}
+
+.social-icon-link:hover,
+.social-contents a:hover {
+  background: var(--orange) !important;
+  border-color: var(--orange) !important;
+  transform: translateY(-3px) scale(1.08) !important;
+  box-shadow: 0 6px 18px rgba(194, 65, 12, 0.45) !important;
+  color: #ffffff !important;
+}
+
+.social-icon-link:hover i,
+.social-contents a:hover i {
+  transform: scale(1.1) !important;
+  color: #ffffff !important;
 }
 
 .footer-cert-badges {
