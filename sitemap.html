@@ -1370,18 +1370,32 @@ a {
     /* ---------- Scroll Progress & Navbar Auto-Hide ---------- */
     const progressBar = document.getElementById('scrollProgress');
     const nav = document.getElementById('nav');
+    const mnav = document.getElementById('mnav');
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
+      const currentScrollY = Math.max(0, window.scrollY);
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = scrollHeight > 0 ? (currentScrollY / scrollHeight) * 100 : 0;
       if (progressBar) progressBar.style.width = progress + '%';
 
-      if (currentScrollY > 150) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
+      if (nav) {
+        if (currentScrollY > 40) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+
+        const isMenuOpen = navItems.some(it => it.classList.contains('open')) || (mnav && !mnav.hasAttribute('hidden'));
+        const delta = currentScrollY - lastScrollY;
+
+        if (isMenuOpen || currentScrollY < 60) {
+          nav.classList.remove('nav--hidden');
+        } else if (delta > 6 && currentScrollY > 100) {
+          nav.classList.add('nav--hidden');
+        } else if (delta < -6) {
+          nav.classList.remove('nav--hidden');
+        }
       }
       lastScrollY = currentScrollY;
     }, { passive: true });

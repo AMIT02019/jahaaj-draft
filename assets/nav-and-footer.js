@@ -91,16 +91,58 @@
       });
     });
 
-    // Top Scroll Progress Bar
+    // Top Scroll Progress Bar & Header Auto-Hide / Reveal Animation
     const progressBar = document.getElementById('scrollProgress');
-    if (progressBar) {
-      window.addEventListener('scroll', function() {
-        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const currentScroll = window.scrollY;
-        const pct = totalHeight > 0 ? (currentScroll / totalHeight) * 100 : 0;
+    const nav = document.getElementById('nav') || document.querySelector('.nav');
+    const mnav = document.getElementById('mnav');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function handleNavScroll() {
+      const currentScrollY = Math.max(0, window.scrollY);
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      
+      // Update Scroll Progress Bar
+      if (progressBar && totalHeight > 0) {
+        const pct = Math.min(100, Math.max(0, (currentScrollY / totalHeight) * 100));
         progressBar.style.width = pct + '%';
-      }, { passive: true });
+      }
+
+      if (nav) {
+        // Scrolled elevated appearance
+        if (currentScrollY > 40) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+
+        // Check if drawer or any desktop dropdown is currently open
+        const isDrawerOpen = mnav && (!mnav.hasAttribute('hidden') && mnav.classList.contains('open'));
+        const isMenuOpen = Array.from(document.querySelectorAll('.nav__item[data-menu]')).some(it => it.classList.contains('open'));
+
+        const delta = currentScrollY - lastScrollY;
+
+        if (isDrawerOpen || isMenuOpen || currentScrollY < 60) {
+          nav.classList.remove('nav--hidden');
+        } else if (delta > 6 && currentScrollY > 100) {
+          // Scrolling down: hide header
+          nav.classList.add('nav--hidden');
+        } else if (delta < -6) {
+          // Scrolling up: reveal header
+          nav.classList.remove('nav--hidden');
+        }
+      }
+
+      lastScrollY = currentScrollY;
+      ticking = false;
     }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(handleNavScroll);
+        ticking = true;
+      }
+    }, { passive: true });
 
     // Scroll Animations & Visibility Tagging
     const animEls = document.querySelectorAll('[data-animate], [data-stagger]');

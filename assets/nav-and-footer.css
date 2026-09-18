@@ -51,12 +51,30 @@
   border-radius: 999px !important;
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08) !important;
   z-index: 1000 !important;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
   box-sizing: border-box !important;
+  animation: navEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes navEntrance {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .nav.nav--hidden {
   transform: translate(-50%, -120%) !important;
+}
+
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
 }
 
 .nav__logo {
