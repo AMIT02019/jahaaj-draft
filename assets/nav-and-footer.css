@@ -406,10 +406,15 @@
 }
 
 .footer-logo-img {
-  height: 48px !important;
+  height: 52px !important;
   width: auto !important;
   display: block !important;
   object-fit: contain !important;
+  transition: transform 0.3s ease !important;
+}
+
+.footer-logo:hover .footer-logo-img {
+  transform: scale(1.03) !important;
 }
 
 .footer-tagline {
