@@ -571,45 +571,139 @@ a {
   flex-grow: 1;
 }
 
-/* ============ SPECS TABLE ============ */
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-  border-radius: 16px;
+/* ============ CAPACITY CARDS ============ */
+.capacity-card {
+  border-top: 4px solid var(--orange);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.capacity-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.capacity-row {
+  background: var(--gray-50);
   border: 1px solid var(--gray-200);
-  background: #ffffff;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.spec-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 14.5px;
-}
-
-.spec-table th {
-  background: var(--navy);
-  color: #ffffff;
-  padding: 16px 20px;
-  font-weight: 600;
-  font-size: 14px;
+.capacity-label {
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  color: var(--gray-500);
 }
 
-.spec-table td {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--gray-200);
-  color: var(--gray-700);
+.capacity-val {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: var(--navy);
 }
 
-.spec-table tr:last-child td {
-  border-bottom: none;
+.capacity-row--annual {
+  background: rgba(194, 65, 12, 0.05);
+  border-color: rgba(194, 65, 12, 0.2);
 }
 
-.spec-table tr:nth-child(even) td {
-  background: #fafbfd;
+.capacity-row--annual .capacity-label {
+  color: var(--orange);
+}
+
+.capacity-row--annual .capacity-val {
+  color: var(--orange);
+}
+
+/* ============ FACILITY & QUALITY GRID 5 ============ */
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .grid-5 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid-5 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .grid-5 { grid-template-columns: 1fr; }
+}
+
+.quality-card {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  border-radius: 20px;
+}
+
+.quality-card .card-icon {
+  margin: 0 auto 16px;
+}
+
+.quality-card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.quality-card-subtitle {
+  font-size: 14px;
+  color: var(--gray-600);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ============ PHOTO TOUR CARDS ============ */
+.photo-card {
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.photo-card-img {
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.photo-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-card:hover .photo-card-img img {
+  transform: scale(1.06);
+}
+
+.photo-card-body {
+  padding: 22px 24px;
+}
+
+.photo-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.photo-card-desc {
+  font-size: 13.5px;
+  color: var(--gray-600);
+  line-height: 1.5;
 }
 
 /* ============ CTA BANNER ============ */
@@ -983,206 +1077,223 @@ a {
   <!-- ================= PAGE HERO ================= -->
   <section class="page-hero">
     <div class="container">
-      <span class="hero-pill"><i class="fas fa-industry"></i> Discover Jahaaj &bull; Infrastructure</span>
-      <h1 class="hero-title">Modern Machinery &amp; Controlled Manufacturing Excellence</h1>
-      <p class="hero-subtitle">Well-maintained, advanced machinery and controlled processes ensure precision, consistency, and reliability across veterinary pharmaceuticals, premixes, and nutraceuticals.</p>
-      <div class="hero-badges">
-        <span class="hero-stat-badge"><i class="fas fa-warehouse"></i> 12,000 sq. ft. Facility</span>
-        <span class="hero-stat-badge"><i class="fas fa-certificate"></i> FAMI-QS Certified</span>
-        <span class="hero-stat-badge"><i class="fas fa-shield-halved"></i> HACCP Protocols</span>
-        <span class="hero-stat-badge"><i class="fas fa-check-double"></i> ISO 9001:2015</span>
-      </div>
+      <span class="hero-pill"><i class="fas fa-warehouse"></i> Rabale MIDC, Navi Mumbai</span>
+      <h1 class="hero-title">Our Facility</h1>
+      <p class="hero-subtitle">12,000 sq. ft. veterinary manufacturing complex engineered for precision, consistency, and scale.</p>
     </div>
   </section>
 
-  <!-- ================= SECTION 1: THREE OPERATIONAL PRINCIPLES ================= -->
+  <!-- ================= SECTION 1: MANUFACTURING EXCELLENCE ================= -->
   <section class="section-wrapper">
     <div class="container">
       <div class="section-header">
-        <span class="section-pill">Manufacturing Excellence</span>
-        <h2 class="section-title">Built for Precision, Quality &amp; Scale</h2>
-        <p class="section-desc">Our Rabale MIDC complex combines cutting-edge cleanroom engineering with strict feed safety controls to deliver dependable CDMO manufacturing for global animal health brands.</p>
+        <span class="section-pill">Our Facility</span>
+        <h2 class="section-title">Manufacturing Excellence</h2>
       </div>
 
       <div class="grid-3">
         <div class="card-box">
           <div class="card-icon"><i class="fas fa-gears"></i></div>
-          <h3 class="card-title">Modern Machinery &amp; Controlled Operations</h3>
-          <p class="card-desc">Well-maintained, advanced machinery and controlled cleanroom processes ensure precision, consistency, and absolute formulation reliability batch after batch.</p>
+          <h3 class="card-title">Modern Machinery &amp; Controlled Manufacturing Excellence</h3>
+          <p class="card-desc">Well-maintained, advanced machinery and controlled processes ensure precision, consistency and reliability.</p>
         </div>
 
         <div class="card-box">
           <div class="card-icon"><i class="fas fa-vial-circle-check"></i></div>
-          <h3 class="card-title">Consistent Quality at Every Stage</h3>
-          <p class="card-desc">Rigorous multi-stage quality control from raw material quarantine to finished batch clearance ensures maximum safety, bio-potency, and therapeutic efficacy.</p>
+          <h3 class="card-title">Consistent Quality</h3>
+          <p class="card-desc">Rigorous quality control at every stage ensures safety and efficacy.</p>
         </div>
 
         <div class="card-box">
           <div class="card-icon"><i class="fas fa-chart-line-up"></i></div>
-          <h3 class="card-title">Built for Commercial Scale</h3>
-          <p class="card-desc">High daily production capacity engineered to easily meet surging commercial demand, seasonal peak volumes, and guarantee on-time delivery commitments.</p>
+          <h3 class="card-title">Built for Scale</h3>
+          <p class="card-desc">High daily capacity to meet growing demand and ensure on-time delivery.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= SECTION 2: PRODUCTION CAPACITIES ================= -->
+  <!-- ================= SECTION 2: DAILY PRODUCTION CAPACITY ================= -->
   <section class="section-wrapper section-wrapper--alt">
     <div class="container">
       <div class="section-header">
         <span class="section-pill">Production Scale</span>
-        <h2 class="section-title">Audited Daily &amp; Annual Manufacturing Capacities</h2>
-        <p class="section-desc">Our dedicated cleanrooms are equipped for high-throughput batching across powders, boluses, tablets, and oral liquids.</p>
+        <h2 class="section-title">Daily Production Capacity</h2>
       </div>
 
       <div class="grid-3">
-        <div class="card-box" style="border-top: 4px solid var(--orange);">
+        <div class="card-box capacity-card">
           <div class="card-icon"><i class="fas fa-mortar-pestle"></i></div>
-          <span style="font-size:12.5px; font-weight:700; color:var(--orange); text-transform:uppercase;">Powder Manufacturing</span>
-          <h3 class="card-title" style="font-size:24px; margin-top:6px;">Up to 3 MT / Day</h3>
-          <p style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:12px;">Up to 900 MT Per Annum</p>
-          <p class="card-desc">Double-cone and ribbon blenders installed with differential air pressure to prevent active ingredient cross-contamination. Capable of micro-dosing bio-actives, vitamins, probiotics, and enzymes with CV &lt; 5%.</p>
+          <h3 class="card-title">Powder Manufacturing</h3>
+          <div class="capacity-stats">
+            <div class="capacity-row">
+              <span class="capacity-label">Daily Capacity</span>
+              <span class="capacity-val">Up to 3 MT / DAY</span>
+            </div>
+            <div class="capacity-row capacity-row--annual">
+              <span class="capacity-label">Annual Capacity</span>
+              <span class="capacity-val">Up to 900 MT PER ANNUM</span>
+            </div>
+          </div>
         </div>
 
-        <div class="card-box" style="border-top: 4px solid var(--orange);">
+        <div class="card-box capacity-card">
           <div class="card-icon"><i class="fas fa-capsules"></i></div>
-          <span style="font-size:12.5px; font-weight:700; color:var(--orange); text-transform:uppercase;">Bolus &amp; Tablet Manufacturing</span>
-          <h3 class="card-title" style="font-size:24px; margin-top:6px;">Up to 50,000–60,000 Units / Day</h3>
-          <p style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:12px;">Up to 18–21 Million Units / Year</p>
-          <p class="card-desc">High-speed rotary compression tooling for boluses ranging from 3g to 30g and tablets from 0.5g to 2g. Integrated with automated blister sealing, debossing, and strip packaging lines.</p>
+          <h3 class="card-title">Bolus &amp; Tablet Manufacturing</h3>
+          <div class="capacity-stats">
+            <div class="capacity-row">
+              <span class="capacity-label">Daily Capacity</span>
+              <span class="capacity-val">Up to 50,000–60,000 UNITS / DAY</span>
+            </div>
+            <div class="capacity-row capacity-row--annual">
+              <span class="capacity-label">Annual Capacity</span>
+              <span class="capacity-val">Up to 18–21 MILLION UNITS PER ANNUM</span>
+            </div>
+          </div>
         </div>
 
-        <div class="card-box" style="border-top: 4px solid var(--orange);">
+        <div class="card-box capacity-card">
           <div class="card-icon"><i class="fas fa-bottle-droplet"></i></div>
-          <span style="font-size:12.5px; font-weight:700; color:var(--orange); text-transform:uppercase;">Liquid Manufacturing</span>
-          <h3 class="card-title" style="font-size:24px; margin-top:6px;">Up to 3,500 Litres / Day</h3>
-          <p style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:12px;">Up to 10.5 Lakh Litres / Year</p>
-          <p class="card-desc">Sanitary SS-316 formulation vessels, high-shear homogenizers, and inline filtration suites. Handles aqueous solutions, high-viscosity syrups, emulsions, and phytogenic oral drops.</p>
+          <h3 class="card-title">Liquid Manufacturing</h3>
+          <div class="capacity-stats">
+            <div class="capacity-row">
+              <span class="capacity-label">Daily Capacity</span>
+              <span class="capacity-val">Up to 3,500 LITRS / DAY</span>
+            </div>
+            <div class="capacity-row capacity-row--annual">
+              <span class="capacity-label">Annual Capacity</span>
+              <span class="capacity-val">Up to 10.5 LAKH LITRS PER ANNUM</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= SECTION 3: FACILITY PHOTO TOUR ================= -->
+  <!-- ================= SECTION 3: FACILITY & QUALITY ================= -->
   <section class="section-wrapper">
     <div class="container">
       <div class="section-header">
+        <span class="section-pill">Quality Standards</span>
+        <h2 class="section-title">Facility &amp; Quality</h2>
+      </div>
+
+      <div class="grid-5">
+        <div class="card-box quality-card">
+          <div class="card-icon"><i class="fas fa-warehouse"></i></div>
+          <h3 class="quality-card-title">12,000 sq.ft.</h3>
+          <p class="quality-card-subtitle">Manufacturing Facility</p>
+        </div>
+
+        <div class="card-box quality-card">
+          <div class="card-icon"><i class="fas fa-certificate"></i></div>
+          <h3 class="quality-card-title">FAMI-QS</h3>
+          <p class="quality-card-subtitle">Certified Facility</p>
+        </div>
+
+        <div class="card-box quality-card">
+          <div class="card-icon"><i class="fas fa-shield-halved"></i></div>
+          <h3 class="quality-card-title">HACCP Based</h3>
+          <p class="quality-card-subtitle">Safety Protocols</p>
+        </div>
+
+        <div class="card-box quality-card">
+          <div class="card-icon"><i class="fas fa-check-double"></i></div>
+          <h3 class="quality-card-title">Quality Assured</h3>
+          <p class="quality-card-subtitle">At Every Step</p>
+        </div>
+
+        <div class="card-box quality-card">
+          <div class="card-icon"><i class="fas fa-file-shield"></i></div>
+          <h3 class="quality-card-title">Regulatory Support</h3>
+          <p class="quality-card-subtitle">Documentation &amp; Compliance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: PHOTOS OF FACILITY ================= -->
+  <section class="section-wrapper section-wrapper--alt">
+    <div class="container">
+      <div class="section-header">
         <span class="section-pill">Visual Tour</span>
-        <h2 class="section-title">Inside Our Rabale MIDC Facility</h2>
-        <p class="section-desc">Take a photographic walkthrough of our veterinary formulation laboratory, production cleanrooms, and climate-controlled warehouse.</p>
+        <h2 class="section-title">Facility Photos</h2>
       </div>
 
       <div class="grid-3">
         <!-- Photo 1 -->
-        <div class="card-box" style="padding:0; overflow:hidden;">
-          <div style="aspect-ratio:16/10; overflow:hidden;">
-            <img src="assets/facility/jahaaj-building-exterior.png" alt="Jahaaj Healthcare Headquarters and Manufacturing Plant" style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-box photo-card">
+          <div class="photo-card-img">
+            <img src="assets/facility/jahaaj-building-exterior.png" alt="Jahaaj Healthcare Facility Exterior" loading="lazy">
           </div>
-          <div style="padding:24px;">
-            <h4 style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:8px;">Jahaaj Facility &amp; Exterior</h4>
-            <p class="card-desc">State-of-the-art veterinary production complex located in Rabale MIDC Navi Mumbai, built to cGMP and ISO standards.</p>
+          <div class="photo-card-body">
+            <h4 class="photo-card-title">Jahaaj Facility Exterior</h4>
+            <p class="photo-card-desc">12,000 sq. ft. manufacturing complex at Rabale MIDC, Navi Mumbai.</p>
           </div>
         </div>
 
         <!-- Photo 2 -->
-        <div class="card-box" style="padding:0; overflow:hidden;">
-          <div style="aspect-ratio:16/10; overflow:hidden;">
-            <img src="assets/facility/chemical-lab.png" alt="Analytical Chemical Testing Laboratory" style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-box photo-card">
+          <div class="photo-card-img">
+            <img src="assets/facility/powder-mixing-room.png" alt="Powder Mixing &amp; Blending Suite" loading="lazy">
           </div>
-          <div style="padding:24px;">
-            <h4 style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:8px;">Analytical Chemical Lab</h4>
-            <p class="card-desc">Fully equipped laboratory for active ingredient assays, titration, pH verification, moisture analysis, and density profiling.</p>
+          <div class="photo-card-body">
+            <h4 class="photo-card-title">Powder Blending Cleanroom</h4>
+            <p class="photo-card-desc">Controlled environment for dry powder blending and active ingredient micro-dosing.</p>
           </div>
         </div>
 
         <!-- Photo 3 -->
-        <div class="card-box" style="padding:0; overflow:hidden;">
-          <div style="aspect-ratio:16/10; overflow:hidden;">
-            <img src="assets/facility/micro-lab.jpg" alt="Microbiology Testing Suite" style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-box photo-card">
+          <div class="photo-card-img">
+            <img src="assets/facility/blister-pack-machine.png" alt="High-Speed Blister Packaging Line" loading="lazy">
           </div>
-          <div style="padding:24px;">
-            <h4 style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:8px;">Microbiology Suite</h4>
-            <p class="card-desc">Laminar flow bio-workstations and digital incubation chambers verifying total plate counts and zero pathogen contamination.</p>
+          <div class="photo-card-body">
+            <h4 class="photo-card-title">Blister Packaging Line</h4>
+            <p class="photo-card-desc">Automated packaging suite for bolus and tablet strip sealing.</p>
           </div>
         </div>
 
         <!-- Photo 4 -->
-        <div class="card-box" style="padding:0; overflow:hidden;">
-          <div style="aspect-ratio:16/10; overflow:hidden;">
-            <img src="assets/facility/powder-mixing-room.png" alt="Powder Mixing & Blending Suite" style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-box photo-card">
+          <div class="photo-card-img">
+            <img src="assets/facility/chemical-lab.png" alt="Analytical Chemical Lab" loading="lazy">
           </div>
-          <div style="padding:24px;">
-            <h4 style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:8px;">Cleanroom Powder Blending</h4>
-            <p class="card-desc">Epoxy-floored dry blending suite with differential air pressure airlocks preventing cross-contamination during active micro-dosing.</p>
+          <div class="photo-card-body">
+            <h4 class="photo-card-title">Analytical Chemical Lab</h4>
+            <p class="photo-card-desc">State-of-the-art laboratory for chemical purity, assays, and batch verification.</p>
           </div>
         </div>
 
         <!-- Photo 5 -->
-        <div class="card-box" style="padding:0; overflow:hidden;">
-          <div style="aspect-ratio:16/10; overflow:hidden;">
-            <img src="assets/facility/blister-pack-machine.png" alt="High-Speed Blister Packaging Line" style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-box photo-card">
+          <div class="photo-card-img">
+            <img src="assets/facility/micro-lab.jpg" alt="Microbiology Testing Suite" loading="lazy">
           </div>
-          <div style="padding:24px;">
-            <h4 style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:8px;">Blister Packaging Line</h4>
-            <p class="card-desc">Automated blister sealing and optical inspection line delivering tamper-evident, moisture-barrier packaging for tablets and boluses.</p>
+          <div class="photo-card-body">
+            <h4 class="photo-card-title">Microbiology Testing Suite</h4>
+            <p class="photo-card-desc">Bio-workstations and incubation chambers ensuring zero pathogen contamination.</p>
           </div>
         </div>
 
         <!-- Photo 6 -->
-        <div class="card-box" style="padding:0; overflow:hidden;">
-          <div style="aspect-ratio:16/10; overflow:hidden;">
-            <img src="assets/facility/air-conditioned-rm-store.png" alt="Air Conditioned Raw Material Storage" style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-box photo-card">
+          <div class="photo-card-img">
+            <img src="assets/facility/air-conditioned-rm-store.png" alt="Climate-Controlled Storage" loading="lazy">
           </div>
-          <div style="padding:24px;">
-            <h4 style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:8px;">Climate-Controlled Storage</h4>
-            <p class="card-desc">HVAC-regulated warehouse protecting temperature-sensitive vitamins, probiotics, amino acids, and herbal extracts from ambient heat.</p>
+          <div class="photo-card-body">
+            <h4 class="photo-card-title">Climate-Controlled Storage</h4>
+            <p class="photo-card-desc">HVAC-regulated warehouse maintaining ingredient stability and safety.</p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SECTION 4: CERTIFICATIONS & SPECS ================= -->
-  <section class="section-wrapper section-wrapper--alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">Quality &amp; Compliance</span>
-        <h2 class="section-title">Certifications &amp; Facility Specifications</h2>
-        <p class="section-desc">Every square foot of our infrastructure is engineered to comply with global animal feed safety codes.</p>
-      </div>
-
-      <div class="grid-4">
-        <div class="card-box">
-          <div class="card-icon"><i class="fas fa-shield-halved"></i></div>
-          <h4 class="card-title">12,000 sq. ft.</h4>
-          <p class="card-desc">Dedicated veterinary manufacturing, analytical testing, and storage facility.</p>
-        </div>
-
-        <div class="card-box">
-          <div class="card-icon"><i class="fas fa-award"></i></div>
-          <h4 class="card-title">FAMI-QS Certified</h4>
-          <p class="card-desc">Full feed safety system certified facility complying with European and global feed standards.</p>
-        </div>
-
-        <div class="card-box">
-          <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
-          <h4 class="card-title">HACCP Based</h4>
-          <p class="card-desc">Hazard Analysis Critical Control Point safety protocols enforced across every production run.</p>
-        </div>
-
-        <div class="card-box">
-          <div class="card-icon"><i class="fas fa-file-shield"></i></div>
-          <h4 class="card-title">Regulatory Support</h4>
-          <p class="card-desc">Complete documentation, Batch Manufacturing Records (BMR), Certificates of Analysis (COA), and dossiers.</p>
         </div>
       </div>
 
       <!-- High-Impact CTA -->
       <div style="margin-top: 60px;">
         <div class="cta-banner">
-          <h3 class="cta-title">Schedule an In-Person Facility Audit</h3>
-          <p class="cta-desc">We welcome technical audits, qualification visits, and commercial partnerships at our Rabale MIDC plant in Navi Mumbai.</p>
-          <a href="contact.html" class="cta-btn">Book a Plant Visit <i class="fas fa-arrow-right"></i></a>
+          <h3 class="cta-title">Connect With Our Team</h3>
+          <p class="cta-desc">Connect with our team to tour our Rabale MIDC facility or discuss custom formulations.</p>
+          <a href="contact.html" class="cta-btn">Start With Us <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
