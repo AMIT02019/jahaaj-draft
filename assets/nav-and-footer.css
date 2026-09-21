@@ -37,10 +37,10 @@
   top: 20px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  width: 92vw !important;
+  width: 94vw !important;
   max-width: 1440px !important;
   height: 72px !important;
-  padding: 0 28px !important;
+  padding: 0 20px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -100,7 +100,7 @@
 .nav__menu {
   display: flex !important;
   align-items: center !important;
-  gap: 6px !important;
+  gap: 4px !important;
 }
 
 .nav__item {
@@ -110,11 +110,11 @@
 .nav__link {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
-  font-size: 14.5px !important;
+  gap: 5px !important;
+  font-size: 14px !important;
   font-weight: 500 !important;
   color: #1f2937 !important;
-  padding: 8px 14px !important;
+  padding: 7px 12px !important;
   border-radius: 999px !important;
   transition: all 0.2s ease !important;
   white-space: nowrap !important;
@@ -228,7 +228,7 @@
   color: #ffffff !important;
   font-size: 14px !important;
   font-weight: 600 !important;
-  padding: 10px 22px !important;
+  padding: 10px 18px !important;
   border-radius: 999px !important;
   box-shadow: 0 4px 14px rgba(194, 65, 12, 0.3) !important;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -282,7 +282,7 @@
 .nav__burger.open span::before { top: 0 !important; transform: rotate(45deg) !important; }
 .nav__burger.open span::after { top: 0 !important; transform: rotate(-45deg) !important; }
 
-@media (max-width: 1024px) {
+@media (max-width: 1140px) {
   .nav {
     top: 12px !important;
     width: calc(100vw - 24px) !important;
