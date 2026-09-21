@@ -618,6 +618,7 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  align-items: start;
 }
 
 .team-card {
@@ -626,11 +627,19 @@ a {
   border-radius: var(--radius-xl);
   padding: 34px 28px;
   box-shadow: var(--shadow-sm);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.team-card:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
 }
 
 .team-card::before {
@@ -710,12 +719,37 @@ a {
   font-weight: 700;
   color: var(--orange);
   margin-bottom: 14px;
+  transition: margin-bottom 0.35s ease;
 }
 
 .team-bio {
   font-size: 14px;
   color: var(--gray-600);
   line-height: 1.6;
+}
+
+@media (hover: hover) {
+  .team-role {
+    margin-bottom: 0;
+  }
+  .team-bio {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                margin-top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 0;
+  }
+  .team-card:hover .team-bio,
+  .team-card:focus-within .team-bio {
+    opacity: 1;
+    max-height: 180px;
+    transform: translateY(0);
+    margin-top: 14px;
+  }
 }
 
 /* ============ HIGH-IMPACT CTA BANNER ============ */
@@ -1207,7 +1241,7 @@ a {
       </div>
 
       <div class="team-grid" data-stagger>
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Nikhilesh Hajare - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1219,7 +1253,7 @@ a {
           <p class="team-bio">Leads sustainable business growth by building strategic customer partnerships, overseeing international market expansion, and shaping company positioning.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Apurva Tapre - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1231,7 +1265,7 @@ a {
           <p class="team-bio">Directs global ingredient procurement, vendor qualification, and contract negotiations to secure premium, cost-efficient raw material pipelines.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Prabhakar Thorat - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1259,7 +1293,7 @@ a {
       </div>
 
       <div class="team-grid" data-stagger>
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Sandesh Bankar - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1271,7 +1305,7 @@ a {
           <p class="team-bio">Expands client relationships across agricultural, veterinary, and animal feed distributor networks across domestic and global zones.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Akash Divekar - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1283,7 +1317,7 @@ a {
           <p class="team-bio">Bridges technical product specifications with client commercial models, ensuring formulations deliver maximum nutritional and financial ROI.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Shelina Shaji - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1311,7 +1345,7 @@ a {
       </div>
 
       <div class="team-grid" data-stagger>
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Javed Inamdar - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1323,7 +1357,7 @@ a {
           <p class="team-bio">Supervises shop-floor operations, production schedules, machine throughput, and cGMP compliance across powder, liquid, and bolus suites.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Gayatri Sutar - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1335,7 +1369,7 @@ a {
           <p class="team-bio">Manages daily batch logs, equipment readiness, and in-line process monitoring for uninterrupted manufacturing flow.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Nehaa Patil - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1363,7 +1397,7 @@ a {
       </div>
 
       <div class="team-grid" data-stagger>
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Amit Padale - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1375,7 +1409,7 @@ a {
           <p class="team-bio">Oversees domestic and cross-border transport, carrier coordination, and consignment dispatch to ensure zero delivery delays.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Sanket Chavan - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1403,7 +1437,7 @@ a {
       </div>
 
       <div class="team-grid" data-stagger>
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Mrunali Baikar - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1415,7 +1449,7 @@ a {
           <p class="team-bio">Conducts in-process quality audits, verifies batch manufacturing records, and monitors SOP compliance across processing lines.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Rachana Chavan - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1427,7 +1461,7 @@ a {
           <p class="team-bio">Performs analytical assays, chemical purity tests, and finished batch clearance evaluations before releasing Certificates of Analysis.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Sumitra Rane - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1455,7 +1489,7 @@ a {
       </div>
 
       <div class="team-grid" data-stagger>
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Karuna Bhave - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1467,7 +1501,7 @@ a {
           <p class="team-bio">Directs financial governance, tax compliance, and commercial auditing with total operational transparency.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Mugdha Railkar - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1495,7 +1529,7 @@ a {
       </div>
 
       <div class="team-grid" data-stagger>
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Sagar Nagrale - Photo Placeholder" class="team-photo-img" loading="lazy">
@@ -1507,7 +1541,7 @@ a {
           <p class="team-bio">Maintains temperature-controlled warehouse zones, ingredient staging, and real-time inventory tracking.</p>
         </div>
 
-        <div class="team-card demo-card">
+        <div class="team-card demo-card" tabindex="0">
           <div class="team-avatar-box">
             <div class="team-photo-frame">
             <img src="assets/team-avatar-placeholder.svg" alt="Rajesh Naik - Photo Placeholder" class="team-photo-img" loading="lazy">
