@@ -805,9 +805,20 @@ button {
 
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px 24px;
   justify-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+@media (min-width: 901px) {
+  .category-card:nth-child(5) {
+    grid-column: 2;
+  }
+  .category-card:nth-child(6) {
+    grid-column: 3;
+  }
 }
 
 .category-card {
@@ -946,12 +957,17 @@ button {
   .card-carousel {
     grid-template-columns: repeat(2, 1fr);
   }
-  .category-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 @media (max-width: 900px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 20px;
+  }
+  .category-card:nth-child(5),
+  .category-card:nth-child(6) {
+    grid-column: auto;
+  }
   .hero-section {
     padding: 130px 32px 60px;
   }
@@ -991,6 +1007,7 @@ button {
   }
   .category-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
   }
   .image-wrapper {
     width: 140px;
@@ -1594,7 +1611,7 @@ button {
         <!-- Category 6: Equine -->
         <div class="category-card">
           <a href="equine-category-elementor.html" class="image-wrapper">
-            <img src="assets/equine_hero_hd.jpg" alt="Equine" class="circle-image" oncontextmenu="return false;">
+            <img src="assets/equine-watercolor.png" alt="Equine" class="circle-image" oncontextmenu="return false;">
           </a>
           <div class="card_content">
             <h3 class="category-title">Equine</h3>
