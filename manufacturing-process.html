@@ -1114,6 +1114,207 @@ a {
   }
 }
 
+
+/* ============ 12-STEP INTERACTIVE ANIMATED WORKFLOW ============ */
+.wf-interactive-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(14, 50, 82, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--gray-200);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.wf-svg-wrap {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.wf-svg-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mask animation classes */
+.mask-step {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.75);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mask-step.step-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mask-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 0.45s ease-out;
+}
+.mask-path.path-active {
+  stroke-dashoffset: 0;
+}
+
+/* Active Pulse Ring on SVG */
+.pulse-dot {
+  fill: none;
+  stroke-width: 4;
+  opacity: 0;
+  pointer-events: none;
+}
+.pulse-dot.active {
+  opacity: 1;
+  animation: wfPulseAnim 1.6s infinite ease-out;
+}
+@keyframes wfPulseAnim {
+  0% { r: 35; stroke-opacity: 1; stroke-width: 4; }
+  100% { r: 75; stroke-opacity: 0; stroke-width: 1; }
+}
+
+/* Step Details Live Readout Box */
+.step-readout-box {
+  margin-top: 24px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--navy);
+  flex-wrap: wrap;
+}
+.readout-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 280px;
+}
+.readout-badge {
+  background: var(--orange);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.readout-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.readout-content p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+.readout-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.wf-btn {
+  background: #ffffff;
+  border: 1px solid var(--gray-300);
+  color: var(--navy);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.wf-btn:hover {
+  background: var(--gray-100);
+  border-color: var(--gray-400);
+}
+.wf-btn-primary {
+  background: var(--navy);
+  color: #ffffff;
+  border-color: var(--navy);
+}
+.wf-btn-primary:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #ffffff;
+}
+
+/* Quick jump pill track */
+.step-pill-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.step-pill-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-300);
+  background: #ffffff;
+  color: var(--gray-500);
+  font-weight: 700;
+  font-size: 12.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.step-pill-btn:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+  transform: translateY(-1px);
+}
+.step-pill-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+.step-pill-btn.completed {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .wf-interactive-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+  .step-readout-box {
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .readout-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .readout-actions .wf-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
 </style>
 
 
@@ -1399,14 +1600,149 @@ a {
         <h2 class="section-title">End-to-End Manufacturing Workflow Diagram</h2>
         <p class="section-desc">Our 12-step commercial CDMO production journey from initial discussion to final dispatch.</p>
       </div>
+      <div class="wf-interactive-card" id="animatedWorkflowCard" data-animate="fade-up">
+        <div class="wf-svg-wrap">
+          <svg viewBox="0 0 1379 920" id="workflowSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="12-Step Manufacturing Process Interactive Diagram">
+            <defs>
+              <mask id="workflowMask">
+                <rect width="1379" height="920" fill="black" />
+                
+                <!-- Step 1 -->
+                <g id="m-s1" class="mask-step">
+                  <rect x="55" y="45" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <path id="m-p1-2" class="mask-path" d="M 230 260 L 465 260" stroke="white" stroke-width="45" stroke-linecap="round" />
+                
+                <!-- Step 2 -->
+                <g id="m-s2" class="mask-step">
+                  <rect x="350" y="45" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <path id="m-p2-3" class="mask-path" d="M 525 260 L 755 260" stroke="white" stroke-width="45" stroke-linecap="round" />
+                
+                <!-- Step 3 -->
+                <g id="m-s3" class="mask-step">
+                  <rect x="640" y="45" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <path id="m-p3-4" class="mask-path" d="M 815 260 L 1045 260" stroke="white" stroke-width="45" stroke-linecap="round" />
+                
+                <!-- Step 4 -->
+                <g id="m-s4" class="mask-step">
+                  <rect x="930" y="45" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <!-- Curve 4-5 -->
+                <path id="m-p4-5" class="mask-path" d="M 1080 260 L 1220 260 A 132 132 0 0 1 1220 525 L 1090 525" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
+                
+                <!-- Step 5 -->
+                <g id="m-s5" class="mask-step">
+                  <rect x="930" y="310" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <path id="m-p5-6" class="mask-path" d="M 1050 525 L 815 525" stroke="white" stroke-width="45" stroke-linecap="round" />
+                
+                <!-- Step 6 -->
+                <g id="m-s6" class="mask-step">
+                  <rect x="640" y="310" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <path id="m-p6-7" class="mask-path" d="M 755 525 L 525 525" stroke="white" stroke-width="45" stroke-linecap="round" />
+                
+                <!-- Step 7 -->
+                <g id="m-s7" class="mask-step">
+                  <rect x="350" y="310" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <path id="m-p7-8" class="mask-path" d="M 465 525 L 230 525" stroke="white" stroke-width="45" stroke-linecap="round" />
+                
+                <!-- Step 8 -->
+                <g id="m-s8" class="mask-step">
+                  <rect x="55" y="310" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <!-- Curve 8-9 -->
+                <path id="m-p8-9" class="mask-path" d="M 195 525 L 75 525 A 132 132 0 0 0 75 790 L 195 790" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
+                
+                <!-- Step 9 -->
+                <g id="m-s9" class="mask-step">
+                  <rect x="55" y="575" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <path id="m-p9-10" class="mask-path" d="M 230 790 L 465 790" stroke="white" stroke-width="45" stroke-linecap="round" />
+                
+                <!-- Step 10 -->
+                <g id="m-s10" class="mask-step">
+                  <rect x="350" y="575" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <path id="m-p10-11" class="mask-path" d="M 525 790 L 755 790" stroke="white" stroke-width="45" stroke-linecap="round" />
+                
+                <!-- Step 11 -->
+                <g id="m-s11" class="mask-step">
+                  <rect x="640" y="575" width="290" height="325" rx="30" fill="white" />
+                </g>
+                <path id="m-p11-12" class="mask-path" d="M 815 790 L 1045 790" stroke="white" stroke-width="45" stroke-linecap="round" />
+                
+                <!-- Step 12 -->
+                <g id="m-s12" class="mask-step">
+                  <rect x="930" y="575" width="290" height="325" rx="30" fill="white" />
+                </g>
+              </mask>
+            </defs>
+            
+            <!-- Ghost blueprint background: subtle 16% grayscale guide -->
+            <image href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" opacity="0.16" style="filter: grayscale(100%);" />
+            
+            <!-- Vivid foreground revealed through the animated mask -->
+            <image href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" mask="url(#workflowMask)" />
 
-      <div style="background: #ffffff; border-radius: 20px; padding: 24px; border: 1px solid var(--gray-200); box-shadow: 0 8px 30px rgba(0,0,0,0.06); text-align: center;" data-animate="zoom-in">
-        <a href="assets/manufacturing-workflow-12-step.png" target="_blank" title="Click to view full-resolution 12-step manufacturing diagram" style="display: block; overflow: hidden; border-radius: 12px; cursor: zoom-in;">
-          <img src="assets/manufacturing-workflow-12-step.png" alt="Jahaaj Healthcare 12-Step Manufacturing Process Diagram" loading="lazy" style="width: 100%; max-height: 800px; object-fit: contain; margin: 0 auto; transition: transform 0.35s ease;">
-        </a>
-        <div style="margin-top: 14px; font-size: 13px; color: var(--gray-500); display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <!-- Active step pulse indicator rings -->
+            <circle id="pulse-1" class="pulse-dot" cx="205" cy="260" r="35" stroke="#16a34a" />
+            <circle id="pulse-2" class="pulse-dot" cx="495" cy="260" r="35" stroke="#06b6d4" />
+            <circle id="pulse-3" class="pulse-dot" cx="785" cy="260" r="35" stroke="#2563eb" />
+            <circle id="pulse-4" class="pulse-dot" cx="1075" cy="260" r="35" stroke="#7c3aed" />
+            <circle id="pulse-5" class="pulse-dot" cx="1075" cy="525" r="35" stroke="#9333ea" />
+            <circle id="pulse-6" class="pulse-dot" cx="785" cy="525" r="35" stroke="#db2777" />
+            <circle id="pulse-7" class="pulse-dot" cx="495" cy="525" r="35" stroke="#ea580c" />
+            <circle id="pulse-8" class="pulse-dot" cx="205" cy="525" r="35" stroke="#d97706" />
+            <circle id="pulse-9" class="pulse-dot" cx="205" cy="790" r="35" stroke="#16a34a" />
+            <circle id="pulse-10" class="pulse-dot" cx="495" cy="790" r="35" stroke="#06b6d4" />
+            <circle id="pulse-11" class="pulse-dot" cx="785" cy="790" r="35" stroke="#2563eb" />
+            <circle id="pulse-12" class="pulse-dot" cx="1075" cy="790" r="35" stroke="#7c3aed" />
+
+            <!-- Interactive transparent click targets over the 12 steps -->
+            <g id="step-targets" style="cursor: pointer;">
+              <rect data-step="1" x="55" y="45" width="290" height="325" fill="transparent"><title>Step 1: Product Idea Discussion &amp; Briefing</title></rect>
+              <rect data-step="2" x="350" y="45" width="290" height="325" fill="transparent"><title>Step 2: Customized Product Development</title></rect>
+              <rect data-step="3" x="640" y="45" width="290" height="325" fill="transparent"><title>Step 3: Sample Manufacturing</title></rect>
+              <rect data-step="4" x="930" y="45" width="290" height="325" fill="transparent"><title>Step 4: Laboratory Testing</title></rect>
+              <rect data-step="5" x="930" y="310" width="290" height="325" fill="transparent"><title>Step 5: Sample Approval from Client</title></rect>
+              <rect data-step="6" x="640" y="310" width="290" height="325" fill="transparent"><title>Step 6: Artwork &amp; Label Finalization</title></rect>
+              <rect data-step="7" x="350" y="310" width="290" height="325" fill="transparent"><title>Step 7: Procurement of Packaging Materials</title></rect>
+              <rect data-step="8" x="55" y="310" width="290" height="325" fill="transparent"><title>Step 8: Raw Materials Sourcing</title></rect>
+              <rect data-step="9" x="55" y="575" width="290" height="325" fill="transparent"><title>Step 9: Commercial-Scale Production</title></rect>
+              <rect data-step="10" x="350" y="575" width="290" height="325" fill="transparent"><title>Step 10: Quality Inspection of Finished Product</title></rect>
+              <rect data-step="11" x="640" y="575" width="290" height="325" fill="transparent"><title>Step 11: Final Product Approval by Customer</title></rect>
+              <rect data-step="12" x="930" y="575" width="290" height="325" fill="transparent"><title>Step 12: Dispatch of Finished Goods</title></rect>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Active Step Live Readout Box -->
+        <div class="step-readout-box" id="stepReadout">
+          <div class="readout-left">
+            <span class="readout-badge" id="readoutBadge">STEP 01 OF 12</span>
+            <div class="readout-content">
+              <h4 id="readoutTitle">Product Idea Discussion &amp; Briefing</h4>
+              <p id="readoutDesc">Collaborative discussion on product vision, target animal species, nutritional goals, dosage formats, and commercial expectations.</p>
+            </div>
+          </div>
+          <div class="readout-actions">
+            <button class="wf-btn" id="btnPrev" aria-label="Previous Step"><i class="fa-solid fa-backward"></i> Prev</button>
+            <button class="wf-btn wf-btn-primary" id="btnPlay" aria-label="Replay or Pause Process Flow"><i class="fa-solid fa-play"></i> Replay Flow</button>
+            <button class="wf-btn" id="btnNext" aria-label="Next Step">Next <i class="fa-solid fa-forward"></i></button>
+          </div>
+        </div>
+
+        <!-- Step Quick Selector Pills -->
+        <div class="step-pill-track" id="stepPillTrack" aria-label="Quick jump to step"></div>
+
+        <!-- Direct High-Res Link -->
+        <div style="margin-top: 18px; font-size: 13px; color: var(--gray-500); display: flex; align-items: center; justify-content: center; gap: 8px;">
           <i class="fa-solid fa-magnifying-glass-plus" style="color: var(--orange);"></i>
-          <span>Click diagram to view full high-resolution process infographic in a new tab</span>
+          <a href="assets/manufacturing-workflow-12-step.png" target="_blank" style="color: var(--navy); font-weight: 600; text-decoration: underline;">Open high-resolution process infographic in a new tab</a>
         </div>
       </div>
     </div>
@@ -1571,7 +1907,6 @@ a {
     /* ---------- Scroll Progress & Navbar Auto-Hide ---------- */
     const progressBar = document.getElementById('scrollProgress');
     const nav = document.getElementById('nav');
-    const mnav = document.getElementById('mnav');
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
@@ -1603,5 +1938,226 @@ a {
   </script>
   <!-- Canonical Navigation Controller -->
   <script src="assets/nav-and-footer.js" defer></script>
+
+  <!-- 12-Step Manufacturing Process Interactive On-Scroll Animation Controller -->
+  <script>
+    (function() {
+      const STEPS_DATA = [
+        { num: 1, title: 'Product Idea Discussion & Briefing', desc: 'Collaborative discussion on product vision, target animal species, nutritional goals, dosage formats, and commercial expectations.' },
+        { num: 2, title: 'Customized Product Development', desc: 'In-house veterinary R&D team (40+ years experience) formulates bespoke, synergistic, and bioavailable active recipes.' },
+        { num: 3, title: 'Sample Manufacturing', desc: 'Precision pilot batch preparation of lab samples to test physical appearance, taste/palatability, and mixing characteristics.' },
+        { num: 4, title: 'Laboratory Testing', desc: 'Rigorous active ingredient assays, physical parameters, stability assessments, and microbiological screening.' },
+        { num: 5, title: 'Sample Approval from Client', desc: 'Formal client evaluation, sensory sign-off, and final specification lock-in prior to initiating packaging and sourcing.' },
+        { num: 6, title: 'Artwork & Label Finalization', desc: 'Label artwork adaptation, regulatory compliance checks with domestic and export feed standards, and printing approval.' },
+        { num: 7, title: 'Procurement of Packaging Materials', desc: 'Sourcing high-barrier pouches, jars, HDPE containers, blister foils, and carton master shippers engineered for farm stability.' },
+        { num: 8, title: 'Raw Materials Sourcing', desc: 'Procuring validated feed-grade actives, vitamins, and minerals with supplier CoA verification and incoming quarantine testing.' },
+        { num: 9, title: 'Commercial-Scale Production', desc: 'Cleanroom blending, rotary bolus compression, or SS-316 liquid manufacturing adhering to strict FAMI-QS & HACCP SOPs.' },
+        { num: 10, title: 'Quality Inspection of Finished Product', desc: 'Comprehensive QA inspection including assay potency, weight variation, dissolution, and pathogen screening for release.' },
+        { num: 11, title: 'Final Product Approval by Customer', desc: 'Customer review and verification of batch testing results and Certificate of Analysis (CoA) prior to dispatch.' },
+        { num: 12, title: 'Dispatch of Finished Goods', desc: 'Palletized, shrink-wrapped, and barcoded export-ready shipment dispatched through tracked logistics to your warehouse.' }
+      ];
+
+      const sequence = [
+        { type: 'step', id: 'm-s1', num: 1 },
+        { type: 'path', id: 'm-p1-2' },
+        { type: 'step', id: 'm-s2', num: 2 },
+        { type: 'path', id: 'm-p2-3' },
+        { type: 'step', id: 'm-s3', num: 3 },
+        { type: 'path', id: 'm-p3-4' },
+        { type: 'step', id: 'm-s4', num: 4 },
+        { type: 'path', id: 'm-p4-5' },
+        { type: 'step', id: 'm-s5', num: 5 },
+        { type: 'path', id: 'm-p5-6' },
+        { type: 'step', id: 'm-s6', num: 6 },
+        { type: 'path', id: 'm-p6-7' },
+        { type: 'step', id: 'm-s7', num: 7 },
+        { type: 'path', id: 'm-p7-8' },
+        { type: 'step', id: 'm-s8', num: 8 },
+        { type: 'path', id: 'm-p8-9' },
+        { type: 'step', id: 'm-s9', num: 9 },
+        { type: 'path', id: 'm-p9-10' },
+        { type: 'step', id: 'm-s10', num: 10 },
+        { type: 'path', id: 'm-p10-11' },
+        { type: 'step', id: 'm-s11', num: 11 },
+        { type: 'path', id: 'm-p11-12' },
+        { type: 'step', id: 'm-s12', num: 12 }
+      ];
+
+      let currentStep = 1;
+      let animTimer = null;
+      let isPlaying = false;
+      let hasAutoStarted = false;
+
+      const pillTrack = document.getElementById('stepPillTrack');
+      if (pillTrack) {
+        STEPS_DATA.forEach(s => {
+          const btn = document.createElement('button');
+          btn.className = 'step-pill-btn' + (s.num === 1 ? ' active' : '');
+          btn.textContent = s.num;
+          btn.title = `Step ${s.num}: ${s.title}`;
+          btn.setAttribute('aria-label', `Jump to step ${s.num}`);
+          btn.addEventListener('click', () => revealUpToStep(s.num, true));
+          pillTrack.appendChild(btn);
+        });
+      }
+
+      function setStepData(num) {
+        currentStep = num;
+        const data = STEPS_DATA[num - 1];
+        const badge = document.getElementById('readoutBadge');
+        const title = document.getElementById('readoutTitle');
+        const desc = document.getElementById('readoutDesc');
+        if (badge) badge.textContent = `STEP ${String(num).padStart(2, '0')} OF 12`;
+        if (title) title.textContent = data.title;
+        if (desc) desc.textContent = data.desc;
+
+        // Pulse dot on active step badge
+        document.querySelectorAll('.pulse-dot').forEach(p => p.classList.remove('active'));
+        const activePulse = document.getElementById(`pulse-${num}`);
+        if (activePulse) activePulse.classList.add('active');
+
+        // Quick jump pill highlighting
+        document.querySelectorAll('.step-pill-btn').forEach((p, idx) => {
+          const sNum = idx + 1;
+          p.classList.toggle('active', sNum === num);
+          p.classList.toggle('completed', sNum < num);
+        });
+      }
+
+      function resetAll() {
+        document.querySelectorAll('.mask-step').forEach(s => s.classList.remove('step-active'));
+        document.querySelectorAll('.mask-path').forEach(p => p.classList.remove('path-active'));
+        document.querySelectorAll('.pulse-dot').forEach(p => p.classList.remove('active'));
+      }
+
+      function revealUpToStep(targetNum, pauseAuto = false) {
+        if (pauseAuto) {
+          clearInterval(animTimer);
+          isPlaying = false;
+          const playBtn = document.getElementById('btnPlay');
+          if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Play Flow';
+        }
+        resetAll();
+        for (let i = 1; i <= targetNum; i++) {
+          const sElem = document.getElementById(`m-s${i}`);
+          if (sElem) sElem.classList.add('step-active');
+          if (i < targetNum) {
+            if (i === 4) {
+              const p = document.getElementById('m-p4-5');
+              if (p) p.classList.add('path-active');
+            } else if (i === 8) {
+              const p = document.getElementById('m-p8-9');
+              if (p) p.classList.add('path-active');
+            } else {
+              const p = document.getElementById(`m-p${i}-${i+1}`);
+              if (p) p.classList.add('path-active');
+            }
+          }
+        }
+        setStepData(targetNum);
+      }
+
+      function playAnimation() {
+        clearInterval(animTimer);
+        resetAll();
+        isPlaying = true;
+        const playBtn = document.getElementById('btnPlay');
+        if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause Flow';
+
+        let seqIndex = 0;
+        function nextFrame() {
+          if (seqIndex >= sequence.length) {
+            isPlaying = false;
+            if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Replay Flow';
+            clearInterval(animTimer);
+            return;
+          }
+          const item = sequence[seqIndex];
+          const el = document.getElementById(item.id);
+          if (item.type === 'step') {
+            if (el) el.classList.add('step-active');
+            setStepData(item.num);
+          } else {
+            if (el) el.classList.add('path-active');
+          }
+          seqIndex++;
+        }
+
+        nextFrame();
+        animTimer = setInterval(nextFrame, 400);
+      }
+
+      // Button controls
+      const playBtn = document.getElementById('btnPlay');
+      if (playBtn) {
+        playBtn.addEventListener('click', () => {
+          if (isPlaying) {
+            clearInterval(animTimer);
+            isPlaying = false;
+            playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Resume Flow';
+          } else {
+            if (currentStep >= 12) {
+              playAnimation();
+            } else {
+              animTimer = setInterval(() => {
+                if (currentStep < 12) {
+                  revealUpToStep(currentStep + 1);
+                } else {
+                  clearInterval(animTimer);
+                  isPlaying = false;
+                  playBtn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Replay Flow';
+                }
+              }, 550);
+              isPlaying = true;
+              playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause Flow';
+            }
+          }
+        });
+      }
+
+      const prevBtn = document.getElementById('btnPrev');
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          if (currentStep > 1) revealUpToStep(currentStep - 1, true);
+        });
+      }
+
+      const nextBtn = document.getElementById('btnNext');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          if (currentStep < 12) revealUpToStep(currentStep + 1, true);
+        });
+      }
+
+      // Interactive targets on the SVG
+      document.querySelectorAll('#step-targets rect').forEach(r => {
+        r.addEventListener('click', () => {
+          const stepNum = parseInt(r.getAttribute('data-step'), 10);
+          revealUpToStep(stepNum, true);
+        });
+      });
+
+      // On-scroll appearing trigger via IntersectionObserver
+      const targetSection = document.getElementById('workflow-diagram');
+      if (targetSection && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAutoStarted) {
+              hasAutoStarted = true;
+              playAnimation();
+            }
+          });
+        }, {
+          root: null,
+          threshold: 0.15,
+          rootMargin: '0px 0px -50px 0px'
+        });
+        observer.observe(targetSection);
+      } else {
+        revealUpToStep(1);
+      }
+    })();
+  </script>
+
 </body>
 </html>
