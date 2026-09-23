@@ -2916,11 +2916,27 @@ a {
 
     function handleInquirySubmit(e) {
       e.preventDefault();
-      const prod = document.getElementById('inqProduct').value;
-      const name = document.getElementById('inqName').value;
-      alert('Thank you, ' + name + '! Your technical inquiry for "' + prod + '" has been received. Our formulation team will review your specifications and reach out within 24-48 business hours.');
+      const prod = document.getElementById('inqProduct') ? document.getElementById('inqProduct').value : 'Formulation';
+      const name = document.getElementById('inqName') ? document.getElementById('inqName').value.trim() : '';
+      const country = document.getElementById('inqCountry') ? document.getElementById('inqCountry').value.trim() : '';
+      const refCode = 'JH-' + Math.floor(10000 + Math.random() * 90000);
+
       e.target.reset();
-      document.getElementById('inqProduct').value = prod;
+      if (document.getElementById('inqProduct')) {
+        document.getElementById('inqProduct').value = prod;
+      }
+
+      if (typeof window.showSubmissionPopup === 'function') {
+        window.showSubmissionPopup({
+          pill: '<i class="fa-solid fa-circle-check"></i> Quotation Request Received',
+          title: name ? `Thank You, ${name}!` : 'Inquiry Submitted Successfully!',
+          message: `Your technical formulation inquiry for <strong>${prod}</strong> ${country ? `(${country})` : ''} has been registered. Our commercial and scientific QA team will review batch turnaround and pricing, and contact you within 24–48 business hours.`,
+          refId: refCode,
+          buttonText: 'Done / Continue Browsing'
+        });
+      } else {
+        alert('Thank you, ' + name + '! Your technical inquiry for "' + prod + '" has been received. Our formulation team will review your specifications and reach out within 24-48 business hours.');
+      }
     }
 
     // Initialize on DOM load

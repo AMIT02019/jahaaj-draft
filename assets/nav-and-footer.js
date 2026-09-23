@@ -154,7 +154,130 @@
       container.classList.add('animated');
     });
     animEls.forEach(el => el.classList.add('animated'));
+
+    // Universal Form Newsletter Interceptor
+    document.querySelectorAll('.newsletter-form').forEach(form => {
+      form.removeAttribute('onsubmit');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailInput = form.querySelector('input[type="email"]');
+        const email = emailInput ? emailInput.value : '';
+        form.reset();
+        window.showSubmissionPopup({
+          pill: '<i class="fa-solid fa-envelope-circle-check"></i> Newsletter Subscribed',
+          title: 'Thank You for Subscribing!',
+          message: email 
+            ? `Confirmation sent to <strong>${email}</strong>. You'll receive our latest CDMO technical updates and formulation briefs.`
+            : 'You are now subscribed to Jahaaj Healthcare CDMO market briefings and formulation updates.',
+          buttonText: 'Continue Browsing'
+        });
+      });
+    });
   }
+
+  /* ==========================================================================
+     INTERACTIVE FORM SUBMISSION SUCCESS POPUP MODAL
+     ========================================================================== */
+  function createSubmissionPopupElement() {
+    let popup = document.getElementById('jhcSubmissionPopup');
+    if (popup) return popup;
+
+    popup = document.createElement('div');
+    popup.id = 'jhcSubmissionPopup';
+    popup.className = 'jhc-popup-backdrop';
+    popup.setAttribute('role', 'dialog');
+    popup.setAttribute('aria-modal', 'true');
+    popup.setAttribute('aria-labelledby', 'jhcPopupTitle');
+
+    popup.innerHTML = `
+      <div class="jhc-popup-dialog" onclick="event.stopPropagation()">
+        <button class="jhc-popup-close" id="jhcPopupCloseBtn" aria-label="Close dialog">&times;</button>
+        <div class="jhc-popup-icon-wrap" id="jhcPopupIcon">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="jhc-popup-pill" id="jhcPopupPill">
+          <i class="fa-solid fa-circle-check"></i> Enquiry Received
+        </div>
+        <h3 class="jhc-popup-title" id="jhcPopupTitle">Thank You!</h3>
+        <p class="jhc-popup-desc" id="jhcPopupDesc">Your formulation enquiry has been successfully transmitted.</p>
+        <div class="jhc-popup-card" id="jhcPopupCard">
+          <div>
+            <div class="jhc-popup-ref-label">Inquiry Reference ID</div>
+            <div class="jhc-popup-ref-val" id="jhcPopupRef">JH-${Math.floor(10000 + Math.random() * 90000)}</div>
+          </div>
+          <div class="jhc-popup-badge-sla">
+            <i class="fa-solid fa-clock"></i> 24h Response SLA
+          </div>
+        </div>
+        <div class="jhc-popup-actions">
+          <button class="jhc-popup-btn" id="jhcPopupActionBtn">Done / Continue Browsing</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    function closePopup() {
+      popup.classList.remove('active');
+      document.body.style.overflow = '';
+      if (window._jhcPopupCloseCallback) {
+        window._jhcPopupCloseCallback();
+        window._jhcPopupCloseCallback = null;
+      }
+    }
+
+    // Dismiss on backdrop click
+    popup.addEventListener('click', closePopup);
+
+    // Dismiss on close button
+    const closeBtn = popup.querySelector('#jhcPopupCloseBtn');
+    if (closeBtn) closeBtn.addEventListener('click', closePopup);
+
+    // Dismiss on action button
+    const actionBtn = popup.querySelector('#jhcPopupActionBtn');
+    if (actionBtn) actionBtn.addEventListener('click', closePopup);
+
+    // Dismiss on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && popup.classList.contains('active')) {
+        closePopup();
+      }
+    });
+
+    return popup;
+  }
+
+  window.showSubmissionPopup = function(options = {}) {
+    const popup = createSubmissionPopupElement();
+
+    const titleEl = popup.querySelector('#jhcPopupTitle');
+    const descEl = popup.querySelector('#jhcPopupDesc');
+    const pillEl = popup.querySelector('#jhcPopupPill');
+    const refEl = popup.querySelector('#jhcPopupRef');
+    const actionBtn = popup.querySelector('#jhcPopupActionBtn');
+    const iconEl = popup.querySelector('#jhcPopupIcon');
+
+    if (options.title && titleEl) titleEl.innerHTML = options.title;
+    if (options.message && descEl) descEl.innerHTML = options.message;
+    if (options.pill && pillEl) pillEl.innerHTML = options.pill;
+    if (options.refId && refEl) {
+      refEl.textContent = options.refId;
+    } else if (refEl) {
+      refEl.textContent = 'JH-' + Math.floor(10000 + Math.random() * 90000);
+    }
+    if (options.buttonText && actionBtn) actionBtn.textContent = options.buttonText;
+    if (options.icon && iconEl) iconEl.innerHTML = options.icon;
+
+    window._jhcPopupCloseCallback = options.onClose || null;
+
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Auto-focus action button for accessibility
+    setTimeout(() => {
+      if (actionBtn) actionBtn.focus();
+    }, 100);
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initNav);

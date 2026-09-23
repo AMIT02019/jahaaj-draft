@@ -1221,7 +1221,7 @@ a {
         <h2 style="font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 8px; text-align: center;">Technical Formulation Enquiry Form</h2>
         <p style="font-size: 15px; color: var(--gray-600); margin-bottom: 32px; text-align: center;">Fill in your parameters below. All discussions are protected under our standard Non-Disclosure Agreement (NDA).</p>
 
-        <form onsubmit="alert('Thank you for your formulation enquiry! Our veterinary formulation team will review your specifications and reach out within 48 hours.'); this.reset(); return false;">
+        <form id="enquireForm" onsubmit="handleEnquiryFormSubmit(event); return false;">
           
           <!-- Step 1: Target Species -->
           <div class="form-group">
@@ -1520,6 +1520,27 @@ a {
       }
       lastScrollY = currentScrollY;
     }, { passive: true });
+
+    function handleEnquiryFormSubmit(e) {
+      if (e) e.preventDefault();
+      const name = document.getElementById('nameInput') ? document.getElementById('nameInput').value.trim() : '';
+      const refCode = 'JH-' + Math.floor(10000 + Math.random() * 90000);
+
+      const form = document.getElementById('enquireForm') || (e ? e.target : null);
+      if (form) form.reset();
+
+      if (typeof window.showSubmissionPopup === 'function') {
+        window.showSubmissionPopup({
+          pill: '<i class="fa-solid fa-circle-check"></i> Formulation Dossier Request Received',
+          title: name ? `Thank You, ${name}!` : 'Enquiry Submitted Successfully!',
+          message: 'Thank you for your detailed formulation enquiry. Our veterinary R&D and manufacturing specialists will analyze your target parameters under our standard mutual NDA and reach out within 24–48 hours with technical specifications and feasibility guidance.',
+          refId: refCode,
+          buttonText: 'Done / Continue Browsing'
+        });
+      } else {
+        alert('Thank you for your formulation enquiry! Our veterinary formulation team will review your specifications and reach out within 48 hours.');
+      }
+    }
   </script>
   <!-- Canonical Navigation Controller -->
   <script src="assets/nav-and-footer.js" defer></script>

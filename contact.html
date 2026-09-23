@@ -1345,7 +1345,7 @@ a {
           <h2 style="font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">Direct Formulation Enquiry</h2>
           <p style="font-size: 14.5px; color: var(--gray-600); margin-bottom: 28px;">Fill out the parameters below and our technical formulation lead will respond within 24 business hours.</p>
 
-          <form id="contactForm" onsubmit="alert('Thank you for your enquiry! Our formulation team will get in touch shortly.'); return false;">
+          <form id="contactForm" onsubmit="handleContactSubmit(event); return false;">
             <div class="form-group-grid">
               <div class="form-field">
                 <label class="form-label" for="fullName">Full Name *</label>
@@ -1842,6 +1842,29 @@ a {
         projectScope.value = `Inquiring regarding ${subject}. Please share details on custom CDMO and private label manufacturing capabilities.`;
       }
     });
+
+    function handleContactSubmit(e) {
+      if (e) e.preventDefault();
+      const name = document.getElementById('fullName') ? document.getElementById('fullName').value.trim() : '';
+      const species = document.getElementById('targetSpecies') ? document.getElementById('targetSpecies').value : 'General Veterinary';
+      const format = document.getElementById('dosageFormat') ? document.getElementById('dosageFormat').value : 'Custom Formulation';
+      const refCode = 'JH-' + Math.floor(10000 + Math.random() * 90000);
+
+      const form = document.getElementById('contactForm');
+      if (form) form.reset();
+
+      if (typeof window.showSubmissionPopup === 'function') {
+        window.showSubmissionPopup({
+          pill: '<i class="fa-solid fa-circle-check"></i> Formulation Inquiry Transmitted',
+          title: name ? `Thank You, ${name}!` : 'Enquiry Submitted Successfully!',
+          message: `Your technical formulation parameters for <strong>${species} (${format})</strong> have been dispatched to our senior veterinary CDMO scientists. Our technical lead will review your specifications and reach out within 24 business hours.`,
+          refId: refCode,
+          buttonText: 'Done / Continue Browsing'
+        });
+      } else {
+        alert('Thank you for your enquiry! Our formulation team will get in touch shortly.');
+      }
+    }
   </script>
 
   <!-- Canonical Navigation Controller -->
