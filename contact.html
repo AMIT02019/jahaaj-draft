@@ -633,14 +633,100 @@ a {
   text-decoration: underline;
 }
 
-/* ============ MAP SECTION ============ */
-.map-card {
+/* ============ FACILITY MAP 2-COLUMN SECTION ============ */
+.facility-map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 52px;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.facility-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c2410c;
+  background: rgba(194, 65, 12, 0.08);
+  border: 1px solid rgba(194, 65, 12, 0.2);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.facility-map-title {
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 800;
+  color: #0e3252;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.facility-map-desc {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.facility-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.facility-info-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.facility-info-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(14, 50, 82, 0.08);
+  color: #0e3252;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 15px;
+}
+
+.facility-info-item strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0e3252;
+  margin-bottom: 2px;
+}
+
+.facility-info-item p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.facility-map-card {
   background: #ffffff;
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-xl);
+  border: 1px solid #ede0da;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  margin-top: 40px;
+  box-shadow: 0 16px 40px -10px rgba(14, 50, 82, 0.12);
+}
+
+@media (max-width: 992px) {
+  .facility-map-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
 }
 
 /* ============ FAQ ACCORDION ============ */
@@ -1424,14 +1510,12 @@ a {
             <div class="info-icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
             <h3 class="info-title">Direct Inquiries</h3>
             <p class="info-text">
-              <strong>Sales &amp; Partnerships:</strong><br>
-              <a href="mailto:nikhilesh.hajare@jahaajhealthcare.com" class="info-link">nikhilesh.hajare@jahaajhealthcare.com</a><br>
-              Phone: +91 93246 80560
+              <strong>Email:</strong><br>
+              <a href="mailto:Info@jahaajhealthcare.com" class="info-link">Info@jahaajhealthcare.com</a>
             </p>
-            <p class="info-text" style="margin-top: 10px;">
-              <strong>Procurement &amp; CDMO:</strong><br>
-              <a href="mailto:apurva.tapre@jahaajhealthcare.com" class="info-link">apurva.tapre@jahaajhealthcare.com</a><br>
-              Phone: +91 91361 71676
+            <p class="info-text" style="margin-top: 12px;">
+              <strong>Phone:</strong><br>
+              <a href="tel:+917039054698" class="info-link">+91 7039054698</a>
             </p>
           </div>
 
@@ -1440,7 +1524,7 @@ a {
             <div class="info-icon-box"><i class="fa-solid fa-clock"></i></div>
             <h3 class="info-title">Working Hours</h3>
             <p class="info-text">
-              Monday – Saturday: 9:00 AM – 6:30 PM IST<br>
+              Monday – Saturday: 9:30 AM – 6:30 PM IST<br>
               Plant Tours: By prior appointment only.
             </p>
           </div>
@@ -1453,22 +1537,62 @@ a {
   <!-- ================= SECTION 2: PLANT VISIT & MAP ================= -->
   <section class="section-wrapper section-wrapper--alt">
     <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <span class="section-pill">Facility Access</span>
-        <h2 class="section-title">Visit Our Manufacturing Plant</h2>
-        <p class="section-desc">Conveniently situated in the premier industrial hub of Navi Mumbai with seamless connectivity to international shipping ports and major highways.</p>
-      </div>
+      <div class="facility-map-grid">
+        <!-- Left Side: Text Block -->
+        <div class="facility-map-content" data-animate="fade-up">
+          <span class="facility-pill">
+            <i class="fa-solid fa-location-dot"></i> Facility Access
+          </span>
+          <h2 class="facility-map-title">Visit Our Manufacturing Plant</h2>
+          <p class="facility-map-desc">
+            Conveniently situated in the premier industrial hub of Navi Mumbai with seamless connectivity to international shipping ports and major highways.
+          </p>
 
-      <div class="map-card demo-card" data-animate="zoom-in">
-        <iframe 
-          title="Jahaaj Healthcare Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.9647240176377!2d73.0034!3d19.1534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8c7e0000001%3A0x1234567890abcdef!2sRabale%20MIDC%2C%20Navi%20Mumbai!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
-          width="100%" 
-          height="420" 
-          style="border:0; display: block;" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
+          <div class="facility-info-list">
+            <div class="facility-info-item">
+              <div class="facility-info-icon"><i class="fa-solid fa-building"></i></div>
+              <div>
+                <strong>Plant Address</strong>
+                <p>Plot No. R-845, TTC Industrial Area, Rabale MIDC, Navi Mumbai, Maharashtra – 400701, India.</p>
+              </div>
+            </div>
+
+            <div class="facility-info-item">
+              <div class="facility-info-icon"><i class="fa-solid fa-route"></i></div>
+              <div>
+                <strong>Connectivity</strong>
+                <p>Direct access to Thane-Belapur Expressway &bull; 40 km to JNPT Sea Port &bull; 30 km to Mumbai Airport</p>
+              </div>
+            </div>
+
+            <div class="facility-info-item">
+              <div class="facility-info-icon"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <strong>Visiting Hours</strong>
+                <p>Monday – Saturday: 9:30 AM – 6:30 PM IST (Plant tours by prior appointment)</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 26px;">
+            <a href="https://maps.google.com/?q=Plot+No.+R-845+TTC+Industrial+Area+Rabale+MIDC+Navi+Mumbai" target="_blank" rel="noopener" class="explore-btn" style="padding: 12px 24px; font-size: 14px;">
+              <span>Get Driving Directions</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side: Map Block -->
+        <div class="facility-map-card demo-card" data-animate="zoom-in">
+          <iframe 
+            title="Jahaaj Healthcare Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.9647240176377!2d73.0034!3d19.1534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8c7e0000001%3A0x1234567890abcdef!2sRabale%20MIDC%2C%20Navi%20Mumbai!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+            width="100%" 
+            height="460" 
+            style="border:0; display: block;" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
