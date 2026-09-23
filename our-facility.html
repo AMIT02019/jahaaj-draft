@@ -951,7 +951,155 @@ a {
   font-weight: 600;
 }
 
-  </style>
+  
+/* ============ HAVE AN IDEA WORTH BUILDING? CTA SECTION ============ */
+.cta-worth-building-section {
+  background-color: #ffffff;
+  padding: 85px 24px 105px;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+.cta-worth-building-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.92) 100%);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 28px;
+  padding: 60px 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 24px 60px rgba(14, 50, 82, 0.08), inset 0 1px 2px #ffffff;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.cta-worth-building-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(14, 50, 82, 0.12), inset 0 1px 2px #ffffff;
+}
+
+.cta-worth-building-content {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.cta-worth-building-header {
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 800;
+  color: #0e3252;
+  margin-bottom: 16px;
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+}
+
+.cta-worth-building-para {
+  font-size: 17.5px;
+  color: #475569;
+  line-height: 1.65;
+  margin: 8px 0;
+  font-weight: 400;
+}
+
+.cta-worth-building-bold {
+  font-size: 19.5px;
+  font-weight: 700;
+  color: #0e3252;
+  margin-top: 16px;
+  line-height: 1.4;
+}
+
+.cta-worth-building-action {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.cta-worth-building-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);
+  color: #ffffff !important;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 34px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px -4px rgba(194, 65, 12, 0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.cta-worth-building-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+}
+
+.cta-worth-building-btn:hover::after {
+  left: 140%;
+}
+
+.cta-worth-building-btn:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 30px -4px rgba(194, 65, 12, 0.55);
+  color: #ffffff !important;
+}
+
+.cta-worth-building-arrow {
+  transition: transform 0.25s ease;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.cta-worth-building-btn:hover .cta-worth-building-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .cta-worth-building-section {
+    padding: 60px 16px 80px;
+  }
+  .cta-worth-building-card {
+    padding: 38px 20px;
+    gap: 22px;
+    border-radius: 20px;
+  }
+  .cta-worth-building-header {
+    font-size: 24px;
+  }
+  .cta-worth-building-para {
+    font-size: 15px;
+  }
+  .cta-worth-building-bold {
+    font-size: 17px;
+  }
+  .cta-worth-building-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 13px 24px;
+    font-size: 14px;
+  }
+}
+
+</style>
   <link rel="stylesheet" href="assets/nav-and-footer.css">
 </head>
 <body>
@@ -1289,6 +1437,24 @@ a {
       </div>
     </div>
   </section>
+  <!-- ================= HAVE AN IDEA WORTH BUILDING? CTA SECTION ================= -->
+  <section class="cta-worth-building-section" aria-label="Call to Action">
+    <div class="cta-worth-building-card" data-animate="zoom-in">
+      <div class="cta-worth-building-content">
+        <h2 class="cta-worth-building-header">Have an Idea Worth Building?</h2>
+        <p class="cta-worth-building-para">Whether you're developing a new product, expanding your portfolio or looking for a reliable manufacturing partner, let's start the conversation.</p>
+        <div class="cta-worth-building-bold">Let's turn your idea into an innovative product.</div>
+      </div>
+      <div class="cta-worth-building-action">
+        <a href="contact.html" class="cta-worth-building-btn">
+          <span>Connect With Our Team</span>
+          <span class="cta-worth-building-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
 
   <!-- ================= FOOTER ================= -->
   <footer class="footer-section">
@@ -1448,7 +1614,6 @@ a {
     /* ---------- Scroll Progress & Navbar Auto-Hide ---------- */
     const progressBar = document.getElementById('scrollProgress');
     const nav = document.getElementById('nav');
-    const mnav = document.getElementById('mnav');
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
