@@ -1148,23 +1148,33 @@ a {
 /* Mask animation classes */
 .mask-step {
   opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-  transform: scale(0.75);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .mask-step.step-active {
   opacity: 1;
-  transform: scale(1);
 }
 
 .mask-path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  transition: stroke-dashoffset 0.45s ease-out;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mask-path.mask-path-curve {
+  transition: stroke-dashoffset 0.60s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .mask-path.path-active {
   stroke-dashoffset: 0;
+}
+
+.wf-fg-image {
+  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.wf-fg-image.fade-out {
+  opacity: 0;
+}
+
+.wf-no-transition * {
+  transition: none !important;
 }
 
 /* Active Pulse Ring on SVG */
@@ -1173,14 +1183,15 @@ a {
   stroke-width: 4;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 .pulse-dot.active {
   opacity: 1;
-  animation: wfPulseAnim 1.6s infinite ease-out;
+  animation: wfPulseAnim 1.4s infinite ease-out;
 }
 @keyframes wfPulseAnim {
-  0% { r: 35; stroke-opacity: 1; stroke-width: 4; }
-  100% { r: 75; stroke-opacity: 0; stroke-width: 1; }
+  0% { r: 35; stroke-opacity: 0.95; stroke-width: 4; }
+  100% { r: 72; stroke-opacity: 0; stroke-width: 1; }
 }
 
 /* Step Details Live Readout Box */
@@ -1635,69 +1646,69 @@ a {
                 <g id="m-s1" class="mask-step">
                   <rect x="55" y="45" width="290" height="325" rx="30" fill="white" />
                 </g>
-                <path id="m-p1-2" class="mask-path" d="M 230 260 L 465 260" stroke="white" stroke-width="45" stroke-linecap="round" />
+                <path id="m-p1-2" class="mask-path" pathLength="1" d="M 230 260 L 465 260" stroke="white" stroke-width="45" stroke-linecap="round" />
                 
                 <!-- Step 2 -->
                 <g id="m-s2" class="mask-step">
                   <rect x="350" y="45" width="290" height="325" rx="30" fill="white" />
                 </g>
-                <path id="m-p2-3" class="mask-path" d="M 525 260 L 755 260" stroke="white" stroke-width="45" stroke-linecap="round" />
+                <path id="m-p2-3" class="mask-path" pathLength="1" d="M 525 260 L 755 260" stroke="white" stroke-width="45" stroke-linecap="round" />
                 
                 <!-- Step 3 -->
                 <g id="m-s3" class="mask-step">
                   <rect x="640" y="45" width="290" height="325" rx="30" fill="white" />
                 </g>
-                <path id="m-p3-4" class="mask-path" d="M 815 260 L 1045 260" stroke="white" stroke-width="45" stroke-linecap="round" />
+                <path id="m-p3-4" class="mask-path" pathLength="1" d="M 815 260 L 1045 260" stroke="white" stroke-width="45" stroke-linecap="round" />
                 
                 <!-- Step 4 -->
                 <g id="m-s4" class="mask-step">
                   <rect x="930" y="45" width="290" height="325" rx="30" fill="white" />
                 </g>
                 <!-- Curve 4-5 -->
-                <path id="m-p4-5" class="mask-path" d="M 1080 260 L 1220 260 A 132 132 0 0 1 1220 525 L 1090 525" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
+                <path id="m-p4-5" class="mask-path mask-path-curve" pathLength="1" d="M 1080 260 L 1220 260 A 132 132 0 0 1 1220 525 L 1090 525" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
                 
                 <!-- Step 5 -->
                 <g id="m-s5" class="mask-step">
                   <rect x="930" y="310" width="290" height="325" rx="30" fill="white" />
                 </g>
-                <path id="m-p5-6" class="mask-path" d="M 1050 525 L 815 525" stroke="white" stroke-width="45" stroke-linecap="round" />
+                <path id="m-p5-6" class="mask-path" pathLength="1" d="M 1050 525 L 815 525" stroke="white" stroke-width="45" stroke-linecap="round" />
                 
                 <!-- Step 6 -->
                 <g id="m-s6" class="mask-step">
                   <rect x="640" y="310" width="290" height="325" rx="30" fill="white" />
                 </g>
-                <path id="m-p6-7" class="mask-path" d="M 755 525 L 525 525" stroke="white" stroke-width="45" stroke-linecap="round" />
+                <path id="m-p6-7" class="mask-path" pathLength="1" d="M 755 525 L 525 525" stroke="white" stroke-width="45" stroke-linecap="round" />
                 
                 <!-- Step 7 -->
                 <g id="m-s7" class="mask-step">
                   <rect x="350" y="310" width="290" height="325" rx="30" fill="white" />
                 </g>
-                <path id="m-p7-8" class="mask-path" d="M 465 525 L 230 525" stroke="white" stroke-width="45" stroke-linecap="round" />
+                <path id="m-p7-8" class="mask-path" pathLength="1" d="M 465 525 L 230 525" stroke="white" stroke-width="45" stroke-linecap="round" />
                 
                 <!-- Step 8 -->
                 <g id="m-s8" class="mask-step">
                   <rect x="55" y="310" width="290" height="325" rx="30" fill="white" />
                 </g>
                 <!-- Curve 8-9 -->
-                <path id="m-p8-9" class="mask-path" d="M 195 525 L 75 525 A 132 132 0 0 0 75 790 L 195 790" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
+                <path id="m-p8-9" class="mask-path mask-path-curve" pathLength="1" d="M 195 525 L 75 525 A 132 132 0 0 0 75 790 L 195 790" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
                 
                 <!-- Step 9 -->
                 <g id="m-s9" class="mask-step">
                   <rect x="55" y="575" width="290" height="325" rx="30" fill="white" />
                 </g>
-                <path id="m-p9-10" class="mask-path" d="M 230 790 L 465 790" stroke="white" stroke-width="45" stroke-linecap="round" />
+                <path id="m-p9-10" class="mask-path" pathLength="1" d="M 230 790 L 465 790" stroke="white" stroke-width="45" stroke-linecap="round" />
                 
                 <!-- Step 10 -->
                 <g id="m-s10" class="mask-step">
                   <rect x="350" y="575" width="290" height="325" rx="30" fill="white" />
                 </g>
-                <path id="m-p10-11" class="mask-path" d="M 525 790 L 755 790" stroke="white" stroke-width="45" stroke-linecap="round" />
+                <path id="m-p10-11" class="mask-path" pathLength="1" d="M 525 790 L 755 790" stroke="white" stroke-width="45" stroke-linecap="round" />
                 
                 <!-- Step 11 -->
                 <g id="m-s11" class="mask-step">
                   <rect x="640" y="575" width="290" height="325" rx="30" fill="white" />
                 </g>
-                <path id="m-p11-12" class="mask-path" d="M 815 790 L 1045 790" stroke="white" stroke-width="45" stroke-linecap="round" />
+                <path id="m-p11-12" class="mask-path" pathLength="1" d="M 815 790 L 1045 790" stroke="white" stroke-width="45" stroke-linecap="round" />
                 
                 <!-- Step 12 -->
                 <g id="m-s12" class="mask-step">
@@ -1710,7 +1721,7 @@ a {
             <image href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" opacity="0.16" style="filter: grayscale(100%);" />
             
             <!-- Vivid foreground revealed through the animated mask -->
-            <image href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" mask="url(#workflowMask)" />
+            <image id="workflowForeground" class="wf-fg-image" href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" mask="url(#workflowMask)" />
 
             <!-- Active step pulse indicator rings -->
             <circle id="pulse-1" class="pulse-dot" cx="205" cy="260" r="35" stroke="#16a34a" />
@@ -1956,40 +1967,48 @@ a {
   <!-- Canonical Navigation Controller -->
   <script src="assets/nav-and-footer.js" defer></script>
 
-  <!-- 12-Step Manufacturing Process Smooth Looping Animation Controller -->
+  <!-- 12-Step Manufacturing Process Continuous Liquid Looping Flow Controller -->
   <script>
     (function initSmoothWorkflowLoop() {
-      const svgWrap = document.querySelector('.wf-svg-wrap');
-      const sequence = [
-        { type: 'step', id: 'm-s1', num: 1 },
-        { type: 'path', id: 'm-p1-2' },
-        { type: 'step', id: 'm-s2', num: 2 },
-        { type: 'path', id: 'm-p2-3' },
-        { type: 'step', id: 'm-s3', num: 3 },
-        { type: 'path', id: 'm-p3-4' },
-        { type: 'step', id: 'm-s4', num: 4 },
-        { type: 'path', id: 'm-p4-5', isCurve: true },
-        { type: 'step', id: 'm-s5', num: 5 },
-        { type: 'path', id: 'm-p5-6' },
-        { type: 'step', id: 'm-s6', num: 6 },
-        { type: 'path', id: 'm-p6-7' },
-        { type: 'step', id: 'm-s7', num: 7 },
-        { type: 'path', id: 'm-p7-8' },
-        { type: 'step', id: 'm-s8', num: 8 },
-        { type: 'path', id: 'm-p8-9', isCurve: true },
-        { type: 'step', id: 'm-s9', num: 9 },
-        { type: 'path', id: 'm-p9-10' },
-        { type: 'step', id: 'm-s10', num: 10 },
-        { type: 'path', id: 'm-p10-11' },
-        { type: 'step', id: 'm-s11', num: 11 },
-        { type: 'path', id: 'm-p11-12' },
-        { type: 'step', id: 'm-s12', num: 12 }
+      const svg = document.getElementById('workflowSvg');
+      const fgImage = document.getElementById('workflowForeground');
+
+      // 12 continuous flow stages:
+      // Each stage i (from 1 to 12) lights up Step i, then flows through Path i->(i+1) into Step i+1
+      const stepConfig = [
+        { num: 1, pathId: 'm-p1-2', pathDuration: 380, pathLead: 100 },
+        { num: 2, pathId: 'm-p2-3', pathDuration: 380, pathLead: 100 },
+        { num: 3, pathId: 'm-p3-4', pathDuration: 380, pathLead: 100 },
+        { num: 4, pathId: 'm-p4-5', pathDuration: 600, pathLead: 120, isCurve: true },
+        { num: 5, pathId: 'm-p5-6', pathDuration: 380, pathLead: 100 },
+        { num: 6, pathId: 'm-p6-7', pathDuration: 380, pathLead: 100 },
+        { num: 7, pathId: 'm-p7-8', pathDuration: 380, pathLead: 100 },
+        { num: 8, pathId: 'm-p8-9', pathDuration: 600, pathLead: 120, isCurve: true },
+        { num: 9, pathId: 'm-p9-10', pathDuration: 380, pathLead: 100 },
+        { num: 10, pathId: 'm-p10-11', pathDuration: 380, pathLead: 100 },
+        { num: 11, pathId: 'm-p11-12', pathDuration: 380, pathLead: 100 },
+        { num: 12, pathId: null, pathDuration: 0, pathLead: 0 }
       ];
 
-      let seqIndex = 0;
-      let animTimeout = null;
+      let currentStep = 1;
+      let activeTimers = [];
+      let hasStarted = false;
       let isPaused = false;
-      let isHoldPhase = false;
+      let isHolding = false;
+
+      function clearAllTimers() {
+        activeTimers.forEach(t => clearTimeout(t));
+        activeTimers = [];
+      }
+
+      function scheduleTimeout(fn, delay) {
+        const id = setTimeout(() => {
+          activeTimers = activeTimers.filter(t => t !== id);
+          fn();
+        }, delay);
+        activeTimers.push(id);
+        return id;
+      }
 
       function resetAll() {
         document.querySelectorAll('.mask-step').forEach(s => s.classList.remove('step-active'));
@@ -2003,123 +2022,140 @@ a {
         if (p) p.classList.add('active');
       }
 
-      function stepFrame() {
-        if (isPaused) return;
-
-        if (seqIndex >= sequence.length) {
-          // Reached Step 12: hold full revealed diagram for 2.5s
-          isHoldPhase = true;
-          animTimeout = setTimeout(() => {
-            if (isPaused) return;
-            // Smooth dissolve reset
-            if (svgWrap) svgWrap.classList.add('wf-loop-fade');
-
-            setTimeout(() => {
-              resetAll();
-              seqIndex = 0;
-              isHoldPhase = false;
-              if (svgWrap) svgWrap.classList.remove('wf-loop-fade');
-              // Brief 300ms pause before starting next cycle
-              animTimeout = setTimeout(stepFrame, 300);
-            }, 450);
-          }, 2500);
+      function triggerStep(stepNum) {
+        if (isPaused) {
+          currentStep = stepNum;
           return;
         }
 
-        const item = sequence[seqIndex];
-        const el = document.getElementById(item.id);
+        currentStep = stepNum;
+        const config = stepConfig[stepNum - 1];
+        if (!config) return;
 
-        let delay = 340;
-        if (item.type === 'step') {
-          if (el) el.classList.add('step-active');
-          activatePulse(item.num);
-          delay = 440;
-        } else {
-          if (el) el.classList.add('path-active');
-          delay = item.isCurve ? 420 : 320;
+        // 1. Illuminate current step card & pulse ring
+        const stepEl = document.getElementById(`m-s${stepNum}`);
+        if (stepEl) stepEl.classList.add('step-active');
+        activatePulse(stepNum);
+
+        // 2. Final Step 12 reached: hold complete diagram then smooth dissolve restart
+        if (stepNum === 12) {
+          isHolding = true;
+          scheduleTimeout(() => {
+            if (isPaused) return;
+            // Crossfade dissolve out the vivid foreground
+            if (fgImage) fgImage.classList.add('fade-out');
+
+            scheduleTimeout(() => {
+              if (svg) svg.classList.add('wf-no-transition');
+              resetAll();
+              if (svg) void svg.offsetHeight;
+              if (svg) svg.classList.remove('wf-no-transition');
+
+              if (fgImage) fgImage.classList.remove('fade-out');
+              isHolding = false;
+
+              // Immediately flow into Step 1 for seamless continuous looping
+              triggerStep(1);
+            }, 460);
+          }, 2400);
+          return;
         }
 
-        seqIndex++;
-        animTimeout = setTimeout(stepFrame, delay);
+        // 3. Fluid overlapping flow: start outgoing path, and trigger next step right as arrow connects
+        scheduleTimeout(() => {
+          if (isPaused) return;
+          const pathEl = document.getElementById(config.pathId);
+          if (pathEl) pathEl.classList.add('path-active');
+
+          const travelTime = Math.max(180, config.pathDuration - 40);
+          scheduleTimeout(() => {
+            if (isPaused) return;
+            triggerStep(stepNum + 1);
+          }, travelTime);
+        }, config.pathLead);
       }
 
-      function startLoop() {
-        clearTimeout(animTimeout);
-        resetAll();
-        seqIndex = 0;
-        isPaused = false;
-        isHoldPhase = false;
-        stepFrame();
+      function startFlow(fromStep = 1) {
+        clearAllTimers();
+        if (fromStep === 1) resetAll();
+        hasStarted = true;
+        isHolding = false;
+        triggerStep(fromStep);
       }
 
-      // Automatically play when section enters viewport
+      // Viewport IntersectionObserver
       const targetSection = document.getElementById('workflow') || document.getElementById('workflow-diagram');
       if (targetSection && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               isPaused = false;
-              if (seqIndex === 0 && !animTimeout) {
-                startLoop();
-              } else if (!isHoldPhase) {
-                stepFrame();
+              if (!hasStarted) {
+                startFlow(1);
+              } else if (!isHolding) {
+                triggerStep(currentStep);
               }
             } else {
               isPaused = true;
-              clearTimeout(animTimeout);
+              clearAllTimers();
             }
           });
-        }, {
-          threshold: 0.12
-        });
+        }, { threshold: 0.12 });
         observer.observe(targetSection);
       } else {
-        startLoop();
+        startFlow(1);
       }
 
-      // Page visibility API: pause background tab to save CPU
+      // Page visibility API (pause when tab hidden)
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           isPaused = true;
-          clearTimeout(animTimeout);
+          clearAllTimers();
         } else {
           isPaused = false;
-          if (!isHoldPhase) stepFrame();
+          if (!isHolding) triggerStep(currentStep);
         }
       });
 
-      // Interactive jump: click any step target to explore and then resume loop
+      // Interactive step targets (click to jump and smoothly resume)
       document.querySelectorAll('#step-targets rect').forEach(r => {
         r.addEventListener('click', () => {
           const targetNum = parseInt(r.getAttribute('data-step'), 10);
-          clearTimeout(animTimeout);
+          clearAllTimers();
+          isPaused = false;
+          isHolding = false;
+          if (svg) svg.classList.add('wf-no-transition');
           resetAll();
+
           for (let i = 1; i <= targetNum; i++) {
-            const sElem = document.getElementById(`m-s${i}`);
-            if (sElem) sElem.classList.add('step-active');
+            const s = document.getElementById(`m-s${i}`);
+            if (s) s.classList.add('step-active');
             if (i < targetNum) {
-              if (i === 4) {
-                const p = document.getElementById('m-p4-5');
-                if (p) p.classList.add('path-active');
-              } else if (i === 8) {
-                const p = document.getElementById('m-p8-9');
-                if (p) p.classList.add('path-active');
-              } else {
-                const p = document.getElementById(`m-p${i}-${i+1}`);
+              const cfg = stepConfig[i - 1];
+              if (cfg && cfg.pathId) {
+                const p = document.getElementById(cfg.pathId);
                 if (p) p.classList.add('path-active');
               }
             }
           }
+          if (svg) void svg.offsetHeight;
+          if (svg) svg.classList.remove('wf-no-transition');
+
           activatePulse(targetNum);
+          currentStep = targetNum;
 
-          const nextIdx = sequence.findIndex(it => it.type === 'path' && it.id.includes(`p${targetNum}-`));
-          seqIndex = (nextIdx !== -1) ? nextIdx : sequence.length;
-
-          // Resume looping after 2 seconds
-          animTimeout = setTimeout(() => {
-            isPaused = false;
-            stepFrame();
-          }, 2000);
+          scheduleTimeout(() => {
+            if (targetNum < 12) {
+              const cfg = stepConfig[targetNum - 1];
+              const pathEl = document.getElementById(cfg.pathId);
+              if (pathEl) pathEl.classList.add('path-active');
+              scheduleTimeout(() => {
+                triggerStep(targetNum + 1);
+              }, Math.max(180, cfg.pathDuration - 40));
+            } else {
+              triggerStep(12);
+            }
+          }, 1200);
         });
       });
     })();
