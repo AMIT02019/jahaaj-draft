@@ -905,6 +905,28 @@ button {
   box-shadow: 0 30px 70px rgba(14, 50, 82, 0.14), inset 0 1px 2px #ffffff;
 }
 
+.idea-art {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.idea-animal-art-img {
+  width: 100%;
+  height: auto;
+  max-height: 125px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 14px rgba(14, 50, 82, 0.05));
+  transition: transform 0.35s ease;
+}
+
+.idea-card:hover .idea-animal-art-img {
+  transform: scale(1.02);
+}
+
 .content-section {
   max-width: 780px;
 }
@@ -1620,6 +1642,9 @@ button {
   <!-- ================= SECTION 5: HAVE AN IDEA WORTH BUILDING? ================= -->
   <section class="idea-section">
     <div class="idea-card" data-animate="zoom-in">
+      <div class="idea-art">
+        <img src="assets/animal-line-art.png" alt="Animal Health & Nutrition Formulations" class="idea-animal-art-img">
+      </div>
       <div class="content-section">
         <h2 class="idea-header">Have an Idea Worth Building?</h2>
         <p class="idea-para">Whether you're developing a new product, expanding your portfolio or looking for a reliable manufacturing partner, let's start the conversation.</p>

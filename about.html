@@ -686,24 +686,49 @@ a {
   border-color: rgba(234, 88, 12, 0.3);
 }
 
+.val-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
 .val-icon-box {
-  width: 58px;
-  height: 58px;
-  border-radius: 16px;
-  background: #fdf0e6;
-  border: none;
+  width: 66px;
+  height: 66px;
+  border-radius: 18px;
+  background: #fff7ed;
+  border: 1px solid rgba(234, 88, 12, 0.14);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  color: #ea580c;
-  margin-bottom: 24px;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.35s ease;
+  padding: 10px;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.08);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.val-icon-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(14, 50, 82, 0.06));
+}
+
+.val-badge-box {
+  display: inline-flex;
+  align-items: center;
+}
+
+.val-badge-img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
 }
 
 .val-card:hover .val-icon-box {
   transform: scale(1.08);
-  background: #fae4d3;
+  background: #ffedd5;
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.16);
 }
 
 .val-letter {
@@ -1277,6 +1302,28 @@ a {
   box-shadow: 0 30px 70px rgba(14, 50, 82, 0.12), inset 0 1px 2px #ffffff;
 }
 
+.cta-worth-building-art {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-animal-art-img {
+  width: 100%;
+  height: auto;
+  max-height: 125px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 14px rgba(14, 50, 82, 0.05));
+  transition: transform 0.35s ease;
+}
+
+.cta-worth-building-card:hover .cta-animal-art-img {
+  transform: scale(1.02);
+}
+
 .cta-worth-building-content {
   max-width: 780px;
   margin: 0 auto;
@@ -1537,30 +1584,58 @@ a {
       <div class="values-grid" data-stagger>
         <!-- R -->
         <div class="val-card demo-card">
-          <div class="val-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="val-card-top">
+            <div class="val-icon-box">
+              <img src="assets/rise-reliability.png" alt="Reliability" class="val-icon-img">
+            </div>
+            <div class="val-badge-box">
+              <img src="assets/badge-r.png" alt="R" class="val-badge-img">
+            </div>
+          </div>
           <h3 class="val-title">Reliability</h3>
           <p class="val-text">We believe in honest business practices, building trust through transparency and fairness.</p>
         </div>
 
         <!-- I -->
         <div class="val-card demo-card">
-          <div class="val-icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="val-card-top">
+            <div class="val-icon-box">
+              <img src="assets/rise-innovation.png" alt="Innovation" class="val-icon-img">
+            </div>
+            <div class="val-badge-box">
+              <img src="assets/badge-i.png" alt="I" class="val-badge-img">
+            </div>
+          </div>
           <h3 class="val-title">Innovation</h3>
           <p class="val-text">We believe in innovating animal nutrition for healthier livestock &amp; empowered farmers.</p>
         </div>
 
         <!-- S -->
         <div class="val-card demo-card">
-          <div class="val-icon-box"><i class="fa-solid fa-handshake-angle"></i></div>
+          <div class="val-card-top">
+            <div class="val-icon-box">
+              <img src="assets/rise-synergy.png" alt="Synergy" class="val-icon-img">
+            </div>
+            <div class="val-badge-box">
+              <img src="assets/badge-s.png" alt="S" class="val-badge-img">
+            </div>
+          </div>
           <h3 class="val-title">Synergy</h3>
-          <p class="val-text">Farming harmonies — with farmers, distributors, and customers — creating shared value and lasting relationships.</p>
+          <p class="val-text">Farming harmonies &mdash; with farmers, distributors, and customers &mdash; creating shared value and lasting relationships.</p>
         </div>
 
         <!-- E -->
         <div class="val-card demo-card">
-          <div class="val-icon-box"><i class="fa-solid fa-gauge-high"></i></div>
+          <div class="val-card-top">
+            <div class="val-icon-box">
+              <img src="assets/rise-efficiency.png" alt="Efficiency" class="val-icon-img">
+            </div>
+            <div class="val-badge-box">
+              <img src="assets/badge-e.png" alt="E" class="val-badge-img">
+            </div>
+          </div>
           <h3 class="val-title">Efficiency</h3>
-          <p class="val-text">At Jahaaj — Efficiency meets affordability raising the standard of livestock health.</p>
+          <p class="val-text">At Jahaaj &mdash; Efficiency meets affordability raising the standard of livestock health.</p>
         </div>
       </div>
     </div>
@@ -1593,6 +1668,9 @@ a {
   <!-- ================= HAVE AN IDEA WORTH BUILDING? CTA SECTION ================= -->
   <section class="cta-worth-building-section" aria-label="Call to Action">
     <div class="cta-worth-building-card" data-animate="zoom-in">
+      <div class="cta-worth-building-art">
+        <img src="assets/animal-line-art.png" alt="Animal Health & Nutrition Formulations" class="cta-animal-art-img">
+      </div>
       <div class="cta-worth-building-content">
         <h2 class="cta-worth-building-header">Have an Idea Worth Building?</h2>
         <p class="cta-worth-building-para">Whether you're developing a new product, expanding your portfolio or looking for a reliable manufacturing partner, let's start the conversation.</p>

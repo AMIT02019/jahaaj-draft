@@ -1366,6 +1366,28 @@ a {
   transform: translateY(-4px);
   box-shadow: 0 30px 70px rgba(14, 50, 82, 0.12), inset 0 1px 2px #ffffff;
 }
+.cta-worth-building-art {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-animal-art-img {
+  width: 100%;
+  height: auto;
+  max-height: 125px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 14px rgba(14, 50, 82, 0.05));
+  transition: transform 0.35s ease;
+}
+
+.cta-worth-building-card:hover .cta-animal-art-img {
+  transform: scale(1.02);
+}
+
 
 .cta-worth-building-content {
   max-width: 780px;
@@ -1766,7 +1788,10 @@ a {
   <!-- ================= HAVE AN IDEA WORTH BUILDING? CTA SECTION ================= -->
   <section class="cta-worth-building-section" aria-label="Call to Action">
     <div class="cta-worth-building-card" data-animate="zoom-in">
-      <div class="cta-worth-building-content">
+            <div class="cta-worth-building-art">
+        <img src="assets/animal-line-art.png" alt="Animal Health & Nutrition Formulations" class="cta-animal-art-img">
+      </div>
+<div class="cta-worth-building-content">
         <h2 class="cta-worth-building-header">Have an Idea Worth Building?</h2>
         <p class="cta-worth-building-para">Whether you're developing a new product, expanding your portfolio or looking for a reliable manufacturing partner, let's start the conversation.</p>
         <div class="cta-worth-building-bold">Let's turn your idea into an innovative product.</div>
