@@ -1901,6 +1901,124 @@ a {
   }
 }
 
+/* ============ SECTION 3: ANIMATED PRODUCT JOURNEY FLOW ============ */
+.journey-interactive-card {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 40px auto;
+  background: #eef3f6;
+  border: 1px solid #dce5ec;
+  border-radius: 24px;
+  padding: 34px 28px 28px;
+  box-shadow: 0 12px 36px rgba(14, 50, 82, 0.06);
+  position: relative;
+  overflow: hidden;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.journey-svg-wrap {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Constant Text Typography - Always visible, never shifts */
+.flow-title {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: -0.01em;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.flow-desc {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  fill: #475569;
+  letter-spacing: -0.01em;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* Flowing Line Base Guide */
+.flow-base-path {
+  fill: none;
+  stroke: #cbd5e1;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Main Journey Drawn Path */
+.flow-main-path {
+  fill: none;
+  stroke: #475569;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dashoffset 2.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Continuous Flowing Stream (Animated Pulse Train) */
+.flow-stream-path {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24 60;
+  animation: journeyFlowLoop 3s linear infinite;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.5));
+}
+
+@keyframes journeyFlowLoop {
+  0% {
+    stroke-dashoffset: 84;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Arrowhead styles */
+.flow-arrowhead {
+  fill: none;
+  stroke: #475569;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s ease, filter 0.3s ease;
+}
+
+.flow-start-dot {
+  fill: #475569;
+}
+
+.flow-comet-head {
+  fill: #ea580c;
+  filter: drop-shadow(0 0 8px rgba(234, 88, 12, 0.8));
+}
+
+.flow-comet-core {
+  fill: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .journey-interactive-card {
+    padding: 20px 14px 16px;
+    border-radius: 18px;
+    margin-bottom: 28px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .journey-svg-wrap {
+    min-width: 700px;
+  }
+}
+
 </style>
 
 
@@ -2142,9 +2260,88 @@ a {
         <p class="section-desc">From the first idea to the finished commercial product, Jahaaj supports multiple stages of development with a dedicated Point of Contact (POC) — fewer handovers, easier coordination, and a more integrated path from idea to commercialization.</p>
       </div>
 
-      <!-- Embedded Journey Diagram -->
-      <div style="background: #ffffff; border: 1px solid var(--gray-200); border-radius: 20px; padding: 28px; margin-bottom: 36px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); text-align: center;" data-animate="fade-up">
-        <img src="assets/product-journey-curve.png" alt="Jahaaj Healthcare Product Journey - Idea to Commercialization" style="max-width: 1000px; width: 100%; margin: 0 auto; border-radius: 12px;">
+      <!-- Interactive Animated Journey Diagram -->
+      <div class="journey-interactive-card" id="journeyCard">
+        <svg class="journey-svg-wrap" viewBox="0 0 1255 357" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Jahaaj Healthcare Product Journey: Idea & Concept, Formulation & R&D, Trial & Optimization, Manufacturing & Commercialization">
+          <defs>
+            <!-- Continuous Stream Gradient -->
+            <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#eab308" />
+              <stop offset="33%" stop-color="#16a34a" />
+              <stop offset="66%" stop-color="#0284c7" />
+              <stop offset="100%" stop-color="#ef4444" />
+            </linearGradient>
+          </defs>
+
+          <!-- Constant Text Group (Always 100% Constant & Crisp) -->
+          <g class="flow-text-group">
+            <!-- 1. Idea & Concept (Yellow / Amber) -->
+            <g id="text-step-1">
+              <text x="253" y="152" class="flow-title" fill="#e5a800">Idea &amp;</text>
+              <text x="253" y="184" class="flow-title" fill="#e5a800">Concept</text>
+              <text x="253" y="216" class="flow-desc">Define vision and</text>
+              <text x="253" y="238" class="flow-desc">feasibility</text>
+            </g>
+
+            <!-- 2. Formulation & R&D (Green) -->
+            <g id="text-step-2">
+              <text x="501" y="122" class="flow-title" fill="#16a34a">Formulation &amp;</text>
+              <text x="501" y="154" class="flow-title" fill="#16a34a">R&amp;D</text>
+              <text x="501" y="186" class="flow-desc">Develop formulas</text>
+              <text x="501" y="208" class="flow-desc">and lab testing</text>
+            </g>
+
+            <!-- 3. Trial & Optimization (Blue) -->
+            <g id="text-step-3">
+              <text x="748" y="152" class="flow-title" fill="#0284c7">Trial &amp;</text>
+              <text x="748" y="184" class="flow-title" fill="#0284c7">Optimization</text>
+              <text x="748" y="216" class="flow-desc">Scale-up trials and</text>
+              <text x="748" y="238" class="flow-desc">refine process</text>
+            </g>
+
+            <!-- 4. Manufacturing & Commercialization (Red / Coral) -->
+            <g id="text-step-4">
+              <text x="995" y="122" class="flow-title" fill="#ef4444">Manufacturing &amp;</text>
+              <text x="995" y="154" class="flow-title" fill="#ef4444">Commercialization</text>
+              <text x="995" y="186" class="flow-desc">Produce at scale</text>
+              <text x="995" y="208" class="flow-desc">and launch</text>
+            </g>
+          </g>
+
+          <!-- Base Guide Path -->
+          <path class="flow-base-path" fill="none" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+
+          <!-- Main Journey Drawn Path (Draws smoothly as section appears) -->
+          <path id="journey-draw-path" class="flow-main-path" fill="none" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+
+          <!-- Continuous Flowing Stream (Animated Gradient Pulse Loop) -->
+          <path id="journey-stream-path" class="flow-stream-path" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+
+          <!-- Start Dot -->
+          <circle cx="48" cy="175" r="9" class="flow-start-dot" />
+
+          <!-- Arrowhead 1 (Pointing down-right) -->
+          <path id="arrow-1" class="flow-arrowhead" fill="none" d="M 368 152 L 378 168 L 390 156" />
+
+          <!-- Arrowhead 2 (Pointing up-right) -->
+          <path id="arrow-2" class="flow-arrowhead" fill="none" d="M 614 194 L 625 178 L 637 190" />
+
+          <!-- Arrowhead 3 (Pointing down-right) -->
+          <path id="arrow-3" class="flow-arrowhead" fill="none" d="M 862 152 L 872 168 L 884 156" />
+
+          <!-- Arrowhead 4 (Pointing right) -->
+          <path id="arrow-4" class="flow-arrowhead" fill="none" d="M 1180 162 L 1195 175 L 1180 188" />
+
+          <!-- Glowing Comet Orb (Traveling on path in continuous loop) -->
+          <g>
+            <circle r="7" class="flow-comet-head">
+              <animateMotion dur="4.2s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+            </circle>
+            <circle r="3.5" class="flow-comet-core">
+              <animateMotion dur="4.2s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+            </circle>
+          </g>
+        </svg>
       </div>
 
       <div class="journey-grid" data-stagger>
@@ -2592,6 +2789,46 @@ a {
       }
       lastScrollY = currentScrollY;
     }, { passive: true });
+
+    /* ---------- Product Journey Flow Line Animation ---------- */
+    (function initJourneyFlowAnimation() {
+      const drawPath = document.getElementById('journey-draw-path');
+      const journeyCard = document.getElementById('journeyCard');
+      if (!drawPath || !journeyCard) return;
+
+      let pathLength = 1800;
+      try {
+        if (typeof drawPath.getTotalLength === 'function') {
+          pathLength = drawPath.getTotalLength();
+        }
+      } catch (e) {
+        pathLength = 1800;
+      }
+
+      drawPath.style.strokeDasharray = pathLength;
+      drawPath.style.strokeDashoffset = pathLength;
+
+      let triggered = false;
+      function startFlow() {
+        if (triggered) return;
+        triggered = true;
+        drawPath.style.strokeDashoffset = '0';
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startFlow();
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        observer.observe(journeyCard);
+      } else {
+        startFlow();
+      }
+    })();
   </script>
   <!-- Canonical Navigation Controller -->
   <script src="assets/nav-and-footer.js" defer></script>
