@@ -1550,14 +1550,14 @@ a {
 
       if (typeof window.showSubmissionPopup === 'function') {
         window.showSubmissionPopup({
-          pill: '<i class="fa-solid fa-circle-check"></i> Formulation Dossier Request Received',
-          title: name ? `Thank You, ${name}!` : 'Enquiry Submitted Successfully!',
-          message: 'Thank you for your detailed formulation enquiry. Our veterinary R&D and manufacturing specialists will analyze your target parameters under our standard mutual NDA and reach out within 24–48 hours with technical specifications and feasibility guidance.',
+          pill: '<i class="fa-solid fa-circle-check"></i> Message Received',
+          title: name ? `Thank You, ${name}!` : 'Thank You!',
+          message: 'Thank you for reaching out to Jahaaj Healthcare. We have received your inquiry and our team will get back to you shortly.',
           refId: refCode,
-          buttonText: 'Done / Continue Browsing'
+          buttonText: 'Close'
         });
       } else {
-        alert('Thank you for your formulation enquiry! Our veterinary formulation team will review your specifications and reach out within 48 hours.');
+        alert('Thank you! We have received your enquiry and our team will get back to you shortly.');
       }
     }
   </script>

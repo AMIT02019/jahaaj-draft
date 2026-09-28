@@ -716,10 +716,10 @@ a {
 
 .facility-map-card {
   background: #ffffff;
-  border: 1px solid #ede0da;
-  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 16px 40px -10px rgba(14, 50, 82, 0.12);
+  box-shadow: 0 4px 16px rgba(14, 50, 82, 0.05);
 }
 
 @media (max-width: 992px) {
@@ -1751,10 +1751,10 @@ a {
     <div class="container">
       <div class="contact-grid">
         
-        <!-- Left: Formulation Form -->
+        <!-- Left: Consolidated Enquiry Form -->
         <div class="contact-form-card demo-card" data-animate="fade-up">
-          <h2 style="font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">Direct Formulation Enquiry</h2>
-          <p style="font-size: 14.5px; color: var(--gray-600); margin-bottom: 28px;">Fill out the parameters below and our technical formulation lead will respond within 24 business hours.</p>
+          <h2 style="font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">Enquiry &amp; Collaboration</h2>
+          <p style="font-size: 14.5px; color: var(--gray-600); margin-bottom: 26px;">Please share your requirements or questions below. Our team typically responds within 24 business hours.</p>
 
           <form id="contactForm" onsubmit="handleContactSubmit(event); return false;">
             <div class="form-group-grid">
@@ -1763,8 +1763,8 @@ a {
                 <input class="form-input" id="fullName" type="text" placeholder="Your Name" required>
               </div>
               <div class="form-field">
-                <label class="form-label" for="companyName">Company / Brand *</label>
-                <input class="form-input" id="companyName" type="text" placeholder="Company Name" required>
+                <label class="form-label" for="companyName">Company / Brand (Optional)</label>
+                <input class="form-input" id="companyName" type="text" placeholder="Company Name">
               </div>
             </div>
 
@@ -1781,8 +1781,26 @@ a {
 
             <div class="form-group-grid">
               <div class="form-field">
-                <label class="form-label" for="targetSpecies">Target Animal Species</label>
+                <label class="form-label" for="enquiryCategory">Department / Category *</label>
+                <select class="form-select" id="enquiryCategory" required>
+                  <option value="Commercial & Contract Manufacturing">Commercial &amp; Contract Manufacturing</option>
+                  <option value="Custom CDMO Formulations">Custom CDMO Formulations</option>
+                  <option value="Quality Assurance & Regulatory">Quality Assurance &amp; Regulatory</option>
+                  <option value="Join Our Team">Join Our Team / Careers</option>
+                  <option value="General Inquiry">General Inquiry &amp; Plant Visit</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="orderQuantity">Estimated Order Quantity (Optional)</label>
+                <input class="form-input" id="orderQuantity" type="text" placeholder="e.g. 500 kg, 5,000 boluses, or monthly volume">
+              </div>
+            </div>
+
+            <div class="form-group-grid">
+              <div class="form-field">
+                <label class="form-label" for="targetSpecies">Target Animal Species (Optional)</label>
                 <select class="form-select" id="targetSpecies">
+                  <option value="">-- Select Species (Optional) --</option>
                   <option value="Poultry">Poultry (Broiler, Layer, Breeder)</option>
                   <option value="Ruminants">Ruminants &amp; Dairy Cattle</option>
                   <option value="Pets">Companion Animals (Canine, Feline)</option>
@@ -1792,8 +1810,9 @@ a {
                 </select>
               </div>
               <div class="form-field">
-                <label class="form-label" for="dosageFormat">Preferred Dosage Form</label>
+                <label class="form-label" for="dosageFormat">Preferred Dosage Form (Optional)</label>
                 <select class="form-select" id="dosageFormat">
+                  <option value="">-- Select Format (Optional) --</option>
                   <option value="Powder">Water-Soluble Powder / Feed Premix</option>
                   <option value="Liquid">Nutritional Liquid / Suspension</option>
                   <option value="Bolus">Veterinary Bolus / Compressed Tablet</option>
@@ -1804,12 +1823,12 @@ a {
             </div>
 
             <div class="form-field">
-              <label class="form-label" for="projectScope">Formulation Details &amp; Batch Requirements</label>
-              <textarea class="form-textarea" id="projectScope" rows="4" placeholder="Tell us about your target active ingredients, key health challenges to solve, preferred packaging sizes, or estimated initial batch volume..."></textarea>
+              <label class="form-label" for="projectScope">Additional Details &amp; Formulation Message (Optional)</label>
+              <textarea class="form-textarea" id="projectScope" rows="4" placeholder="Tell us about your requirements, specific active ingredients, or any questions..."></textarea>
             </div>
 
             <button type="submit" class="explore-btn" style="width: 100%;">
-              Submit Formulation Request <i class="fa-solid fa-paper-plane"></i>
+              Submit Enquiry <i class="fa-solid fa-paper-plane"></i>
             </button>
           </form>
         </div>
@@ -1823,9 +1842,9 @@ a {
             <h3 class="info-title">Manufacturing Plant &amp; HQ</h3>
             <p class="info-text">
               <strong>Jahaaj Healthcare Pvt. Ltd.</strong><br>
-              Plot No. R-845, TTC Industrial Area, Rabale MIDC, Navi Mumbai, Maharashtra – 400701, India.
+              R 698, TTC Industrial Area, Rabale MIDC, Navi Mumbai, Maharashtra – 400701, India.
             </p>
-            <a href="https://maps.google.com/?q=Rabale+MIDC+Navi+Mumbai" target="_blank" rel="noopener" class="info-link">
+            <a href="https://maps.google.com/?q=R+698+TTC+Industrial+Area+Rabale+MIDC+Navi+Mumbai" target="_blank" rel="noopener" class="info-link">
               View on Google Maps &rarr;
             </a>
           </div>
@@ -1849,7 +1868,7 @@ a {
             <div class="info-icon-box"><i class="fa-solid fa-clock"></i></div>
             <h3 class="info-title">Working Hours</h3>
             <p class="info-text">
-              Monday – Saturday: 9:30 AM – 6:30 PM IST<br>
+              Monday – Saturday: 9:00 AM – 6:00 PM IST<br>
               Plant Tours: By prior appointment only.
             </p>
           </div>
@@ -1878,7 +1897,7 @@ a {
               <div class="facility-info-icon"><i class="fa-solid fa-building"></i></div>
               <div>
                 <strong>Plant Address</strong>
-                <p>Plot No. R-845, TTC Industrial Area, Rabale MIDC, Navi Mumbai, Maharashtra – 400701, India.</p>
+                <p>R 698, TTC Industrial Area, Rabale MIDC, Navi Mumbai, Maharashtra – 400701, India.</p>
               </div>
             </div>
 
@@ -1894,25 +1913,25 @@ a {
               <div class="facility-info-icon"><i class="fa-solid fa-clock"></i></div>
               <div>
                 <strong>Visiting Hours</strong>
-                <p>Monday – Saturday: 9:30 AM – 6:30 PM IST (Plant tours by prior appointment)</p>
+                <p>Monday – Saturday: 9:00 AM – 6:00 PM IST (Plant tours by prior appointment)</p>
               </div>
             </div>
           </div>
 
           <div style="margin-top: 26px;">
-            <a href="https://maps.google.com/?q=Plot+No.+R-845+TTC+Industrial+Area+Rabale+MIDC+Navi+Mumbai" target="_blank" rel="noopener" class="explore-btn" style="padding: 12px 24px; font-size: 14px;">
+            <a href="https://maps.google.com/?q=R+698+TTC+Industrial+Area+Rabale+MIDC+Navi+Mumbai" target="_blank" rel="noopener" class="explore-btn" style="padding: 12px 24px; font-size: 14px;">
               <span>Get Driving Directions</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </a>
           </div>
         </div>
 
         <!-- Right Side: Map Block -->
-        <div class="facility-map-card demo-card" data-animate="zoom-in">
+        <div class="facility-map-card" data-animate="fade-up">
           <iframe 
             title="Jahaaj Healthcare Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.9647240176377!2d73.0034!3d19.1534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8c7e0000001%3A0x1234567890abcdef!2sRabale%20MIDC%2C%20Navi%20Mumbai!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
             width="100%" 
-            height="460" 
+            height="380" 
             style="border:0; display: block;" 
             allowfullscreen="" 
             loading="lazy">
@@ -1922,126 +1941,78 @@ a {
     </div>
   </section>
 
-  <!-- ================= SECTION 4: CAREERS ================= -->
+  <!-- ================= SECTION 4: CAREERS / JOIN OUR TEAM ================= -->
   <section class="careers-section" id="careers">
     <div class="container">
-      <div class="section-header" data-animate="fade-up">
+      <div class="section-header" data-animate="fade-up" style="text-align: center; margin: 0 auto 36px; max-width: 720px;">
         <span class="section-pill section-pill--light">Join Our Team</span>
         <h2 class="section-title section-title--light">Careers at Jahaaj Healthcare</h2>
         <p class="section-desc section-desc--light">We are always looking for passionate formulation chemists, QA analysts, and veterinary specialists.</p>
       </div>
 
-      <div class="careers-grid" data-stagger>
-        <div class="career-card demo-card" onclick="openJobApplicationModal('Formulation Chemist')">
-          <h3 class="career-role">Formulation Chemist</h3>
-          <p class="career-desc">Lead R&amp;D trials, active ingredient stability assessments, and dosage optimization across powder and liquid veterinary formulations.</p>
-          <button type="button" class="career-apply-btn" onclick="event.stopPropagation(); openJobApplicationModal('Formulation Chemist')">
-            <span>Apply for this Role</span> &rarr;
-          </button>
-        </div>
+      <div style="max-width: 800px; margin: 0 auto;" data-animate="fade-up">
+        <div class="contact-form-card" style="background: #ffffff; border-radius: 24px; padding: 40px 36px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);">
+          <h3 style="font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Career Application</h3>
+          <p style="font-size: 14.5px; color: var(--gray-600); margin-bottom: 24px;">Submit your profile below and our talent acquisition team will review your qualifications.</p>
 
-        <div class="career-card demo-card" onclick="openJobApplicationModal('QC / QA Executive')">
-          <h3 class="career-role">QC / QA Executive</h3>
-          <p class="career-desc">Perform analytical assays, HPLC testing, in-process quality control, and maintain FAMI-QS batch manufacturing records.</p>
-          <button type="button" class="career-apply-btn" onclick="event.stopPropagation(); openJobApplicationModal('QC / QA Executive')">
-            <span>Apply for this Role</span> &rarr;
-          </button>
-        </div>
+          <form id="careerForm" onsubmit="handleCareerSubmit(event); return false;">
+            <div class="form-group-grid">
+              <div class="form-field">
+                <label class="form-label" for="careerName">Full Name *</label>
+                <input class="form-input" id="careerName" type="text" placeholder="Your Name" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="careerEmail">Email Address *</label>
+                <input class="form-input" id="careerEmail" type="email" placeholder="name@example.com" required>
+              </div>
+            </div>
 
-        <div class="career-card demo-card" onclick="openJobApplicationModal('Sales & Business Development')">
-          <h3 class="career-role">Sales &amp; Business Development</h3>
-          <p class="career-desc">Drive customer partnerships with animal health brands, feed mills, and veterinary distributors across domestic and export markets.</p>
-          <button type="button" class="career-apply-btn" onclick="event.stopPropagation(); openJobApplicationModal('Sales & Business Development')">
-            <span>Apply for this Role</span> &rarr;
-          </button>
+            <div class="form-group-grid">
+              <div class="form-field">
+                <label class="form-label" for="careerPhone">Phone / WhatsApp *</label>
+                <input class="form-input" id="careerPhone" type="tel" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="careerRole">Position of Interest *</label>
+                <select class="form-select" id="careerRole" required>
+                  <option value="Formulation Chemist">Formulation Chemist</option>
+                  <option value="QC / QA Executive">QC / QA Executive</option>
+                  <option value="Sales & Business Development">Sales &amp; Business Development</option>
+                  <option value="Production & Operations">Production &amp; Operations</option>
+                  <option value="Other / General Application">Other / General Application</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group-grid">
+              <div class="form-field">
+                <label class="form-label" for="careerExperience">Years of Experience (Optional)</label>
+                <select class="form-select" id="careerExperience">
+                  <option value="Entry Level (0-2 years)">Entry Level (0–2 years)</option>
+                  <option value="Mid-Level (2-5 years)" selected>Mid-Level (2–5 years)</option>
+                  <option value="Senior Level (5-10 years)">Senior Level (5–10 years)</option>
+                  <option value="Leadership / 10+ years">Leadership (10+ years)</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="careerResume">Resume Link / LinkedIn Profile (Optional)</label>
+                <input class="form-input" id="careerResume" type="url" placeholder="https://linkedin.com/in/yourname or Drive link">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="careerNote">Brief Cover Note / Relevant Experience (Optional)</label>
+              <textarea class="form-textarea" id="careerNote" rows="3" placeholder="Tell us briefly about your veterinary formulation, QC, or industry background..."></textarea>
+            </div>
+
+            <button type="submit" class="explore-btn" style="width: 100%;">
+              Submit Application <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ================= JOB APPLICATION MODAL ================= -->
-  <div class="job-modal-backdrop" id="jobAppModal" role="dialog" aria-modal="true" aria-labelledby="jobModalTitle" onclick="closeJobApplicationModal()">
-    <div class="job-modal-dialog" onclick="event.stopPropagation()">
-      <button type="button" class="job-modal-close" onclick="closeJobApplicationModal()" aria-label="Close modal">&times;</button>
-      
-      <div class="job-modal-header">
-        <span class="job-modal-pill">
-          <i class="fa-solid fa-briefcase"></i> Careers at Jahaaj
-        </span>
-        <h3 class="job-modal-title" id="jobModalTitle">Job Application</h3>
-        <p class="job-modal-subtitle">
-          Applying for: <strong class="job-modal-role-highlight" id="jobModalRoleText">Formulation Chemist</strong>
-        </p>
-      </div>
-
-      <form id="jobApplicationForm" onsubmit="handleJobApplicationSubmit(event)">
-        <div class="job-form-grid">
-          <!-- Full Name -->
-          <div class="job-form-group">
-            <label class="job-form-label" for="jobFullName">Full Name <span class="req">*</span></label>
-            <input type="text" id="jobFullName" name="fullName" class="job-form-input" placeholder="e.g. Dr. Rajesh Kumar" required>
-          </div>
-
-          <!-- Email Address -->
-          <div class="job-form-group">
-            <label class="job-form-label" for="jobEmail">Email Address <span class="req">*</span></label>
-            <input type="email" id="jobEmail" name="email" class="job-form-input" placeholder="e.g. rajesh@example.com" required>
-          </div>
-
-          <!-- Phone Number -->
-          <div class="job-form-group">
-            <label class="job-form-label" for="jobPhone">Phone Number <span class="req">*</span></label>
-            <input type="tel" id="jobPhone" name="phone" class="job-form-input" placeholder="e.g. +91 98765 43210" required>
-          </div>
-
-          <!-- Position / Role -->
-          <div class="job-form-group">
-            <label class="job-form-label" for="jobRoleSelect">Selected Position <span class="req">*</span></label>
-            <select id="jobRoleSelect" name="role" class="job-form-select" onchange="updateJobModalRole(this.value)" required>
-              <option value="Formulation Chemist">Formulation Chemist</option>
-              <option value="QC / QA Executive">QC / QA Executive</option>
-              <option value="Sales & Business Development">Sales & Business Development</option>
-              <option value="General Veterinary Specialist">General Veterinary Specialist</option>
-              <option value="Other / General Application">Other / General Application</option>
-            </select>
-          </div>
-
-          <!-- Experience Level -->
-          <div class="job-form-group">
-            <label class="job-form-label" for="jobExperience">Years of Experience</label>
-            <select id="jobExperience" name="experience" class="job-form-select">
-              <option value="Entry Level (0-2 years)">Entry Level (0–2 years)</option>
-              <option value="Mid-Level (2-5 years)" selected>Mid-Level (2–5 years)</option>
-              <option value="Senior Level (5-10 years)">Senior Level (5–10 years)</option>
-              <option value="Leadership / 10+ years">Leadership / 10+ years</option>
-            </select>
-          </div>
-
-          <!-- Current Location -->
-          <div class="job-form-group">
-            <label class="job-form-label" for="jobLocation">Current Location / City</label>
-            <input type="text" id="jobLocation" name="location" class="job-form-input" placeholder="e.g. Mumbai, Navi Mumbai, Pune">
-          </div>
-
-          <!-- Resume / LinkedIn Link -->
-          <div class="job-form-group job-form-group--full">
-            <label class="job-form-label" for="jobResumeLink">Resume URL / LinkedIn Profile</label>
-            <input type="url" id="jobResumeLink" name="resumeLink" class="job-form-input" placeholder="e.g. https://linkedin.com/in/yourname or Google Drive resume link">
-          </div>
-
-          <!-- Cover Note -->
-          <div class="job-form-group job-form-group--full">
-            <label class="job-form-label" for="jobCoverNote">Brief Cover Note / Relevant Experience</label>
-            <textarea id="jobCoverNote" name="coverNote" class="job-form-textarea" placeholder="Tell us briefly about your veterinary formulation, QC, or sales background..."></textarea>
-          </div>
-        </div>
-
-        <button type="submit" class="job-modal-submit-btn">
-          <span>Submit Application</span> <i class="fa-solid fa-paper-plane"></i>
-        </button>
-      </form>
-    </div>
-  </div>
 
   
   <!-- ================= SECTION 5: PRIVACY POLICY & TERMS ================= -->
@@ -2344,8 +2315,6 @@ a {
     function handleContactSubmit(e) {
       if (e) e.preventDefault();
       const name = document.getElementById('fullName') ? document.getElementById('fullName').value.trim() : '';
-      const species = document.getElementById('targetSpecies') ? document.getElementById('targetSpecies').value : 'General Veterinary';
-      const format = document.getElementById('dosageFormat') ? document.getElementById('dosageFormat').value : 'Custom Formulation';
       const refCode = 'JH-' + Math.floor(10000 + Math.random() * 90000);
 
       const form = document.getElementById('contactForm');
@@ -2353,87 +2322,35 @@ a {
 
       if (typeof window.showSubmissionPopup === 'function') {
         window.showSubmissionPopup({
-          pill: '<i class="fa-solid fa-circle-check"></i> Formulation Inquiry Transmitted',
-          title: name ? `Thank You, ${name}!` : 'Enquiry Submitted Successfully!',
-          message: `Your technical formulation parameters for <strong>${species} (${format})</strong> have been dispatched to our senior veterinary CDMO scientists. Our technical lead will review your specifications and reach out within 24 business hours.`,
+          pill: '<i class="fa-solid fa-circle-check"></i> Message Received',
+          title: name ? `Thank You, ${name}!` : 'Thank You!',
+          message: 'Thank you for reaching out to Jahaaj Healthcare. We have received your inquiry and our team will get back to you shortly.',
           refId: refCode,
-          buttonText: 'Done / Continue Browsing'
+          buttonText: 'Close'
         });
       } else {
-        alert('Thank you for your enquiry! Our formulation team will get in touch shortly.');
+        alert('Thank you! We have received your enquiry and our team will get back to you shortly.');
       }
     }
 
-    /* ============ CAREER / JOB APPLICATION CONTROLLER ============ */
-    function openJobApplicationModal(roleName) {
-      const modal = document.getElementById('jobAppModal');
-      const roleText = document.getElementById('jobModalRoleText');
-      const roleSelect = document.getElementById('jobRoleSelect');
-      
-      const role = roleName || 'Formulation Chemist';
-      if (roleText) roleText.textContent = role;
-      if (roleSelect) {
-        let optionFound = false;
-        for (let i = 0; i < roleSelect.options.length; i++) {
-          if (roleSelect.options[i].value.toLowerCase() === role.toLowerCase()) {
-            roleSelect.selectedIndex = i;
-            optionFound = true;
-            break;
-          }
-        }
-        if (!optionFound) {
-          roleSelect.value = role;
-        }
-      }
-
-      if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        const firstInput = document.getElementById('jobFullName');
-        if (firstInput) setTimeout(() => firstInput.focus(), 150);
-      }
-    }
-
-    function updateJobModalRole(roleName) {
-      const roleText = document.getElementById('jobModalRoleText');
-      if (roleText) roleText.textContent = roleName;
-    }
-
-    function closeJobApplicationModal() {
-      const modal = document.getElementById('jobAppModal');
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeJobApplicationModal();
-      }
-    });
-
-    function handleJobApplicationSubmit(e) {
+    function handleCareerSubmit(e) {
       if (e) e.preventDefault();
-      const name = document.getElementById('jobFullName') ? document.getElementById('jobFullName').value.trim() : '';
-      const role = document.getElementById('jobRoleSelect') ? document.getElementById('jobRoleSelect').value : 'Selected Role';
+      const name = document.getElementById('careerName') ? document.getElementById('careerName').value.trim() : '';
       const refCode = 'JH-HR-' + Math.floor(10000 + Math.random() * 90000);
 
-      const form = document.getElementById('jobApplicationForm');
+      const form = document.getElementById('careerForm');
       if (form) form.reset();
-
-      closeJobApplicationModal();
 
       if (typeof window.showSubmissionPopup === 'function') {
         window.showSubmissionPopup({
-          pill: '<i class="fa-solid fa-briefcase"></i> Application Submitted',
-          title: name ? `Thank You, ${name}!` : 'Application Submitted Successfully!',
-          message: `Your job application for <strong>${role}</strong> has been transmitted to Jahaaj Healthcare HR &amp; Talent Acquisition. Our recruitment team will review your qualifications and reach out within 2–3 business days.`,
+          pill: '<i class="fa-solid fa-circle-check"></i> Application Received',
+          title: name ? `Thank You, ${name}!` : 'Thank You!',
+          message: 'Thank you for your interest in joining Jahaaj Healthcare. We have received your application and our recruitment team will get back to you shortly.',
           refId: refCode,
-          buttonText: 'Done / Return to Careers'
+          buttonText: 'Close'
         });
       } else {
-        alert('Thank you, ' + name + '! Your application for ' + role + ' has been received.');
+        alert('Thank you! We have received your application and will get back to you shortly.');
       }
     }
   </script>
