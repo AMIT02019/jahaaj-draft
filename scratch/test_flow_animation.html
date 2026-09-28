@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Flow Animation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #f8fafc;
+      padding: 60px 20px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .journey-diagram-card {
+      width: 100%;
+      max-width: 1100px;
+      background: #eef3f6;
+      border: 1px solid #dce5ec;
+      border-radius: 24px;
+      padding: 36px 32px 30px;
+      box-shadow: 0 12px 36px rgba(14, 50, 82, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .journey-svg-wrap {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Constant Text Styles */
+    .flow-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 25px;
+      letter-spacing: -0.01em;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .flow-desc {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      fill: #475569;
+      letter-spacing: -0.01em;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      line-height: 1.35;
+    }
+
+    /* Flowing Line Base */
+    .flow-base-path {
+      fill: none;
+      stroke: #cbd5e1;
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Main Journey Path */
+    .flow-main-path {
+      fill: none;
+      stroke: #475569;
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke-dashoffset 2.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Infinite Flowing Stream (Dash Pulse) */
+    .flow-stream-path {
+      fill: none;
+      stroke: #ea580c;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 24 60;
+      animation: journeyFlowLoop 3s linear infinite;
+      opacity: 0.95;
+      filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.5));
+    }
+
+    @keyframes journeyFlowLoop {
+      0% {
+        stroke-dashoffset: 84;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* Arrowhead styles */
+    .flow-arrowhead {
+      fill: none;
+      stroke: #475569;
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.3s ease, filter 0.3s ease;
+    }
+
+    .flow-arrowhead.active {
+      stroke: #ea580c;
+      filter: drop-shadow(0 0 4px rgba(234, 88, 12, 0.6));
+    }
+
+    /* Start Dot */
+    .flow-start-dot {
+      fill: #475569;
+      transition: fill 0.3s ease;
+    }
+
+    /* Glowing Comet Orb traveling on path */
+    .flow-comet-head {
+      fill: #ea580c;
+      filter: drop-shadow(0 0 8px rgba(234, 88, 12, 0.8));
+    }
+
+    .flow-comet-core {
+      fill: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="journey-diagram-card" id="journeyCard">
+    <svg class="journey-svg-wrap" viewBox="0 0 1255 357" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <!-- Gradients -->
+        <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#eab308" />
+          <stop offset="33%" stop-color="#16a34a" />
+          <stop offset="66%" stop-color="#0284c7" />
+          <stop offset="100%" stop-color="#ef4444" />
+        </linearGradient>
+      </defs>
+
+      <!-- Constant Text Group (Always Visible & Constant) -->
+      <g class="flow-text-group">
+        <!-- 1. Idea & Concept (Yellow / Amber) -->
+        <g id="text-step-1">
+          <text x="253" y="152" class="flow-title" fill="#e5a800">Idea &amp;</text>
+          <text x="253" y="184" class="flow-title" fill="#e5a800">Concept</text>
+          <text x="253" y="216" class="flow-desc">Define vision and</text>
+          <text x="253" y="238" class="flow-desc">feasibility</text>
+        </g>
+
+        <!-- 2. Formulation & R&D (Green) -->
+        <g id="text-step-2">
+          <text x="501" y="122" class="flow-title" fill="#16a34a">Formulation &amp;</text>
+          <text x="501" y="154" class="flow-title" fill="#16a34a">R&amp;D</text>
+          <text x="501" y="186" class="flow-desc">Develop formulas</text>
+          <text x="501" y="208" class="flow-desc">and lab testing</text>
+        </g>
+
+        <!-- 3. Trial & Optimization (Blue) -->
+        <g id="text-step-3">
+          <text x="748" y="152" class="flow-title" fill="#0284c7">Trial &amp;</text>
+          <text x="748" y="184" class="flow-title" fill="#0284c7">Optimization</text>
+          <text x="748" y="216" class="flow-desc">Scale-up trials and</text>
+          <text x="748" y="238" class="flow-desc">refine process</text>
+        </g>
+
+        <!-- 4. Manufacturing & Commercialization (Red / Coral) -->
+        <g id="text-step-4">
+          <text x="995" y="122" class="flow-title" fill="#ef4444">Manufacturing &amp;</text>
+          <text x="995" y="154" class="flow-title" fill="#ef4444">Commercialization</text>
+          <text x="995" y="186" class="flow-desc">Produce at scale</text>
+          <text x="995" y="208" class="flow-desc">and launch</text>
+        </g>
+      </g>
+
+      <!-- BASE GUIDE PATH -->
+      <!-- Continuous Serpentine Path -->
+      <!-- Segment 1: Start to Arrow 1 -->
+      <path id="path-seg-1" class="flow-base-path" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168" />
+      <!-- Segment 2: Arrow 1 to Arrow 2 -->
+      <path id="path-seg-2" class="flow-base-path" d="M 378 185 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178" />
+      <!-- Segment 3: Arrow 2 to Arrow 3 -->
+      <path id="path-seg-3" class="flow-base-path" d="M 625 168 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168" />
+      <!-- Segment 4: Arrow 3 to Final Arrow -->
+      <path id="path-seg-4" class="flow-base-path" d="M 872 185 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+
+      <!-- Single Continuous Unified Path for Smooth Drawing & Flow Loop -->
+      <path id="unified-journey-path" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" fill="none" stroke="none" />
+
+      <!-- MAIN DRAWN PATH -->
+      <path id="journey-draw-path" class="flow-main-path" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+
+      <!-- CONTINUOUS FLOWING STREAM (ANIMATED PULSE TRAIN) -->
+      <path id="journey-stream-path" class="flow-stream-path" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+
+      <!-- START DOT -->
+      <circle cx="48" cy="175" r="9" class="flow-start-dot" />
+
+      <!-- ARROWHEAD 1 (Pointing down-right) -->
+      <path id="arrow-1" class="flow-arrowhead" d="M 368 152 L 378 168 L 390 156" />
+
+      <!-- ARROWHEAD 2 (Pointing up-right) -->
+      <path id="arrow-2" class="flow-arrowhead" d="M 614 194 L 625 178 L 637 190" />
+
+      <!-- ARROWHEAD 3 (Pointing down-right) -->
+      <path id="arrow-3" class="flow-arrowhead" d="M 862 152 L 872 168 L 884 156" />
+
+      <!-- ARROWHEAD 4 (Pointing right) -->
+      <path id="arrow-4" class="flow-arrowhead" d="M 1180 162 L 1195 175 L 1180 188" />
+
+      <!-- GLOWING COMET ORB (Continuous loop traveling along path) -->
+      <g>
+        <circle r="7" class="flow-comet-head">
+          <animateMotion dur="4.5s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+        </circle>
+        <circle r="3.5" class="flow-comet-core">
+          <animateMotion dur="4.5s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+        </circle>
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    // Entrance Draw Trigger
+    const path = document.getElementById('journey-draw-path');
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+
+    function triggerFlow() {
+      path.style.strokeDashoffset = '0';
+    }
+
+    // Trigger immediately or via IntersectionObserver
+    setTimeout(triggerFlow, 300);
+  </script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architectural Stepped Journey Flow Test v4 (with Scroll Draw)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --navy: #0e3252;
+      --navy-dark: #071f33;
+      --navy-deep: #0a253e;
+      --orange: #c2410c;
+      --orange-bright: #ea580c;
+      --orange-light: #fff7ed;
+      --amber: #f59e0b;
+      --gold: #b3884d;
+      --gold-light: #f5efe6;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
+      --white: #ffffff;
+      --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: #faf9f5;
+      color: var(--gray-800);
+      line-height: 1.6;
+      padding: 60px 0;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Section Header */
+    .section-header {
+      margin-bottom: 50px;
+    }
+
+    .section-pill {
+      display: inline-block;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #926425;
+      background: rgba(179, 136, 77, 0.12);
+      border: 1px solid rgba(179, 136, 77, 0.25);
+      border-radius: 9999px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--gray-600);
+      max-width: 780px;
+      line-height: 1.6;
+    }
+
+    /* Architectural Stepped Timeline Wrapper */
+    .arch-journey-wrapper {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 24px;
+      padding: 56px 48px;
+      box-shadow: 0 10px 30px rgba(14, 50, 82, 0.03), 0 1px 3px rgba(14, 50, 82, 0.02);
+      overflow: hidden;
+    }
+
+    /* Subtle architectural grid columns */
+    .arch-journey-grid-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      background-image: 
+        linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+      background-size: 110px 100%;
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    /* Top Section Label */
+    .arch-journey-entry {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .arch-entry-flag {
+      color: var(--gold);
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .arch-entry-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* SVG Stepped Spine Layer */
+    .arch-spine-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .arch-spine-base {
+      fill: none;
+      stroke: #b3884d;
+      stroke-width: 1.5;
+      stroke-dasharray: 5 4;
+      opacity: 0.55;
+    }
+
+    .arch-spine-active {
+      fill: none;
+      stroke: url(#goldGradient);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke-dashoffset 0.1s ease-out;
+    }
+
+    /* Stepped Steps List */
+    .arch-journey-steps {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Individual Step Row */
+    .arch-step-row {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      align-items: stretch;
+      position: relative;
+      padding-bottom: 56px;
+    }
+
+    .arch-step-row:last-child {
+      padding-bottom: 36px;
+    }
+
+    /* Left Rail */
+    .arch-step-rail {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .arch-step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 4;
+      padding: 8px 16px;
+      background: #faf8f5;
+      border: 1px solid rgba(179, 136, 77, 0.35);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(179, 136, 77, 0.06);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: default;
+    }
+
+    .arch-step-row:hover .arch-step-badge,
+    .arch-step-row.is-active .arch-step-badge {
+      background: #ffffff;
+      border-color: var(--gold);
+      box-shadow: 0 6px 18px rgba(179, 136, 77, 0.18);
+      transform: translateX(6px);
+    }
+
+    .arch-step-diamond {
+      font-size: 13px;
+      line-height: 1;
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .arch-step-row:hover .arch-step-diamond,
+    .arch-step-row.is-active .arch-step-diamond {
+      transform: scale(1.3) rotate(45deg);
+    }
+
+    .arch-step-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+    }
+
+    .arch-step-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #785a28;
+    }
+
+    /* Right Content Column */
+    .arch-step-content {
+      padding-left: 38px;
+      border-left: 1px solid rgba(226, 232, 240, 0.85);
+      position: relative;
+    }
+
+    .arch-step-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      transition: color 0.2s ease;
+    }
+
+    .arch-step-row:hover .arch-step-title {
+      color: var(--orange-bright);
+    }
+
+    .arch-step-desc {
+      font-size: 15.5px;
+      color: var(--gray-600);
+      line-height: 1.65;
+      margin-bottom: 18px;
+      max-width: 680px;
+    }
+
+    /* Key Deliverables Pills */
+    .arch-step-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .arch-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 13px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--navy-deep);
+      background: var(--gray-100);
+      border-radius: 9999px;
+      border: 1px solid rgba(203, 213, 225, 0.7);
+      transition: all 0.2s ease;
+    }
+
+    .arch-chip i {
+      font-size: 10px;
+      color: var(--gold);
+    }
+
+    .arch-step-row:hover .arch-chip {
+      background: #fdfaf6;
+      border-color: rgba(179, 136, 77, 0.4);
+    }
+
+    /* Action Link */
+    .arch-step-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .arch-step-link i {
+      font-size: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    .arch-step-link:hover {
+      color: var(--orange-bright);
+    }
+
+    .arch-step-link:hover i {
+      transform: translateX(5px);
+    }
+
+    /* Terminal Row: TOGETHER / FULL LIFECYCLE CDMO */
+    .arch-step-terminal {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(226, 232, 240, 0.9);
+      position: relative;
+      z-index: 3;
+    }
+
+    .arch-terminal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 18px;
+      background: var(--navy);
+      color: #ffffff;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      box-shadow: 0 4px 12px rgba(14, 50, 82, 0.15);
+    }
+
+    .arch-terminal-badge i {
+      color: var(--amber);
+      font-size: 11px;
+    }
+
+    .arch-terminal-content {
+      padding-left: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .arch-terminal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .arch-terminal-desc {
+      font-size: 14px;
+      color: var(--gray-600);
+      margin: 0;
+    }
+
+    .arch-terminal-btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--orange-bright), var(--orange));
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+      transition: all 0.25s ease;
+    }
+
+    .arch-terminal-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(234, 88, 12, 0.35);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .arch-journey-wrapper {
+        padding: 40px 24px;
+      }
+      .arch-step-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding-bottom: 36px;
+      }
+      .arch-step-rail {
+        padding-left: 0 !important;
+      }
+      .arch-step-content {
+        padding-left: 20px;
+        border-left: 2px solid rgba(179, 136, 77, 0.35);
+      }
+      .arch-spine-svg {
+        display: none;
+      }
+      .arch-step-terminal {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .arch-terminal-content {
+        padding-left: 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="section-header">
+      <span class="section-pill">03 &bull; Product Journey</span>
+      <h2 class="section-title">One Partner Across the Complete Product Journey</h2>
+      <p class="section-desc">From the first idea to the finished commercial product, Jahaaj supports multiple stages of development with a dedicated Point of Contact (POC) — fewer handovers, easier coordination, and a more integrated path from idea to commercialization.</p>
+    </div>
+
+    <!-- Architectural Stepped Journey Layout -->
+    <div class="arch-journey-wrapper" id="archJourneyWrap">
+      <div class="arch-journey-grid-lines"></div>
+
+      <!-- Continuous Stepped Spine SVG -->
+      <svg class="arch-spine-svg" id="archSpineSvg">
+        <defs>
+          <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ea580c" />
+            <stop offset="35%" stop-color="#f59e0b" />
+            <stop offset="70%" stop-color="#16a34a" />
+            <stop offset="100%" stop-color="#0284c7" />
+          </linearGradient>
+        </defs>
+        <path class="arch-spine-base" id="archSpineBase" d="" />
+      </svg>
+
+      <!-- Top Header / Section Entry Flag -->
+      <div class="arch-journey-entry" id="archEntry">
+        <span class="arch-entry-flag"><i class="fa-solid fa-play"></i></span>
+        <span class="arch-entry-label">SECTION 03 &nbsp;&bull;&nbsp; COMPLETE CDMO LIFECYCLE</span>
+      </div>
+
+      <!-- Stepped Journey Steps -->
+      <div class="arch-journey-steps">
+
+        <!-- Step 01 -->
+        <div class="arch-step-row" data-step="1" id="arch-step-1">
+          <div class="arch-step-rail" style="padding-left: 12px;">
+            <div class="arch-step-badge">
+              <span class="arch-step-diamond" style="color: #f59e0b;">&#9670;</span>
+              <span class="arch-step-num">01</span>
+              <span class="arch-step-tag">IDEA &amp; CONCEPT</span>
+            </div>
+          </div>
+          <div class="arch-step-content">
+            <h3 class="arch-step-title">From Initial Hypothesis to Commercial Viability</h3>
+            <p class="arch-step-desc">Define vision and feasibility. We conduct rigorous market analysis, target species nutritional assessment, active ingredient feasibility, and biological viability checks to engineer a commercially scalable product from day one.</p>
+            <div class="arch-step-chips">
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> Target Species Formulation Profiling</span>
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> API &amp; Excipient Feasibility</span>
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> Commercial Viability Screening</span>
+            </div>
+            <a href="contact.html" class="arch-step-link">
+              Explore Concept Phase <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="arch-step-row" data-step="2" id="arch-step-2">
+          <div class="arch-step-rail" style="padding-left: 56px;">
+            <div class="arch-step-badge">
+              <span class="arch-step-diamond" style="color: #16a34a;">&#9670;</span>
+              <span class="arch-step-num">02</span>
+              <span class="arch-step-tag">FORMULATION &amp; R&amp;D</span>
+            </div>
+          </div>
+          <div class="arch-step-content">
+            <h3 class="arch-step-title">Precision Formulation &amp; Laboratory Testing</h3>
+            <p class="arch-step-desc">Develop formulas and lab testing. Bioavailability optimization, excipient balance, solubility enhancement, and pilot batch prototyping in our in-house chemical and physical testing facilities.</p>
+            <div class="arch-step-chips">
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> Advanced Bioavailability Optimization</span>
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> Excipient Stabilization &amp; Balancing</span>
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> Pilot Batch Prototyping</span>
+            </div>
+            <a href="science-innovation.html" class="arch-step-link">
+              View R&amp;D Capabilities <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="arch-step-row" data-step="3" id="arch-step-3">
+          <div class="arch-step-rail" style="padding-left: 100px;">
+            <div class="arch-step-badge">
+              <span class="arch-step-diamond" style="color: #0284c7;">&#9670;</span>
+              <span class="arch-step-num">03</span>
+              <span class="arch-step-tag">TRIAL &amp; OPTIMIZATION</span>
+            </div>
+          </div>
+          <div class="arch-step-content">
+            <h3 class="arch-step-title">Pilot-Scale Trials &amp; Process Validation</h3>
+            <p class="arch-step-desc">Scale-up trials and refine process. Validation batches, dissolution profiling, pilot stability testing, and process parameter qualification to guarantee repeatable commercial consistency.</p>
+            <div class="arch-step-chips">
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> Commercial Scale-Up Trials</span>
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> ICH Accelerated Stability Protocol</span>
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> Critical Process Parameter (CPP) Qualification</span>
+            </div>
+            <a href="qc-qa-systems.html" class="arch-step-link">
+              Inspect Quality Controls <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 04 -->
+        <div class="arch-step-row" data-step="4" id="arch-step-4">
+          <div class="arch-step-rail" style="padding-left: 144px;">
+            <div class="arch-step-badge">
+              <span class="arch-step-diamond" style="color: #ea580c;">&#9670;</span>
+              <span class="arch-step-num">04</span>
+              <span class="arch-step-tag">MANUFACTURING &amp; COMMERCIALIZATION</span>
+            </div>
+          </div>
+          <div class="arch-step-content">
+            <h3 class="arch-step-title">Commercial Production at Scale &amp; Market Launch</h3>
+            <p class="arch-step-desc">Produce at scale and launch. Full commercial execution in our 12,000 sq. ft. FAMI-QS certified Rabale MIDC facility, backed by high-speed automated packaging, serial batch tracking, and complete regulatory clearance.</p>
+            <div class="arch-step-chips">
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> 1,200 TPA Powder &amp; 120 TPA Bolus Capacity</span>
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> Integrated Secondary Packaging Formats</span>
+              <span class="arch-chip"><i class="fa-solid fa-check"></i> Full Regulatory Dossier &amp; Export Support</span>
+            </div>
+            <a href="manufacturing-process.html" class="arch-step-link">
+              Start Commercial Production <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Terminal Row: TOGETHER / FULL LIFECYCLE CDMO -->
+      <div class="arch-step-terminal" id="archTerminal">
+        <div>
+          <div class="arch-terminal-badge" id="archTerminalBadge">
+            <i class="fa-solid fa-play"></i>
+            <span>TOGETHER &nbsp;&bull;&nbsp; SINGLE POC</span>
+          </div>
+        </div>
+        <div class="arch-terminal-content">
+          <div>
+            <div class="arch-terminal-title">One Partner, One Contract, Zero Handover Friction</div>
+            <p class="arch-terminal-desc">Your dedicated technical POC manages the entire continuum from concept to warehouse delivery.</p>
+          </div>
+          <a href="contact.html" class="arch-terminal-btn">
+            <span>Enquire for CDMO</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function updateArchSpine() {
+      if (window.innerWidth <= 992) return;
+      const wrap = document.getElementById('archJourneyWrap');
+      if (!wrap) return;
+      const wrapRect = wrap.getBoundingClientRect();
+      const entry = document.getElementById('archEntry');
+      const terminalBadge = document.getElementById('archTerminalBadge');
+      if (!entry || !terminalBadge) return;
+      const termRect = terminalBadge.getBoundingClientRect();
+
+      const badges = document.querySelectorAll('.arch-step-badge');
+      if (!badges.length) return;
+
+      const points = [];
+      badges.forEach(b => {
+        const r = b.getBoundingClientRect();
+        const d = b.querySelector('.arch-step-diamond');
+        const dr = d.getBoundingClientRect();
+        points.push({
+          x: dr.left + dr.width / 2 - wrapRect.left,
+          topY: r.top - wrapRect.top,
+          bottomY: r.bottom - wrapRect.top
+        });
+      });
+
+      const entryFlag = entry.querySelector('.arch-entry-flag');
+      const efRect = entryFlag.getBoundingClientRect();
+      const startX = points[0].x;
+      const startY = efRect.bottom - wrapRect.top + 6;
+
+      let d = `M ${startX} ${startY} L ${startX} ${points[0].topY}`;
+
+      for (let i = 0; i < points.length - 1; i++) {
+        const curr = points[i];
+        const next = points[i + 1];
+        const midY = (curr.bottomY + next.topY) / 2;
+        d += ` M ${curr.x} ${curr.bottomY} L ${curr.x} ${midY} L ${next.x} ${midY} L ${next.x} ${next.topY}`;
+      }
+
+      const last = points[points.length - 1];
+      const termX = termRect.left + 24 - wrapRect.left;
+      const termMidY = (last.bottomY + termRect.top - wrapRect.top) / 2;
+      d += ` M ${last.x} ${last.bottomY} L ${last.x} ${termMidY} L ${termX} ${termMidY} L ${termX} ${termRect.top - wrapRect.top}`;
+
+      const path = document.getElementById('archSpineBase');
+      if (path) path.setAttribute('d', d);
+    }
+
+    window.addEventListener('load', updateArchSpine);
+    window.addEventListener('resize', updateArchSpine);
+    setTimeout(updateArchSpine, 150);
+  </script>
+
+</body>
+</html>
