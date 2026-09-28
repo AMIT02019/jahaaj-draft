@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Line Flow Styles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #f8fafc;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+    }
+    .card {
+      width: 100%;
+      max-width: 1100px;
+      background: #eef3f6;
+      border: 1px solid #dce5ec;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(14, 50, 82, 0.05);
+    }
+    h3 {
+      margin: 0 0 16px;
+      color: #0e3252;
+      font-size: 18px;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .flow-title {
+      font-weight: 700;
+      font-size: 25px;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .flow-desc {
+      font-weight: 500;
+      font-size: 16px;
+      fill: #475569;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    /* Style A: Full line draw from start to end, hold, wipe out, loop */
+    .style-a-base {
+      fill: none;
+      stroke: #cbd5e1;
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .style-a-line {
+      fill: none;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1800;
+      animation: drawWipeLoop 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    @keyframes drawWipeLoop {
+      0% {
+        stroke-dashoffset: 1800;
+      }
+      50% {
+        stroke-dashoffset: 0;
+      }
+      70% {
+        stroke-dashoffset: 0;
+      }
+      95% {
+        stroke-dashoffset: -1800;
+      }
+      100% {
+        stroke-dashoffset: -1800;
+      }
+    }
+
+    /* Style B: Solid dark line ALWAYS visible + vibrant line flow from start to end in loop */
+    .style-b-darkline {
+      fill: none;
+      stroke: #334155;
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .style-b-flowline {
+      fill: none;
+      stroke-width: 5.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 700 1800;
+      animation: beamLoop 3.2s linear infinite;
+      filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.6));
+    }
+    @keyframes beamLoop {
+      0% {
+        stroke-dashoffset: 2500;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* Style C: Full colored line continuously drawing and refilling smoothly */
+    .style-c-flowline {
+      fill: none;
+      stroke-width: 4.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1200 600;
+      animation: continuousLineFlow 3.5s linear infinite;
+    }
+    @keyframes continuousLineFlow {
+      0% {
+        stroke-dashoffset: 1800;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Card A -->
+  <div class="card">
+    <h3>Style A: Complete Line Draws From Start to End, Holds, and Loops Continuously</h3>
+    <svg viewBox="0 0 1255 357">
+      <defs>
+        <linearGradient id="gradA" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#e5a800" />
+          <stop offset="33%" stop-color="#16a34a" />
+          <stop offset="66%" stop-color="#0284c7" />
+          <stop offset="100%" stop-color="#ef4444" />
+        </linearGradient>
+      </defs>
+      <!-- Constant Text -->
+      <g>
+        <text x="253" y="152" class="flow-title" fill="#e5a800">Idea &amp;</text>
+        <text x="253" y="184" class="flow-title" fill="#e5a800">Concept</text>
+        <text x="253" y="216" class="flow-desc">Define vision and</text>
+        <text x="253" y="238" class="flow-desc">feasibility</text>
+
+        <text x="501" y="122" class="flow-title" fill="#16a34a">Formulation &amp;</text>
+        <text x="501" y="154" class="flow-title" fill="#16a34a">R&amp;D</text>
+        <text x="501" y="186" class="flow-desc">Develop formulas</text>
+        <text x="501" y="208" class="flow-desc">and lab testing</text>
+
+        <text x="748" y="152" class="flow-title" fill="#0284c7">Trial &amp;</text>
+        <text x="748" y="184" class="flow-title" fill="#0284c7">Optimization</text>
+        <text x="748" y="216" class="flow-desc">Scale-up trials and</text>
+        <text x="748" y="238" class="flow-desc">refine process</text>
+
+        <text x="995" y="122" class="flow-title" fill="#ef4444">Manufacturing &amp;</text>
+        <text x="995" y="154" class="flow-title" fill="#ef4444">Commercialization</text>
+        <text x="995" y="186" class="flow-desc">Produce at scale</text>
+        <text x="995" y="208" class="flow-desc">and launch</text>
+      </g>
+      <path class="style-a-base" fill="none" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+      <path class="style-a-line" fill="none" stroke="url(#gradA)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+      <circle cx="48" cy="175" r="9" fill="#475569" />
+      <path fill="none" stroke="#475569" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M 368 152 L 378 168 L 390 156" />
+      <path fill="none" stroke="#475569" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M 614 194 L 625 178 L 637 190" />
+      <path fill="none" stroke="#475569" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M 862 152 L 872 168 L 884 156" />
+      <path fill="none" stroke="#475569" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M 1180 162 L 1195 175 L 1180 188" />
+    </svg>
+  </div>
+
+  <!-- Card B -->
+  <div class="card">
+    <h3>Style B: Dark Base Line with Fluid Colored Energy Line Streaming from Start to End in Loop</h3>
+    <svg viewBox="0 0 1255 357">
+      <!-- Constant Text -->
+      <g>
+        <text x="253" y="152" class="flow-title" fill="#e5a800">Idea &amp;</text>
+        <text x="253" y="184" class="flow-title" fill="#e5a800">Concept</text>
+        <text x="253" y="216" class="flow-desc">Define vision and</text>
+        <text x="253" y="238" class="flow-desc">feasibility</text>
+
+        <text x="501" y="122" class="flow-title" fill="#16a34a">Formulation &amp;</text>
+        <text x="501" y="154" class="flow-title" fill="#16a34a">R&amp;D</text>
+        <text x="501" y="186" class="flow-desc">Develop formulas</text>
+        <text x="501" y="208" class="flow-desc">and lab testing</text>
+
+        <text x="748" y="152" class="flow-title" fill="#0284c7">Trial &amp;</text>
+        <text x="748" y="184" class="flow-title" fill="#0284c7">Optimization</text>
+        <text x="748" y="216" class="flow-desc">Scale-up trials and</text>
+        <text x="748" y="238" class="flow-desc">refine process</text>
+
+        <text x="995" y="122" class="flow-title" fill="#ef4444">Manufacturing &amp;</text>
+        <text x="995" y="154" class="flow-title" fill="#ef4444">Commercialization</text>
+        <text x="995" y="186" class="flow-desc">Produce at scale</text>
+        <text x="995" y="208" class="flow-desc">and launch</text>
+      </g>
+      <path class="style-b-darkline" fill="none" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+      <path class="style-b-flowline" fill="none" stroke="url(#gradA)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+      <circle cx="48" cy="175" r="9" fill="#475569" />
+      <path fill="none" stroke="#475569" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M 368 152 L 378 168 L 390 156" />
+      <path fill="none" stroke="#475569" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M 614 194 L 625 178 L 637 190" />
+      <path fill="none" stroke="#475569" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M 862 152 L 872 168 L 884 156" />
+      <path fill="none" stroke="#475569" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M 1180 162 L 1195 175 L 1180 188" />
+    </svg>
+  </div>
+
+</body>
+</html>

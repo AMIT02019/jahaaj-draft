@@ -2449,6 +2449,57 @@ a {
   <script src="assets/products-data.js"></script>
 
   <script>
+    /* ---------- Custom Formulation Combination Builder ---------- */
+    (function(){
+      const host = document.getElementById('jhcComboOptions');
+      if (!host) return;
+      const emptyState = document.getElementById('jhcComboEmpty');
+      const content = document.getElementById('jhcComboContent');
+      const challengesBox = document.getElementById('jhcComboChallenges');
+      const activesBox = document.getElementById('jhcComboActives');
+      const requestBtn = document.getElementById('jhcComboRequestBtn');
+
+      function updateCombo() {
+        const checked = Array.from(host.querySelectorAll('input:checked'));
+        host.querySelectorAll('.jhc-combo-item').forEach(item => {
+          item.classList.toggle('jhc-checked', item.querySelector('input').checked);
+        });
+
+        if (checked.length === 0) {
+          emptyState.style.display = 'block';
+          content.style.display = 'none';
+          return;
+        }
+
+        emptyState.style.display = 'none';
+        content.style.display = 'block';
+
+        const challenges = [];
+        const activesSet = new Set();
+
+        checked.forEach(cb => {
+          const parts = cb.value.split('|');
+          challenges.push(parts[0]);
+          if (parts[2]) {
+            parts[2].split('+').forEach(a => {
+              const cleanA = a.trim();
+              if (cleanA) activesSet.add(cleanA);
+            });
+          }
+        });
+
+        challengesBox.innerHTML = challenges.map(c => '<span class="jhc-tag jhc-challenge">' + c + '</span>').join('');
+        activesBox.innerHTML = Array.from(activesSet).map(a => '<span class="jhc-tag">' + a + '</span>').join('');
+
+        const queryParams = new URLSearchParams();
+        queryParams.set('challenges', challenges.join(', '));
+        queryParams.set('actives', Array.from(activesSet).join(', '));
+        requestBtn.href = 'enquire-formulation.html?' + queryParams.toString();
+      }
+
+      host.addEventListener('change', updateCombo);
+      updateCombo();
+    })();
 
     /* ---------- Challenge Split Panel Tabs ---------- */
     document.querySelectorAll('.jhc-ch-row').forEach(row => {
@@ -2462,6 +2513,19 @@ a {
         if (targetDetail) targetDetail.classList.add('active');
       });
     });
+
+    /* ---------- 3D Card Hover Tilt ---------- */
+    document.querySelectorAll('.jhc-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+        card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-5px)';
+      });
       card.addEventListener('mouseleave', () => {
         card.style.transform = '';
       });

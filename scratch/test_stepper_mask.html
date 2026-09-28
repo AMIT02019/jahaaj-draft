@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Stepper Mask</title>
+  <style>
+    body {
+      background: #0e3252;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .stepper-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 1200px;
+      width: 100%;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .mask-step {
+      opacity: 0;
+      transform-origin: center;
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .mask-path {
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      transition: stroke-dashoffset 0.6s ease;
+    }
+    /* When active */
+    .step-active {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+    }
+    .path-active {
+      stroke-dashoffset: 0 !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="stepper-card">
+    <svg viewBox="0 0 1379 920" id="workflowSvg">
+      <defs>
+        <mask id="workflowMask">
+          <rect width="1379" height="920" fill="black" />
+
+          <!-- Step 1 -->
+          <g id="m-s1" class="mask-step">
+            <rect x="55" y="45" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Arrow 1-2 -->
+          <path id="m-p1-2" class="mask-path" d="M 230 260 L 465 260" stroke="white" stroke-width="45" stroke-linecap="round" />
+          
+          <!-- Step 2 -->
+          <g id="m-s2" class="mask-step">
+            <rect x="350" y="45" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Arrow 2-3 -->
+          <path id="m-p2-3" class="mask-path" d="M 525 260 L 755 260" stroke="white" stroke-width="45" stroke-linecap="round" />
+          
+          <!-- Step 3 -->
+          <g id="m-s3" class="mask-step">
+            <rect x="640" y="45" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Arrow 3-4 -->
+          <path id="m-p3-4" class="mask-path" d="M 815 260 L 1045 260" stroke="white" stroke-width="45" stroke-linecap="round" />
+          
+          <!-- Step 4 -->
+          <g id="m-s4" class="mask-step">
+            <rect x="930" y="45" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Curve 4-5 -->
+          <path id="m-p4-5" class="mask-path" d="M 1080 260 L 1220 260 A 132 132 0 0 1 1220 525 L 1090 525" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
+          
+          <!-- Step 5 -->
+          <g id="m-s5" class="mask-step">
+            <rect x="930" y="310" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Arrow 5-6 -->
+          <path id="m-p5-6" class="mask-path" d="M 1050 525 L 815 525" stroke="white" stroke-width="45" stroke-linecap="round" />
+          
+          <!-- Step 6 -->
+          <g id="m-s6" class="mask-step">
+            <rect x="640" y="310" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Arrow 6-7 -->
+          <path id="m-p6-7" class="mask-path" d="M 755 525 L 525 525" stroke="white" stroke-width="45" stroke-linecap="round" />
+          
+          <!-- Step 7 -->
+          <g id="m-s7" class="mask-step">
+            <rect x="350" y="310" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Arrow 7-8 -->
+          <path id="m-p7-8" class="mask-path" d="M 465 525 L 230 525" stroke="white" stroke-width="45" stroke-linecap="round" />
+          
+          <!-- Step 8 -->
+          <g id="m-s8" class="mask-step">
+            <rect x="55" y="310" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Curve 8-9 -->
+          <path id="m-p8-9" class="mask-path" d="M 195 525 L 75 525 A 132 132 0 0 0 75 790 L 195 790" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
+          
+          <!-- Step 9 -->
+          <g id="m-s9" class="mask-step">
+            <rect x="55" y="575" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Arrow 9-10 -->
+          <path id="m-p9-10" class="mask-path" d="M 230 790 L 465 790" stroke="white" stroke-width="45" stroke-linecap="round" />
+          
+          <!-- Step 10 -->
+          <g id="m-s10" class="mask-step">
+            <rect x="350" y="575" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Arrow 10-11 -->
+          <path id="m-p10-11" class="mask-path" d="M 525 790 L 755 790" stroke="white" stroke-width="45" stroke-linecap="round" />
+          
+          <!-- Step 11 -->
+          <g id="m-s11" class="mask-step">
+            <rect x="640" y="575" width="290" height="325" rx="30" fill="white" />
+          </g>
+          <!-- Arrow 11-12 -->
+          <path id="m-p11-12" class="mask-path" d="M 815 790 L 1045 790" stroke="white" stroke-width="45" stroke-linecap="round" />
+          
+          <!-- Step 12 -->
+          <g id="m-s12" class="mask-step">
+            <rect x="930" y="575" width="290" height="325" rx="30" fill="white" />
+          </g>
+
+        </mask>
+      </defs>
+      
+      <!-- Ghost blueprint background: light grayscale preview -->
+      <image href="../assets/manufacturing-workflow-12-step.png" width="1379" height="920" opacity="0.15" style="filter: grayscale(100%);" />
+      
+      <!-- Vivid foreground revealed through the animated mask -->
+      <image href="../assets/manufacturing-workflow-12-step.png" width="1379" height="920" mask="url(#workflowMask)" />
+    </svg>
+  </div>
+
+  <script>
+    // Reveal all for initial test
+    document.querySelectorAll('.mask-step').forEach(el => el.classList.add('step-active'));
+    document.querySelectorAll('.mask-path').forEach(el => el.classList.add('path-active'));
+  </script>
+</body>
+</html>
