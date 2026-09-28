@@ -715,6 +715,7 @@ a {
 }
 
 .facility-map-card {
+  position: relative;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
@@ -726,6 +727,94 @@ a {
 .facility-map-card iframe {
   border-radius: 20px;
   display: block;
+}
+
+.map-floating-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 5;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 13px 16px;
+  width: 326px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.map-floating-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.map-floating-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.map-floating-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0e3252;
+  line-height: 1.25;
+  margin-bottom: 3px;
+}
+
+.map-floating-sub {
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
+
+.map-floating-rating {
+  font-size: 11.5px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.map-floating-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.map-action-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #1a73e8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.map-action-btn:hover {
+  background: #e2e8f0;
+  transform: scale(1.05);
+}
+
+.map-action-btn.map-directions-btn {
+  background: #1a73e8;
+  color: #ffffff;
+  border: none;
+}
+
+.map-action-btn.map-directions-btn:hover {
+  background: #1557b0;
 }
 
 @media (max-width: 992px) {
@@ -1933,6 +2022,23 @@ a {
 
         <!-- Right Side: Map Block -->
         <div class="facility-map-card" data-animate="fade-up">
+          <div class="map-floating-badge">
+            <div class="map-floating-header">
+              <div class="map-floating-info">
+                <span class="map-floating-title">Rabale MIDC Facility</span>
+                <span class="map-floating-sub">R 698, TTC Industrial Area, Navi Mumbai</span>
+                <span class="map-floating-rating">Facility &amp; Headquarters • Active Unit</span>
+              </div>
+              <div class="map-floating-actions">
+                <a href="https://maps.google.com/?q=R+698+TTC+Industrial+Area+Rabale+MIDC+Navi+Mumbai" target="_blank" rel="noopener" class="map-action-btn" title="Open in Google Maps">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <a href="https://maps.google.com/maps/dir//R+698+TTC+Industrial+Area+Rabale+MIDC+Navi+Mumbai" target="_blank" rel="noopener" class="map-action-btn map-directions-btn" title="Get Driving Directions">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M21.71 11.29l-9-9a.996.996 0 0 0-1.41 0l-9 9a.996.996 0 0 0 0 1.41l9 9c.39.39 1.02.39 1.41 0l9-9a.996.996 0 0 0 0-1.41zm-8.71 5.71V14h-4v-3h4V8l4.5 4.5-4.5 4.5z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
           <iframe 
             title="Jahaaj Healthcare Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.9647240176377!2d73.0034!3d19.1534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8c7e0000001%3A0x1234567890abcdef!2sRabale%20MIDC%2C%20Navi%20Mumbai!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
