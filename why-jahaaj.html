@@ -1923,100 +1923,336 @@ a {
   }
 }
 
-/* ============ SECTION 3: ANIMATED PRODUCT JOURNEY FLOW ============ */
-.journey-interactive-card {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto 40px auto;
-  background: #eef3f6;
-  border: 1px solid #dce5ec;
-  border-radius: 24px;
-  padding: 34px 28px 28px;
-  box-shadow: 0 12px 36px rgba(14, 50, 82, 0.06);
+/* ============ SECTION 3: ARCHITECTURAL STEPPED PRODUCT JOURNEY ============ */
+.arch-journey-wrapper {
   position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 24px;
+  padding: 56px 48px;
+  box-shadow: 0 10px 30px rgba(14, 50, 82, 0.03), 0 1px 3px rgba(14, 50, 82, 0.02);
   overflow: hidden;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
-.journey-svg-wrap {
-  width: 100%;
-  height: auto;
-  display: block;
+.arch-journey-grid-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-image: linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+  background-size: 110px 100%;
+  opacity: 0.7;
+  z-index: 1;
 }
 
-/* Constant Text Typography - Always visible, never shifts */
-.flow-title {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+.arch-journey-entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 3;
+  padding-left: 26px;
+}
+
+.arch-entry-flag {
+  color: #b3884d;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.arch-entry-label {
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 12px;
   font-weight: 700;
-  font-size: 25px;
-  letter-spacing: -0.01em;
-  text-anchor: middle;
-  dominant-baseline: middle;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b3884d;
 }
 
-.flow-desc {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  fill: #475569;
-  letter-spacing: -0.01em;
-  text-anchor: middle;
-  dominant-baseline: middle;
+.arch-spine-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
 }
 
-/* Flowing Line Base Guide */
-.flow-base-path {
+.arch-spine-base {
   fill: none;
-  stroke: #334155;
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke: #b3884d;
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+  opacity: 0.55;
 }
 
-/* Continuous Flowing Stream (Line flows from start to end in endless loop) */
-.flow-stream-path {
-  fill: none;
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 800 1000;
-  animation: lineFlowStartToEnd 3.2s linear infinite;
-  filter: drop-shadow(0 0 5px rgba(234, 88, 12, 0.45));
+.arch-journey-steps {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes lineFlowStartToEnd {
-  0% {
-    stroke-dashoffset: 1800;
+.arch-step-row {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  align-items: stretch;
+  position: relative;
+  padding-bottom: 56px;
+}
+
+.arch-step-row:last-child {
+  padding-bottom: 36px;
+}
+
+.arch-step-rail {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.arch-step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 4;
+  padding: 8px 16px;
+  background: #faf8f5;
+  border: 1px solid rgba(179, 136, 77, 0.35);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(179, 136, 77, 0.06);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.arch-step-row:hover .arch-step-badge {
+  background: #ffffff;
+  border-color: #b3884d;
+  box-shadow: 0 6px 18px rgba(179, 136, 77, 0.18);
+  transform: translateX(6px);
+}
+
+.arch-step-row[data-step="1"]:hover .arch-step-badge { border-color: #f59e0b; }
+.arch-step-row[data-step="2"]:hover .arch-step-badge { border-color: #16a34a; }
+.arch-step-row[data-step="3"]:hover .arch-step-badge { border-color: #0284c7; }
+.arch-step-row[data-step="4"]:hover .arch-step-badge { border-color: #ea580c; }
+
+.arch-step-diamond {
+  font-size: 13px;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.arch-step-row:hover .arch-step-diamond {
+  transform: scale(1.3) rotate(45deg);
+}
+
+.arch-step-num {
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.08em;
+}
+
+.arch-step-tag {
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #785a28;
+}
+
+.arch-step-content {
+  padding-left: 38px;
+  border-left: 1px solid rgba(226, 232, 240, 0.85);
+  position: relative;
+}
+
+.arch-step-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+
+.arch-step-row:hover .arch-step-title {
+  color: var(--orange-bright);
+}
+
+.arch-step-desc {
+  font-size: 15.5px;
+  color: var(--gray-600);
+  line-height: 1.65;
+  margin-bottom: 18px;
+  max-width: 680px;
+}
+
+.arch-step-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.arch-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 13px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--navy-deep);
+  background: var(--gray-100);
+  border-radius: 9999px;
+  border: 1px solid rgba(203, 213, 225, 0.7);
+  transition: all 0.2s ease;
+}
+
+.arch-chip i {
+  font-size: 10px;
+  color: #b3884d;
+}
+
+.arch-step-row:hover .arch-chip {
+  background: #fdfaf6;
+  border-color: rgba(179, 136, 77, 0.4);
+}
+
+.arch-step-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b3884d;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.arch-step-link i {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.arch-step-link:hover {
+  color: var(--orange-bright);
+}
+
+.arch-step-link:hover i {
+  transform: translateX(5px);
+}
+
+.arch-step-terminal {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  align-items: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  position: relative;
+  z-index: 3;
+}
+
+.arch-terminal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  background: var(--navy);
+  color: #ffffff;
+  border-radius: 8px;
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  box-shadow: 0 4px 12px rgba(14, 50, 82, 0.15);
+}
+
+.arch-terminal-badge i {
+  color: var(--amber);
+  font-size: 11px;
+}
+
+.arch-terminal-content {
+  padding-left: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.arch-terminal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.arch-terminal-desc {
+  font-size: 14px;
+  color: var(--gray-600);
+  margin: 0;
+}
+
+.arch-terminal-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--orange-bright), var(--orange));
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+  transition: all 0.25s ease;
+}
+
+.arch-terminal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.35);
+}
+
+@media (max-width: 992px) {
+  .arch-journey-wrapper {
+    padding: 40px 24px;
   }
-  100% {
-    stroke-dashoffset: 0;
+  .arch-step-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 36px;
   }
-}
-
-/* Arrowhead styles */
-.flow-arrowhead {
-  fill: none;
-  stroke: #334155;
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.flow-start-dot {
-  fill: #334155;
-}
-
-@media (max-width: 768px) {
-  .journey-interactive-card {
-    padding: 20px 14px 16px;
-    border-radius: 18px;
-    margin-bottom: 28px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  .arch-step-rail {
+    padding-left: 0 !important;
   }
-  .journey-svg-wrap {
-    min-width: 700px;
+  .arch-step-content {
+    padding-left: 20px;
+    border-left: 2px solid rgba(179, 136, 77, 0.35);
+  }
+  .arch-spine-svg {
+    display: none;
+  }
+  .arch-step-terminal {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .arch-terminal-content {
+    padding-left: 0;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -2261,105 +2497,138 @@ a {
         <p class="section-desc">From the first idea to the finished commercial product, Jahaaj supports multiple stages of development with a dedicated Point of Contact (POC) — fewer handovers, easier coordination, and a more integrated path from idea to commercialization.</p>
       </div>
 
-      <!-- Interactive Animated Journey Diagram -->
-      <div class="journey-interactive-card" id="journeyCard">
-        <svg class="journey-svg-wrap" viewBox="0 0 1255 357" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Jahaaj Healthcare Product Journey: Idea & Concept, Formulation & R&D, Trial & Optimization, Manufacturing & Commercialization">
-          <defs>
-            <!-- Continuous Stream Gradient -->
-            <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#eab308" />
-              <stop offset="33%" stop-color="#16a34a" />
-              <stop offset="66%" stop-color="#0284c7" />
-              <stop offset="100%" stop-color="#ef4444" />
-            </linearGradient>
-          </defs>
+      <!-- Architectural Stepped Journey Layout -->
+      <div class="arch-journey-wrapper" id="archJourneyWrap">
+        <div class="arch-journey-grid-lines"></div>
 
-          <!-- Constant Text Group (Always 100% Constant & Crisp) -->
-          <g class="flow-text-group">
-            <!-- 1. Idea & Concept (Yellow / Amber) -->
-            <g id="text-step-1">
-              <text x="253" y="152" class="flow-title" fill="#e5a800">Idea &amp;</text>
-              <text x="253" y="184" class="flow-title" fill="#e5a800">Concept</text>
-              <text x="253" y="216" class="flow-desc">Define vision and</text>
-              <text x="253" y="238" class="flow-desc">feasibility</text>
-            </g>
-
-            <!-- 2. Formulation & R&D (Green) -->
-            <g id="text-step-2">
-              <text x="501" y="122" class="flow-title" fill="#16a34a">Formulation &amp;</text>
-              <text x="501" y="154" class="flow-title" fill="#16a34a">R&amp;D</text>
-              <text x="501" y="186" class="flow-desc">Develop formulas</text>
-              <text x="501" y="208" class="flow-desc">and lab testing</text>
-            </g>
-
-            <!-- 3. Trial & Optimization (Blue) -->
-            <g id="text-step-3">
-              <text x="748" y="152" class="flow-title" fill="#0284c7">Trial &amp;</text>
-              <text x="748" y="184" class="flow-title" fill="#0284c7">Optimization</text>
-              <text x="748" y="216" class="flow-desc">Scale-up trials and</text>
-              <text x="748" y="238" class="flow-desc">refine process</text>
-            </g>
-
-            <!-- 4. Manufacturing & Commercialization (Red / Coral) -->
-            <g id="text-step-4">
-              <text x="995" y="122" class="flow-title" fill="#ef4444">Manufacturing &amp;</text>
-              <text x="995" y="154" class="flow-title" fill="#ef4444">Commercialization</text>
-              <text x="995" y="186" class="flow-desc">Produce at scale</text>
-              <text x="995" y="208" class="flow-desc">and launch</text>
-            </g>
-          </g>
-
-          <!-- Base Dark Track (Constant Structure) -->
-          <path class="flow-base-path" fill="none" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
-
-          <!-- Continuous Flowing Line Stream (Flows from start to end in loop) -->
-          <path id="journey-stream-path" class="flow-stream-path" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
-
-          <!-- Start Dot (Static origin node) -->
-          <circle cx="48" cy="175" r="9" class="flow-start-dot" />
-
-          <!-- Arrowhead 1 (Pointing down-right) -->
-          <path id="arrow-1" class="flow-arrowhead" fill="none" d="M 368 152 L 378 168 L 390 156" />
-
-          <!-- Arrowhead 2 (Pointing up-right) -->
-          <path id="arrow-2" class="flow-arrowhead" fill="none" d="M 614 194 L 625 178 L 637 190" />
-
-          <!-- Arrowhead 3 (Pointing down-right) -->
-          <path id="arrow-3" class="flow-arrowhead" fill="none" d="M 862 152 L 872 168 L 884 156" />
-
-          <!-- Arrowhead 4 (Pointing right) -->
-          <path id="arrow-4" class="flow-arrowhead" fill="none" d="M 1180 162 L 1195 175 L 1180 188" />
+        <!-- Continuous Stepped Spine SVG -->
+        <svg class="arch-spine-svg" id="archSpineSvg">
+          <path class="arch-spine-base" id="archSpineBase" d="" />
         </svg>
-      </div>
 
-      <div class="journey-grid" data-stagger>
-        <!-- Step 1 -->
-        <div class="journey-card demo-card">
-          <span class="journey-step-num">PHASE 01</span>
-          <h3 class="journey-title">Idea &amp; Concept</h3>
-          <p class="journey-desc">Define vision and feasibility. Market analysis, target species identification, active ingredient selection, and viability.</p>
+        <!-- Top Header / Section Entry Flag -->
+        <div class="arch-journey-entry" id="archEntry">
+          <span class="arch-entry-flag"><i class="fa-solid fa-play"></i></span>
+          <span class="arch-entry-label">SECTION 03 &nbsp;&bull;&nbsp; COMPLETE CDMO LIFECYCLE</span>
         </div>
 
-        <!-- Step 2 -->
-        <div class="journey-card demo-card">
-          <span class="journey-step-num">PHASE 02</span>
-          <h3 class="journey-title">Formulation &amp; R&amp;D</h3>
-          <p class="journey-desc">Develop formulas and lab testing. Bioavailability optimization, excipient balance, and pilot batch prototyping.</p>
+        <!-- Stepped Journey Steps -->
+        <div class="arch-journey-steps">
+
+          <!-- Step 01 -->
+          <div class="arch-step-row" data-step="1" id="arch-step-1">
+            <div class="arch-step-rail" style="padding-left: 12px;">
+              <div class="arch-step-badge">
+                <span class="arch-step-diamond" style="color: #f59e0b;">&#9670;</span>
+                <span class="arch-step-num">01</span>
+                <span class="arch-step-tag">IDEA &amp; CONCEPT</span>
+              </div>
+            </div>
+            <div class="arch-step-content">
+              <h3 class="arch-step-title">From Initial Hypothesis to Commercial Viability</h3>
+              <p class="arch-step-desc">Define vision and feasibility. We conduct rigorous market analysis, target species nutritional assessment, active ingredient feasibility, and biological viability checks to engineer a commercially scalable product from day one.</p>
+              <div class="arch-step-chips">
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> Target Species Formulation Profiling</span>
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> API &amp; Excipient Feasibility</span>
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> Commercial Viability Screening</span>
+              </div>
+              <a href="contact.html" class="arch-step-link">
+                Explore Concept Phase <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="arch-step-row" data-step="2" id="arch-step-2">
+            <div class="arch-step-rail" style="padding-left: 56px;">
+              <div class="arch-step-badge">
+                <span class="arch-step-diamond" style="color: #16a34a;">&#9670;</span>
+                <span class="arch-step-num">02</span>
+                <span class="arch-step-tag">FORMULATION &amp; R&amp;D</span>
+              </div>
+            </div>
+            <div class="arch-step-content">
+              <h3 class="arch-step-title">Precision Formulation &amp; Laboratory Testing</h3>
+              <p class="arch-step-desc">Develop formulas and lab testing. Bioavailability optimization, excipient balance, solubility enhancement, and pilot batch prototyping in our in-house chemical and physical testing facilities.</p>
+              <div class="arch-step-chips">
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> Advanced Bioavailability Optimization</span>
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> Excipient Stabilization &amp; Balancing</span>
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> Pilot Batch Prototyping</span>
+              </div>
+              <a href="science-innovation.html" class="arch-step-link">
+                View R&amp;D Capabilities <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="arch-step-row" data-step="3" id="arch-step-3">
+            <div class="arch-step-rail" style="padding-left: 100px;">
+              <div class="arch-step-badge">
+                <span class="arch-step-diamond" style="color: #0284c7;">&#9670;</span>
+                <span class="arch-step-num">03</span>
+                <span class="arch-step-tag">TRIAL &amp; OPTIMIZATION</span>
+              </div>
+            </div>
+            <div class="arch-step-content">
+              <h3 class="arch-step-title">Pilot-Scale Trials &amp; Process Validation</h3>
+              <p class="arch-step-desc">Scale-up trials and refine process. Validation batches, dissolution profiling, pilot stability testing, and process parameter qualification to guarantee repeatable commercial consistency.</p>
+              <div class="arch-step-chips">
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> Commercial Scale-Up Trials</span>
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> ICH Accelerated Stability Protocol</span>
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> Critical Process Parameter (CPP) Qualification</span>
+              </div>
+              <a href="qc-qa-systems.html" class="arch-step-link">
+                Inspect Quality Controls <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="arch-step-row" data-step="4" id="arch-step-4">
+            <div class="arch-step-rail" style="padding-left: 144px;">
+              <div class="arch-step-badge">
+                <span class="arch-step-diamond" style="color: #ea580c;">&#9670;</span>
+                <span class="arch-step-num">04</span>
+                <span class="arch-step-tag">MANUFACTURING &amp; COMMERCIALIZATION</span>
+              </div>
+            </div>
+            <div class="arch-step-content">
+              <h3 class="arch-step-title">Commercial Production at Scale &amp; Market Launch</h3>
+              <p class="arch-step-desc">Produce at scale and launch. Full commercial execution in our 12,000 sq. ft. FAMI-QS certified Rabale MIDC facility, backed by high-speed automated packaging, serial batch tracking, and complete regulatory clearance.</p>
+              <div class="arch-step-chips">
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> 1,200 TPA Powder &amp; 120 TPA Bolus Capacity</span>
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> Integrated Secondary Packaging Formats</span>
+                <span class="arch-chip"><i class="fa-solid fa-check"></i> Full Regulatory Dossier &amp; Export Support</span>
+              </div>
+              <a href="manufacturing-process.html" class="arch-step-link">
+                Start Commercial Production <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Step 3 -->
-        <div class="journey-card demo-card">
-          <span class="journey-step-num">PHASE 03</span>
-          <h3 class="journey-title">Trial &amp; Optimization</h3>
-          <p class="journey-desc">Scale-up trials and refine process. Stability testing, palatability checks, dosage calibration, and barrier validation.</p>
+        <!-- Terminal Row: TOGETHER / FULL LIFECYCLE CDMO -->
+        <div class="arch-step-terminal" id="archTerminal">
+          <div>
+            <div class="arch-terminal-badge" id="archTerminalBadge">
+              <i class="fa-solid fa-play"></i>
+              <span>TOGETHER &nbsp;&bull;&nbsp; SINGLE POC</span>
+            </div>
+          </div>
+          <div class="arch-terminal-content">
+            <div>
+              <div class="arch-terminal-title">One Partner, One Contract, Zero Handover Friction</div>
+              <p class="arch-terminal-desc">Your dedicated technical POC manages the entire continuum from concept to warehouse delivery.</p>
+            </div>
+            <a href="contact.html" class="arch-terminal-btn">
+              <span>Enquire for CDMO</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
-        <!-- Step 4 -->
-        <div class="journey-card demo-card">
-          <span class="journey-step-num">PHASE 04</span>
-          <h3 class="journey-title">Manufacturing &amp; Commercialization</h3>
-          <p class="journey-desc">Produce at scale and launch. Full commercial execution, regulatory documentation, automated packaging, and market delivery.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -2781,27 +3050,59 @@ a {
       lastScrollY = currentScrollY;
     }, { passive: true });
 
-    /* ---------- Product Journey Flow Line Animation ---------- */
-    (function initJourneyFlowAnimation() {
-      const streamPath = document.getElementById('journey-stream-path');
-      const journeyCard = document.getElementById('journeyCard');
-      if (!streamPath || !journeyCard) return;
+    /* ---------- Architectural Stepped Journey Spine Generator ---------- */
+    function updateArchSpine() {
+      if (window.innerWidth <= 992) return;
+      const wrap = document.getElementById('archJourneyWrap');
+      if (!wrap) return;
+      const wrapRect = wrap.getBoundingClientRect();
+      const entry = document.getElementById('archEntry');
+      const terminalBadge = document.getElementById('archTerminalBadge');
+      if (!entry || !terminalBadge) return;
+      const termRect = terminalBadge.getBoundingClientRect();
 
-      streamPath.style.animationPlayState = 'running';
+      const badges = document.querySelectorAll('.arch-step-badge');
+      if (!badges.length) return;
 
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              streamPath.style.animationPlayState = 'running';
-            } else {
-              streamPath.style.animationPlayState = 'paused';
-            }
-          });
-        }, { threshold: 0.1 });
-        observer.observe(journeyCard);
+      const points = [];
+      badges.forEach(b => {
+        const r = b.getBoundingClientRect();
+        const d = b.querySelector('.arch-step-diamond');
+        const dr = d.getBoundingClientRect();
+        points.push({
+          x: dr.left + dr.width / 2 - wrapRect.left,
+          topY: r.top - wrapRect.top,
+          bottomY: r.bottom - wrapRect.top
+        });
+      });
+
+      const entryFlag = entry.querySelector('.arch-entry-flag');
+      const efRect = entryFlag.getBoundingClientRect();
+      const startX = points[0].x;
+      const startY = efRect.bottom - wrapRect.top + 6;
+
+      let d = `M ${startX} ${startY} L ${startX} ${points[0].topY}`;
+
+      for (let i = 0; i < points.length - 1; i++) {
+        const curr = points[i];
+        const next = points[i + 1];
+        const midY = (curr.bottomY + next.topY) / 2;
+        d += ` M ${curr.x} ${curr.bottomY} L ${curr.x} ${midY} L ${next.x} ${midY} L ${next.x} ${next.topY}`;
       }
-    })();
+
+      const last = points[points.length - 1];
+      const termX = termRect.left + 24 - wrapRect.left;
+      const termMidY = (last.bottomY + termRect.top - wrapRect.top) / 2;
+      d += ` M ${last.x} ${last.bottomY} L ${last.x} ${termMidY} L ${termX} ${termMidY} L ${termX} ${termRect.top - wrapRect.top}`;
+
+      const path = document.getElementById('archSpineBase');
+      if (path) path.setAttribute('d', d);
+    }
+
+    window.addEventListener('load', updateArchSpine);
+    window.addEventListener('resize', updateArchSpine);
+    setTimeout(updateArchSpine, 150);
+    setTimeout(updateArchSpine, 600);
   </script>
   <!-- Canonical Navigation Controller -->
   <script src="assets/nav-and-footer.js" defer></script>
