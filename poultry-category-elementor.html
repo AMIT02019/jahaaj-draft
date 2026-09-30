@@ -1499,12 +1499,13 @@ a {
 .jhc-ch-split {
   display: grid;
   grid-template-columns: 360px 1fr;
-  gap: 32px;
-  align-items: start;
+  gap: 36px;
+  align-items: stretch;
 }
 @media (max-width: 900px) {
   .jhc-ch-split {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 .jhc-ch-list {
@@ -1515,13 +1516,14 @@ a {
   box-shadow: 0 4px 15px rgba(14, 50, 82, 0.04);
 }
 .jhc-ch-row {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 18px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--gray-200);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .jhc-ch-row:last-child {
   border-bottom: none;
@@ -1532,6 +1534,17 @@ a {
 .jhc-ch-row.active {
   background: var(--navy);
   color: #ffffff;
+  padding-left: 24px;
+}
+.jhc-ch-row.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--orange);
+  border-radius: 0 4px 4px 0;
 }
 .jhc-ch-row-left {
   display: flex;
@@ -1541,44 +1554,95 @@ a {
 .jhc-ch-row-num {
   font-family: monospace;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--orange);
+  transition: color 0.2s ease;
 }
 .jhc-ch-row.active .jhc-ch-row-num {
   color: #fb923c;
 }
 .jhc-ch-row-name {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 700;
   color: var(--navy);
+  transition: color 0.2s ease;
 }
 .jhc-ch-row.active .jhc-ch-row-name {
   color: #ffffff;
 }
 .jhc-ch-row-arrow {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--gray-400);
+  transition: transform 0.28s ease, color 0.2s ease;
 }
 .jhc-ch-row.active .jhc-ch-row-arrow {
   color: #fb923c;
+  transform: translateX(4px);
 }
 
+.jhc-ch-panel-wrap {
+  position: relative;
+  height: 100%;
+}
 .jhc-ch-panel {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 110px;
   background: #ffffff;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 6px 20px rgba(14, 50, 82, 0.04);
+  padding: 36px 40px;
+  box-shadow: 0 10px 30px rgba(14, 50, 82, 0.05);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+@media (max-width: 900px) {
+  .jhc-ch-panel {
+    position: static;
+    padding: 24px;
+  }
 }
 .jhc-ch-detail {
   display: none;
+  opacity: 0;
+  transform: translateY(14px);
 }
 .jhc-ch-detail.active {
   display: block;
+  animation: jhcCardEnter 0.36s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+@keyframes jhcCardEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.jhc-ch-detail.active .jhc-ch-detail-icon {
+  animation: jhcIconPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes jhcIconPop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .jhc-ch-detail-icon {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: 12px;
   background: rgba(194, 65, 12, 0.1);
   color: var(--orange);
@@ -1586,43 +1650,29 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 .jhc-ch-detail h3 {
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 800;
   color: var(--navy);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
 }
 .jhc-ch-detail-hook {
   font-size: 16px;
   font-weight: 700;
   color: var(--orange);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   font-style: italic;
+  display: inline-block;
+  padding-bottom: 4px;
 }
 .jhc-ch-detail-desc {
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 15.5px;
+  line-height: 1.75;
   color: var(--gray-700);
-  margin-bottom: 20px;
-}
-.jhc-ch-detail-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--navy);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 13.5px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background var(--transition-fast);
-}
-.jhc-ch-detail-cta:hover {
-  background: var(--orange);
-  color: #fff;
+  margin-bottom: 0;
 }
 
 /* Technical Specification Summary Table */
@@ -1953,6 +2003,7 @@ a {
             <span>Certified Quality Standards</span>
           </div>
         </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2086,7 +2137,8 @@ a {
 
         </div>
 
-        <div class="jhc-ch-panel">
+        <div class="jhc-ch-panel-wrap">
+          <div class="jhc-ch-panel">
           
             <div class="jhc-ch-detail active" data-idx="0">
               <div class="jhc-ch-detail-icon"><i class="fas fa-feather-pointed"></i></div>
@@ -2366,26 +2418,103 @@ a {
 
   <script>
 
-    /* ---------- Challenge Split Panel Tabs ---------- */
-    function initChallengeTabs() {
-      const rows = document.querySelectorAll(".jhc-ch-row");
-      rows.forEach(row => {
+    /* ---------- Challenge Split Panel Tabs with Sticky Scroll Animation ---------- */
+    function initStickyChallengeScroll() {
+      const section = document.querySelector(".jhc-challenges-section");
+      if (!section) return;
+
+      const rows = Array.from(section.querySelectorAll(".jhc-ch-row"));
+      const details = Array.from(section.querySelectorAll(".jhc-ch-detail"));
+      if (!rows.length || !details.length) return;
+
+      let activeIdx = 0;
+      let isManualClick = false;
+      let clickTimeout = null;
+      let ticking = false;
+
+      function setActive(idx) {
+        if (idx === activeIdx && rows[idx] && rows[idx].classList.contains("active")) return;
+        activeIdx = idx;
+
+        rows.forEach((r, i) => {
+          if (i === idx) {
+            r.classList.add("active");
+          } else {
+            r.classList.remove("active");
+          }
+        });
+
+        details.forEach(d => {
+          if (parseInt(d.dataset.idx, 10) === idx) {
+            d.classList.add("active");
+          } else {
+            d.classList.remove("active");
+          }
+        });
+      }
+
+      // Manual click with cooldown so scroll does not fight user choice
+      rows.forEach((row, i) => {
         row.addEventListener("click", function() {
-          const idx = this.dataset.idx;
-          const container = this.closest(".jhc-challenges-section");
-          if (!container) return;
-          container.querySelectorAll(".jhc-ch-row").forEach(r => r.classList.remove("active"));
-          container.querySelectorAll(".jhc-ch-detail").forEach(d => d.classList.remove("active"));
-          this.classList.add("active");
-          const targetDetail = container.querySelector('.jhc-ch-detail[data-idx="' + idx + '"]');
-          if (targetDetail) targetDetail.classList.add("active");
+          const idx = parseInt(this.dataset.idx !== undefined ? this.dataset.idx : i, 10);
+          isManualClick = true;
+          clearTimeout(clickTimeout);
+          setActive(idx);
+          clickTimeout = setTimeout(() => {
+            isManualClick = false;
+          }, 1200);
         });
       });
+
+      // Scroll synchronization
+      function onScroll() {
+        if (isManualClick) return;
+
+        const rect = section.getBoundingClientRect();
+        const winHeight = window.innerHeight;
+
+        // Only active when section is in reading zone
+        if (rect.top > winHeight * 0.70 || rect.bottom < winHeight * 0.30) {
+          return;
+        }
+
+        // Focal line aligned with sticky card position (~40% from top of viewport)
+        const focalY = winHeight * 0.40;
+
+        let closestIdx = activeIdx;
+        let minDistance = Infinity;
+
+        rows.forEach((row, i) => {
+          const rRect = row.getBoundingClientRect();
+          const rowCenter = rRect.top + rRect.height / 2;
+          const distance = Math.abs(rowCenter - focalY);
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIdx = i;
+          }
+        });
+
+        if (closestIdx !== activeIdx) {
+          setActive(closestIdx);
+        }
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            onScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
     }
+
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initChallengeTabs);
+      document.addEventListener("DOMContentLoaded", initStickyChallengeScroll);
     } else {
-      initChallengeTabs();
+      initStickyChallengeScroll();
     }
   </script>
   <!-- Canonical Navigation Controller -->
