@@ -844,6 +844,7 @@ a {
   justify-content: space-between;
   max-width: 1080px;
   margin: 0 auto;
+  position: relative;
 }
 
 .fac-step-item {
@@ -853,26 +854,31 @@ a {
   text-align: center;
   width: 160px;
   flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
 }
 
 .fac-step-icon-box {
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
-  background: #fff5ec;
-  border: 1.5px solid #fed7aa;
+  background: #fff7ed;
+  border: 2px solid #fed7aa;
   color: #ea580c;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  margin-bottom: 12px;
-  transition: transform 0.3s ease, background 0.3s ease;
+  font-size: 27px;
+  margin-bottom: 14px;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fac-step-item:hover .fac-step-icon-box {
-  transform: scale(1.08);
+  transform: translateY(-5px) scale(1.1);
   background: #ffedd5;
+  border-color: #ea580c;
+  box-shadow: 0 12px 28px rgba(234, 88, 12, 0.22);
 }
 
 .fac-step-num {
@@ -880,6 +886,12 @@ a {
   font-weight: 800;
   color: #ea580c;
   margin-bottom: 4px;
+  transition: all 0.3s ease;
+}
+
+.fac-step-item:hover .fac-step-num {
+  color: #c2410c;
+  transform: scale(1.1);
 }
 
 .fac-step-title {
@@ -887,27 +899,151 @@ a {
   font-weight: 700;
   color: var(--navy);
   line-height: 1.35;
+  transition: color 0.3s ease;
 }
 
+.fac-step-item:hover .fac-step-title {
+  color: #c2410c;
+}
+
+/* ============ DYNAMIC FLOW CONNECTORS ============ */
 .fac-step-connector {
   flex: 1;
   height: 2px;
-  border-top: 2px dashed #cbd5e1;
   position: relative;
-  margin: 0 10px;
-  margin-bottom: 44px;
+  margin: 0 12px;
+  margin-bottom: 48px;
+  background-image: linear-gradient(to right, #ea580c 45%, rgba(203, 213, 225, 0.5) 0%);
+  background-size: 14px 2px;
+  background-repeat: repeat-x;
+  animation: flowDashes 1.2s linear infinite;
 }
 
+@keyframes flowDashes {
+  0% { background-position: 0 0; }
+  100% { background-position: 14px 0; }
+}
+
+/* Arrow Tip */
 .fac-step-connector::after {
   content: '';
   position: absolute;
   right: -2px;
-  top: -5px;
+  top: -4px;
   width: 8px;
   height: 8px;
-  border-top: 2px solid #94a3b8;
-  border-right: 2px solid #94a3b8;
+  border-top: 2px solid #ea580c;
+  border-right: 2px solid #ea580c;
   transform: rotate(45deg);
+  transition: border-color 0.3s ease;
+}
+
+/* Traveling Flow Particle along Connector */
+.fac-step-connector::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ea580c;
+  box-shadow: 0 0 10px #ea580c, 0 0 4px #ea580c;
+  opacity: 0;
+  z-index: 2;
+}
+
+.fac-step-connector.conn-1::before {
+  animation: travelParticle 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.2s;
+}
+.fac-step-connector.conn-2::before {
+  animation: travelParticle 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite 1.4s;
+}
+.fac-step-connector.conn-3::before {
+  animation: travelParticle 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite 2.6s;
+}
+
+@keyframes travelParticle {
+  0% { left: 0%; opacity: 0; transform: scale(0.6); }
+  8% { opacity: 1; transform: scale(1.2); }
+  75% { opacity: 1; transform: scale(1); }
+  95% { left: 100%; opacity: 0; transform: scale(0.8); }
+  100% { left: 100%; opacity: 0; }
+}
+
+/* ============ STEP PULSE & ICON ANIMATIONS ============ */
+.fac-step-item.step-1 .fac-step-icon-box {
+  animation: stepPulseRing 4.8s ease-in-out infinite 0s;
+}
+.fac-step-item.step-2 .fac-step-icon-box {
+  animation: stepPulseRing 4.8s ease-in-out infinite 1.2s;
+}
+.fac-step-item.step-3 .fac-step-icon-box {
+  animation: stepPulseRing 4.8s ease-in-out infinite 2.4s;
+}
+.fac-step-item.step-4 .fac-step-icon-box {
+  animation: stepPulseRing 4.8s ease-in-out infinite 3.6s;
+}
+
+@keyframes stepPulseRing {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0);
+    border-color: #fed7aa;
+    transform: translateY(0) scale(1);
+  }
+  12% {
+    box-shadow: 0 0 0 10px rgba(234, 88, 12, 0.25), 0 8px 24px rgba(234, 88, 12, 0.2);
+    border-color: #ea580c;
+    background: #ffedd5;
+    transform: translateY(-4px) scale(1.08);
+  }
+  26% {
+    box-shadow: 0 0 0 18px rgba(234, 88, 12, 0);
+    border-color: #fed7aa;
+    background: #fff7ed;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Step 2 Gears Spin */
+.fac-step-item.step-2 .fac-step-icon-box i {
+  display: inline-block;
+  animation: gearSpin 4.8s ease-in-out infinite 1.2s;
+}
+.fac-step-item.step-2:hover .fac-step-icon-box i {
+  animation: spinContinuous 2s linear infinite;
+}
+@keyframes gearSpin {
+  0%, 100% { transform: rotate(0deg); }
+  12% { transform: rotate(90deg); }
+  24% { transform: rotate(180deg); }
+  36% { transform: rotate(270deg); }
+  48% { transform: rotate(360deg); }
+}
+@keyframes spinContinuous {
+  100% { transform: rotate(360deg); }
+}
+
+/* Step 3 Checkmark Pop */
+.fac-step-item.step-3 .fac-step-icon-box i {
+  display: inline-block;
+  animation: checkPop 4.8s ease-in-out infinite 2.4s;
+}
+@keyframes checkPop {
+  0%, 100% { transform: scale(1); }
+  12% { transform: scale(1.22); }
+  24% { transform: scale(1); }
+}
+
+/* Step 4 Box Levitation */
+.fac-step-item.step-4 .fac-step-icon-box i {
+  display: inline-block;
+  animation: boxFloat 4.8s ease-in-out infinite 3.6s;
+}
+@keyframes boxFloat {
+  0%, 100% { transform: translateY(0); }
+  12% { transform: translateY(-4px); }
+  24% { transform: translateY(0); }
 }
 
 @media (max-width: 860px) {
@@ -1384,7 +1520,7 @@ a {
 
       <div class="fac-stepper-wrap">
         <!-- Step 1 -->
-        <div class="fac-step-item">
+        <div class="fac-step-item step-1">
           <div class="fac-step-icon-box">
             <i class="fa-solid fa-box-open"></i>
           </div>
@@ -1392,10 +1528,10 @@ a {
           <h3 class="fac-step-title">Material<br>Preparation</h3>
         </div>
 
-        <div class="fac-step-connector"></div>
+        <div class="fac-step-connector conn-1"></div>
 
         <!-- Step 2 -->
-        <div class="fac-step-item">
+        <div class="fac-step-item step-2">
           <div class="fac-step-icon-box">
             <i class="fa-solid fa-gears"></i>
           </div>
@@ -1403,10 +1539,10 @@ a {
           <h3 class="fac-step-title">Manufacturing<br>&amp; Assembly</h3>
         </div>
 
-        <div class="fac-step-connector"></div>
+        <div class="fac-step-connector conn-2"></div>
 
         <!-- Step 3 -->
-        <div class="fac-step-item">
+        <div class="fac-step-item step-3">
           <div class="fac-step-icon-box">
             <i class="fa-solid fa-circle-check"></i>
           </div>
@@ -1414,10 +1550,10 @@ a {
           <h3 class="fac-step-title">Quality<br>Checks</h3>
         </div>
 
-        <div class="fac-step-connector"></div>
+        <div class="fac-step-connector conn-3"></div>
 
         <!-- Step 4 -->
-        <div class="fac-step-item">
+        <div class="fac-step-item step-4">
           <div class="fac-step-icon-box">
             <i class="fa-solid fa-boxes-packing"></i>
           </div>
