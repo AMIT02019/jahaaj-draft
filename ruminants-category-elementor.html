@@ -1809,6 +1809,71 @@ a {
   transform: translateY(-2px);
 }
 
+
+/* ============ CANONICAL PAGE HERO (Standardized) ============ */
+.page-hero {
+  position: relative;
+  background: radial-gradient(circle at 50% 15%, rgba(234, 88, 12, 0.15) 0%, rgba(14, 50, 82, 0) 70%),
+              linear-gradient(180deg, #0e3252 0%, #071f33 100%);
+  padding: 160px 0 85px;
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 85%, rgba(245, 158, 11, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 20px;
+  border-radius: 9999px;
+  background: rgba(234, 88, 12, 0.15);
+  border: 1px solid rgba(234, 88, 12, 0.35);
+  color: #fb923c;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 800;
+  line-height: 1.22;
+  color: #ffffff;
+  max-width: 960px;
+  margin: 0 auto 20px;
+  letter-spacing: -0.015em;
+}
+
+.text-gradient,
+.hero-title .text-gradient {
+  color: #ea580c;
+}
+
+.hero-desc {
+  font-size: clamp(16px, 1.8vw, 18.5px);
+  line-height: 1.68;
+  color: rgba(241, 245, 249, 0.9);
+  max-width: 820px;
+  margin: 0 auto 36px;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 130px 24px 60px;
+  }
+}
 </style>
 
   <!-- Schema.org JSON-LD -->
@@ -1943,31 +2008,12 @@ a {
     </div>
   </div>
 
-  <!-- Category Hero -->
-  <section class="jhc-hero">
-    <div class="jhc-container">
-      <div class="jhc-breadcrumb">
-        <a href="index.html"><i class="fas fa-home"></i> Home</a>
-        <i class="fas fa-chevron-right" style="font-size:0.6rem; opacity:0.6;"></i>
-        <a href="products-catalog-elementor.html">Explore Our Products</a>
-        <i class="fas fa-chevron-right" style="font-size:0.6rem; opacity:0.6;"></i>
-        <span class="jhc-current">Ruminant Solutions</span>
-      </div>
-
-      <div class="jhc-hero-top">
-        <div class="jhc-hero-icon"><i class="fas fa-cow"></i></div>
-        <h1>Ruminant Solutions</h1>
-      </div>
-
-      <div class="jhc-hero-sub-hook">&ldquo;Every Challenge in Your Herd Impacts Your Bottom Line&rdquo;</div>
-      <p class="jhc-hero-desc">In dairy and livestock farming, profitability isn't determined by herd size alone-it's determined by how efficiently every animal performs. Poor feed utilization, digestive disorders, heat stress, fertility issues, or declining milk quality may seem like everyday challenges, but together they silently reduce productivity and increase production costs.</p>
-
-      <div class="jhc-stats-row">
-        <span class="jhc-stat-pill"><i class="fas fa-flask"></i> 10 Precision Formulations</span>
-        <span class="jhc-stat-pill"><i class="fas fa-shield-check"></i> FAMI-QS &amp; ISO 9001 Certified</span>
-        <span class="jhc-stat-pill"><i class="fas fa-industry"></i> CDMO &amp; Private Label Ready</span>
-        <span class="jhc-stat-pill"><i class="fas fa-barcode"></i> 100% Traceable Ingredients</span>
-      </div>
+  <!-- ================= HERO SECTION ================= -->
+  <section class="page-hero" id="heroBg">
+    <div class="container" data-animate="fade-up">
+      <span class="hero-pill"><i class="fas fa-cow"></i> Ruminants &amp; Dairy</span>
+      <h1 class="hero-title">Advanced Digestive &amp; Metabolic Formulations for <span class="text-gradient">Dairy &amp; Livestock</span></h1>
+      <p class="hero-desc">In dairy and livestock farming, profitability is determined by how efficiently every animal performs. We manufacture targeted boluses, powders, and liquid tonics that support rumen buffering, transition cow health, milk yield, SNF quality, and reproductive longevity.</p>
     </div>
   </section>
 

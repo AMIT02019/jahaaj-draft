@@ -471,24 +471,22 @@ a {
   transform: translateX(4px);
 }
 
-/* ============ PAGE HERO ============ */
+/* ============ CANONICAL PAGE HERO (Standardized) ============ */
 .page-hero {
-  background: linear-gradient(180deg, #071f33 0%, #0a253e 100%);
-  padding: 175px 0 100px;
-  text-align: center;
   position: relative;
-  overflow: hidden;
+  background: radial-gradient(circle at 50% 15%, rgba(234, 88, 12, 0.15) 0%, rgba(14, 50, 82, 0) 70%),
+              linear-gradient(180deg, #0e3252 0%, #071f33 100%);
+  padding: 160px 0 85px;
   color: #ffffff;
+  text-align: center;
+  overflow: hidden;
 }
 
 .page-hero::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 25%, rgba(234, 88, 12, 0.12) 0%, transparent 65%);
+  inset: 0;
+  background: radial-gradient(circle at 85% 85%, rgba(245, 158, 11, 0.08) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -496,33 +494,46 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 6px 18px;
-  border-radius: var(--radius-full);
+  padding: 7px 20px;
+  border-radius: 9999px;
+  background: rgba(234, 88, 12, 0.15);
+  border: 1px solid rgba(234, 88, 12, 0.35);
+  color: #fb923c;
   font-size: 13px;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 22px;
-  backdrop-filter: blur(10px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
 }
 
 .hero-title {
-  font-size: clamp(32px, 4vw, 52px);
+  font-size: clamp(26px, 3.2vw, 40px);
   font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 1.18;
-  margin-bottom: 20px;
+  line-height: 1.22;
   color: #ffffff;
+  max-width: 960px;
+  margin: 0 auto 20px;
+  letter-spacing: -0.015em;
 }
 
-.hero-subtitle {
+.text-gradient,
+.hero-title .text-gradient {
+  color: #ea580c;
+}
+
+.hero-desc {
   font-size: clamp(16px, 1.8vw, 18.5px);
-  color: #cbd5e1;
-  max-width: 840px;
-  margin: 0 auto;
-  line-height: 1.65;
+  line-height: 1.68;
+  color: rgba(241, 245, 249, 0.9);
+  max-width: 820px;
+  margin: 0 auto 36px;
   font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 130px 24px 60px;
+  }
 }
 
 /* ============ SECTION 1: PACKAGING APPROACH ============ */
@@ -1202,11 +1213,11 @@ a {
   </div>
 
   <!-- ================= PAGE HERO ================= -->
-  <section class="page-hero">
-    <div class="container">
+  <section class="page-hero" id="heroBg">
+    <div class="container" data-animate="fade-up">
       <span class="hero-pill"><i class="fas fa-box-open"></i> Packaging Capabilities</span>
-      <h1 class="hero-title">Packaging That Protects. Packaging That Performs.</h1>
-      <p class="hero-subtitle">Your packaging is the first touchpoint of your brand. At Jahaaj Healthcare, we combine functionality, protection, compliance, and visual appeal to create packaging that is ready for both shelf and shipment.</p>
+      <h1 class="hero-title">Packaging That Protects. <span class="text-gradient">Packaging That Performs.</span></h1>
+      <p class="hero-desc">Your packaging is the first touchpoint of your brand. At Jahaaj Healthcare, we combine functionality, protection, compliance, and visual appeal to create packaging that is ready for both shelf and shipment.</p>
     </div>
   </section>
 
