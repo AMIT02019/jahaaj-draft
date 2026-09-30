@@ -842,12 +842,14 @@ a {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  max-width: 1080px;
+  max-width: 1040px;
   margin: 0 auto;
   position: relative;
   user-select: none;
+  padding: 24px 0;
 }
 
+/* Step Item */
 .fac-step-item {
   display: flex;
   flex-direction: column;
@@ -857,23 +859,24 @@ a {
   flex-shrink: 0;
   cursor: pointer;
   position: relative;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fac-step-icon-box {
-  width: 76px;
-  height: 76px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 2px solid #e2e8f0;
-  color: #64748b;
+  background: #fff7ed;
+  border: 2px solid #fed7aa;
+  color: #ea580c;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  font-size: 27px;
   margin-bottom: 14px;
   position: relative;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 16px rgba(234, 88, 12, 0.08);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -886,151 +889,141 @@ a {
   pointer-events: none;
 }
 
-/* Hover state */
-.fac-step-item:hover .fac-step-icon-box {
-  transform: translateY(-4px) scale(1.06);
-  border-color: #ea580c;
-  color: #ea580c;
-  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.18);
-}
-.fac-step-item:hover .fac-step-num {
-  color: #ea580c;
-}
-.fac-step-item:hover .fac-step-title {
-  color: var(--navy);
-}
-
-/* Active State (current running stage) */
-.fac-step-item.is-active .fac-step-icon-box {
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-  border-color: #ea580c;
-  color: #ea580c;
-  transform: translateY(-6px) scale(1.1);
-  box-shadow: 0 0 0 6px rgba(234, 88, 12, 0.16), 0 14px 28px rgba(234, 88, 12, 0.22);
-}
-.fac-step-item.is-active .fac-step-pulse-ring {
-  animation: pulseRingWave 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
-}
-@keyframes pulseRingWave {
-  0% { transform: scale(0.92); opacity: 0.85; }
-  100% { transform: scale(1.42); opacity: 0; }
-}
-
-.fac-step-item.is-active .fac-step-num {
-  color: #ea580c;
-  font-weight: 800;
-  transform: scale(1.12);
-}
-.fac-step-item.is-active .fac-step-title {
-  color: #0e3252;
-  font-weight: 800;
-}
-
-/* Completed State (stages already passed) */
-.fac-step-item.is-completed .fac-step-icon-box {
-  background: #fff7ed;
-  border-color: #fdba74;
-  color: #ea580c;
-  box-shadow: 0 4px 16px rgba(234, 88, 12, 0.12);
-  transform: translateY(0) scale(1);
-}
-.fac-step-item.is-completed .fac-step-num {
-  color: #ea580c;
-  font-weight: 800;
-}
-.fac-step-item.is-completed .fac-step-title {
-  color: #0e3252;
-}
-
-/* Specific Active Icon Micro-Animations */
-.fac-step-item.step-1.is-active .fac-step-icon-box i {
-  animation: iconBreathe 1s ease-in-out;
-}
-@keyframes iconBreathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.16); }
-}
-
-.fac-step-item.step-2.is-active .fac-step-icon-box i,
-.fac-step-item.step-2:hover .fac-step-icon-box i {
-  animation: gearsTurn 1.1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-@keyframes gearsTurn {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.fac-step-item.step-3.is-active .fac-step-icon-box i {
-  animation: checkPopSmooth 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-@keyframes checkPopSmooth {
-  0% { transform: scale(0.8); }
-  50% { transform: scale(1.28); color: #16a34a; }
-  100% { transform: scale(1); color: #ea580c; }
-}
-
-.fac-step-item.step-4.is-active .fac-step-icon-box i {
-  animation: boxPackBounce 0.9s ease-in-out;
-}
-@keyframes boxPackBounce {
-  0%, 100% { transform: translateY(0) scale(1); }
-  40% { transform: translateY(-7px) scale(1.1); }
-  75% { transform: translateY(2px) scale(0.98); }
-}
-
 .fac-step-num {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
-  color: #94a3b8;
-  margin-bottom: 4px;
+  color: #ea580c;
+  margin-bottom: 5px;
+  letter-spacing: 0.05em;
   transition: all 0.3s ease;
 }
 
 .fac-step-title {
   font-size: 15px;
   font-weight: 700;
-  color: #475569;
+  color: #0e3252;
   line-height: 1.35;
+  margin: 0;
   transition: color 0.3s ease;
 }
 
-/* ============ DYNAMIC FLOW CONNECTORS ============ */
+/* Hover */
+.fac-step-item:hover .fac-step-icon-box {
+  transform: translateY(-4px) scale(1.06);
+  border-color: #ea580c;
+  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.22);
+}
+
+/* Active Step State */
+.fac-step-item.is-active .fac-step-icon-box {
+  background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+  border-color: #ea580c;
+  color: #c2410c;
+  transform: translateY(-6px) scale(1.1);
+  box-shadow: 0 0 0 6px rgba(234, 88, 12, 0.18), 0 14px 28px rgba(234, 88, 12, 0.25);
+}
+.fac-step-item.is-active .fac-step-pulse-ring {
+  animation: pulseRingWave 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+@keyframes pulseRingWave {
+  0% { transform: scale(0.92); opacity: 0.85; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.fac-step-item.is-active .fac-step-num {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 4px rgba(234, 88, 12, 0.45));
+}
+.fac-step-item.is-active .fac-step-title {
+  color: #ea580c;
+}
+
+/* Completed Step State (stays warm and illuminated) */
+.fac-step-item.is-completed .fac-step-icon-box {
+  background: #fff7ed;
+  border-color: #ea580c;
+  color: #ea580c;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.14);
+  transform: translateY(0) scale(1);
+}
+
+/* Micro-animations */
+.fac-step-item.step-1.is-active .fac-step-icon-box i {
+  animation: boxOpenMotion 1.2s ease-in-out infinite alternate;
+}
+@keyframes boxOpenMotion {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.16) translateY(-2px); }
+}
+
+.fac-step-item.step-2.is-active .fac-step-icon-box i {
+  animation: gearsSpin 2.4s linear infinite;
+}
+@keyframes gearsSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fac-step-item.step-3.is-active .fac-step-icon-box i {
+  animation: checkPopGlow 1.2s ease-in-out infinite alternate;
+}
+@keyframes checkPopGlow {
+  0% { transform: scale(1); color: #ea580c; }
+  100% { transform: scale(1.22); color: #16a34a; filter: drop-shadow(0 0 6px rgba(22, 163, 74, 0.6)); }
+}
+
+.fac-step-item.step-4.is-active .fac-step-icon-box i {
+  animation: packBounce 1.2s ease-in-out infinite alternate;
+}
+@keyframes packBounce {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-4px) scale(1.12); }
+}
+
+/* Finale Resonance */
+.fac-stepper-wrap.is-all-completed .fac-step-icon-box {
+  box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.22), 0 10px 24px rgba(234, 88, 12, 0.22);
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Connectors */
 .fac-step-connector {
   flex: 1;
   position: relative;
-  margin: 0 10px;
-  margin-top: 36px; /* Exactly centers with 76px circle (38px center) */
-  height: 4px;
+  margin: 0 12px;
+  margin-top: 38px;
+  height: 20px;
+  z-index: 1;
+  transition: opacity 0.5s ease;
 }
 
-.fac-step-connector-track {
-  width: 100%;
-  height: 4px;
-  background: #e2e8f0;
-  border-radius: 4px;
-  position: relative;
-  overflow: visible;
-}
-
-.fac-step-connector-fill {
+.fac-conn-track {
   position: absolute;
+  top: 50%;
   left: 0;
-  top: 0;
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
-  border-radius: 4px;
-  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  width: calc(100% - 10px);
+  height: 0;
+  border-bottom: 2.5px dashed #cbd5e1;
+  transform: translateY(-50%);
 }
 
-.fac-step-connector.is-flowing .fac-step-connector-fill,
-.fac-step-connector.is-completed .fac-step-connector-fill {
-  width: 100%;
-}
-
-.fac-step-connector-dot {
+.fac-conn-fill {
   position: absolute;
-  top: -4px;
+  top: 50%;
+  left: 0;
+  height: 3.5px;
+  width: calc(100% - 10px);
+  background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+  border-radius: 3px;
+  transform-origin: left center;
+  transform: translateY(-50%) scaleX(0);
+  box-shadow: 0 0 8px rgba(234, 88, 12, 0.6);
+  z-index: 2;
+}
+
+.fac-conn-orb {
+  position: absolute;
+  top: 50%;
   left: 0%;
   width: 12px;
   height: 12px;
@@ -1038,43 +1031,66 @@ a {
   background: #ffffff;
   border: 2.5px solid #ea580c;
   box-shadow: 0 0 12px #ea580c, 0 0 4px #ea580c;
+  transform: translate(-50%, -50%);
   opacity: 0;
-  transform: translateX(-50%);
-  transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
   pointer-events: none;
+  z-index: 3;
 }
 
-.fac-step-connector.is-flowing .fac-step-connector-dot {
-  left: 100%;
-  opacity: 1;
-}
-
-.fac-step-connector.is-completed .fac-step-connector-dot {
-  left: 100%;
-  opacity: 0;
-}
-
-.fac-step-connector-arrow {
+.fac-conn-arrow {
   position: absolute;
-  right: -5px;
-  top: -3px;
+  right: 0;
+  top: 50%;
   width: 8px;
   height: 8px;
   border-top: 2.5px solid #cbd5e1;
   border-right: 2.5px solid #cbd5e1;
-  transform: rotate(45deg);
+  transform: translateY(-50%) rotate(45deg);
   transition: border-color 0.3s ease, filter 0.3s ease;
 }
 
-.fac-step-connector.is-flowing .fac-step-connector-arrow,
-.fac-step-connector.is-completed .fac-step-connector-arrow {
+/* Flowing Animation States */
+.fac-step-connector.is-flowing .fac-conn-fill {
+  transform: translateY(-50%) scaleX(1);
+  opacity: 1;
+  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fac-step-connector.is-flowing .fac-conn-orb {
+  left: calc(100% - 10px);
+  opacity: 1;
+  transition: left 0.85s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+.fac-step-connector.is-flowing .fac-conn-arrow {
   border-color: #ea580c;
-  filter: drop-shadow(0 0 3px rgba(234, 88, 12, 0.7));
+  filter: drop-shadow(0 0 3px rgba(234, 88, 12, 0.8));
+  transition: border-color 0.3s ease 0.65s, filter 0.3s ease 0.65s;
 }
 
-.fac-step-connector.no-transition .fac-step-connector-fill,
-.fac-step-connector.no-transition .fac-step-connector-dot {
+/* Completed Connector State */
+.fac-step-connector.is-completed .fac-conn-fill {
+  transform: translateY(-50%) scaleX(1);
+  opacity: 1;
+  transition: none;
+}
+.fac-step-connector.is-completed .fac-conn-orb {
+  left: calc(100% - 10px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.fac-step-connector.is-completed .fac-conn-arrow {
+  border-color: #ea580c;
+  filter: drop-shadow(0 0 3px rgba(234, 88, 12, 0.8));
+}
+
+/* Reset / Fade out */
+.fac-step-connector.no-transition .fac-conn-fill,
+.fac-step-connector.no-transition .fac-conn-orb,
+.fac-step-connector.no-transition .fac-conn-arrow {
   transition: none !important;
+}
+
+.fac-step-connector.fade-out {
+  opacity: 0;
 }
 
 @media (max-width: 860px) {
@@ -1088,12 +1104,6 @@ a {
   }
   .fac-step-connector {
     display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .fac-stepper-wrap {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -1560,12 +1570,12 @@ a {
           <h3 class="fac-step-title">Material<br>Preparation</h3>
         </div>
 
+        <!-- Connector 1 -->
         <div class="fac-step-connector conn-1" data-conn="1">
-          <div class="fac-step-connector-track">
-            <div class="fac-step-connector-fill"></div>
-            <div class="fac-step-connector-dot"></div>
-          </div>
-          <div class="fac-step-connector-arrow"></div>
+          <div class="fac-conn-track"></div>
+          <div class="fac-conn-fill"></div>
+          <div class="fac-conn-orb"></div>
+          <div class="fac-conn-arrow"></div>
         </div>
 
         <!-- Step 2 -->
@@ -1578,12 +1588,12 @@ a {
           <h3 class="fac-step-title">Manufacturing<br>&amp; Assembly</h3>
         </div>
 
+        <!-- Connector 2 -->
         <div class="fac-step-connector conn-2" data-conn="2">
-          <div class="fac-step-connector-track">
-            <div class="fac-step-connector-fill"></div>
-            <div class="fac-step-connector-dot"></div>
-          </div>
-          <div class="fac-step-connector-arrow"></div>
+          <div class="fac-conn-track"></div>
+          <div class="fac-conn-fill"></div>
+          <div class="fac-conn-orb"></div>
+          <div class="fac-conn-arrow"></div>
         </div>
 
         <!-- Step 3 -->
@@ -1596,12 +1606,12 @@ a {
           <h3 class="fac-step-title">Quality<br>Checks</h3>
         </div>
 
+        <!-- Connector 3 -->
         <div class="fac-step-connector conn-3" data-conn="3">
-          <div class="fac-step-connector-track">
-            <div class="fac-step-connector-fill"></div>
-            <div class="fac-step-connector-dot"></div>
-          </div>
-          <div class="fac-step-connector-arrow"></div>
+          <div class="fac-conn-track"></div>
+          <div class="fac-conn-fill"></div>
+          <div class="fac-conn-orb"></div>
+          <div class="fac-conn-arrow"></div>
         </div>
 
         <!-- Step 4 -->
@@ -1933,131 +1943,124 @@ a {
       let isHovered = false;
       let isVisible = false;
 
-      function clearAll() {
-        steps.forEach(s => s.classList.remove('is-active', 'is-completed'));
+      function resetConnectors() {
+        stepper.classList.remove('is-all-completed');
         connectors.forEach(c => {
           c.classList.add('no-transition');
-          c.classList.remove('is-flowing', 'is-completed');
+          c.classList.remove('is-flowing', 'is-completed', 'fade-out');
         });
-        void stepper.offsetHeight; // Force DOM reflow
+        void stepper.offsetHeight; // Force reflow
         connectors.forEach(c => c.classList.remove('no-transition'));
       }
 
-      function setStep(num) {
+      function setStepActive(stepNum) {
         steps.forEach((s, idx) => {
-          const stepNum = idx + 1;
+          const num = idx + 1;
           s.classList.remove('is-active');
-          if (stepNum < num) {
+          if (num < stepNum) {
             s.classList.add('is-completed');
-          } else if (stepNum === num) {
+          } else if (num === stepNum) {
             s.classList.add('is-active');
           } else {
             s.classList.remove('is-completed');
           }
         });
-
-        connectors.forEach((c, idx) => {
-          const connNum = idx + 1;
-          if (connNum < num) {
-            c.classList.remove('is-flowing');
-            c.classList.add('is-completed');
-          } else {
-            c.classList.remove('is-flowing', 'is-completed');
-          }
-        });
       }
 
-      function runFlowSequence() {
-        clearTimeout(timer);
-        if (!isVisible || isHovered) return;
-
-        // Stage 1: Step 1 Active
-        clearAll();
-        setStep(1);
-
-        // Stage 2: Flow 1 -> 2
+      function flowConnector(connIdx, callback) {
+        if (!connectors[connIdx]) return;
+        connectors[connIdx].classList.add('is-flowing');
         timer = setTimeout(() => {
           if (!isVisible || isHovered) return;
-          if (connectors[0]) connectors[0].classList.add('is-flowing');
+          connectors[connIdx].classList.remove('is-flowing');
+          connectors[connIdx].classList.add('is-completed');
+          if (callback) callback();
+        }, 850);
+      }
 
-          // Stage 3: Step 2 Active
-          timer = setTimeout(() => {
-            if (!isVisible || isHovered) return;
-            setStep(2);
+      function runSequence() {
+        clearTimeout(timer);
+        if (isHovered || !isVisible) return;
 
-            // Stage 4: Flow 2 -> 3
+        // Step 1: Active
+        resetConnectors();
+        setStepActive(1);
+
+        // After 600ms, Flow 1 -> 2
+        timer = setTimeout(() => {
+          if (isHovered || !isVisible) return;
+          flowConnector(0, () => {
+            // Step 2: Active
+            setStepActive(2);
+
+            // After 600ms, Flow 2 -> 3
             timer = setTimeout(() => {
-              if (!isVisible || isHovered) return;
-              if (connectors[1]) connectors[1].classList.add('is-flowing');
+              if (isHovered || !isVisible) return;
+              flowConnector(1, () => {
+                // Step 3: Active
+                setStepActive(3);
 
-              // Stage 5: Step 3 Active
-              timer = setTimeout(() => {
-                if (!isVisible || isHovered) return;
-                setStep(3);
-
-                // Stage 6: Flow 3 -> 4
+                // After 600ms, Flow 3 -> 4
                 timer = setTimeout(() => {
-                  if (!isVisible || isHovered) return;
-                  if (connectors[2]) connectors[2].classList.add('is-flowing');
+                  if (isHovered || !isVisible) return;
+                  flowConnector(2, () => {
+                    // Step 4: Active
+                    setStepActive(4);
 
-                  // Stage 7: Step 4 Active
-                  timer = setTimeout(() => {
-                    if (!isVisible || isHovered) return;
-                    setStep(4);
-
-                    // Stage 8: All Steps Completed & Unified Overview
+                    // After 600ms, All Completed Finale
                     timer = setTimeout(() => {
-                      if (!isVisible || isHovered) return;
+                      if (isHovered || !isVisible) return;
                       steps.forEach(s => {
                         s.classList.remove('is-active');
                         s.classList.add('is-completed');
                       });
-                      connectors.forEach(c => {
-                        c.classList.remove('is-flowing');
-                        c.classList.add('is-completed');
-                      });
+                      stepper.classList.add('is-all-completed');
 
-                      // Hold complete overview, then loop smoothly
+                      // Hold finale for 1.5s, then fade out connectors and restart
                       timer = setTimeout(() => {
-                        if (!isVisible || isHovered) return;
-                        runFlowSequence();
-                      }, 1400);
+                        if (isHovered || !isVisible) return;
+                        connectors.forEach(c => c.classList.add('fade-out'));
 
-                    }, 1100);
+                        timer = setTimeout(() => {
+                          if (isHovered || !isVisible) return;
+                          runSequence();
+                        }, 500);
 
-                  }, 700);
+                      }, 1500);
 
-                }, 1000);
-
-              }, 700);
-
-            }, 1100);
-
-          }, 700);
-
-        }, 900);
+                    }, 600);
+                  });
+                }, 600);
+              });
+            }, 600);
+          });
+        }, 600);
       }
 
-      // Hover controls: pause on hover, resume on mouse leave
+      // Step click
+      steps.forEach((s, idx) => {
+        s.addEventListener('click', () => {
+          clearTimeout(timer);
+          const stepNum = idx + 1;
+          resetConnectors();
+          for (let i = 0; i < idx; i++) {
+            if (connectors[i]) connectors[i].classList.add('is-completed');
+          }
+          setStepActive(stepNum);
+          timer = setTimeout(() => {
+            if (!isHovered && isVisible) runSequence();
+          }, 3500);
+        });
+      });
+
+      // Hover controls
       stepper.addEventListener('mouseenter', () => {
         isHovered = true;
         clearTimeout(timer);
       });
-
       stepper.addEventListener('mouseleave', () => {
         isHovered = false;
-        if (isVisible) runFlowSequence();
-      });
-
-      // Click on any step to jump to it directly
-      steps.forEach((s, idx) => {
-        s.addEventListener('click', () => {
-          clearTimeout(timer);
-          setStep(idx + 1);
-          timer = setTimeout(() => {
-            if (!isHovered && isVisible) runFlowSequence();
-          }, 2500);
-        });
+        if (isVisible) runSequence();
       });
 
       // Viewport observer: only animate when in view
@@ -2066,17 +2069,17 @@ a {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               isVisible = true;
-              runFlowSequence();
+              runSequence();
             } else {
               isVisible = false;
               clearTimeout(timer);
             }
           });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.15 });
         observer.observe(stepper);
       } else {
         isVisible = true;
-        runFlowSequence();
+        runSequence();
       }
     })();
   </script>
