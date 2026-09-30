@@ -822,47 +822,509 @@ a {
   line-height: 1.6;
 }
 
-/* ============ TRIANGULAR BALANCE ============ */
-.tri-grid {
+/* ============ SECTION 5: TRIANGULAR BALANCE INTERACTIVE SHOWCASE ============ */
+.tri-interactive-showcase {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 34px 32px 36px;
+  box-shadow: 0 12px 36px rgba(14, 50, 82, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stepper Navigation Bar */
+.tri-stepper-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid #edf2f7;
+  padding-bottom: 16px;
+}
+
+.tri-step-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 14px 10px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tri-step-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
+.tri-step-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tri-step-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.dot-quality { background: #16a34a; }
+.dot-transparency { background: #0284c7; }
+.dot-availability { background: #ea580c; }
+.dot-combined { background: linear-gradient(135deg, #16a34a, #0284c7, #ea580c); }
+
+.tri-step-num {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.tri-step-label {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1e293b;
+  line-height: 1.25;
+}
+
+/* Active Button States */
+.tri-step-btn.active {
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(14, 50, 82, 0.06);
+}
+.tri-step-btn.active .tri-step-label {
+  color: #0f172a;
+}
+.tri-step-btn.active[data-step="1"] {
+  border-color: #16a34a;
+}
+.tri-step-btn.active[data-step="2"] {
+  border-color: #0284c7;
+}
+.tri-step-btn.active[data-step="3"] {
+  border-color: #ea580c;
+}
+.tri-step-btn.active[data-step="4"] {
+  border-color: #0f172a;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* Progress bar inside active step */
+.tri-step-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  overflow: hidden;
+}
+.tri-progress-bar {
+  width: 0%;
+  height: 100%;
+  transition: width 0.1s linear;
+}
+.tri-step-btn.active[data-step="1"] .tri-progress-bar { background: #16a34a; }
+.tri-step-btn.active[data-step="2"] .tri-progress-bar { background: #0284c7; }
+.tri-step-btn.active[data-step="3"] .tri-progress-bar { background: #ea580c; }
+.tri-step-btn.active[data-step="4"] .tri-progress-bar { background: linear-gradient(90deg, #16a34a, #0284c7, #ea580c); }
+
+/* Main Stage */
+.tri-showcase-stage {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 40px;
+  align-items: center;
+  min-height: 440px;
+}
+
+/* Content Container & Panels */
+.tri-content-container {
+  position: relative;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+}
+
+.tri-content-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s;
+  pointer-events: none;
+}
+
+.tri-content-panel.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+}
+
+.tri-panel-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+.kicker-quality {
+  color: #15803d;
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+}
+.kicker-transparency {
+  color: #0369a1;
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
+}
+.kicker-availability {
+  color: #c2410c;
+  background: #ffedd5;
+  border: 1px solid #fed7aa;
+}
+.kicker-combined {
+  color: #0f172a;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+}
+
+.tri-panel-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.tri-panel-desc {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+.tri-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tri-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14.5px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.tri-feat-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.icon-quality { background: #dcfce7; color: #16a34a; }
+.icon-transparency { background: #e0f2fe; color: #0284c7; }
+.icon-availability { background: #ffedd5; color: #ea580c; }
+
+/* Combined summary badges */
+.tri-summary-badges {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 12px;
+  margin-top: 10px;
 }
 
-.tri-card {
-  background: #ffffff;
-  border: 1px solid #ede0da;
-  border-radius: 28px;
-  padding: 38px 30px;
-  box-shadow: 0 8px 24px rgba(14, 50, 82, 0.04);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+.tri-sum-badge {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.tri-sum-badge i { font-size: 20px; }
+.badge-q i { color: #16a34a; }
+.badge-t i { color: #0284c7; }
+.badge-a i { color: #ea580c; }
+.tri-sum-badge span {
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.35;
+}
+.tri-sum-badge strong {
+  font-family: 'Outfit', sans-serif;
+  color: #0f172a;
+  font-size: 13.5px;
 }
 
-.tri-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(14, 50, 82, 0.08);
-  border-color: rgba(234, 88, 12, 0.3);
+/* Visual Stage */
+.tri-visual-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 858 / 560;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.tri-num {
-  font-size: 36px;
-  font-weight: 800;
-  color: var(--orange-bright);
-  line-height: 1;
-  margin-bottom: 12px;
+.tri-ambient-glow {
+  position: absolute;
+  inset: -15%;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(50px);
+  opacity: 0.7;
+  transition: all 0.7s ease;
+  z-index: 1;
 }
 
-.tri-title {
-  font-size: 21px;
-  font-weight: 800;
-  color: var(--navy);
-  margin-bottom: 12px;
+.tri-stage-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
-.tri-desc {
-  font-size: 14.5px;
-  color: var(--gray-600);
-  line-height: 1.65;
+/* Tokens */
+.tri-token-wrap {
+  position: absolute;
+  width: 22%;
+  aspect-ratio: 1 / 1;
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              top 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tri-token-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Full Composite Triangle Image */
+.tri-full-composite-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 5;
+}
+
+/* Position States on .tri-visual-container based on active step */
+
+/* Step 1: Quality Focused */
+.tri-visual-container[data-active-step="1"] .tri-ambient-glow {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.35) 0%, transparent 70%);
+}
+.tri-visual-container[data-active-step="1"] .token-quality {
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 1;
+  z-index: 10;
+  filter: drop-shadow(0 0 30px rgba(34, 197, 94, 0.55));
+}
+.tri-visual-container[data-active-step="1"] .token-transparency {
+  left: 22.7%;
+  top: 74.1%;
+  transform: translate(-50%, -50%) scale(0.72);
+  opacity: 0.22;
+  z-index: 2;
+  filter: none;
+}
+.tri-visual-container[data-active-step="1"] .token-availability {
+  left: 77.3%;
+  top: 74.1%;
+  transform: translate(-50%, -50%) scale(0.72);
+  opacity: 0.22;
+  z-index: 2;
+  filter: none;
+}
+.tri-visual-container[data-active-step="1"] .tri-full-composite-img {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+/* Step 2: Transparency Focused */
+.tri-visual-container[data-active-step="2"] .tri-ambient-glow {
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.35) 0%, transparent 70%);
+}
+.tri-visual-container[data-active-step="2"] .token-quality {
+  left: 50%;
+  top: 19.1%;
+  transform: translate(-50%, -50%) scale(0.72);
+  opacity: 0.22;
+  z-index: 2;
+  filter: none;
+}
+.tri-visual-container[data-active-step="2"] .token-transparency {
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 1;
+  z-index: 10;
+  filter: drop-shadow(0 0 30px rgba(2, 132, 199, 0.55));
+}
+.tri-visual-container[data-active-step="2"] .token-availability {
+  left: 77.3%;
+  top: 74.1%;
+  transform: translate(-50%, -50%) scale(0.72);
+  opacity: 0.22;
+  z-index: 2;
+  filter: none;
+}
+.tri-visual-container[data-active-step="2"] .tri-full-composite-img {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+/* Step 3: Availability Focused */
+.tri-visual-container[data-active-step="3"] .tri-ambient-glow {
+  background: radial-gradient(circle, rgba(234, 88, 12, 0.35) 0%, transparent 70%);
+}
+.tri-visual-container[data-active-step="3"] .token-quality {
+  left: 50%;
+  top: 19.1%;
+  transform: translate(-50%, -50%) scale(0.72);
+  opacity: 0.22;
+  z-index: 2;
+  filter: none;
+}
+.tri-visual-container[data-active-step="3"] .token-transparency {
+  left: 22.7%;
+  top: 74.1%;
+  transform: translate(-50%, -50%) scale(0.72);
+  opacity: 0.22;
+  z-index: 2;
+  filter: none;
+}
+.tri-visual-container[data-active-step="3"] .token-availability {
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 1;
+  z-index: 10;
+  filter: drop-shadow(0 0 30px rgba(234, 88, 12, 0.55));
+}
+.tri-visual-container[data-active-step="3"] .tri-full-composite-img {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+/* Step 4: Combined Formation */
+.tri-visual-container[data-active-step="4"] .tri-ambient-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.25) 0%, rgba(2, 132, 199, 0.25) 45%, rgba(234, 88, 12, 0.25) 75%, transparent 95%);
+}
+.tri-visual-container[data-active-step="4"] .token-quality {
+  left: 50%;
+  top: 19.1%;
+  transform: translate(-50%, -50%) scale(1.0);
+  opacity: 0;
+  z-index: 2;
+}
+.tri-visual-container[data-active-step="4"] .token-transparency {
+  left: 22.7%;
+  top: 74.1%;
+  transform: translate(-50%, -50%) scale(1.0);
+  opacity: 0;
+  z-index: 2;
+}
+.tri-visual-container[data-active-step="4"] .token-availability {
+  left: 77.3%;
+  top: 74.1%;
+  transform: translate(-50%, -50%) scale(1.0);
+  opacity: 0;
+  z-index: 2;
+}
+.tri-visual-container[data-active-step="4"] .tri-full-composite-img {
+  opacity: 1;
+  transform: scale(1.0);
+  filter: drop-shadow(0 14px 34px rgba(14, 50, 82, 0.12));
+}
+
+/* Responsive Rules */
+@media (max-width: 900px) {
+  .tri-interactive-showcase {
+    padding: 24px 20px 28px;
+    border-radius: 20px;
+  }
+  .tri-stepper-nav {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .tri-showcase-stage {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .tri-visual-container {
+    max-width: 380px;
+    margin: 0 auto;
+    order: -1;
+  }
+  .tri-content-container {
+    min-height: auto;
+  }
+  .tri-panel-title {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 520px) {
+  .tri-stepper-nav {
+    grid-template-columns: 1fr;
+  }
+  .tri-summary-badges {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ============ MULTIPLE PRODUCT FORMATS ============ */
@@ -2459,39 +2921,181 @@ a {
   </section>
 
   <!-- ================= SECTION 5: TRIANGULAR BALANCE ================= -->
-  <section class="section-wrapper section-wrapper--alt">
+  <section class="section-wrapper section-wrapper--alt" id="partnership">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-pill">05 &bull; Quality Partnership</span>
         <h2 class="section-title">The Triangular Balance Behind a Reliable Manufacturing Partnership</h2>
-        <p class="section-desc">At Jahaaj, we believe a strong manufacturing partnership is built on three equally important pillars:</p>
+        <p class="section-desc">At Jahaaj, we believe a strong manufacturing partnership is built on three equally important pillars that combine into an unbreakable equilibrium:</p>
       </div>
 
-      <!-- Embedded Triangular Diagram -->
-      <div style="background: #ffffff; border: 1px solid var(--gray-200); border-radius: 20px; padding: 28px; margin-bottom: 36px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); text-align: center;" data-animate="fade-up">
-        <img src="assets/triangular-partnership-diagram.png" alt="The Triangular Balance of a Reliable Manufacturing Partnership: Quality, Transparency, On-Time Availability" style="max-width: 520px; width: 100%; margin: 0 auto; border-radius: 12px;">
-      </div>
-
-      <div class="tri-grid" data-stagger>
-        <!-- Tri 1 -->
-        <div class="tri-card demo-card">
-          <div class="tri-num">01</div>
-          <h3 class="tri-title">Quality</h3>
-          <p class="tri-desc">Controlled processes, defined specifications, consistent batch quality, and complete end-to-end traceability.</p>
+      <!-- Animated Triangular Showcase Container -->
+      <div class="tri-interactive-showcase" id="triShowcase" data-animate="fade-up">
+        <!-- Interactive Step Navigation Bar -->
+        <div class="tri-stepper-nav" role="tablist" aria-label="Triangular Partnership Steps">
+          <button class="tri-step-btn active" data-step="1" role="tab" aria-selected="true" aria-controls="tri-panel-1">
+            <div class="tri-step-header-row">
+              <span class="tri-step-dot dot-quality"></span>
+              <span class="tri-step-num">Step 01</span>
+            </div>
+            <span class="tri-step-label">Quality</span>
+            <div class="tri-step-progress"><div class="tri-progress-bar"></div></div>
+          </button>
+          <button class="tri-step-btn" data-step="2" role="tab" aria-selected="false" aria-controls="tri-panel-2">
+            <div class="tri-step-header-row">
+              <span class="tri-step-dot dot-transparency"></span>
+              <span class="tri-step-num">Step 02</span>
+            </div>
+            <span class="tri-step-label">Transparency</span>
+            <div class="tri-step-progress"><div class="tri-progress-bar"></div></div>
+          </button>
+          <button class="tri-step-btn" data-step="3" role="tab" aria-selected="false" aria-controls="tri-panel-3">
+            <div class="tri-step-header-row">
+              <span class="tri-step-dot dot-availability"></span>
+              <span class="tri-step-num">Step 03</span>
+            </div>
+            <span class="tri-step-label">On-Time Availability</span>
+            <div class="tri-step-progress"><div class="tri-progress-bar"></div></div>
+          </button>
+          <button class="tri-step-btn" data-step="4" role="tab" aria-selected="false" aria-controls="tri-panel-4">
+            <div class="tri-step-header-row">
+              <span class="tri-step-dot dot-combined"></span>
+              <span class="tri-step-num">Synergy</span>
+            </div>
+            <span class="tri-step-label">Combined Triangle</span>
+            <div class="tri-step-progress"><div class="tri-progress-bar"></div></div>
+          </button>
         </div>
 
-        <!-- Tri 2 -->
-        <div class="tri-card demo-card">
-          <div class="tri-num">02</div>
-          <h3 class="tri-title">Transparency</h3>
-          <p class="tri-desc">Raw-material traceability, supplier transparency, live production updates, open communication, and full documentation.</p>
-        </div>
+        <!-- Main Showcase Stage -->
+        <div class="tri-showcase-stage">
+          <!-- Left Column: Synchronized Content Panels -->
+          <div class="tri-content-container">
+            <!-- Step 1: Quality -->
+            <div class="tri-content-panel active" id="tri-panel-1" data-panel="1">
+              <div class="tri-panel-kicker kicker-quality">
+                <i class="fa-solid fa-shield-halved"></i> Pillar 01 &bull; Rigid Standards
+              </div>
+              <h3 class="tri-panel-title">Quality</h3>
+              <p class="tri-panel-desc">
+                Controlled processes, defined specifications, consistent batch quality, and complete end-to-end traceability.
+              </p>
+              <div class="tri-feature-list">
+                <div class="tri-feature-item">
+                  <div class="tri-feat-icon icon-quality"><i class="fa-solid fa-check"></i></div>
+                  <div><strong>Defined Specifications:</strong> Rigid formulation standards and rigorous in-process QA verification.</div>
+                </div>
+                <div class="tri-feature-item">
+                  <div class="tri-feat-icon icon-quality"><i class="fa-solid fa-check"></i></div>
+                  <div><strong>Batch Consistency:</strong> Uniform homogeneity across every commercial production lot.</div>
+                </div>
+                <div class="tri-feature-item">
+                  <div class="tri-feat-icon icon-quality"><i class="fa-solid fa-check"></i></div>
+                  <div><strong>Full Traceability:</strong> Complete audit trails from active ingredients to finished sealed packs.</div>
+                </div>
+              </div>
+            </div>
 
-        <!-- Tri 3 -->
-        <div class="tri-card demo-card">
-          <div class="tri-num">03</div>
-          <h3 class="tri-title">On-Time Availability</h3>
-          <p class="tri-desc">Production planning, supply continuity, timely manufacturing, and responsive commercial coordination.</p>
+            <!-- Step 2: Transparency -->
+            <div class="tri-content-panel" id="tri-panel-2" data-panel="2">
+              <div class="tri-panel-kicker kicker-transparency">
+                <i class="fa-solid fa-eye"></i> Pillar 02 &bull; Open Operations
+              </div>
+              <h3 class="tri-panel-title">Transparency</h3>
+              <p class="tri-panel-desc">
+                Raw-material traceability, supplier transparency, live production updates, open communication, and full documentation.
+              </p>
+              <div class="tri-feature-list">
+                <div class="tri-feature-item">
+                  <div class="tri-feat-icon icon-transparency"><i class="fa-solid fa-check"></i></div>
+                  <div><strong>Material Provenance:</strong> Verified vendor credentials and transparent raw material origins.</div>
+                </div>
+                <div class="tri-feature-item">
+                  <div class="tri-feat-icon icon-transparency"><i class="fa-solid fa-check"></i></div>
+                  <div><strong>Live Updates:</strong> Proactive milestone reporting from blending through final packaging.</div>
+                </div>
+                <div class="tri-feature-item">
+                  <div class="tri-feat-icon icon-transparency"><i class="fa-solid fa-check"></i></div>
+                  <div><strong>Direct Dialogue:</strong> Open technical communication and instant access to batch documentation.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: On-Time Availability -->
+            <div class="tri-content-panel" id="tri-panel-3" data-panel="3">
+              <div class="tri-panel-kicker kicker-availability">
+                <i class="fa-solid fa-clock"></i> Pillar 03 &bull; Supply Reliability
+              </div>
+              <h3 class="tri-panel-title">On-Time Availability</h3>
+              <p class="tri-panel-desc">
+                Production planning, supply continuity, timely manufacturing, and responsive commercial coordination.
+              </p>
+              <div class="tri-feature-list">
+                <div class="tri-feature-item">
+                  <div class="tri-feat-icon icon-availability"><i class="fa-solid fa-check"></i></div>
+                  <div><strong>Predictive Planning:</strong> Forward-looking capacity scheduling to anticipate client demand.</div>
+                </div>
+                <div class="tri-feature-item">
+                  <div class="tri-feat-icon icon-availability"><i class="fa-solid fa-check"></i></div>
+                  <div><strong>Supply Continuity:</strong> Proactive buffer inventory mitigation to prevent market stockouts.</div>
+                </div>
+                <div class="tri-feature-item">
+                  <div class="tri-feat-icon icon-availability"><i class="fa-solid fa-check"></i></div>
+                  <div><strong>Responsive Logistics:</strong> Rapid order turnaround with dedicated commercial dispatch support.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: Combined Synergy (Triangle Formed) -->
+            <div class="tri-content-panel" id="tri-panel-4" data-panel="4">
+              <div class="tri-panel-kicker kicker-combined">
+                <i class="fa-solid fa-handshake"></i> Complete Equilibrium &bull; All 3 Pillars United
+              </div>
+              <h3 class="tri-panel-title">Reliable Manufacturing Partnership</h3>
+              <p class="tri-panel-desc">
+                A strong manufacturing partnership cannot compromise on any single pillar. When Quality, Transparency, and On-Time Availability unite in perfect equilibrium, your brand gains an unbreakable operational foundation.
+              </p>
+              <div class="tri-summary-badges">
+                <div class="tri-sum-badge badge-q">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <span><strong>Quality</strong><br>Rigid Standards</span>
+                </div>
+                <div class="tri-sum-badge badge-t">
+                  <i class="fa-solid fa-eye"></i>
+                  <span><strong>Transparency</strong><br>Total Visibility</span>
+                </div>
+                <div class="tri-sum-badge badge-a">
+                  <i class="fa-solid fa-clock"></i>
+                  <span><strong>On-Time Availability</strong><br>Dependable Supply</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Animated Visual Stage -->
+          <div class="tri-visual-container" data-active-step="1">
+            <div class="tri-ambient-glow" id="triAmbientGlow"></div>
+
+            <div class="tri-stage-viewport" id="triStageViewport">
+              <!-- Token 1: Quality (Top Apex) -->
+              <div class="tri-token-wrap token-quality" data-target="1" title="Quality Pillar">
+                <img src="assets/tri-node-quality.png" alt="Quality Pillar" class="tri-token-img">
+              </div>
+
+              <!-- Token 2: Transparency (Bottom Left Apex) -->
+              <div class="tri-token-wrap token-transparency" data-target="2" title="Transparency Pillar">
+                <img src="assets/tri-node-transparency.png" alt="Transparency Pillar" class="tri-token-img">
+              </div>
+
+              <!-- Token 3: On-Time Availability (Bottom Right Apex) -->
+              <div class="tri-token-wrap token-availability" data-target="3" title="On-Time Availability Pillar">
+                <img src="assets/tri-node-availability.png" alt="On-Time Availability Pillar" class="tri-token-img">
+              </div>
+
+              <!-- Complete Full 3D Triangle Diagram Overlay (Appears on Step 4) -->
+              <img src="assets/triangular-partnership-diagram.png" alt="Reliable Manufacturing Partnership Triangle" class="tri-full-composite-img">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2798,6 +3402,122 @@ a {
           });
         }, { threshold: 0.1 });
         observer.observe(journeyCard);
+      }
+    })();
+
+    /* ---------- Triangular Partnership Interactive Showcase ---------- */
+    (function initTriangularShowcase() {
+      const showcase = document.getElementById('triShowcase');
+      if (!showcase) return;
+
+      const visualContainer = showcase.querySelector('.tri-visual-container');
+      const stepBtns = showcase.querySelectorAll('.tri-step-btn');
+      const contentPanels = showcase.querySelectorAll('.tri-content-panel');
+      const tokens = showcase.querySelectorAll('.tri-token-wrap');
+      let currentStep = 1;
+      let timer = null;
+      let isPaused = false;
+      let progressInterval = null;
+      let progressStartTime = 0;
+      const STEP_DURATIONS = { 1: 3400, 2: 3400, 3: 3400, 4: 5200 };
+
+      function setStep(stepNum) {
+        currentStep = stepNum;
+
+        // Update Nav Buttons
+        stepBtns.forEach(btn => {
+          const s = parseInt(btn.getAttribute('data-step'), 10);
+          const isActive = s === currentStep;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          const bar = btn.querySelector('.tri-progress-bar');
+          if (bar) bar.style.width = '0%';
+        });
+
+        // Update Content Panels
+        contentPanels.forEach(panel => {
+          const p = parseInt(panel.getAttribute('data-panel'), 10);
+          panel.classList.toggle('active', p === currentStep);
+        });
+
+        // Update Visual Container
+        if (visualContainer) {
+          visualContainer.setAttribute('data-active-step', currentStep);
+        }
+
+        // Restart timer and progress animation
+        startTimer();
+      }
+
+      function startTimer() {
+        clearTimeout(timer);
+        clearInterval(progressInterval);
+        if (isPaused) return;
+
+        const duration = STEP_DURATIONS[currentStep] || 3500;
+        progressStartTime = Date.now();
+        const activeBtn = showcase.querySelector(`.tri-step-btn[data-step="${currentStep}"]`);
+        const progressBar = activeBtn ? activeBtn.querySelector('.tri-progress-bar') : null;
+
+        progressInterval = setInterval(() => {
+          if (isPaused) return;
+          const elapsed = Date.now() - progressStartTime;
+          const pct = Math.min(100, (elapsed / duration) * 100);
+          if (progressBar) progressBar.style.width = pct + '%';
+          if (elapsed >= duration) {
+            clearInterval(progressInterval);
+          }
+        }, 30);
+
+        timer = setTimeout(() => {
+          const nextStep = currentStep >= 4 ? 1 : currentStep + 1;
+          setStep(nextStep);
+        }, duration);
+      }
+
+      // Step Buttons Click
+      stepBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const step = parseInt(btn.getAttribute('data-step'), 10);
+          setStep(step);
+        });
+      });
+
+      // Token click interaction
+      tokens.forEach(tok => {
+        tok.addEventListener('click', () => {
+          const target = parseInt(tok.getAttribute('data-target'), 10);
+          if (target) setStep(target);
+        });
+      });
+
+      // Pause on hover
+      showcase.addEventListener('mouseenter', () => {
+        isPaused = true;
+        clearTimeout(timer);
+      });
+      showcase.addEventListener('mouseleave', () => {
+        isPaused = false;
+        startTimer();
+      });
+
+      // IntersectionObserver to auto-play only when in view
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              isPaused = false;
+              startTimer();
+            } else {
+              isPaused = true;
+              clearTimeout(timer);
+              clearInterval(progressInterval);
+            }
+          });
+        }, { threshold: 0.15 });
+        observer.observe(showcase);
+      } else {
+        startTimer();
       }
     })();
   </script>
