@@ -1130,47 +1130,46 @@ a {
   position: relative;
   width: 100%;
   height: auto;
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.wf-svg-wrap.wf-loop-fade {
-  opacity: 0.18;
-}
-.step-readout-box,
-.step-pill-track {
-  display: none !important;
 }
 .wf-svg-wrap svg {
   width: 100%;
   height: auto;
   display: block;
 }
-
-/* Mask animation classes */
-.mask-step {
-  opacity: 0;
-  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.mask-step.step-active {
+.wf-base-image {
   opacity: 1;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-.mask-path {
+/* Glowing Liquid Energy Flow Lines */
+.wf-flow-group {
+  transition: opacity 0.4s ease;
+}
+.wf-flow-group.flow-dissolving {
+  opacity: 0;
+}
+.flow-glow-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke-dashoffset 0.40s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
-.mask-path.mask-path-curve {
-  transition: stroke-dashoffset 0.60s cubic-bezier(0.4, 0, 0.2, 1);
+.flow-glow-line.flow-curve {
+  transition: stroke-dashoffset 0.65s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.mask-path.path-active {
+.flow-glow-line.path-active {
   stroke-dashoffset: 0;
 }
-
-.wf-fg-image {
-  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+.flow-glow-core {
+  filter: url(#neonGlow);
 }
-.wf-fg-image.fade-out {
-  opacity: 0;
+.flow-glow-under {
+  filter: blur(4px);
 }
 
 .wf-no-transition * {
@@ -1180,18 +1179,18 @@ a {
 /* Active Pulse Ring on SVG */
 .pulse-dot {
   fill: none;
-  stroke-width: 4;
+  stroke-width: 3.5;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
 .pulse-dot.active {
   opacity: 1;
-  animation: wfPulseAnim 1.4s infinite ease-out;
+  animation: wfPulseAnim 1.25s infinite ease-out;
 }
 @keyframes wfPulseAnim {
-  0% { r: 35; stroke-opacity: 0.95; stroke-width: 4; }
-  100% { r: 72; stroke-opacity: 0; stroke-width: 1; }
+  0% { r: 24; stroke-opacity: 0.95; stroke-width: 3.5; }
+  100% { r: 56; stroke-opacity: 0; stroke-width: 1; }
 }
 
 /* Step Details Live Readout Box */
@@ -1652,118 +1651,127 @@ a {
         <div class="wf-svg-wrap">
           <svg viewBox="0 0 1379 920" id="workflowSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="12-Step Manufacturing Process Interactive Diagram">
             <defs>
-              <mask id="workflowMask">
-                <rect width="1379" height="920" fill="black" />
-                
-                <!-- Step 1 -->
-                <g id="m-s1" class="mask-step">
-                  <rect x="55" y="45" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <path id="m-p1-2" class="mask-path" pathLength="1" d="M 230 260 L 465 260" stroke="white" stroke-width="45" stroke-linecap="round" />
-                
-                <!-- Step 2 -->
-                <g id="m-s2" class="mask-step">
-                  <rect x="350" y="45" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <path id="m-p2-3" class="mask-path" pathLength="1" d="M 525 260 L 755 260" stroke="white" stroke-width="45" stroke-linecap="round" />
-                
-                <!-- Step 3 -->
-                <g id="m-s3" class="mask-step">
-                  <rect x="640" y="45" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <path id="m-p3-4" class="mask-path" pathLength="1" d="M 815 260 L 1045 260" stroke="white" stroke-width="45" stroke-linecap="round" />
-                
-                <!-- Step 4 -->
-                <g id="m-s4" class="mask-step">
-                  <rect x="930" y="45" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <!-- Curve 4-5 -->
-                <path id="m-p4-5" class="mask-path mask-path-curve" pathLength="1" d="M 1080 260 L 1220 260 A 132 132 0 0 1 1220 525 L 1090 525" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
-                
-                <!-- Step 5 -->
-                <g id="m-s5" class="mask-step">
-                  <rect x="930" y="310" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <path id="m-p5-6" class="mask-path" pathLength="1" d="M 1050 525 L 815 525" stroke="white" stroke-width="45" stroke-linecap="round" />
-                
-                <!-- Step 6 -->
-                <g id="m-s6" class="mask-step">
-                  <rect x="640" y="310" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <path id="m-p6-7" class="mask-path" pathLength="1" d="M 755 525 L 525 525" stroke="white" stroke-width="45" stroke-linecap="round" />
-                
-                <!-- Step 7 -->
-                <g id="m-s7" class="mask-step">
-                  <rect x="350" y="310" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <path id="m-p7-8" class="mask-path" pathLength="1" d="M 465 525 L 230 525" stroke="white" stroke-width="45" stroke-linecap="round" />
-                
-                <!-- Step 8 -->
-                <g id="m-s8" class="mask-step">
-                  <rect x="55" y="310" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <!-- Curve 8-9 -->
-                <path id="m-p8-9" class="mask-path mask-path-curve" pathLength="1" d="M 195 525 L 75 525 A 132 132 0 0 0 75 790 L 195 790" stroke="white" stroke-width="50" stroke-linecap="round" fill="none" />
-                
-                <!-- Step 9 -->
-                <g id="m-s9" class="mask-step">
-                  <rect x="55" y="575" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <path id="m-p9-10" class="mask-path" pathLength="1" d="M 230 790 L 465 790" stroke="white" stroke-width="45" stroke-linecap="round" />
-                
-                <!-- Step 10 -->
-                <g id="m-s10" class="mask-step">
-                  <rect x="350" y="575" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <path id="m-p10-11" class="mask-path" pathLength="1" d="M 525 790 L 755 790" stroke="white" stroke-width="45" stroke-linecap="round" />
-                
-                <!-- Step 11 -->
-                <g id="m-s11" class="mask-step">
-                  <rect x="640" y="575" width="290" height="325" rx="30" fill="white" />
-                </g>
-                <path id="m-p11-12" class="mask-path" pathLength="1" d="M 815 790 L 1045 790" stroke="white" stroke-width="45" stroke-linecap="round" />
-                
-                <!-- Step 12 -->
-                <g id="m-s12" class="mask-step">
-                  <rect x="930" y="575" width="290" height="325" rx="30" fill="white" />
-                </g>
-              </mask>
+              <!-- Dynamic Flow Gradients corresponding to each production stage -->
+              <linearGradient id="flowGrad1-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#16a34a" />
+                <stop offset="100%" stop-color="#06b6d4" />
+              </linearGradient>
+              <linearGradient id="flowGrad2-3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#2563eb" />
+              </linearGradient>
+              <linearGradient id="flowGrad3-4" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2563eb" />
+                <stop offset="100%" stop-color="#7c3aed" />
+              </linearGradient>
+              <linearGradient id="flowGrad4-5" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#7c3aed" />
+                <stop offset="100%" stop-color="#9333ea" />
+              </linearGradient>
+              <linearGradient id="flowGrad5-6" x1="100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#9333ea" />
+                <stop offset="100%" stop-color="#db2777" />
+              </linearGradient>
+              <linearGradient id="flowGrad6-7" x1="100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#db2777" />
+                <stop offset="100%" stop-color="#ea580c" />
+              </linearGradient>
+              <linearGradient id="flowGrad7-8" x1="100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#ea580c" />
+                <stop offset="100%" stop-color="#d97706" />
+              </linearGradient>
+              <linearGradient id="flowGrad8-9" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#d97706" />
+                <stop offset="100%" stop-color="#16a34a" />
+              </linearGradient>
+              <linearGradient id="flowGrad9-10" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#16a34a" />
+                <stop offset="100%" stop-color="#06b6d4" />
+              </linearGradient>
+              <linearGradient id="flowGrad10-11" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#2563eb" />
+              </linearGradient>
+              <linearGradient id="flowGrad11-12" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2563eb" />
+                <stop offset="100%" stop-color="#7c3aed" />
+              </linearGradient>
+
+              <!-- Filter for laser glow -->
+              <filter id="neonGlow" x="-25%" y="-25%" width="150%" height="150%">
+                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
             </defs>
             
-            <!-- Ghost blueprint background: subtle 16% grayscale guide -->
-            <image href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" opacity="0.16" style="filter: grayscale(100%);" />
-            
-            <!-- Vivid foreground revealed through the animated mask -->
-            <image id="workflowForeground" class="wf-fg-image" href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" mask="url(#workflowMask)" />
+            <!-- 1. Statically present 12-step commercial CDMO diagram (100% full color, perfectly legible) -->
+            <image id="workflowBaseImage" class="wf-base-image" href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" />
 
-            <!-- Active step pulse indicator rings -->
-            <circle id="pulse-1" class="pulse-dot" cx="205" cy="260" r="35" stroke="#16a34a" />
-            <circle id="pulse-2" class="pulse-dot" cx="495" cy="260" r="35" stroke="#06b6d4" />
-            <circle id="pulse-3" class="pulse-dot" cx="785" cy="260" r="35" stroke="#2563eb" />
-            <circle id="pulse-4" class="pulse-dot" cx="1075" cy="260" r="35" stroke="#7c3aed" />
-            <circle id="pulse-5" class="pulse-dot" cx="1075" cy="525" r="35" stroke="#9333ea" />
-            <circle id="pulse-6" class="pulse-dot" cx="785" cy="525" r="35" stroke="#db2777" />
-            <circle id="pulse-7" class="pulse-dot" cx="495" cy="525" r="35" stroke="#ea580c" />
-            <circle id="pulse-8" class="pulse-dot" cx="205" cy="525" r="35" stroke="#d97706" />
-            <circle id="pulse-9" class="pulse-dot" cx="205" cy="790" r="35" stroke="#16a34a" />
-            <circle id="pulse-10" class="pulse-dot" cx="495" cy="790" r="35" stroke="#06b6d4" />
-            <circle id="pulse-11" class="pulse-dot" cx="785" cy="790" r="35" stroke="#2563eb" />
-            <circle id="pulse-12" class="pulse-dot" cx="1075" cy="790" r="35" stroke="#7c3aed" />
+            <!-- 2. Glowing Liquid Energy Flow Conduits (Flow starts from Step 1) -->
+            <g id="flowTracksGroup" class="wf-flow-group">
+              <!-- Glow Underlay (Thicker radiant aura) -->
+              <g class="flow-underlay-layer" opacity="0.65">
+                <path id="flow-under-1-2" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="12" d="M 231 227 L 508 227" />
+                <path id="flow-under-2-3" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="12" d="M 558 227 L 818 227" />
+                <path id="flow-under-3-4" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="12" d="M 868 227 L 1128 227" />
+                <path id="flow-under-4-5" class="flow-glow-line flow-glow-under flow-curve" pathLength="1" stroke="url(#flowGrad4-5)" stroke-width="14" d="M 1178 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1178 505" />
+                <path id="flow-under-5-6" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad5-6)" stroke-width="12" d="M 1128 505 L 868 505" />
+                <path id="flow-under-6-7" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad6-7)" stroke-width="12" d="M 818 505 L 558 505" />
+                <path id="flow-under-7-8" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad7-8)" stroke-width="12" d="M 508 505 L 231 505" />
+                <path id="flow-under-8-9" class="flow-glow-line flow-glow-under flow-curve" pathLength="1" stroke="url(#flowGrad8-9)" stroke-width="14" d="M 181 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 181 766" />
+                <path id="flow-under-9-10" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad9-10)" stroke-width="12" d="M 231 766 L 508 766" />
+                <path id="flow-under-10-11" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad10-11)" stroke-width="12" d="M 558 766 L 818 766" />
+                <path id="flow-under-11-12" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad11-12)" stroke-width="12" d="M 868 766 L 1128 766" />
+              </g>
 
-            <!-- Interactive transparent click targets over the 12 steps -->
+              <!-- Core Luminous Beam (Crisp laser stream) -->
+              <g class="flow-core-layer">
+                <path id="flow-core-1-2" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="6" d="M 231 227 L 508 227" />
+                <path id="flow-core-2-3" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="6" d="M 558 227 L 818 227" />
+                <path id="flow-core-3-4" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="6" d="M 868 227 L 1128 227" />
+                <path id="flow-core-4-5" class="flow-glow-line flow-glow-core flow-curve" pathLength="1" stroke="url(#flowGrad4-5)" stroke-width="7" d="M 1178 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1178 505" />
+                <path id="flow-core-5-6" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad5-6)" stroke-width="6" d="M 1128 505 L 868 505" />
+                <path id="flow-core-6-7" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad6-7)" stroke-width="6" d="M 818 505 L 558 505" />
+                <path id="flow-core-7-8" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad7-8)" stroke-width="6" d="M 508 505 L 231 505" />
+                <path id="flow-core-8-9" class="flow-glow-line flow-glow-core flow-curve" pathLength="1" stroke="url(#flowGrad8-9)" stroke-width="7" d="M 181 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 181 766" />
+                <path id="flow-core-9-10" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad9-10)" stroke-width="6" d="M 231 766 L 508 766" />
+                <path id="flow-core-10-11" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad10-11)" stroke-width="6" d="M 558 766 L 818 766" />
+                <path id="flow-core-11-12" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad11-12)" stroke-width="6" d="M 868 766 L 1128 766" />
+              </g>
+            </g>
+
+            <!-- 3. Active Step Pulse Indicator Beacons (Dead center on each numbered circle) -->
+            <circle id="pulse-1" class="pulse-dot" cx="206" cy="227" r="26" stroke="#16a34a" />
+            <circle id="pulse-2" class="pulse-dot" cx="535" cy="227" r="26" stroke="#06b6d4" />
+            <circle id="pulse-3" class="pulse-dot" cx="848" cy="227" r="26" stroke="#2563eb" />
+            <circle id="pulse-4" class="pulse-dot" cx="1155" cy="227" r="26" stroke="#7c3aed" />
+            <circle id="pulse-5" class="pulse-dot" cx="1152" cy="505" r="26" stroke="#9333ea" />
+            <circle id="pulse-6" class="pulse-dot" cx="841" cy="505" r="26" stroke="#db2777" />
+            <circle id="pulse-7" class="pulse-dot" cx="532" cy="505" r="26" stroke="#ea580c" />
+            <circle id="pulse-8" class="pulse-dot" cx="206" cy="505" r="26" stroke="#d97706" />
+            <circle id="pulse-9" class="pulse-dot" cx="208" cy="766" r="26" stroke="#16a34a" />
+            <circle id="pulse-10" class="pulse-dot" cx="530" cy="766" r="26" stroke="#06b6d4" />
+            <circle id="pulse-11" class="pulse-dot" cx="838" cy="766" r="26" stroke="#2563eb" />
+            <circle id="pulse-12" class="pulse-dot" cx="1152" cy="766" r="26" stroke="#7c3aed" />
+
+            <!-- 4. Interactive Transparent Click Targets over the 12 Steps -->
             <g id="step-targets" style="cursor: pointer;">
-              <rect data-step="1" x="55" y="45" width="290" height="325" fill="transparent"><title>Step 1: Product Idea Discussion &amp; Briefing</title></rect>
-              <rect data-step="2" x="350" y="45" width="290" height="325" fill="transparent"><title>Step 2: Customized Product Development</title></rect>
-              <rect data-step="3" x="640" y="45" width="290" height="325" fill="transparent"><title>Step 3: Sample Manufacturing</title></rect>
-              <rect data-step="4" x="930" y="45" width="290" height="325" fill="transparent"><title>Step 4: Laboratory Testing</title></rect>
-              <rect data-step="5" x="930" y="310" width="290" height="325" fill="transparent"><title>Step 5: Sample Approval from Client</title></rect>
-              <rect data-step="6" x="640" y="310" width="290" height="325" fill="transparent"><title>Step 6: Artwork &amp; Label Finalization</title></rect>
-              <rect data-step="7" x="350" y="310" width="290" height="325" fill="transparent"><title>Step 7: Procurement of Packaging Materials</title></rect>
-              <rect data-step="8" x="55" y="310" width="290" height="325" fill="transparent"><title>Step 8: Raw Materials Sourcing</title></rect>
-              <rect data-step="9" x="55" y="575" width="290" height="325" fill="transparent"><title>Step 9: Commercial-Scale Production</title></rect>
-              <rect data-step="10" x="350" y="575" width="290" height="325" fill="transparent"><title>Step 10: Quality Inspection of Finished Product</title></rect>
-              <rect data-step="11" x="640" y="575" width="290" height="325" fill="transparent"><title>Step 11: Final Product Approval by Customer</title></rect>
-              <rect data-step="12" x="930" y="575" width="290" height="325" fill="transparent"><title>Step 12: Dispatch of Finished Goods</title></rect>
+              <rect data-step="1" x="60" y="40" width="290" height="290" fill="transparent"><title>Step 1: Product Idea Discussion &amp; Briefing</title></rect>
+              <rect data-step="2" x="390" y="40" width="290" height="290" fill="transparent"><title>Step 2: Customized Product Development</title></rect>
+              <rect data-step="3" x="700" y="40" width="290" height="290" fill="transparent"><title>Step 3: Sample Manufacturing</title></rect>
+              <rect data-step="4" x="1010" y="40" width="290" height="290" fill="transparent"><title>Step 4: Laboratory Testing</title></rect>
+              <rect data-step="5" x="1010" y="315" width="290" height="290" fill="transparent"><title>Step 5: Sample Approval from Client</title></rect>
+              <rect data-step="6" x="700" y="315" width="290" height="290" fill="transparent"><title>Step 6: Artwork &amp; Label Finalization</title></rect>
+              <rect data-step="7" x="390" y="315" width="290" height="290" fill="transparent"><title>Step 7: Procurement of Packaging Materials</title></rect>
+              <rect data-step="8" x="60" y="315" width="290" height="290" fill="transparent"><title>Step 8: Raw Materials Sourcing</title></rect>
+              <rect data-step="9" x="60" y="585" width="290" height="290" fill="transparent"><title>Step 9: Commercial-Scale Production</title></rect>
+              <rect data-step="10" x="390" y="585" width="290" height="290" fill="transparent"><title>Step 10: Quality Inspection of Finished Product</title></rect>
+              <rect data-step="11" x="700" y="585" width="290" height="290" fill="transparent"><title>Step 11: Final Product Approval by Customer</title></rect>
+              <rect data-step="12" x="1010" y="585" width="290" height="290" fill="transparent"><title>Step 12: Dispatch of Finished Goods</title></rect>
             </g>
           </svg>
         </div>
@@ -1987,23 +1995,22 @@ a {
   <script>
     (function initSmoothWorkflowLoop() {
       const svg = document.getElementById('workflowSvg');
-      const fgImage = document.getElementById('workflowForeground');
+      const flowGroup = document.getElementById('flowTracksGroup');
 
-      // 12 continuous flow stages:
-      // Each stage i (from 1 to 12) lights up Step i, then flows through Path i->(i+1) into Step i+1
+      // 12 continuous flow stages connecting all 12 CDMO steps
       const stepConfig = [
-        { num: 1, pathId: 'm-p1-2', pathDuration: 380, pathLead: 100 },
-        { num: 2, pathId: 'm-p2-3', pathDuration: 380, pathLead: 100 },
-        { num: 3, pathId: 'm-p3-4', pathDuration: 380, pathLead: 100 },
-        { num: 4, pathId: 'm-p4-5', pathDuration: 600, pathLead: 120, isCurve: true },
-        { num: 5, pathId: 'm-p5-6', pathDuration: 380, pathLead: 100 },
-        { num: 6, pathId: 'm-p6-7', pathDuration: 380, pathLead: 100 },
-        { num: 7, pathId: 'm-p7-8', pathDuration: 380, pathLead: 100 },
-        { num: 8, pathId: 'm-p8-9', pathDuration: 600, pathLead: 120, isCurve: true },
-        { num: 9, pathId: 'm-p9-10', pathDuration: 380, pathLead: 100 },
-        { num: 10, pathId: 'm-p10-11', pathDuration: 380, pathLead: 100 },
-        { num: 11, pathId: 'm-p11-12', pathDuration: 380, pathLead: 100 },
-        { num: 12, pathId: null, pathDuration: 0, pathLead: 0 }
+        { num: 1, flowKey: '1-2', dur: 380, lead: 80 },
+        { num: 2, flowKey: '2-3', dur: 380, lead: 80 },
+        { num: 3, flowKey: '3-4', dur: 380, lead: 80 },
+        { num: 4, flowKey: '4-5', dur: 650, lead: 100, isCurve: true },
+        { num: 5, flowKey: '5-6', dur: 380, lead: 80 },
+        { num: 6, flowKey: '6-7', dur: 380, lead: 80 },
+        { num: 7, flowKey: '7-8', dur: 380, lead: 80 },
+        { num: 8, flowKey: '8-9', dur: 650, lead: 100, isCurve: true },
+        { num: 9, flowKey: '9-10', dur: 380, lead: 80 },
+        { num: 10, flowKey: '10-11', dur: 380, lead: 80 },
+        { num: 11, flowKey: '11-12', dur: 380, lead: 80 },
+        { num: 12, flowKey: null, dur: 0, lead: 0 }
       ];
 
       let currentStep = 1;
@@ -2026,9 +2033,8 @@ a {
         return id;
       }
 
-      function resetAll() {
-        document.querySelectorAll('.mask-step').forEach(s => s.classList.remove('step-active'));
-        document.querySelectorAll('.mask-path').forEach(p => p.classList.remove('path-active'));
+      function resetFlowLines() {
+        document.querySelectorAll('.flow-glow-line').forEach(p => p.classList.remove('path-active'));
         document.querySelectorAll('.pulse-dot').forEach(p => p.classList.remove('active'));
       }
 
@@ -2036,6 +2042,14 @@ a {
         document.querySelectorAll('.pulse-dot').forEach(p => p.classList.remove('active'));
         const p = document.getElementById(`pulse-${num}`);
         if (p) p.classList.add('active');
+      }
+
+      function setPathActive(flowKey, active) {
+        if (!flowKey) return;
+        const under = document.getElementById(`flow-under-${flowKey}`);
+        const core = document.getElementById(`flow-core-${flowKey}`);
+        if (under) under.classList.toggle('path-active', active);
+        if (core) core.classList.toggle('path-active', active);
       }
 
       function triggerStep(stepNum) {
@@ -2048,58 +2062,55 @@ a {
         const config = stepConfig[stepNum - 1];
         if (!config) return;
 
-        // 1. Illuminate current step card & pulse ring
-        const stepEl = document.getElementById(`m-s${stepNum}`);
-        if (stepEl) stepEl.classList.add('step-active');
+        // 1. Activate beacon pulse on current step badge
         activatePulse(stepNum);
 
-        // 2. Final Step 12 reached: hold complete diagram then smooth dissolve restart
+        // 2. Final Step 12 reached: hold complete connected pipeline then smooth loop restart
         if (stepNum === 12) {
           isHolding = true;
           scheduleTimeout(() => {
             if (isPaused) return;
-            // Crossfade dissolve out the vivid foreground
-            if (fgImage) fgImage.classList.add('fade-out');
+            // Crossfade dissolve out the flow lines (blocks remain 100% visible and static)
+            if (flowGroup) flowGroup.classList.add('flow-dissolving');
 
             scheduleTimeout(() => {
               if (svg) svg.classList.add('wf-no-transition');
-              resetAll();
+              resetFlowLines();
               if (svg) void svg.offsetHeight;
               if (svg) svg.classList.remove('wf-no-transition');
 
-              if (fgImage) fgImage.classList.remove('fade-out');
+              if (flowGroup) flowGroup.classList.remove('flow-dissolving');
               isHolding = false;
 
               // Immediately flow into Step 1 for seamless continuous looping
               triggerStep(1);
-            }, 460);
-          }, 2400);
+            }, 420);
+          }, 2200);
           return;
         }
 
-        // 3. Fluid overlapping flow: start outgoing path, and trigger next step right as arrow connects
+        // 3. Fluid overlapping flow: start outgoing path, and trigger next step right as beam connects
         scheduleTimeout(() => {
           if (isPaused) return;
-          const pathEl = document.getElementById(config.pathId);
-          if (pathEl) pathEl.classList.add('path-active');
+          setPathActive(config.flowKey, true);
 
-          const travelTime = Math.max(180, config.pathDuration - 40);
+          const travelTime = Math.max(180, config.dur - 40);
           scheduleTimeout(() => {
             if (isPaused) return;
             triggerStep(stepNum + 1);
           }, travelTime);
-        }, config.pathLead);
+        }, config.lead);
       }
 
       function startFlow(fromStep = 1) {
         clearAllTimers();
-        if (fromStep === 1) resetAll();
+        if (fromStep === 1) resetFlowLines();
         hasStarted = true;
         isHolding = false;
         triggerStep(fromStep);
       }
 
-      // Viewport IntersectionObserver
+      // Viewport IntersectionObserver: starts flow from Step 1 on view
       const targetSection = document.getElementById('workflow') || document.getElementById('workflow-diagram');
       if (targetSection && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
@@ -2122,7 +2133,7 @@ a {
         startFlow(1);
       }
 
-      // Page visibility API (pause when tab hidden)
+      // Page visibility API (pause when tab hidden, resume when visible)
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           isPaused = true;
@@ -2133,7 +2144,7 @@ a {
         }
       });
 
-      // Interactive step targets (click to jump and smoothly resume)
+      // Interactive step targets (click to jump and smoothly continue)
       document.querySelectorAll('#step-targets rect').forEach(r => {
         r.addEventListener('click', () => {
           const targetNum = parseInt(r.getAttribute('data-step'), 10);
@@ -2141,16 +2152,13 @@ a {
           isPaused = false;
           isHolding = false;
           if (svg) svg.classList.add('wf-no-transition');
-          resetAll();
+          resetFlowLines();
 
           for (let i = 1; i <= targetNum; i++) {
-            const s = document.getElementById(`m-s${i}`);
-            if (s) s.classList.add('step-active');
             if (i < targetNum) {
               const cfg = stepConfig[i - 1];
-              if (cfg && cfg.pathId) {
-                const p = document.getElementById(cfg.pathId);
-                if (p) p.classList.add('path-active');
+              if (cfg && cfg.flowKey) {
+                setPathActive(cfg.flowKey, true);
               }
             }
           }
@@ -2163,15 +2171,14 @@ a {
           scheduleTimeout(() => {
             if (targetNum < 12) {
               const cfg = stepConfig[targetNum - 1];
-              const pathEl = document.getElementById(cfg.pathId);
-              if (pathEl) pathEl.classList.add('path-active');
+              setPathActive(cfg.flowKey, true);
               scheduleTimeout(() => {
                 triggerStep(targetNum + 1);
-              }, Math.max(180, cfg.pathDuration - 40));
+              }, Math.max(180, cfg.dur - 40));
             } else {
               triggerStep(12);
             }
-          }, 1200);
+          }, 1100);
         });
       });
     })();
