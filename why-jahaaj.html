@@ -1965,29 +1965,39 @@ a {
   dominant-baseline: middle;
 }
 
-/* Flowing Line Base Guide */
+/* Flowing Line Base Guide Track */
 .flow-base-path {
   fill: none;
-  stroke: #334155;
+  stroke: #cbd5e1;
   stroke-width: 3.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+  opacity: 0.55;
 }
 
-/* Continuous Flowing Stream (Line flows from start to end in endless loop) */
+/* Continuous Colored Guide (Guarantees path is always beautifully colored) */
+.flow-colored-guide {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.35;
+}
+
+/* Continuous Flowing Stream (Seamless silky endless stream across all stages) */
 .flow-stream-path {
   fill: none;
   stroke-width: 5;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 800 1000;
-  animation: lineFlowStartToEnd 3.2s linear infinite;
-  filter: drop-shadow(0 0 5px rgba(234, 88, 12, 0.45));
+  stroke-dasharray: 42 26;
+  animation: lineStreamFlow 1.6s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.45));
 }
 
-@keyframes lineFlowStartToEnd {
+@keyframes lineStreamFlow {
   0% {
-    stroke-dashoffset: 1800;
+    stroke-dashoffset: 68;
   }
   100% {
     stroke-dashoffset: 0;
@@ -1997,14 +2007,30 @@ a {
 /* Arrowhead styles */
 .flow-arrowhead {
   fill: none;
-  stroke: #334155;
   stroke-width: 3.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: all 0.3s ease;
 }
 
 .flow-start-dot {
-  fill: #334155;
+  fill: #eab308;
+  filter: drop-shadow(0 0 5px rgba(234, 179, 8, 0.55));
+}
+
+/* Traveling Energy Orb */
+.flow-comet-head {
+  fill: #ea580c;
+  filter: drop-shadow(0 0 8px rgba(234, 88, 12, 0.95));
+}
+
+.flow-comet-core {
+  fill: #ffffff;
+}
+
+.flow-comet-halo {
+  fill: #ea580c;
+  opacity: 0.35;
 }
 
 @media (max-width: 768px) {
@@ -2256,11 +2282,15 @@ a {
       <div class="journey-interactive-card" id="journeyCard">
         <svg class="journey-svg-wrap" viewBox="0 0 1255 357" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Jahaaj Healthcare Product Journey: Idea & Concept, Formulation & R&D, Trial & Optimization, Manufacturing & Commercialization">
           <defs>
-            <!-- Continuous Stream Gradient -->
+            <!-- Continuous Stream Gradient matched precisely to the 4 phases -->
             <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stop-color="#eab308" />
-              <stop offset="33%" stop-color="#16a34a" />
-              <stop offset="66%" stop-color="#0284c7" />
+              <stop offset="22%" stop-color="#eab308" />
+              <stop offset="28%" stop-color="#16a34a" />
+              <stop offset="48%" stop-color="#16a34a" />
+              <stop offset="54%" stop-color="#0284c7" />
+              <stop offset="72%" stop-color="#0284c7" />
+              <stop offset="78%" stop-color="#ef4444" />
               <stop offset="100%" stop-color="#ef4444" />
             </linearGradient>
           </defs>
@@ -2300,26 +2330,42 @@ a {
             </g>
           </g>
 
-          <!-- Base Dark Track (Constant Structure) -->
+          <!-- 1. Base Dark Guide Track -->
           <path class="flow-base-path" fill="none" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
 
-          <!-- Continuous Flowing Line Stream (Flows from start to end in loop) -->
+          <!-- 2. Continuous Colored Track (Guarantees all 4 steps are always colored, never half blank) -->
+          <path class="flow-colored-guide" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+
+          <!-- 3. Continuous Flowing Stream (Flows through all 4 stages in infinite seamless loop) -->
           <path id="journey-stream-path" class="flow-stream-path" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
 
-          <!-- Start Dot (Static origin node) -->
+          <!-- Start Dot (Origin node) -->
           <circle cx="48" cy="175" r="9" class="flow-start-dot" />
 
-          <!-- Arrowhead 1 (Pointing down-right) -->
-          <path id="arrow-1" class="flow-arrowhead" fill="none" d="M 368 152 L 378 168 L 390 156" />
+          <!-- Arrowhead 1 (Pointing down-right into Formulation & R&D) -->
+          <path id="arrow-1" class="flow-arrowhead" stroke="#16a34a" fill="none" d="M 368 152 L 378 168 L 390 156" />
 
-          <!-- Arrowhead 2 (Pointing up-right) -->
-          <path id="arrow-2" class="flow-arrowhead" fill="none" d="M 614 194 L 625 178 L 637 190" />
+          <!-- Arrowhead 2 (Pointing up-right into Trial & Optimization) -->
+          <path id="arrow-2" class="flow-arrowhead" stroke="#0284c7" fill="none" d="M 614 194 L 625 178 L 637 190" />
 
-          <!-- Arrowhead 3 (Pointing down-right) -->
-          <path id="arrow-3" class="flow-arrowhead" fill="none" d="M 862 152 L 872 168 L 884 156" />
+          <!-- Arrowhead 3 (Pointing down-right into Manufacturing & Commercialization) -->
+          <path id="arrow-3" class="flow-arrowhead" stroke="#ef4444" fill="none" d="M 862 152 L 872 168 L 884 156" />
 
-          <!-- Arrowhead 4 (Pointing right) -->
-          <path id="arrow-4" class="flow-arrowhead" fill="none" d="M 1180 162 L 1195 175 L 1180 188" />
+          <!-- Arrowhead 4 (Pointing right to market delivery) -->
+          <path id="arrow-4" class="flow-arrowhead" stroke="#ef4444" fill="none" d="M 1180 162 L 1195 175 L 1180 188" />
+
+          <!-- 4. Traveling Energy Pulse Orb (Physically traverses the path across all 4 stages) -->
+          <g id="journey-comet-group">
+            <circle r="10" class="flow-comet-halo">
+              <animateMotion dur="4.2s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+            </circle>
+            <circle r="6" class="flow-comet-head">
+              <animateMotion dur="4.2s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+            </circle>
+            <circle r="3" class="flow-comet-core">
+              <animateMotion dur="4.2s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+            </circle>
+          </g>
         </svg>
       </div>
     </div>
@@ -2745,18 +2791,29 @@ a {
     /* ---------- Product Journey Flow Line Animation ---------- */
     (function initJourneyFlowAnimation() {
       const streamPath = document.getElementById('journey-stream-path');
+      const cometGroup = document.getElementById('journey-comet-group');
       const journeyCard = document.getElementById('journeyCard');
-      if (!streamPath || !journeyCard) return;
-
-      streamPath.style.animationPlayState = 'running';
+      if (!journeyCard) return;
 
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              streamPath.style.animationPlayState = 'running';
+              if (streamPath) streamPath.style.animationPlayState = 'running';
+              if (cometGroup) {
+                const anims = cometGroup.querySelectorAll('animateMotion');
+                anims.forEach(a => {
+                  try { a.ownerSVGElement.unpauseAnimations(); } catch (e) {}
+                });
+              }
             } else {
-              streamPath.style.animationPlayState = 'paused';
+              if (streamPath) streamPath.style.animationPlayState = 'paused';
+              if (cometGroup) {
+                const anims = cometGroup.querySelectorAll('animateMotion');
+                anims.forEach(a => {
+                  try { a.ownerSVGElement.pauseAnimations(); } catch (e) {}
+                });
+              }
             }
           });
         }, { threshold: 0.1 });
