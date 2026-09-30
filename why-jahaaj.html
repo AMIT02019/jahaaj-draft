@@ -1965,72 +1965,147 @@ a {
   dominant-baseline: middle;
 }
 
-/* Flowing Line Base Guide Track */
-.flow-base-path {
-  fill: none;
-  stroke: #cbd5e1;
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.55;
-}
-
-/* Continuous Colored Guide (Guarantees path is always beautifully colored) */
-.flow-colored-guide {
-  fill: none;
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.35;
-}
-
-/* Continuous Flowing Stream (Seamless silky endless stream across all stages) */
-.flow-stream-path {
+/* Progressive Line Drawing (Starts from start; before that only text is visible) */
+.flow-draw-line {
   fill: none;
   stroke-width: 5;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 42 26;
-  animation: lineStreamFlow 1.6s linear infinite;
+  stroke-dasharray: 1765;
+  stroke-dashoffset: 1765;
+  opacity: 0;
   filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.45));
+  animation: lineDrawFromStart 7.5s linear infinite;
 }
 
-@keyframes lineStreamFlow {
-  0% {
-    stroke-dashoffset: 68;
+@keyframes lineDrawFromStart {
+  0%, 10% {
+    stroke-dashoffset: 1765;
+    opacity: 0;
   }
-  100% {
+  12% {
+    stroke-dashoffset: 1765;
+    opacity: 1;
+  }
+  62% {
     stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  86% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  95%, 100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
   }
 }
 
-/* Arrowhead styles */
+/* Origin Start Dot */
+.flow-start-dot {
+  fill: #eab308;
+  filter: drop-shadow(0 0 6px rgba(234, 179, 8, 0.6));
+  opacity: 0;
+  transform-origin: 48px 175px;
+  animation: startDotPop 7.5s linear infinite;
+}
+
+@keyframes startDotPop {
+  0%, 9% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  12%, 86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  94%, 100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+/* Arrowhead Styles & Sequential Appearance as line arrives */
 .flow-arrowhead {
   fill: none;
   stroke-width: 3.5;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: all 0.3s ease;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-.flow-start-dot {
-  fill: #eab308;
-  filter: drop-shadow(0 0 5px rgba(234, 179, 8, 0.55));
+.flow-arrowhead.arrow-1 {
+  animation: arrow1Pop 7.5s linear infinite;
+}
+@keyframes arrow1Pop {
+  0%, 23% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  25%, 86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  94%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
 }
 
-/* Traveling Energy Orb */
-.flow-comet-head {
-  fill: #ea580c;
-  filter: drop-shadow(0 0 8px rgba(234, 88, 12, 0.95));
+.flow-arrowhead.arrow-2 {
+  animation: arrow2Pop 7.5s linear infinite;
+}
+@keyframes arrow2Pop {
+  0%, 33.5% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  35.5%, 86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  94%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
 }
 
-.flow-comet-core {
-  fill: #ffffff;
+.flow-arrowhead.arrow-3 {
+  animation: arrow3Pop 7.5s linear infinite;
+}
+@keyframes arrow3Pop {
+  0%, 43.5% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  45.5%, 86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  94%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
 }
 
-.flow-comet-halo {
-  fill: #ea580c;
-  opacity: 0.35;
+.flow-arrowhead.arrow-4 {
+  animation: arrow4Pop 7.5s linear infinite;
+}
+@keyframes arrow4Pop {
+  0%, 60% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  62%, 86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  94%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
 }
 
 @media (max-width: 768px) {
@@ -2330,42 +2405,23 @@ a {
             </g>
           </g>
 
-          <!-- 1. Base Dark Guide Track -->
-          <path class="flow-base-path" fill="none" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+          <!-- Progressive Flow Line (Draws smoothly from the start; before that ONLY text is visible) -->
+          <path id="journey-draw-path" class="flow-draw-line" pathLength="1765" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
 
-          <!-- 2. Continuous Colored Track (Guarantees all 4 steps are always colored, never half blank) -->
-          <path class="flow-colored-guide" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
-
-          <!-- 3. Continuous Flowing Stream (Flows through all 4 stages in infinite seamless loop) -->
-          <path id="journey-stream-path" class="flow-stream-path" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
-
-          <!-- Start Dot (Origin node) -->
-          <circle cx="48" cy="175" r="9" class="flow-start-dot" />
+          <!-- Origin Start Dot (Pops in right before drawing starts) -->
+          <circle id="flow-start-dot" cx="48" cy="175" r="9" class="flow-start-dot" />
 
           <!-- Arrowhead 1 (Pointing down-right into Formulation & R&D) -->
-          <path id="arrow-1" class="flow-arrowhead" stroke="#16a34a" fill="none" d="M 368 152 L 378 168 L 390 156" />
+          <path id="arrow-1" class="flow-arrowhead arrow-1" stroke="#16a34a" fill="none" d="M 368 152 L 378 168 L 390 156" />
 
           <!-- Arrowhead 2 (Pointing up-right into Trial & Optimization) -->
-          <path id="arrow-2" class="flow-arrowhead" stroke="#0284c7" fill="none" d="M 614 194 L 625 178 L 637 190" />
+          <path id="arrow-2" class="flow-arrowhead arrow-2" stroke="#0284c7" fill="none" d="M 614 194 L 625 178 L 637 190" />
 
           <!-- Arrowhead 3 (Pointing down-right into Manufacturing & Commercialization) -->
-          <path id="arrow-3" class="flow-arrowhead" stroke="#ef4444" fill="none" d="M 862 152 L 872 168 L 884 156" />
+          <path id="arrow-3" class="flow-arrowhead arrow-3" stroke="#ef4444" fill="none" d="M 862 152 L 872 168 L 884 156" />
 
           <!-- Arrowhead 4 (Pointing right to market delivery) -->
-          <path id="arrow-4" class="flow-arrowhead" stroke="#ef4444" fill="none" d="M 1180 162 L 1195 175 L 1180 188" />
-
-          <!-- 4. Traveling Energy Pulse Orb (Physically traverses the path across all 4 stages) -->
-          <g id="journey-comet-group">
-            <circle r="10" class="flow-comet-halo">
-              <animateMotion dur="4.2s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
-            </circle>
-            <circle r="6" class="flow-comet-head">
-              <animateMotion dur="4.2s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
-            </circle>
-            <circle r="3" class="flow-comet-core">
-              <animateMotion dur="4.2s" repeatCount="indefinite" path="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
-            </circle>
-          </g>
+          <path id="arrow-4" class="flow-arrowhead arrow-4" stroke="#ef4444" fill="none" d="M 1180 162 L 1195 175 L 1180 188" />
         </svg>
       </div>
     </div>
@@ -2790,31 +2846,18 @@ a {
 
     /* ---------- Product Journey Flow Line Animation ---------- */
     (function initJourneyFlowAnimation() {
-      const streamPath = document.getElementById('journey-stream-path');
-      const cometGroup = document.getElementById('journey-comet-group');
       const journeyCard = document.getElementById('journeyCard');
       if (!journeyCard) return;
+
+      const animatedElements = journeyCard.querySelectorAll('.flow-draw-line, .flow-start-dot, .flow-arrowhead');
 
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (streamPath) streamPath.style.animationPlayState = 'running';
-              if (cometGroup) {
-                const anims = cometGroup.querySelectorAll('animateMotion');
-                anims.forEach(a => {
-                  try { a.ownerSVGElement.unpauseAnimations(); } catch (e) {}
-                });
-              }
-            } else {
-              if (streamPath) streamPath.style.animationPlayState = 'paused';
-              if (cometGroup) {
-                const anims = cometGroup.querySelectorAll('animateMotion');
-                anims.forEach(a => {
-                  try { a.ownerSVGElement.pauseAnimations(); } catch (e) {}
-                });
-              }
-            }
+            const state = entry.isIntersecting ? 'running' : 'paused';
+            animatedElements.forEach(el => {
+              el.style.animationPlayState = state;
+            });
           });
         }, { threshold: 0.1 });
         observer.observe(journeyCard);
