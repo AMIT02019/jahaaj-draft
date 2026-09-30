@@ -2025,7 +2025,7 @@ a {
   }
 }
 
-/* Arrowhead Styles & Sequential Appearance as line arrives */
+/* Destination Arrowhead (Appears as line reaches the end) */
 .flow-arrowhead {
   fill: none;
   stroke-width: 3.5;
@@ -2034,60 +2034,6 @@ a {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-}
-
-.flow-arrowhead.arrow-1 {
-  animation: arrow1Pop 7.5s linear infinite;
-}
-@keyframes arrow1Pop {
-  0%, 24% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  26%, 86% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  94%, 100% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-}
-
-.flow-arrowhead.arrow-2 {
-  animation: arrow2Pop 7.5s linear infinite;
-}
-@keyframes arrow2Pop {
-  0%, 35% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  37%, 86% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  94%, 100% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-}
-
-.flow-arrowhead.arrow-3 {
-  animation: arrow3Pop 7.5s linear infinite;
-}
-@keyframes arrow3Pop {
-  0%, 46.5% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  48.5%, 86% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  94%, 100% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
 }
 
 .flow-arrowhead.arrow-4 {
@@ -2411,16 +2357,7 @@ a {
           <!-- Origin Start Dot (Pops in right before drawing starts) -->
           <circle id="flow-start-dot" cx="48" cy="175" r="9" class="flow-start-dot" />
 
-          <!-- Arrowhead 1 (Pointing down-right into Formulation & R&D) -->
-          <path id="arrow-1" class="flow-arrowhead arrow-1" stroke="#16a34a" fill="none" d="M 368 160 L 378 175 L 388 160" />
-
-          <!-- Arrowhead 2 (Pointing up-right into Trial & Optimization) -->
-          <path id="arrow-2" class="flow-arrowhead arrow-2" stroke="#0284c7" fill="none" d="M 615 190 L 625 175 L 635 190" />
-
-          <!-- Arrowhead 3 (Pointing down-right into Manufacturing & Commercialization) -->
-          <path id="arrow-3" class="flow-arrowhead arrow-3" stroke="#ef4444" fill="none" d="M 862 160 L 872 175 L 882 160" />
-
-          <!-- Arrowhead 4 (Pointing right to market delivery) -->
+          <!-- Destination Arrowhead (Pointing right to market delivery) -->
           <path id="arrow-4" class="flow-arrowhead arrow-4" stroke="#ef4444" fill="none" d="M 1180 163 L 1195 175 L 1180 187" />
         </svg>
       </div>
