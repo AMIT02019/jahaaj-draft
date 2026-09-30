@@ -2337,21 +2337,26 @@ a {
   <script>
 
     /* ---------- Challenge Split Panel Tabs ---------- */
-    document.querySelectorAll('.jhc-ch-row').forEach(row => {
-      row.addEventListener('click', function() {
-        const idx = this.dataset.idx;
-        const container = this.closest('.jhc-challenges-section');
-        container.querySelectorAll('.jhc-ch-row').forEach(r => r.classList.remove('active'));
-        container.querySelectorAll('.jhc-ch-detail').forEach(d => d.classList.remove('active'));
-        this.classList.add('active');
-        const targetDetail = container.querySelector('.jhc-ch-detail[data-idx="' + idx + '"]');
-        if (targetDetail) targetDetail.classList.add('active');
+    function initChallengeTabs() {
+      const rows = document.querySelectorAll(".jhc-ch-row");
+      rows.forEach(row => {
+        row.addEventListener("click", function() {
+          const idx = this.dataset.idx;
+          const container = this.closest(".jhc-challenges-section");
+          if (!container) return;
+          container.querySelectorAll(".jhc-ch-row").forEach(r => r.classList.remove("active"));
+          container.querySelectorAll(".jhc-ch-detail").forEach(d => d.classList.remove("active"));
+          this.classList.add("active");
+          const targetDetail = container.querySelector('.jhc-ch-detail[data-idx="' + idx + '"]');
+          if (targetDetail) targetDetail.classList.add("active");
+        });
       });
-    });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initChallengeTabs);
+    } else {
+      initChallengeTabs();
+    }
   </script>
   <!-- Canonical Navigation Controller -->
   <script src="assets/nav-and-footer.js" defer></script>
