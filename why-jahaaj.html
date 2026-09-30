@@ -1945,11 +1945,11 @@ a {
   display: block;
 }
 
-/* Constant Text Typography - Always visible, never shifts */
+/* Constant Text Typography - Always visible, perfectly aligned */
 .flow-title {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 19.5px;
   letter-spacing: -0.01em;
   text-anchor: middle;
   dominant-baseline: middle;
@@ -1958,7 +1958,7 @@ a {
 .flow-desc {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   fill: #475569;
   letter-spacing: -0.01em;
   text-anchor: middle;
@@ -2040,11 +2040,11 @@ a {
   animation: arrow1Pop 7.5s linear infinite;
 }
 @keyframes arrow1Pop {
-  0%, 23% {
+  0%, 24% {
     opacity: 0;
     transform: scale(0.5);
   }
-  25%, 86% {
+  26%, 86% {
     opacity: 1;
     transform: scale(1);
   }
@@ -2058,11 +2058,11 @@ a {
   animation: arrow2Pop 7.5s linear infinite;
 }
 @keyframes arrow2Pop {
-  0%, 33.5% {
+  0%, 35% {
     opacity: 0;
     transform: scale(0.5);
   }
-  35.5%, 86% {
+  37%, 86% {
     opacity: 1;
     transform: scale(1);
   }
@@ -2076,11 +2076,11 @@ a {
   animation: arrow3Pop 7.5s linear infinite;
 }
 @keyframes arrow3Pop {
-  0%, 43.5% {
+  0%, 46.5% {
     opacity: 0;
     transform: scale(0.5);
   }
-  45.5%, 86% {
+  48.5%, 86% {
     opacity: 1;
     transform: scale(1);
   }
@@ -2360,68 +2360,68 @@ a {
             <!-- Continuous Stream Gradient matched precisely to the 4 phases -->
             <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stop-color="#eab308" />
-              <stop offset="22%" stop-color="#eab308" />
-              <stop offset="28%" stop-color="#16a34a" />
+              <stop offset="28%" stop-color="#eab308" />
+              <stop offset="32%" stop-color="#16a34a" />
               <stop offset="48%" stop-color="#16a34a" />
-              <stop offset="54%" stop-color="#0284c7" />
-              <stop offset="72%" stop-color="#0284c7" />
-              <stop offset="78%" stop-color="#ef4444" />
+              <stop offset="52%" stop-color="#0284c7" />
+              <stop offset="68%" stop-color="#0284c7" />
+              <stop offset="72%" stop-color="#ef4444" />
               <stop offset="100%" stop-color="#ef4444" />
             </linearGradient>
           </defs>
 
-          <!-- Constant Text Group (Always 100% Constant & Crisp) -->
+          <!-- Constant Text Group (Always 100% Constant, Crisp & Symmetrically Aligned) -->
           <g class="flow-text-group">
             <!-- 1. Idea & Concept (Yellow / Amber) -->
             <g id="text-step-1">
-              <text x="253" y="152" class="flow-title" fill="#e5a800">Idea &amp;</text>
-              <text x="253" y="184" class="flow-title" fill="#e5a800">Concept</text>
-              <text x="253" y="216" class="flow-desc">Define vision and</text>
-              <text x="253" y="238" class="flow-desc">feasibility</text>
+              <text x="253" y="136" class="flow-title" fill="#e5a800">Idea &amp;</text>
+              <text x="253" y="162" class="flow-title" fill="#e5a800">Concept</text>
+              <text x="253" y="194" class="flow-desc">Define vision and</text>
+              <text x="253" y="214" class="flow-desc">feasibility</text>
             </g>
 
             <!-- 2. Formulation & R&D (Green) -->
             <g id="text-step-2">
-              <text x="501" y="122" class="flow-title" fill="#16a34a">Formulation &amp;</text>
-              <text x="501" y="154" class="flow-title" fill="#16a34a">R&amp;D</text>
-              <text x="501" y="186" class="flow-desc">Develop formulas</text>
-              <text x="501" y="208" class="flow-desc">and lab testing</text>
+              <text x="501" y="136" class="flow-title" fill="#16a34a">Formulation &amp;</text>
+              <text x="501" y="162" class="flow-title" fill="#16a34a">R&amp;D</text>
+              <text x="501" y="194" class="flow-desc">Develop formulas</text>
+              <text x="501" y="214" class="flow-desc">and lab testing</text>
             </g>
 
             <!-- 3. Trial & Optimization (Blue) -->
             <g id="text-step-3">
-              <text x="748" y="152" class="flow-title" fill="#0284c7">Trial &amp;</text>
-              <text x="748" y="184" class="flow-title" fill="#0284c7">Optimization</text>
-              <text x="748" y="216" class="flow-desc">Scale-up trials and</text>
-              <text x="748" y="238" class="flow-desc">refine process</text>
+              <text x="748" y="136" class="flow-title" fill="#0284c7">Trial &amp;</text>
+              <text x="748" y="162" class="flow-title" fill="#0284c7">Optimization</text>
+              <text x="748" y="194" class="flow-desc">Scale-up trials and</text>
+              <text x="748" y="214" class="flow-desc">refine process</text>
             </g>
 
             <!-- 4. Manufacturing & Commercialization (Red / Coral) -->
             <g id="text-step-4">
-              <text x="995" y="122" class="flow-title" fill="#ef4444">Manufacturing &amp;</text>
-              <text x="995" y="154" class="flow-title" fill="#ef4444">Commercialization</text>
-              <text x="995" y="186" class="flow-desc">Produce at scale</text>
-              <text x="995" y="208" class="flow-desc">and launch</text>
+              <text x="995" y="136" class="flow-title" fill="#ef4444">Manufacturing &amp;</text>
+              <text x="995" y="162" class="flow-title" fill="#ef4444">Commercialization</text>
+              <text x="995" y="194" class="flow-desc">Produce at scale</text>
+              <text x="995" y="214" class="flow-desc">and launch</text>
             </g>
           </g>
 
           <!-- Progressive Flow Line (Draws smoothly from the start; before that ONLY text is visible) -->
-          <path id="journey-draw-path" class="flow-draw-line" pathLength="1765" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 168 C 378 255, 430 302, 501 302 C 572 302, 625 255, 625 178 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 168 C 872 255, 924 302, 995 302 C 1066 302, 1118 255, 1118 175 L 1195 175" />
+          <path id="journey-draw-path" class="flow-draw-line" pathLength="1765" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 175 C 378 258, 430 302, 501 302 C 572 302, 625 258, 625 175 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 175 C 872 258, 924 302, 995 302 C 1066 302, 1118 258, 1118 175 L 1195 175" />
 
           <!-- Origin Start Dot (Pops in right before drawing starts) -->
           <circle id="flow-start-dot" cx="48" cy="175" r="9" class="flow-start-dot" />
 
           <!-- Arrowhead 1 (Pointing down-right into Formulation & R&D) -->
-          <path id="arrow-1" class="flow-arrowhead arrow-1" stroke="#16a34a" fill="none" d="M 368 152 L 378 168 L 390 156" />
+          <path id="arrow-1" class="flow-arrowhead arrow-1" stroke="#16a34a" fill="none" d="M 368 160 L 378 175 L 388 160" />
 
           <!-- Arrowhead 2 (Pointing up-right into Trial & Optimization) -->
-          <path id="arrow-2" class="flow-arrowhead arrow-2" stroke="#0284c7" fill="none" d="M 614 194 L 625 178 L 637 190" />
+          <path id="arrow-2" class="flow-arrowhead arrow-2" stroke="#0284c7" fill="none" d="M 615 190 L 625 175 L 635 190" />
 
           <!-- Arrowhead 3 (Pointing down-right into Manufacturing & Commercialization) -->
-          <path id="arrow-3" class="flow-arrowhead arrow-3" stroke="#ef4444" fill="none" d="M 862 152 L 872 168 L 884 156" />
+          <path id="arrow-3" class="flow-arrowhead arrow-3" stroke="#ef4444" fill="none" d="M 862 160 L 872 175 L 882 160" />
 
           <!-- Arrowhead 4 (Pointing right to market delivery) -->
-          <path id="arrow-4" class="flow-arrowhead arrow-4" stroke="#ef4444" fill="none" d="M 1180 162 L 1195 175 L 1180 188" />
+          <path id="arrow-4" class="flow-arrowhead arrow-4" stroke="#ef4444" fill="none" d="M 1180 163 L 1195 175 L 1180 187" />
         </svg>
       </div>
     </div>
