@@ -1225,143 +1225,10 @@ a {
   100% { r: 52; stroke-opacity: 0; stroke-width: 1; }
 }
 
-/* Step Details Live Readout Box */
-.step-readout-box {
-  margin-top: 24px;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: 16px;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  color: var(--navy);
-  flex-wrap: wrap;
-}
-.readout-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-  min-width: 280px;
-}
-.readout-badge {
-  background: var(--orange);
-  color: #ffffff;
-  font-weight: 800;
-  font-size: 13px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
-.readout-content h4 {
-  margin: 0 0 4px 0;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--navy);
-}
-.readout-content p {
-  margin: 0;
-  font-size: 13.5px;
-  color: var(--gray-600);
-  line-height: 1.5;
-}
-.readout-actions {
-  display: flex;
-  gap: 10px;
-  flex-shrink: 0;
-}
-.wf-btn {
-  background: #ffffff;
-  border: 1px solid var(--gray-300);
-  color: var(--navy);
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-}
-.wf-btn:hover {
-  background: var(--gray-100);
-  border-color: var(--gray-400);
-}
-.wf-btn-primary {
-  background: var(--navy);
-  color: #ffffff;
-  border-color: var(--navy);
-}
-.wf-btn-primary:hover {
-  background: var(--orange);
-  border-color: var(--orange);
-  color: #ffffff;
-}
-
-/* Quick jump pill track */
-.step-pill-track {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 18px;
-  flex-wrap: wrap;
-}
-.step-pill-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid var(--gray-300);
-  background: #ffffff;
-  color: var(--gray-500);
-  font-weight: 700;
-  font-size: 12.5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-.step-pill-btn:hover {
-  border-color: var(--navy);
-  color: var(--navy);
-  transform: translateY(-1px);
-}
-.step-pill-btn.active {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #ffffff;
-  transform: scale(1.1);
-}
-.step-pill-btn.completed {
-  background: var(--orange);
-  border-color: var(--orange);
-  color: #ffffff;
-}
-
 @media (max-width: 768px) {
   .wf-interactive-card {
     padding: 16px;
     border-radius: 18px;
-  }
-  .step-readout-box {
-    padding: 16px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .readout-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .readout-actions .wf-btn {
-    flex: 1;
-    justify-content: center;
-    padding: 8px 10px;
-    font-size: 12px;
   }
 }
 
@@ -1914,30 +1781,6 @@ a {
           </svg>
         </div>
 
-        <!-- Live Step Details Readout Card -->
-        <div class="step-readout-box" id="wfReadoutBox">
-          <div class="readout-left">
-            <span class="readout-badge" id="wfStepBadge">Step 1 of 12</span>
-            <div class="readout-content">
-              <h4 id="wfStepTitle">Product Idea Discussion &amp; Briefing</h4>
-              <p id="wfStepDesc">Initial consultation to define target species, formulation concept, therapeutic requirements, and packaging formats.</p>
-            </div>
-          </div>
-          <div class="readout-actions">
-            <button class="wf-btn" id="wfPrevBtn" aria-label="Previous step"><i class="fa-solid fa-chevron-left"></i> Previous</button>
-            <button class="wf-btn wf-btn-primary" id="wfPlayBtn" aria-label="Pause or play flow"><i class="fa-solid fa-pause"></i> Pause</button>
-            <button class="wf-btn" id="wfNextBtn" aria-label="Next step">Next <i class="fa-solid fa-chevron-right"></i></button>
-          </div>
-        </div>
-
-        <!-- Quick 12-Step Jump Pill Navigation Track -->
-        <div class="step-pill-track" id="wfPillTrack" aria-label="Step navigation"></div>
-
-        <!-- Direct High-Res Link -->
-        <div style="margin-top: 20px; font-size: 13.5px; color: var(--gray-500); display: flex; align-items: center; justify-content: center; gap: 8px;">
-          <i class="fa-solid fa-magnifying-glass-plus" style="color: var(--orange);"></i>
-          <a href="assets/manufacturing-workflow-12-step.png" target="_blank" style="color: var(--navy); font-weight: 600; text-decoration: underline;">Open high-resolution process infographic in a new tab</a>
-        </div>
       </div>
     </div>
   </section>
@@ -2153,123 +1996,21 @@ a {
     (function initSmoothWorkflowLoop() {
       const svg = document.getElementById('workflowSvg');
       const flowGroup = document.getElementById('flowTracksGroup');
-      const pillTrack = document.getElementById('wfPillTrack');
-      const badgeEl = document.getElementById('wfStepBadge');
-      const titleEl = document.getElementById('wfStepTitle');
-      const descEl = document.getElementById('wfStepDesc');
-      const playBtn = document.getElementById('wfPlayBtn');
-      const prevBtn = document.getElementById('wfPrevBtn');
-      const nextBtn = document.getElementById('wfNextBtn');
 
       const stepData = [
-        {
-          num: 1,
-          flowKey: '1-2',
-          title: 'Product Idea Discussion & Briefing',
-          desc: 'Initial collaborative brief with client technical teams to define species target, delivery format, active ingredient specifications, and therapeutic requirements.',
-          dur: 420,
-          lead: 70
-        },
-        {
-          num: 2,
-          flowKey: '2-3',
-          title: 'Customized Product Development',
-          desc: 'Formulation chemistry, carrier matrix selection, and bioavailability optimization engineered to meet exact regional feed and veterinary compliance.',
-          dur: 420,
-          lead: 70
-        },
-        {
-          num: 3,
-          flowKey: '3-4',
-          title: 'Sample Manufacturing',
-          desc: 'Pilot cleanroom compounding and physical sample production for client sensory, palatability, and stability benchmarking.',
-          dur: 420,
-          lead: 70
-        },
-        {
-          num: 4,
-          flowKey: '4-5',
-          title: 'Laboratory Testing',
-          desc: 'Comprehensive multi-stage analytical testing covering HPLC assay purity, moisture, disintegration, viscosity, and heavy metal screening.',
-          dur: 680,
-          lead: 90,
-          isCurve: true
-        },
-        {
-          num: 5,
-          flowKey: '5-6',
-          title: 'Sample Approval from Client',
-          desc: 'Formal client sign-off on pilot prototype characteristics, test certificates, and commercial specification tolerances.',
-          dur: 420,
-          lead: 70
-        },
-        {
-          num: 6,
-          flowKey: '6-7',
-          title: 'Artwork & Label Finalization',
-          desc: 'Design validation for bilingual legal disclosures, statutory claim verifications, batch barcoding, and tamper-evident packaging branding.',
-          dur: 420,
-          lead: 70
-        },
-        {
-          num: 7,
-          flowKey: '7-8',
-          title: 'Procurement of Packaging Materials',
-          desc: 'Sourcing of validated HDPE drums, multi-layer high-barrier foil sachets, induction seals, and UV-opaque bottles.',
-          dur: 420,
-          lead: 70
-        },
-        {
-          num: 8,
-          flowKey: '8-9',
-          title: 'Raw Materials Sourcing',
-          desc: 'Vendor qualification and procurement of pharmacopeia-grade APIs, chelated minerals, enzymes, and active botanicals.',
-          dur: 680,
-          lead: 90,
-          isCurve: true
-        },
-        {
-          num: 9,
-          flowKey: '9-10',
-          title: 'Commercial-Scale Production',
-          desc: 'High-shear ribbon blending, automated liquid filling, micro-granulation, and cleanroom packaging under FAMI-QS and ISO 9001:2015 controls.',
-          dur: 420,
-          lead: 70
-        },
-        {
-          num: 10,
-          flowKey: '10-11',
-          title: 'Quality Inspection of Finished Product',
-          desc: 'Stringent post-production quality assurance verifying batch uniformity, microbiological sterility, and packaging seal integrity.',
-          dur: 420,
-          lead: 70
-        },
-        {
-          num: 11,
-          flowKey: '11-12',
-          title: 'Final Product Approval by Customer',
-          desc: 'Issuance of formal Certificate of Analysis (CoA), pre-shipment quality audit, and client commercial authorization.',
-          dur: 420,
-          lead: 70
-        },
-        {
-          num: 12,
-          flowKey: null,
-          title: 'Dispatch of Finished Goods',
-          desc: 'Moisture-sealed palletization, temperature-monitored staging, and domestic and global export dispatch.',
-          dur: 0,
-          lead: 0
-        }
+        { num: 1, flowKey: '1-2', dur: 420, lead: 70 },
+        { num: 2, flowKey: '2-3', dur: 420, lead: 70 },
+        { num: 3, flowKey: '3-4', dur: 420, lead: 70 },
+        { num: 4, flowKey: '4-5', dur: 680, lead: 90, isCurve: true },
+        { num: 5, flowKey: '5-6', dur: 420, lead: 70 },
+        { num: 6, flowKey: '6-7', dur: 420, lead: 70 },
+        { num: 7, flowKey: '7-8', dur: 420, lead: 70 },
+        { num: 8, flowKey: '8-9', dur: 680, lead: 90, isCurve: true },
+        { num: 9, flowKey: '9-10', dur: 420, lead: 70 },
+        { num: 10, flowKey: '10-11', dur: 420, lead: 70 },
+        { num: 11, flowKey: '11-12', dur: 420, lead: 70 },
+        { num: 12, flowKey: null, dur: 0, lead: 0 }
       ];
-
-      // Populate Jump Pills
-      if (pillTrack) {
-        pillTrack.innerHTML = stepData.map(s => `
-          <button class="step-pill-btn" data-step="${s.num}" aria-label="Jump to Step ${s.num}: ${s.title}" title="Step ${s.num}: ${s.title}">
-            ${s.num}
-          </button>
-        `).join('');
-      }
 
       let currentStep = 1;
       let activeTimers = [];
@@ -2296,23 +2037,6 @@ a {
         document.querySelectorAll('.flow-arrow').forEach(a => a.classList.remove('arrow-active'));
         document.querySelectorAll('.pulse-dot').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.wf-step-label').forEach(l => l.classList.remove('lbl-visible'));
-        document.querySelectorAll('.step-pill-btn').forEach(b => {
-          b.classList.remove('active', 'completed');
-        });
-      }
-
-      function updateReadout(stepNum) {
-        const data = stepData[stepNum - 1];
-        if (!data) return;
-        if (badgeEl) badgeEl.textContent = `Step ${data.num} of 12`;
-        if (titleEl) titleEl.textContent = data.title;
-        if (descEl) descEl.textContent = data.desc;
-
-        document.querySelectorAll('.step-pill-btn').forEach(btn => {
-          const num = parseInt(btn.getAttribute('data-step'), 10);
-          btn.classList.toggle('active', num === stepNum);
-          btn.classList.toggle('completed', num < stepNum);
-        });
       }
 
       function revealStepText(stepNum) {
@@ -2346,10 +2070,9 @@ a {
         const config = stepData[stepNum - 1];
         if (!config) return;
 
-        // 1. Reveal this step's text label & update live readout
+        // 1. Reveal this step's text label & activate pulse
         revealStepText(stepNum);
         activatePulse(stepNum);
-        updateReadout(stepNum);
 
         // 2. Final Step 12 reached: hold complete connected pipeline then smooth loop restart
         if (stepNum === 12) {
@@ -2408,7 +2131,6 @@ a {
 
         currentStep = targetNum;
         activatePulse(targetNum);
-        updateReadout(targetNum);
 
         if (!isPaused) {
           scheduleTimeout(() => {
@@ -2433,10 +2155,7 @@ a {
         triggerStep(fromStep);
       }
 
-      // Initial state: readout shows step 1
-      updateReadout(1);
-
-      // Viewport IntersectionObserver: starts flow from Step 1 on view
+      // Viewport IntersectionObserver: starts flow from Step 1 on scroll
       const targetSection = document.getElementById('workflow') || document.getElementById('workflow-diagram');
       if (targetSection && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
@@ -2448,13 +2167,11 @@ a {
                 triggerStep(currentStep);
               }
             } else {
-              // Pause when scrolled out of view; if holding or completed, reset so re-entering starts fresh
               clearAllTimers();
               if (isHolding) {
                 hasStarted = false;
                 isHolding = false;
                 resetFlow();
-                updateReadout(1);
               }
             }
           });
@@ -2463,51 +2180,6 @@ a {
       } else {
         startFlow(1);
       }
-
-      // Play / Pause Toggle
-      if (playBtn) {
-        playBtn.addEventListener('click', () => {
-          isPaused = !isPaused;
-          if (isPaused) {
-            clearAllTimers();
-            playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Play';
-            playBtn.classList.remove('wf-btn-primary');
-          } else {
-            playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
-            playBtn.classList.add('wf-btn-primary');
-            if (!hasStarted) {
-              startFlow(1);
-            } else {
-              triggerStep(currentStep);
-            }
-          }
-        });
-      }
-
-      // Previous Step Button
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          const prev = currentStep > 1 ? currentStep - 1 : 12;
-          jumpToStep(prev);
-        });
-      }
-
-      // Next Step Button
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          const next = currentStep < 12 ? currentStep + 1 : 1;
-          jumpToStep(next);
-        });
-      }
-
-      // Quick Pill Navigation Click
-      document.addEventListener('click', (e) => {
-        const pill = e.target.closest('.step-pill-btn');
-        if (pill) {
-          const step = parseInt(pill.getAttribute('data-step'), 10);
-          if (step >= 1 && step <= 12) jumpToStep(step);
-        }
-      });
 
       // SVG Click Targets
       document.querySelectorAll('#step-targets rect').forEach(r => {
