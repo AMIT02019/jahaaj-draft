@@ -1145,7 +1145,7 @@ a {
 
 /* Glowing Liquid Energy Flow Lines */
 .wf-flow-group {
-  transition: opacity 0.4s ease;
+  transition: opacity 0.45s ease;
 }
 .wf-flow-group.flow-dissolving {
   opacity: 0;
@@ -1156,11 +1156,11 @@ a {
   stroke-linejoin: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 0.40s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke-dashoffset 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 .flow-glow-line.flow-curve {
-  transition: stroke-dashoffset 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke-dashoffset 0.70s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .flow-glow-line.path-active {
   stroke-dashoffset: 0;
@@ -1169,7 +1169,39 @@ a {
   filter: url(#neonGlow);
 }
 .flow-glow-under {
-  filter: blur(4px);
+  filter: blur(5px);
+  opacity: 0.65;
+}
+
+/* Directional Arrowheads */
+.flow-arrow {
+  opacity: 0;
+  transform: scale(0.6);
+  transform-origin: center;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.flow-arrow.arrow-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Crisp Vector Step Text Labels (Hidden before scroll, revealed on scroll from Step 1) */
+.wf-step-label {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: 14.5px;
+  fill: #0e3252;
+  letter-spacing: 0.2px;
+  text-anchor: middle;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.wf-step-label.lbl-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .wf-no-transition * {
@@ -1189,8 +1221,8 @@ a {
   animation: wfPulseAnim 1.25s infinite ease-out;
 }
 @keyframes wfPulseAnim {
-  0% { r: 24; stroke-opacity: 0.95; stroke-width: 3.5; }
-  100% { r: 56; stroke-opacity: 0; stroke-width: 1; }
+  0% { r: 21; stroke-opacity: 0.95; stroke-width: 3.5; }
+  100% { r: 52; stroke-opacity: 0; stroke-width: 1; }
 }
 
 /* Step Details Live Readout Box */
@@ -1651,53 +1683,87 @@ a {
         <div class="wf-svg-wrap">
           <svg viewBox="0 0 1379 920" id="workflowSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="12-Step Manufacturing Process Interactive Diagram">
             <defs>
-              <!-- Dynamic Flow Gradients corresponding to each production stage -->
-              <linearGradient id="flowGrad1-2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <!-- Mask to show ONLY the 12 blocks statically (hiding default connector lines and text) -->
+              <mask id="blocksOnlyMask">
+                <rect width="1379" height="920" fill="black" />
+                <!-- Row 1 Blocks -->
+                <circle cx="206" cy="125" r="95" fill="white" />
+                <circle cx="206" cy="227" r="19" fill="white" />
+                <circle cx="535" cy="125" r="95" fill="white" />
+                <circle cx="535" cy="227" r="19" fill="white" />
+                <circle cx="848" cy="125" r="95" fill="white" />
+                <circle cx="848" cy="227" r="19" fill="white" />
+                <circle cx="1155" cy="125" r="95" fill="white" />
+                <circle cx="1155" cy="227" r="19" fill="white" />
+
+                <!-- Row 2 Blocks -->
+                <circle cx="1152" cy="405" r="95" fill="white" />
+                <circle cx="1152" cy="505" r="19" fill="white" />
+                <circle cx="841" cy="405" r="95" fill="white" />
+                <circle cx="841" cy="505" r="19" fill="white" />
+                <circle cx="532" cy="405" r="95" fill="white" />
+                <circle cx="532" cy="505" r="19" fill="white" />
+                <circle cx="206" cy="405" r="95" fill="white" />
+                <circle cx="206" cy="505" r="19" fill="white" />
+
+                <!-- Row 3 Blocks -->
+                <circle cx="208" cy="665" r="95" fill="white" />
+                <circle cx="208" cy="766" r="19" fill="white" />
+                <circle cx="530" cy="665" r="95" fill="white" />
+                <circle cx="530" cy="766" r="19" fill="white" />
+                <circle cx="838" cy="665" r="95" fill="white" />
+                <circle cx="838" cy="766" r="19" fill="white" />
+                <circle cx="1152" cy="665" r="95" fill="white" />
+                <circle cx="1152" cy="766" r="19" fill="white" />
+              </mask>
+
+              <!-- Dynamic Flow Gradients with userSpaceOnUse for robust line rendering -->
+              <linearGradient id="flowGrad1-2" x1="226" y1="227" x2="515" y2="227" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#16a34a" />
                 <stop offset="100%" stop-color="#06b6d4" />
               </linearGradient>
-              <linearGradient id="flowGrad2-3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <linearGradient id="flowGrad2-3" x1="555" y1="227" x2="828" y2="227" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#06b6d4" />
                 <stop offset="100%" stop-color="#2563eb" />
               </linearGradient>
-              <linearGradient id="flowGrad3-4" x1="0%" y1="0%" x2="100%" y2="0%">
+              <linearGradient id="flowGrad3-4" x1="868" y1="227" x2="1135" y2="227" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#2563eb" />
                 <stop offset="100%" stop-color="#7c3aed" />
               </linearGradient>
-              <linearGradient id="flowGrad4-5" x1="0%" y1="0%" x2="0%" y2="100%">
+              <linearGradient id="flowGrad4-5" x1="1175" y1="227" x2="1172" y2="505" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#7c3aed" />
                 <stop offset="100%" stop-color="#9333ea" />
               </linearGradient>
-              <linearGradient id="flowGrad5-6" x1="100%" y1="0%" x2="0%" y2="0%">
+              <linearGradient id="flowGrad5-6" x1="1132" y1="505" x2="861" y2="505" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#9333ea" />
                 <stop offset="100%" stop-color="#db2777" />
               </linearGradient>
-              <linearGradient id="flowGrad6-7" x1="100%" y1="0%" x2="0%" y2="0%">
+              <linearGradient id="flowGrad6-7" x1="821" y1="505" x2="552" y2="505" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#db2777" />
                 <stop offset="100%" stop-color="#ea580c" />
               </linearGradient>
-              <linearGradient id="flowGrad7-8" x1="100%" y1="0%" x2="0%" y2="0%">
+              <linearGradient id="flowGrad7-8" x1="512" y1="505" x2="226" y2="505" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#ea580c" />
                 <stop offset="100%" stop-color="#d97706" />
               </linearGradient>
-              <linearGradient id="flowGrad8-9" x1="0%" y1="0%" x2="0%" y2="100%">
+              <linearGradient id="flowGrad8-9" x1="186" y1="505" x2="188" y2="766" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#d97706" />
                 <stop offset="100%" stop-color="#16a34a" />
               </linearGradient>
-              <linearGradient id="flowGrad9-10" x1="0%" y1="0%" x2="100%" y2="0%">
+              <linearGradient id="flowGrad9-10" x1="228" y1="766" x2="510" y2="766" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#16a34a" />
                 <stop offset="100%" stop-color="#06b6d4" />
               </linearGradient>
-              <linearGradient id="flowGrad10-11" x1="0%" y1="0%" x2="100%" y2="0%">
+              <linearGradient id="flowGrad10-11" x1="550" y1="766" x2="818" y2="766" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#06b6d4" />
                 <stop offset="100%" stop-color="#2563eb" />
               </linearGradient>
-              <linearGradient id="flowGrad11-12" x1="0%" y1="0%" x2="100%" y2="0%">
+              <linearGradient id="flowGrad11-12" x1="858" y1="766" x2="1132" y2="766" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#2563eb" />
                 <stop offset="100%" stop-color="#7c3aed" />
               </linearGradient>
 
-              <!-- Filter for laser glow -->
+              <!-- Laser Glow Filter -->
               <filter id="neonGlow" x="-25%" y="-25%" width="150%" height="150%">
                 <feGaussianBlur stdDeviation="3.5" result="blur" />
                 <feMerge>
@@ -1707,74 +1773,165 @@ a {
                 </feMerge>
               </filter>
             </defs>
-            
-            <!-- 1. Statically present 12-step commercial CDMO diagram (100% full color, perfectly legible) -->
-            <image id="workflowBaseImage" class="wf-base-image" href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" />
 
-            <!-- 2. Glowing Liquid Energy Flow Conduits (Flow starts from Step 1) -->
+            <!-- 1. Statically Present 12 Blocks (Illustrations + Badges only) -->
+            <image id="workflowBaseImage" class="wf-base-image" href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" mask="url(#blocksOnlyMask)" />
+
+            <!-- 2. Glowing Liquid Flow Conduits with Directional Arrows (Revealed on scroll from Step 1) -->
             <g id="flowTracksGroup" class="wf-flow-group">
-              <!-- Glow Underlay (Thicker radiant aura) -->
-              <g class="flow-underlay-layer" opacity="0.65">
-                <path id="flow-under-1-2" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="12" d="M 231 227 L 508 227" />
-                <path id="flow-under-2-3" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="12" d="M 558 227 L 818 227" />
-                <path id="flow-under-3-4" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="12" d="M 868 227 L 1128 227" />
-                <path id="flow-under-4-5" class="flow-glow-line flow-glow-under flow-curve" pathLength="1" stroke="url(#flowGrad4-5)" stroke-width="14" d="M 1178 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1178 505" />
-                <path id="flow-under-5-6" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad5-6)" stroke-width="12" d="M 1128 505 L 868 505" />
-                <path id="flow-under-6-7" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad6-7)" stroke-width="12" d="M 818 505 L 558 505" />
-                <path id="flow-under-7-8" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad7-8)" stroke-width="12" d="M 508 505 L 231 505" />
-                <path id="flow-under-8-9" class="flow-glow-line flow-glow-under flow-curve" pathLength="1" stroke="url(#flowGrad8-9)" stroke-width="14" d="M 181 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 181 766" />
-                <path id="flow-under-9-10" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad9-10)" stroke-width="12" d="M 231 766 L 508 766" />
-                <path id="flow-under-10-11" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad10-11)" stroke-width="12" d="M 558 766 L 818 766" />
-                <path id="flow-under-11-12" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad11-12)" stroke-width="12" d="M 868 766 L 1128 766" />
+              <!-- Underlay Aura Layer -->
+              <g class="flow-underlay-layer">
+                <path id="flow-under-1-2" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="12" d="M 226 227 L 515 227" />
+                <path id="flow-under-2-3" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="12" d="M 555 227 L 828 227" />
+                <path id="flow-under-3-4" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="12" d="M 868 227 L 1135 227" />
+                <path id="flow-under-4-5" class="flow-glow-line flow-glow-under flow-curve" pathLength="1" stroke="url(#flowGrad4-5)" stroke-width="14" d="M 1175 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1172 505" />
+                <path id="flow-under-5-6" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad5-6)" stroke-width="12" d="M 1132 505 L 861 505" />
+                <path id="flow-under-6-7" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad6-7)" stroke-width="12" d="M 821 505 L 552 505" />
+                <path id="flow-under-7-8" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad7-8)" stroke-width="12" d="M 512 505 L 226 505" />
+                <path id="flow-under-8-9" class="flow-glow-line flow-glow-under flow-curve" pathLength="1" stroke="url(#flowGrad8-9)" stroke-width="14" d="M 186 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 188 766" />
+                <path id="flow-under-9-10" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad9-10)" stroke-width="12" d="M 228 766 L 510 766" />
+                <path id="flow-under-10-11" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad10-11)" stroke-width="12" d="M 550 766 L 818 766" />
+                <path id="flow-under-11-12" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad11-12)" stroke-width="12" d="M 858 766 L 1132 766" />
               </g>
 
-              <!-- Core Luminous Beam (Crisp laser stream) -->
+              <!-- Core Luminous Beam Layer -->
               <g class="flow-core-layer">
-                <path id="flow-core-1-2" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="6" d="M 231 227 L 508 227" />
-                <path id="flow-core-2-3" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="6" d="M 558 227 L 818 227" />
-                <path id="flow-core-3-4" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="6" d="M 868 227 L 1128 227" />
-                <path id="flow-core-4-5" class="flow-glow-line flow-glow-core flow-curve" pathLength="1" stroke="url(#flowGrad4-5)" stroke-width="7" d="M 1178 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1178 505" />
-                <path id="flow-core-5-6" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad5-6)" stroke-width="6" d="M 1128 505 L 868 505" />
-                <path id="flow-core-6-7" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad6-7)" stroke-width="6" d="M 818 505 L 558 505" />
-                <path id="flow-core-7-8" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad7-8)" stroke-width="6" d="M 508 505 L 231 505" />
-                <path id="flow-core-8-9" class="flow-glow-line flow-glow-core flow-curve" pathLength="1" stroke="url(#flowGrad8-9)" stroke-width="7" d="M 181 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 181 766" />
-                <path id="flow-core-9-10" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad9-10)" stroke-width="6" d="M 231 766 L 508 766" />
-                <path id="flow-core-10-11" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad10-11)" stroke-width="6" d="M 558 766 L 818 766" />
-                <path id="flow-core-11-12" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad11-12)" stroke-width="6" d="M 868 766 L 1128 766" />
+                <path id="flow-core-1-2" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="6" d="M 226 227 L 515 227" />
+                <path id="flow-core-2-3" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="6" d="M 555 227 L 828 227" />
+                <path id="flow-core-3-4" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="6" d="M 868 227 L 1135 227" />
+                <path id="flow-core-4-5" class="flow-glow-line flow-glow-core flow-curve" pathLength="1" stroke="url(#flowGrad4-5)" stroke-width="7" d="M 1175 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1172 505" />
+                <path id="flow-core-5-6" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad5-6)" stroke-width="6" d="M 1132 505 L 861 505" />
+                <path id="flow-core-6-7" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad6-7)" stroke-width="6" d="M 821 505 L 552 505" />
+                <path id="flow-core-7-8" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad7-8)" stroke-width="6" d="M 512 505 L 226 505" />
+                <path id="flow-core-8-9" class="flow-glow-line flow-glow-core flow-curve" pathLength="1" stroke="url(#flowGrad8-9)" stroke-width="7" d="M 186 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 188 766" />
+                <path id="flow-core-9-10" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad9-10)" stroke-width="6" d="M 228 766 L 510 766" />
+                <path id="flow-core-10-11" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad10-11)" stroke-width="6" d="M 550 766 L 818 766" />
+                <path id="flow-core-11-12" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad11-12)" stroke-width="6" d="M 858 766 L 1132 766" />
+              </g>
+
+              <!-- Directional Arrowheads -->
+              <g class="flow-arrows-layer">
+                <path id="arrow-1-2" class="flow-arrow" fill="#06b6d4" d="M 503 221 L 514 227 L 503 233 Z" />
+                <path id="arrow-2-3" class="flow-arrow" fill="#2563eb" d="M 816 221 L 827 227 L 816 233 Z" />
+                <path id="arrow-3-4" class="flow-arrow" fill="#7c3aed" d="M 1123 221 L 1134 227 L 1123 233 Z" />
+                <path id="arrow-4-5" class="flow-arrow" fill="#9333ea" d="M 1184 499 L 1173 505 L 1184 511 Z" />
+                <path id="arrow-5-6" class="flow-arrow" fill="#db2777" d="M 873 499 L 862 505 L 873 511 Z" />
+                <path id="arrow-6-7" class="flow-arrow" fill="#ea580c" d="M 564 499 L 553 505 L 564 511 Z" />
+                <path id="arrow-7-8" class="flow-arrow" fill="#d97706" d="M 238 499 L 227 505 L 238 511 Z" />
+                <path id="arrow-8-9" class="flow-arrow" fill="#16a34a" d="M 176 760 L 187 766 L 176 772 Z" />
+                <path id="arrow-9-10" class="flow-arrow" fill="#06b6d4" d="M 498 760 L 509 766 L 498 772 Z" />
+                <path id="arrow-10-11" class="flow-arrow" fill="#2563eb" d="M 806 760 L 817 766 L 806 772 Z" />
+                <path id="arrow-11-12" class="flow-arrow" fill="#7c3aed" d="M 1120 760 L 1131 766 L 1120 772 Z" />
               </g>
             </g>
 
             <!-- 3. Active Step Pulse Indicator Beacons (Dead center on each numbered circle) -->
-            <circle id="pulse-1" class="pulse-dot" cx="206" cy="227" r="26" stroke="#16a34a" />
-            <circle id="pulse-2" class="pulse-dot" cx="535" cy="227" r="26" stroke="#06b6d4" />
-            <circle id="pulse-3" class="pulse-dot" cx="848" cy="227" r="26" stroke="#2563eb" />
-            <circle id="pulse-4" class="pulse-dot" cx="1155" cy="227" r="26" stroke="#7c3aed" />
-            <circle id="pulse-5" class="pulse-dot" cx="1152" cy="505" r="26" stroke="#9333ea" />
-            <circle id="pulse-6" class="pulse-dot" cx="841" cy="505" r="26" stroke="#db2777" />
-            <circle id="pulse-7" class="pulse-dot" cx="532" cy="505" r="26" stroke="#ea580c" />
-            <circle id="pulse-8" class="pulse-dot" cx="206" cy="505" r="26" stroke="#d97706" />
-            <circle id="pulse-9" class="pulse-dot" cx="208" cy="766" r="26" stroke="#16a34a" />
-            <circle id="pulse-10" class="pulse-dot" cx="530" cy="766" r="26" stroke="#06b6d4" />
-            <circle id="pulse-11" class="pulse-dot" cx="838" cy="766" r="26" stroke="#2563eb" />
-            <circle id="pulse-12" class="pulse-dot" cx="1152" cy="766" r="26" stroke="#7c3aed" />
+            <circle id="pulse-1" class="pulse-dot" cx="206" cy="227" r="21" stroke="#16a34a" />
+            <circle id="pulse-2" class="pulse-dot" cx="535" cy="227" r="21" stroke="#06b6d4" />
+            <circle id="pulse-3" class="pulse-dot" cx="848" cy="227" r="21" stroke="#2563eb" />
+            <circle id="pulse-4" class="pulse-dot" cx="1155" cy="227" r="21" stroke="#7c3aed" />
+            <circle id="pulse-5" class="pulse-dot" cx="1152" cy="505" r="21" stroke="#9333ea" />
+            <circle id="pulse-6" class="pulse-dot" cx="841" cy="505" r="21" stroke="#db2777" />
+            <circle id="pulse-7" class="pulse-dot" cx="532" cy="505" r="21" stroke="#ea580c" />
+            <circle id="pulse-8" class="pulse-dot" cx="206" cy="505" r="21" stroke="#d97706" />
+            <circle id="pulse-9" class="pulse-dot" cx="208" cy="766" r="21" stroke="#16a34a" />
+            <circle id="pulse-10" class="pulse-dot" cx="530" cy="766" r="21" stroke="#06b6d4" />
+            <circle id="pulse-11" class="pulse-dot" cx="838" cy="766" r="21" stroke="#2563eb" />
+            <circle id="pulse-12" class="pulse-dot" cx="1152" cy="766" r="21" stroke="#7c3aed" />
 
-            <!-- 4. Interactive Transparent Click Targets over the 12 Steps -->
+            <!-- 4. Crisp Vector Step Text Labels (Hidden before scroll, revealed on scroll from Step 1) -->
+            <g id="stepLabelsGroup">
+              <!-- Row 1 -->
+              <g id="lbl-1" class="wf-step-label">
+                <text x="206" y="268">PRODUCT IDEA</text>
+                <text x="206" y="286">DISCUSSION &amp; BRIEFING</text>
+              </g>
+              <g id="lbl-2" class="wf-step-label">
+                <text x="535" y="268">CUSTOMIZED PRODUCT</text>
+                <text x="535" y="286">DEVELOPMENT</text>
+              </g>
+              <g id="lbl-3" class="wf-step-label">
+                <text x="848" y="268">SAMPLE</text>
+                <text x="848" y="286">MANUFACTURING</text>
+              </g>
+              <g id="lbl-4" class="wf-step-label">
+                <text x="1155" y="268">LABORATORY</text>
+                <text x="1155" y="286">TESTING</text>
+              </g>
+
+              <!-- Row 2 -->
+              <g id="lbl-5" class="wf-step-label">
+                <text x="1152" y="546">SAMPLE APPROVAL</text>
+                <text x="1152" y="564">FROM CLIENT</text>
+              </g>
+              <g id="lbl-6" class="wf-step-label">
+                <text x="841" y="546">ARTWORK &amp; LABEL</text>
+                <text x="841" y="564">FINALIZATION</text>
+              </g>
+              <g id="lbl-7" class="wf-step-label">
+                <text x="532" y="546">PROCUREMENT OF</text>
+                <text x="532" y="564">PACKAGING MATERIALS</text>
+              </g>
+              <g id="lbl-8" class="wf-step-label">
+                <text x="206" y="546">RAW MATERIALS</text>
+                <text x="206" y="564">SOURCING</text>
+              </g>
+
+              <!-- Row 3 -->
+              <g id="lbl-9" class="wf-step-label">
+                <text x="208" y="808">COMMERCIAL-SCALE</text>
+                <text x="208" y="826">PRODUCTION</text>
+              </g>
+              <g id="lbl-10" class="wf-step-label">
+                <text x="530" y="808">QUALITY INSPECTION</text>
+                <text x="530" y="826">OF FINISHED PRODUCT</text>
+              </g>
+              <g id="lbl-11" class="wf-step-label">
+                <text x="838" y="808">FINAL PRODUCT</text>
+                <text x="838" y="826">APPROVAL BY CUSTOMER</text>
+              </g>
+              <g id="lbl-12" class="wf-step-label">
+                <text x="1152" y="808">DISPATCH OF</text>
+                <text x="1152" y="826">FINISHED GOODS</text>
+              </g>
+            </g>
+
+            <!-- 5. Interactive Click Targets over the 12 Steps (Clean, no browser tooltip) -->
             <g id="step-targets" style="cursor: pointer;">
-              <rect data-step="1" x="60" y="40" width="290" height="290" fill="transparent"><title>Step 1: Product Idea Discussion &amp; Briefing</title></rect>
-              <rect data-step="2" x="390" y="40" width="290" height="290" fill="transparent"><title>Step 2: Customized Product Development</title></rect>
-              <rect data-step="3" x="700" y="40" width="290" height="290" fill="transparent"><title>Step 3: Sample Manufacturing</title></rect>
-              <rect data-step="4" x="1010" y="40" width="290" height="290" fill="transparent"><title>Step 4: Laboratory Testing</title></rect>
-              <rect data-step="5" x="1010" y="315" width="290" height="290" fill="transparent"><title>Step 5: Sample Approval from Client</title></rect>
-              <rect data-step="6" x="700" y="315" width="290" height="290" fill="transparent"><title>Step 6: Artwork &amp; Label Finalization</title></rect>
-              <rect data-step="7" x="390" y="315" width="290" height="290" fill="transparent"><title>Step 7: Procurement of Packaging Materials</title></rect>
-              <rect data-step="8" x="60" y="315" width="290" height="290" fill="transparent"><title>Step 8: Raw Materials Sourcing</title></rect>
-              <rect data-step="9" x="60" y="585" width="290" height="290" fill="transparent"><title>Step 9: Commercial-Scale Production</title></rect>
-              <rect data-step="10" x="390" y="585" width="290" height="290" fill="transparent"><title>Step 10: Quality Inspection of Finished Product</title></rect>
-              <rect data-step="11" x="700" y="585" width="290" height="290" fill="transparent"><title>Step 11: Final Product Approval by Customer</title></rect>
-              <rect data-step="12" x="1010" y="585" width="290" height="290" fill="transparent"><title>Step 12: Dispatch of Finished Goods</title></rect>
+              <rect data-step="1" x="80" y="30" width="250" height="265" fill="transparent" />
+              <rect data-step="2" x="410" y="30" width="250" height="265" fill="transparent" />
+              <rect data-step="3" x="720" y="30" width="250" height="265" fill="transparent" />
+              <rect data-step="4" x="1030" y="30" width="250" height="265" fill="transparent" />
+              <rect data-step="5" x="1030" y="310" width="250" height="265" fill="transparent" />
+              <rect data-step="6" x="720" y="310" width="250" height="265" fill="transparent" />
+              <rect data-step="7" x="410" y="310" width="250" height="265" fill="transparent" />
+              <rect data-step="8" x="80" y="310" width="250" height="265" fill="transparent" />
+              <rect data-step="9" x="80" y="570" width="250" height="265" fill="transparent" />
+              <rect data-step="10" x="410" y="570" width="250" height="265" fill="transparent" />
+              <rect data-step="11" x="720" y="570" width="250" height="265" fill="transparent" />
+              <rect data-step="12" x="1030" y="570" width="250" height="265" fill="transparent" />
             </g>
           </svg>
         </div>
+
+        <!-- Live Step Details Readout Card -->
+        <div class="step-readout-box" id="wfReadoutBox">
+          <div class="readout-left">
+            <span class="readout-badge" id="wfStepBadge">Step 1 of 12</span>
+            <div class="readout-content">
+              <h4 id="wfStepTitle">Product Idea Discussion &amp; Briefing</h4>
+              <p id="wfStepDesc">Initial consultation to define target species, formulation concept, therapeutic requirements, and packaging formats.</p>
+            </div>
+          </div>
+          <div class="readout-actions">
+            <button class="wf-btn" id="wfPrevBtn" aria-label="Previous step"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+            <button class="wf-btn wf-btn-primary" id="wfPlayBtn" aria-label="Pause or play flow"><i class="fa-solid fa-pause"></i> Pause</button>
+            <button class="wf-btn" id="wfNextBtn" aria-label="Next step">Next <i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Quick 12-Step Jump Pill Navigation Track -->
+        <div class="step-pill-track" id="wfPillTrack" aria-label="Step navigation"></div>
 
         <!-- Direct High-Res Link -->
         <div style="margin-top: 20px; font-size: 13.5px; color: var(--gray-500); display: flex; align-items: center; justify-content: center; gap: 8px;">
@@ -1996,22 +2153,123 @@ a {
     (function initSmoothWorkflowLoop() {
       const svg = document.getElementById('workflowSvg');
       const flowGroup = document.getElementById('flowTracksGroup');
+      const pillTrack = document.getElementById('wfPillTrack');
+      const badgeEl = document.getElementById('wfStepBadge');
+      const titleEl = document.getElementById('wfStepTitle');
+      const descEl = document.getElementById('wfStepDesc');
+      const playBtn = document.getElementById('wfPlayBtn');
+      const prevBtn = document.getElementById('wfPrevBtn');
+      const nextBtn = document.getElementById('wfNextBtn');
 
-      // 12 continuous flow stages connecting all 12 CDMO steps
-      const stepConfig = [
-        { num: 1, flowKey: '1-2', dur: 380, lead: 80 },
-        { num: 2, flowKey: '2-3', dur: 380, lead: 80 },
-        { num: 3, flowKey: '3-4', dur: 380, lead: 80 },
-        { num: 4, flowKey: '4-5', dur: 650, lead: 100, isCurve: true },
-        { num: 5, flowKey: '5-6', dur: 380, lead: 80 },
-        { num: 6, flowKey: '6-7', dur: 380, lead: 80 },
-        { num: 7, flowKey: '7-8', dur: 380, lead: 80 },
-        { num: 8, flowKey: '8-9', dur: 650, lead: 100, isCurve: true },
-        { num: 9, flowKey: '9-10', dur: 380, lead: 80 },
-        { num: 10, flowKey: '10-11', dur: 380, lead: 80 },
-        { num: 11, flowKey: '11-12', dur: 380, lead: 80 },
-        { num: 12, flowKey: null, dur: 0, lead: 0 }
+      const stepData = [
+        {
+          num: 1,
+          flowKey: '1-2',
+          title: 'Product Idea Discussion & Briefing',
+          desc: 'Initial collaborative brief with client technical teams to define species target, delivery format, active ingredient specifications, and therapeutic requirements.',
+          dur: 420,
+          lead: 70
+        },
+        {
+          num: 2,
+          flowKey: '2-3',
+          title: 'Customized Product Development',
+          desc: 'Formulation chemistry, carrier matrix selection, and bioavailability optimization engineered to meet exact regional feed and veterinary compliance.',
+          dur: 420,
+          lead: 70
+        },
+        {
+          num: 3,
+          flowKey: '3-4',
+          title: 'Sample Manufacturing',
+          desc: 'Pilot cleanroom compounding and physical sample production for client sensory, palatability, and stability benchmarking.',
+          dur: 420,
+          lead: 70
+        },
+        {
+          num: 4,
+          flowKey: '4-5',
+          title: 'Laboratory Testing',
+          desc: 'Comprehensive multi-stage analytical testing covering HPLC assay purity, moisture, disintegration, viscosity, and heavy metal screening.',
+          dur: 680,
+          lead: 90,
+          isCurve: true
+        },
+        {
+          num: 5,
+          flowKey: '5-6',
+          title: 'Sample Approval from Client',
+          desc: 'Formal client sign-off on pilot prototype characteristics, test certificates, and commercial specification tolerances.',
+          dur: 420,
+          lead: 70
+        },
+        {
+          num: 6,
+          flowKey: '6-7',
+          title: 'Artwork & Label Finalization',
+          desc: 'Design validation for bilingual legal disclosures, statutory claim verifications, batch barcoding, and tamper-evident packaging branding.',
+          dur: 420,
+          lead: 70
+        },
+        {
+          num: 7,
+          flowKey: '7-8',
+          title: 'Procurement of Packaging Materials',
+          desc: 'Sourcing of validated HDPE drums, multi-layer high-barrier foil sachets, induction seals, and UV-opaque bottles.',
+          dur: 420,
+          lead: 70
+        },
+        {
+          num: 8,
+          flowKey: '8-9',
+          title: 'Raw Materials Sourcing',
+          desc: 'Vendor qualification and procurement of pharmacopeia-grade APIs, chelated minerals, enzymes, and active botanicals.',
+          dur: 680,
+          lead: 90,
+          isCurve: true
+        },
+        {
+          num: 9,
+          flowKey: '9-10',
+          title: 'Commercial-Scale Production',
+          desc: 'High-shear ribbon blending, automated liquid filling, micro-granulation, and cleanroom packaging under FAMI-QS and ISO 9001:2015 controls.',
+          dur: 420,
+          lead: 70
+        },
+        {
+          num: 10,
+          flowKey: '10-11',
+          title: 'Quality Inspection of Finished Product',
+          desc: 'Stringent post-production quality assurance verifying batch uniformity, microbiological sterility, and packaging seal integrity.',
+          dur: 420,
+          lead: 70
+        },
+        {
+          num: 11,
+          flowKey: '11-12',
+          title: 'Final Product Approval by Customer',
+          desc: 'Issuance of formal Certificate of Analysis (CoA), pre-shipment quality audit, and client commercial authorization.',
+          dur: 420,
+          lead: 70
+        },
+        {
+          num: 12,
+          flowKey: null,
+          title: 'Dispatch of Finished Goods',
+          desc: 'Moisture-sealed palletization, temperature-monitored staging, and domestic and global export dispatch.',
+          dur: 0,
+          lead: 0
+        }
       ];
+
+      // Populate Jump Pills
+      if (pillTrack) {
+        pillTrack.innerHTML = stepData.map(s => `
+          <button class="step-pill-btn" data-step="${s.num}" aria-label="Jump to Step ${s.num}: ${s.title}" title="Step ${s.num}: ${s.title}">
+            ${s.num}
+          </button>
+        `).join('');
+      }
 
       let currentStep = 1;
       let activeTimers = [];
@@ -2033,14 +2291,38 @@ a {
         return id;
       }
 
-      function resetFlowLines() {
+      function resetFlow() {
         document.querySelectorAll('.flow-glow-line').forEach(p => p.classList.remove('path-active'));
+        document.querySelectorAll('.flow-arrow').forEach(a => a.classList.remove('arrow-active'));
         document.querySelectorAll('.pulse-dot').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.wf-step-label').forEach(l => l.classList.remove('lbl-visible'));
+        document.querySelectorAll('.step-pill-btn').forEach(b => {
+          b.classList.remove('active', 'completed');
+        });
       }
 
-      function activatePulse(num) {
+      function updateReadout(stepNum) {
+        const data = stepData[stepNum - 1];
+        if (!data) return;
+        if (badgeEl) badgeEl.textContent = `Step ${data.num} of 12`;
+        if (titleEl) titleEl.textContent = data.title;
+        if (descEl) descEl.textContent = data.desc;
+
+        document.querySelectorAll('.step-pill-btn').forEach(btn => {
+          const num = parseInt(btn.getAttribute('data-step'), 10);
+          btn.classList.toggle('active', num === stepNum);
+          btn.classList.toggle('completed', num < stepNum);
+        });
+      }
+
+      function revealStepText(stepNum) {
+        const lbl = document.getElementById(`lbl-${stepNum}`);
+        if (lbl) lbl.classList.add('lbl-visible');
+      }
+
+      function activatePulse(stepNum) {
         document.querySelectorAll('.pulse-dot').forEach(p => p.classList.remove('active'));
-        const p = document.getElementById(`pulse-${num}`);
+        const p = document.getElementById(`pulse-${stepNum}`);
         if (p) p.classList.add('active');
       }
 
@@ -2048,8 +2330,10 @@ a {
         if (!flowKey) return;
         const under = document.getElementById(`flow-under-${flowKey}`);
         const core = document.getElementById(`flow-core-${flowKey}`);
+        const arrow = document.getElementById(`arrow-${flowKey}`);
         if (under) under.classList.toggle('path-active', active);
         if (core) core.classList.toggle('path-active', active);
+        if (arrow) arrow.classList.toggle('arrow-active', active);
       }
 
       function triggerStep(stepNum) {
@@ -2059,23 +2343,27 @@ a {
         }
 
         currentStep = stepNum;
-        const config = stepConfig[stepNum - 1];
+        const config = stepData[stepNum - 1];
         if (!config) return;
 
-        // 1. Activate beacon pulse on current step badge
+        // 1. Reveal this step's text label & update live readout
+        revealStepText(stepNum);
         activatePulse(stepNum);
+        updateReadout(stepNum);
 
         // 2. Final Step 12 reached: hold complete connected pipeline then smooth loop restart
         if (stepNum === 12) {
           isHolding = true;
           scheduleTimeout(() => {
             if (isPaused) return;
-            // Crossfade dissolve out the flow lines (blocks remain 100% visible and static)
+            // Crossfade dissolve out the flow lines & labels (blocks remain 100% visible and static)
             if (flowGroup) flowGroup.classList.add('flow-dissolving');
+            document.querySelectorAll('.wf-step-label').forEach(l => l.style.opacity = '0');
 
             scheduleTimeout(() => {
               if (svg) svg.classList.add('wf-no-transition');
-              resetFlowLines();
+              resetFlow();
+              document.querySelectorAll('.wf-step-label').forEach(l => l.style.opacity = '');
               if (svg) void svg.offsetHeight;
               if (svg) svg.classList.remove('wf-no-transition');
 
@@ -2084,17 +2372,17 @@ a {
 
               // Immediately flow into Step 1 for seamless continuous looping
               triggerStep(1);
-            }, 420);
-          }, 2200);
+            }, 450);
+          }, 2600);
           return;
         }
 
-        // 3. Fluid overlapping flow: start outgoing path, and trigger next step right as beam connects
+        // 3. Fluid progressive flow: start outgoing path, and trigger next step right as beam connects
         scheduleTimeout(() => {
           if (isPaused) return;
           setPathActive(config.flowKey, true);
 
-          const travelTime = Math.max(180, config.dur - 40);
+          const travelTime = Math.max(200, config.dur - 30);
           scheduleTimeout(() => {
             if (isPaused) return;
             triggerStep(stepNum + 1);
@@ -2102,13 +2390,51 @@ a {
         }, config.lead);
       }
 
+      function jumpToStep(targetNum) {
+        clearAllTimers();
+        isHolding = false;
+        if (svg) svg.classList.add('wf-no-transition');
+        resetFlow();
+
+        for (let i = 1; i <= targetNum; i++) {
+          revealStepText(i);
+          if (i < targetNum) {
+            const cfg = stepData[i - 1];
+            if (cfg && cfg.flowKey) setPathActive(cfg.flowKey, true);
+          }
+        }
+        if (svg) void svg.offsetHeight;
+        if (svg) svg.classList.remove('wf-no-transition');
+
+        currentStep = targetNum;
+        activatePulse(targetNum);
+        updateReadout(targetNum);
+
+        if (!isPaused) {
+          scheduleTimeout(() => {
+            if (targetNum < 12) {
+              const cfg = stepData[targetNum - 1];
+              setPathActive(cfg.flowKey, true);
+              scheduleTimeout(() => {
+                triggerStep(targetNum + 1);
+              }, Math.max(200, cfg.dur - 30));
+            } else {
+              triggerStep(12);
+            }
+          }, 1100);
+        }
+      }
+
       function startFlow(fromStep = 1) {
         clearAllTimers();
-        if (fromStep === 1) resetFlowLines();
+        if (fromStep === 1) resetFlow();
         hasStarted = true;
         isHolding = false;
         triggerStep(fromStep);
       }
+
+      // Initial state: readout shows step 1
+      updateReadout(1);
 
       // Viewport IntersectionObserver: starts flow from Step 1 on view
       const targetSection = document.getElementById('workflow') || document.getElementById('workflow-diagram');
@@ -2116,70 +2442,88 @@ a {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              isPaused = false;
               if (!hasStarted) {
                 startFlow(1);
-              } else if (!isHolding) {
+              } else if (!isHolding && !isPaused) {
                 triggerStep(currentStep);
               }
             } else {
-              isPaused = true;
+              // Pause when scrolled out of view; if holding or completed, reset so re-entering starts fresh
               clearAllTimers();
+              if (isHolding) {
+                hasStarted = false;
+                isHolding = false;
+                resetFlow();
+                updateReadout(1);
+              }
             }
           });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.15 });
         observer.observe(targetSection);
       } else {
         startFlow(1);
       }
 
-      // Page visibility API (pause when tab hidden, resume when visible)
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          isPaused = true;
-          clearAllTimers();
-        } else {
-          isPaused = false;
-          if (!isHolding) triggerStep(currentStep);
+      // Play / Pause Toggle
+      if (playBtn) {
+        playBtn.addEventListener('click', () => {
+          isPaused = !isPaused;
+          if (isPaused) {
+            clearAllTimers();
+            playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Play';
+            playBtn.classList.remove('wf-btn-primary');
+          } else {
+            playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
+            playBtn.classList.add('wf-btn-primary');
+            if (!hasStarted) {
+              startFlow(1);
+            } else {
+              triggerStep(currentStep);
+            }
+          }
+        });
+      }
+
+      // Previous Step Button
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          const prev = currentStep > 1 ? currentStep - 1 : 12;
+          jumpToStep(prev);
+        });
+      }
+
+      // Next Step Button
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const next = currentStep < 12 ? currentStep + 1 : 1;
+          jumpToStep(next);
+        });
+      }
+
+      // Quick Pill Navigation Click
+      document.addEventListener('click', (e) => {
+        const pill = e.target.closest('.step-pill-btn');
+        if (pill) {
+          const step = parseInt(pill.getAttribute('data-step'), 10);
+          if (step >= 1 && step <= 12) jumpToStep(step);
         }
       });
 
-      // Interactive step targets (click to jump and smoothly continue)
+      // SVG Click Targets
       document.querySelectorAll('#step-targets rect').forEach(r => {
         r.addEventListener('click', () => {
           const targetNum = parseInt(r.getAttribute('data-step'), 10);
-          clearAllTimers();
-          isPaused = false;
-          isHolding = false;
-          if (svg) svg.classList.add('wf-no-transition');
-          resetFlowLines();
-
-          for (let i = 1; i <= targetNum; i++) {
-            if (i < targetNum) {
-              const cfg = stepConfig[i - 1];
-              if (cfg && cfg.flowKey) {
-                setPathActive(cfg.flowKey, true);
-              }
-            }
-          }
-          if (svg) void svg.offsetHeight;
-          if (svg) svg.classList.remove('wf-no-transition');
-
-          activatePulse(targetNum);
-          currentStep = targetNum;
-
-          scheduleTimeout(() => {
-            if (targetNum < 12) {
-              const cfg = stepConfig[targetNum - 1];
-              setPathActive(cfg.flowKey, true);
-              scheduleTimeout(() => {
-                triggerStep(targetNum + 1);
-              }, Math.max(180, cfg.dur - 40));
-            } else {
-              triggerStep(12);
-            }
-          }, 1100);
+          if (targetNum >= 1 && targetNum <= 12) jumpToStep(targetNum);
         });
+      });
+
+      // Page visibility API (pause when tab hidden, resume when visible)
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearAllTimers();
+        } else if (!isPaused && hasStarted && !isHolding) {
+          triggerStep(currentStep);
+        }
       });
     })();
   </script>
