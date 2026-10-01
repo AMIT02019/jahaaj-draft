@@ -18,10 +18,12 @@
 <style>
 /* ============ BASE & DESIGN TOKENS ============ */
 :root {
-  --primary-navy: #0d2463;
-  --primary-navy-trans: rgba(13, 36, 99, 0.92);
-  --logo-blue-rich: #0d2463;
-  --logo-blue-deep: #07153b;
+  --primary-navy: #0052d4;
+  --primary-navy-dark: #071e62;
+  --primary-navy-trans: rgba(0, 82, 212, 0.92);
+  --logo-blue-cyan: #0284c7;
+  --logo-blue-royal: #0055dc;
+  --logo-blue-deep: #071e62;
   --btn-orange-1: #c2410c;
   --btn-orange-2: #9a3412;
   --btn-orange-hover-1: #ea580c;
@@ -548,21 +550,23 @@ button {
 
 /* ============ SECTION 2: DESCRIPTION (TWO ROWS) ============ */
 .body-description-section {
-  background: linear-gradient(180deg, #0d2463 0%, #07153b 100%);
+  background: linear-gradient(135deg, #0284c7 0%, #0055dc 42%, #071e62 100%);
   color: #ffffff;
   padding: 100px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  overflow: hidden;
 }
 
 .body-description-section::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 10% 20%, rgba(253, 133, 0, 0.09) 0%, transparent 40%),
-              radial-gradient(circle at 90% 80%, rgba(0, 162, 248, 0.16) 0%, transparent 45%);
+  background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.16) 0%, transparent 45%),
+              radial-gradient(circle at 90% 80%, rgba(0, 162, 248, 0.22) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(0, 85, 220, 0.15) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -780,10 +784,20 @@ button {
 
 /* ============ SECTION 4: SOLUTIONS ACROSS ANIMAL HEALTH ============ */
 .solutions-section {
-  background: linear-gradient(180deg, #0d2463 0%, #07153b 100%);
+  background: linear-gradient(135deg, #0284c7 0%, #0055dc 42%, #071e62 100%);
   color: #ffffff;
   padding: 90px 72px;
   position: relative;
+  overflow: hidden;
+}
+
+.solutions-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.14) 0%, transparent 45%),
+              radial-gradient(circle at 88% 82%, rgba(0, 162, 248, 0.2) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .solutions-section .container {
@@ -1064,7 +1078,7 @@ button {
    UNIFIED MASTER FOOTER COMPONENT STYLES
    ========================================================================== */
 .footer-section {
-  background: #07153b !important;
+  background: linear-gradient(180deg, #09236d 0%, #051442 100%) !important;
   color: #f0f0f0 !important;
   padding: 70px 4% 30px !important;
   display: flex !important;
