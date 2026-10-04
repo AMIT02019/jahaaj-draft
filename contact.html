@@ -1729,7 +1729,16 @@ a {
 
     <!-- Desktop Navigation Items -->
     <nav class="nav__menu" aria-label="Main menu">
-      <div class="nav__item"><a class="nav__link " href="index.html">Home</a></div>
+      <div class="nav__item" data-menu="home">
+        <button class="nav__link " aria-expanded="false">Home <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <div class="dropdown">
+          <ul>
+            <li><a href="index.html" >Home &ndash; Version 1</a></li>
+            <li><a href="home-2.html" >Home &ndash; Version 2</a></li>
+            <li><a href="home-3.html" >Home &ndash; Version 3 (Logo Blue)</a></li>
+          </ul>
+        </div>
+      </div>
       
       <div class="nav__item" data-menu="discover">
         <button class="nav__link " aria-expanded="false">Discover Jahaaj <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
@@ -1789,7 +1798,14 @@ a {
   <!-- ================= MOBILE MENU DRAWER ================= -->
   <div class="mnav" id="mnav" hidden>
     <div class="mnav__inner">
-      <div class="mnav__group"><a class="mnav__top" href="index.html">Home</a></div>
+      <div class="mnav__group">
+        <button class="mnav__top" aria-expanded="false">Home <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+        <ul class="mnav__sub">
+          <li><a href="index.html" >Home &ndash; Version 1</a></li>
+          <li><a href="home-2.html" >Home &ndash; Version 2</a></li>
+          <li><a href="home-3.html" >Home &ndash; Version 3 (Logo Blue)</a></li>
+        </ul>
+      </div>
       
       <div class="mnav__group">
         <button class="mnav__top" aria-expanded="false">Discover Jahaaj <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
