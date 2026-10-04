@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Packaging Capabilities &amp; Formats | Jahaaj Healthcare</title>
   <meta name="description" content="Explore Jahaaj Healthcare's primary and secondary packaging capabilities: pouches, foil packs, HDPE bottles, blisters, drums, buckets, and custom packaging.">
-  <link rel="icon" type="image/png" href="assets/Jahaaj_Logo-v9aWIgL2.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -793,6 +793,14 @@ a {
   gap: 14px;
 }
 
+.sec-card-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--gray-200);
+}
 .sec-card {
   background: #ffffff;
   border: 1px solid var(--gray-200);
@@ -1309,28 +1317,42 @@ a {
           </div>
         </div>
 
-        <!-- Card 4 -->
+        <!-- Card 4A: Sachets -->
         <div class="pkg-format-card">
           <div class="pkg-format-img-wrap">
             <img src="assets/pkg_card_sachets.jpg" alt="Sachets">
           </div>
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Sachets</h3>
-            <p class="pkg-format-desc">Single-dose units for drinking water solutions, vaccines and boosters.</p>
+            <p class="pkg-format-desc">Single-dose sealed foil units for drinking water solutions, vaccines and boosters.</p>
             <div class="pkg-format-footer">
               <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
             </div>
           </div>
         </div>
 
-        <!-- Card 5 -->
+        <!-- Card 4B: Vertical Sachet Sticks (Plain) -->
         <div class="pkg-format-card">
           <div class="pkg-format-img-wrap">
-            <img src="assets/pkg_card_blisters.jpg" alt="Blister & Strip Packs">
+            <img src="assets/pkg_stick_packs.jpg" alt="Vertical Sachet Sticks">
           </div>
           <div class="pkg-format-body">
-            <h3 class="pkg-format-title">Blister &amp; Strip Packs</h3>
-            <p class="pkg-format-desc">Alu-alu and PVC/PVDC blisters for tablets and boluses.</p>
+            <h3 class="pkg-format-title">Vertical Sachet Sticks</h3>
+            <p class="pkg-format-desc">Plain vertical sachet stick packs for liquid treats, pastes, and oral dosage powders.</p>
+            <div class="pkg-format-footer">
+              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Foils & Blister Packs -->
+        <div class="pkg-format-card">
+          <div class="pkg-format-img-wrap">
+            <img src="assets/pkg_foils_blisters.jpg" alt="Foils and Blister Packs">
+          </div>
+          <div class="pkg-format-body">
+            <h3 class="pkg-format-title">Foils &amp; Blister Packs</h3>
+            <p class="pkg-format-desc">Alu-alu foil and push-through blisters for veterinary boluses and tablets.</p>
             <div class="pkg-format-footer">
               <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
             </div>
@@ -1359,6 +1381,20 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Tablet &amp; Bolus Containers</h3>
             <p class="pkg-format-desc">Specialized containers with desiccant caps.</p>
+            <div class="pkg-format-footer">
+              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8: 25 kg Bags & Bulk Packaging -->
+        <div class="pkg-format-card">
+          <div class="pkg-format-img-wrap">
+            <img src="assets/pkg_25kg_bags.jpg" alt="25 kg Bags and Bulk Sacks">
+          </div>
+          <div class="pkg-format-body">
+            <h3 class="pkg-format-title">25 kg Bags &amp; Bulk Sacks</h3>
+            <p class="pkg-format-desc">Multi-wall kraft paper and HDPE bags for bulk powder formulations and feed premixes.</p>
             <div class="pkg-format-footer">
               <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
             </div>
@@ -1444,13 +1480,9 @@ a {
     <div class="container">
       <div class="secondary-pkg-grid">
         <div class="secondary-content">
-          <span class="section-pill">SECONDARY PACKAGING</span>
+          <span class="section-pill">SECONDARY &amp; TERTIARY PACKAGING</span>
           <h2 class="section-title-large">Transit Safety, Branding &amp; Shelf Appeal</h2>
-          <p class="approach-desc">Our secondary packaging protects goods during long-distance transportation while reinforcing your brand's presence in the market.</p>
-          <a href="contact.html" class="btn-orange">
-            <span>Explore Secondary Packaging</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
+          <p class="approach-desc">Our secondary and tertiary packaging protects goods during long-distance transportation while reinforcing your brand's presence in the market.</p>
         </div>
 
         <div class="secondary-pallet-wrap">
@@ -1459,18 +1491,18 @@ a {
 
         <div class="secondary-stack">
           <div class="sec-card">
-            <div class="sec-card-icon"><i class="fas fa-box"></i></div>
+            <img src="assets/pkg_monocartons.jpg" alt="Printed Folding Monocartons" class="sec-card-thumb">
             <div class="sec-card-text">
-              <h3 class="sec-card-title">Printed Folding Cartons</h3>
-              <p class="sec-card-desc">Premium mono cartons with customized design and compliance.</p>
+              <h3 class="sec-card-title">Printed Folding Cartons (Monocartons)</h3>
+              <p class="sec-card-desc">Premium monocartons with customized finishing and compliance.</p>
             </div>
           </div>
 
           <div class="sec-card">
-            <div class="sec-card-icon"><i class="fas fa-boxes-stacked"></i></div>
+            <img src="assets/pkg_master_cartons.jpg" alt="Corrugated Master Cartons" class="sec-card-thumb">
             <div class="sec-card-text">
               <h3 class="sec-card-title">Corrugated Master Cartons</h3>
-              <p class="sec-card-desc">Heavy-duty 5-ply and 7-ply cartons for stacking and transport.</p>
+              <p class="sec-card-desc">Heavy-duty 5-ply and 7-ply shipping cartons for stacking and export.</p>
             </div>
           </div>
 
@@ -1486,7 +1518,7 @@ a {
             <div class="sec-card-icon"><i class="fas fa-pallet"></i></div>
             <div class="sec-card-text">
               <h3 class="sec-card-title">Export Palletization</h3>
-              <p class="sec-card-desc">ISPM-15 compliant pallets and edge protectors.</p>
+              <p class="sec-card-desc">Export compliant pallets and edge protectors.</p>
             </div>
           </div>
         </div>
@@ -1653,11 +1685,6 @@ a {
         <a class="social-icon-link" href="https://www.facebook.com/profile.php?id=61584592767323" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a class="social-icon-link" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a class="social-icon-link" href="https://x.com" target="_blank" rel="noopener" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
-      </div>
-      <div class="footer-cert-badges">
-        <span class="f-cert-pill"><i class="fas fa-shield-check"></i> FAMI-QS Certified</span>
-        <span class="f-cert-pill"><i class="fas fa-certificate"></i> ISO 9001:2015</span>
-        <span class="f-cert-pill"><i class="fas fa-check-double"></i> HACCP Compliant</span>
       </div>
     </div>
   </div>
