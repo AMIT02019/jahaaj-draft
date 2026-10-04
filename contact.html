@@ -567,6 +567,39 @@ a {
   box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
 }
 
+.species-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.species-checkbox {
+  display: none;
+}
+.species-pill-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--gray-300);
+  background: #ffffff;
+  color: var(--gray-700);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.species-pill-label:hover {
+  border-color: var(--orange-bright);
+  color: var(--navy);
+}
+.species-checkbox:checked + .species-pill-label {
+  background: var(--orange-bright);
+  color: #ffffff;
+  border-color: var(--orange-bright);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.28);
+}
+
 .contact-info-col {
   display: flex;
   flex-direction: column;
@@ -1867,84 +1900,98 @@ a {
     <div class="container">
       <div class="contact-grid">
         
-        <!-- Left: Consolidated Enquiry Form -->
+        <!-- Left: Technical Formulation Enquiry & Collaboration Form -->
         <div class="contact-form-card demo-card" data-animate="fade-up">
           <h2 style="font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">Enquiry &amp; Collaboration</h2>
-          <p style="font-size: 14.5px; color: var(--gray-600); margin-bottom: 26px;">Please share your requirements or questions below. Our team typically responds within 24 business hours.</p>
+          <p style="font-size: 14.5px; color: var(--gray-600); margin-bottom: 26px;">Fill in your formulation parameters below. All discussions are protected under our standard Non-Disclosure Agreement (NDA).</p>
 
           <form id="contactForm" onsubmit="handleContactSubmit(event); return false;">
+            
+            <!-- Step 1: Target Species -->
+            <div class="form-field">
+              <label class="form-label">1. Target Species (Select all that apply):</label>
+              <div class="species-pill-group">
+                <label><input type="checkbox" name="species" value="Poultry" class="species-checkbox"><span class="species-pill-label"><i class="fas fa-feather-pointed"></i> Poultry</span></label>
+                <label><input type="checkbox" name="species" value="Ruminants" class="species-checkbox"><span class="species-pill-label"><i class="fas fa-cow"></i> Ruminants / Livestock</span></label>
+                <label><input type="checkbox" name="species" value="Pets" class="species-checkbox"><span class="species-pill-label"><i class="fas fa-paw"></i> Companion Animals (Pets)</span></label>
+                <label><input type="checkbox" name="species" value="Equine" class="species-checkbox"><span class="species-pill-label"><i class="fas fa-horse"></i> Equine</span></label>
+                <label><input type="checkbox" name="species" value="Swine" class="species-checkbox"><span class="species-pill-label"><i class="fas fa-piggy-bank"></i> Swine</span></label>
+                <label><input type="checkbox" name="species" value="Aquaculture" class="species-checkbox"><span class="species-pill-label"><i class="fas fa-fish"></i> Aquaculture</span></label>
+              </div>
+            </div>
+
+            <!-- Step 2: Format & Volume -->
             <div class="form-group-grid">
               <div class="form-field">
-                <label class="form-label" for="fullName">Full Name *</label>
-                <input class="form-input" id="fullName" type="text" placeholder="Your Name" required>
+                <label class="form-label" for="dosageFormat">2. Desired Dosage Format *</label>
+                <select id="dosageFormat" class="form-select" required>
+                  <option value="">-- Select Dosage Format --</option>
+                  <option value="Powder">Powder (Water-Soluble or Feed Premix)</option>
+                  <option value="Liquid">Liquid (Oral Solution, Suspension, Syrup)</option>
+                  <option value="Bolus">Boluses (3g to 30g)</option>
+                  <option value="Tablet">Tablets (0.5g to 2g)</option>
+                  <option value="Herbal">Herbal / Phytogenic Botanical</option>
+                  <option value="Custom">Custom Multi-Format Combination</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="orderQuantity">3. Estimated Batch / Annual Volume *</label>
+                <select id="orderQuantity" class="form-select" required>
+                  <option value="">-- Select Estimated Volume --</option>
+                  <option value="Pilot Trial Batch (< 500 kg / 5,000 boluses)">Pilot Trial Batch (&lt; 500 kg / 5,000 boluses)</option>
+                  <option value="Commercial Run (1 to 5 MT / Month)">Commercial Run (1 to 5 Metric Tonnes / Month)</option>
+                  <option value="High-Volume Commercial (10+ MT / Month)">High-Volume Commercial (10+ MT / Month)</option>
+                  <option value="Long-Term Annual CDMO Supply Contract">Long-Term Annual CDMO Supply Contract</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Step 3: Challenge Area -->
+            <div class="form-field">
+              <label class="form-label" for="challengeInput">4. Health / Performance Challenge or Objective *</label>
+              <input type="text" id="challengeInput" class="form-input" placeholder="e.g. Broiler FCR, Transition Cow Ketosis, Equine Joint Soundness, Pet Coat Health" required>
+            </div>
+
+            <!-- Step 4: Actives & Description -->
+            <div class="form-field">
+              <label class="form-label" for="projectScope">5. Key Active Ingredients or Benchmark Formulation (Optional)</label>
+              <textarea id="projectScope" class="form-textarea" rows="3" placeholder="List any specific vitamins, chelated minerals, probiotics, enzymes, or herbal extracts you would like included..."></textarea>
+            </div>
+
+            <!-- Step 5: Contact Info -->
+            <div class="form-group-grid">
+              <div class="form-field">
+                <label class="form-label" for="fullName">Your Full Name *</label>
+                <input class="form-input" id="fullName" type="text" placeholder="Dr. / Mr. / Ms. Full Name" required>
               </div>
               <div class="form-field">
-                <label class="form-label" for="companyName">Company / Brand (Optional)</label>
-                <input class="form-input" id="companyName" type="text" placeholder="Company Name">
+                <label class="form-label" for="companyName">Company / Organization *</label>
+                <input class="form-input" id="companyName" type="text" placeholder="Brand / Company Name" required>
               </div>
             </div>
 
             <div class="form-group-grid">
               <div class="form-field">
-                <label class="form-label" for="workEmail">Email Address *</label>
+                <label class="form-label" for="workEmail">Business Email Address *</label>
                 <input class="form-input" id="workEmail" type="email" placeholder="name@company.com" required>
               </div>
               <div class="form-field">
-                <label class="form-label" for="phoneNumber">Phone / WhatsApp *</label>
-                <input class="form-input" id="phoneNumber" type="tel" placeholder="+91 XXXXX XXXXX" required>
+                <label class="form-label" for="phoneNumber">Phone / WhatsApp (with Country Code) *</label>
+                <input class="form-input" id="phoneNumber" type="tel" placeholder="+91 98765 43210" required>
               </div>
             </div>
 
-            <div class="form-group-grid">
-              <div class="form-field">
-                <label class="form-label" for="enquiryCategory">Department / Category *</label>
-                <select class="form-select" id="enquiryCategory" required>
-                  <option value="Commercial & Contract Manufacturing">Commercial &amp; Contract Manufacturing</option>
-                  <option value="Custom CDMO Formulations">Custom CDMO Formulations</option>
-                  <option value="Quality Assurance & Regulatory">Quality Assurance &amp; Regulatory</option>
-                  <option value="Join Our Team">Join Our Team / Careers</option>
-                  <option value="General Inquiry">General Inquiry &amp; Plant Visit</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label class="form-label" for="orderQuantity">Estimated Order Quantity (Optional)</label>
-                <input class="form-input" id="orderQuantity" type="text" placeholder="e.g. 500 kg, 5,000 boluses, or monthly volume">
-              </div>
-            </div>
-
-            <div class="form-group-grid">
-              <div class="form-field">
-                <label class="form-label" for="targetSpecies">Target Animal Species (Optional)</label>
-                <select class="form-select" id="targetSpecies">
-                  <option value="">-- Select Species (Optional) --</option>
-                  <option value="Poultry">Poultry (Broiler, Layer, Breeder)</option>
-                  <option value="Ruminants">Ruminants &amp; Dairy Cattle</option>
-                  <option value="Pets">Companion Animals (Canine, Feline)</option>
-                  <option value="Aquaculture">Aquaculture (Fish, Shrimp)</option>
-                  <option value="Swine">Swine / Pig Nutrition</option>
-                  <option value="Multi-Species">Multi-Species Premix</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label class="form-label" for="dosageFormat">Preferred Dosage Form (Optional)</label>
-                <select class="form-select" id="dosageFormat">
-                  <option value="">-- Select Format (Optional) --</option>
-                  <option value="Powder">Water-Soluble Powder / Feed Premix</option>
-                  <option value="Liquid">Nutritional Liquid / Suspension</option>
-                  <option value="Bolus">Veterinary Bolus / Compressed Tablet</option>
-                  <option value="Gel">Nutritional Gel / Oral Paste</option>
-                  <option value="Undecided">Open to Recommendation</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label class="form-label" for="projectScope">Additional Details &amp; Formulation Message (Optional)</label>
-              <textarea class="form-textarea" id="projectScope" rows="4" placeholder="Tell us about your requirements, specific active ingredients, or any questions..."></textarea>
+            <!-- NDA Checkbox -->
+            <div class="form-field" style="margin-bottom: 24px;">
+              <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--gray-600); cursor: pointer; font-weight: normal;">
+                <input type="checkbox" id="ndaCheck" style="margin-top: 3px; accent-color: var(--orange-bright);">
+                <span>Please send a mutual Non-Disclosure Agreement (NDA) prior to sharing confidential proprietary formulation data.</span>
+              </label>
             </div>
 
             <button type="submit" class="explore-btn" style="width: 100%;">
-              Submit Enquiry <i class="fa-solid fa-paper-plane"></i>
+              Submit Formulation Enquiry <i class="fa-solid fa-paper-plane"></i>
             </button>
           </form>
         </div>
@@ -2403,20 +2450,30 @@ a {
       if (product && projectScope) {
         projectScope.value = `I am inquiring about the ready-to-market formulation: "${product}". Please provide technical specifications, private label MOQ, batch turnaround times, and pricing details.`;
         
-        // Auto-select species if detectable
+        const challengeInput = document.getElementById('challengeInput');
+        if (challengeInput) {
+          challengeInput.value = `${product} Formulation Development`;
+        }
+
+        // Auto-select species checkbox if detectable
         const prodLower = product.toLowerCase();
-        if (targetSpecies) {
-          if (prodLower.includes('poultry') || prodLower.includes('chick') || prodLower.includes('egg') || prodLower.includes('broiler')) {
-            targetSpecies.value = 'Poultry';
-          } else if (prodLower.includes('ruminant') || prodLower.includes('cow') || prodLower.includes('milk') || prodLower.includes('rumen') || prodLower.includes('mastitis')) {
-            targetSpecies.value = 'Ruminants';
-          } else if (prodLower.includes('pet') || prodLower.includes('dog') || prodLower.includes('cat') || prodLower.includes('hip') || prodLower.includes('joint') || prodLower.includes('skin') || prodLower.includes('dermal') || prodLower.includes('calm')) {
-            targetSpecies.value = 'Pets';
-          } else if (prodLower.includes('aqua') || prodLower.includes('pond') || prodLower.includes('shrimp') || prodLower.includes('fish') || prodLower.includes('sludge')) {
-            targetSpecies.value = 'Aquaculture';
-          } else if (prodLower.includes('swine') || prodLower.includes('pig')) {
-            targetSpecies.value = 'Swine';
-          }
+        function checkSpecies(val) {
+          const cb = document.querySelector(`input.species-checkbox[value="${val}"]`);
+          if (cb) cb.checked = true;
+        }
+
+        if (prodLower.includes('poultry') || prodLower.includes('chick') || prodLower.includes('egg') || prodLower.includes('broiler')) {
+          checkSpecies('Poultry');
+        } else if (prodLower.includes('ruminant') || prodLower.includes('cow') || prodLower.includes('milk') || prodLower.includes('rumen') || prodLower.includes('mastitis')) {
+          checkSpecies('Ruminants');
+        } else if (prodLower.includes('pet') || prodLower.includes('dog') || prodLower.includes('cat') || prodLower.includes('hip') || prodLower.includes('joint') || prodLower.includes('skin') || prodLower.includes('dermal') || prodLower.includes('calm')) {
+          checkSpecies('Pets');
+        } else if (prodLower.includes('aqua') || prodLower.includes('pond') || prodLower.includes('shrimp') || prodLower.includes('fish') || prodLower.includes('sludge')) {
+          checkSpecies('Aquaculture');
+        } else if (prodLower.includes('swine') || prodLower.includes('pig')) {
+          checkSpecies('Swine');
+        } else if (prodLower.includes('equine') || prodLower.includes('horse')) {
+          checkSpecies('Equine');
         }
 
         // Auto-select format if detectable
@@ -2429,12 +2486,27 @@ a {
             dosageFormat.value = 'Powder';
           }
         }
-      } else if (species && targetSpecies) {
-        if (species.toLowerCase().includes('poultry')) targetSpecies.value = 'Poultry';
-        else if (species.toLowerCase().includes('ruminant')) targetSpecies.value = 'Ruminants';
-        else if (species.toLowerCase().includes('pet')) targetSpecies.value = 'Pets';
-        else if (species.toLowerCase().includes('aqua')) targetSpecies.value = 'Aquaculture';
-        else if (species.toLowerCase().includes('swine')) targetSpecies.value = 'Swine';
+      } else if (species) {
+        const spLower = species.toLowerCase();
+        if (spLower.includes('poultry')) {
+          const cb = document.querySelector('input.species-checkbox[value="Poultry"]');
+          if (cb) cb.checked = true;
+        } else if (spLower.includes('ruminant')) {
+          const cb = document.querySelector('input.species-checkbox[value="Ruminants"]');
+          if (cb) cb.checked = true;
+        } else if (spLower.includes('pet')) {
+          const cb = document.querySelector('input.species-checkbox[value="Pets"]');
+          if (cb) cb.checked = true;
+        } else if (spLower.includes('aqua')) {
+          const cb = document.querySelector('input.species-checkbox[value="Aquaculture"]');
+          if (cb) cb.checked = true;
+        } else if (spLower.includes('swine')) {
+          const cb = document.querySelector('input.species-checkbox[value="Swine"]');
+          if (cb) cb.checked = true;
+        } else if (spLower.includes('equine')) {
+          const cb = document.querySelector('input.species-checkbox[value="Equine"]');
+          if (cb) cb.checked = true;
+        }
       } else if (subject && projectScope) {
         projectScope.value = `Inquiring regarding ${subject}. Please share details on custom CDMO and private label manufacturing capabilities.`;
       }
