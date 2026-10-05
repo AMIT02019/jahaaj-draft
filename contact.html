@@ -600,6 +600,56 @@ a {
   box-shadow: 0 4px 12px rgba(234, 88, 12, 0.28);
 }
 
+.form-group {
+  margin-bottom: 24px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 640px) {
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+}
+.form-control {
+  width: 100%;
+  padding: 13px 18px;
+  font-size: 15px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: 12px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: var(--gray-800);
+}
+.form-control:focus {
+  border-color: var(--orange-bright);
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(194, 65, 12, 0.4);
+  transition: all 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(194, 65, 12, 0.55);
+  color: #ffffff;
+}
+
 .contact-info-col {
   display: flex;
   flex-direction: column;
@@ -1900,15 +1950,15 @@ a {
     <div class="container">
       <div class="contact-grid">
         
-        <!-- Left: Technical Formulation Enquiry & Collaboration Form -->
+        <!-- Left: Technical Formulation Enquiry Form -->
         <div class="contact-form-card demo-card" data-animate="fade-up">
-          <h2 style="font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">Enquiry &amp; Collaboration</h2>
-          <p style="font-size: 14.5px; color: var(--gray-600); margin-bottom: 26px;">Fill in your formulation parameters below. All discussions are protected under our standard Non-Disclosure Agreement (NDA).</p>
+          <h2 style="font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 8px; text-align: center;">Technical Formulation Enquiry Form</h2>
+          <p style="font-size: 15px; color: var(--gray-600); margin-bottom: 32px; text-align: center;">Fill in your parameters below. All discussions are protected under our standard Non-Disclosure Agreement (NDA).</p>
 
           <form id="contactForm" onsubmit="handleContactSubmit(event); return false;">
             
             <!-- Step 1: Target Species -->
-            <div class="form-field">
+            <div class="form-group">
               <label class="form-label">1. Target Species (Select all that apply):</label>
               <div class="species-pill-group">
                 <label><input type="checkbox" name="species" value="Poultry" class="species-checkbox"><span class="species-pill-label"><i class="fas fa-feather-pointed"></i> Poultry</span></label>
@@ -1921,78 +1971,80 @@ a {
             </div>
 
             <!-- Step 2: Format & Volume -->
-            <div class="form-group-grid">
-              <div class="form-field">
-                <label class="form-label" for="dosageFormat">2. Desired Dosage Format *</label>
-                <select id="dosageFormat" class="form-select" required>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="dosageFormat">2. Desired Dosage Format:</label>
+                <select id="dosageFormat" class="form-control" required>
                   <option value="">-- Select Dosage Format --</option>
-                  <option value="Powder">Powder (Water-Soluble or Feed Premix)</option>
-                  <option value="Liquid">Liquid (Oral Solution, Suspension, Syrup)</option>
-                  <option value="Bolus">Boluses (3g to 30g)</option>
-                  <option value="Tablet">Tablets (0.5g to 2g)</option>
-                  <option value="Herbal">Herbal / Phytogenic Botanical</option>
-                  <option value="Custom">Custom Multi-Format Combination</option>
+                  <option value="powder">Powder (Water-Soluble or Feed Premix)</option>
+                  <option value="liquid">Liquid (Oral Solution, Suspension, Syrup)</option>
+                  <option value="bolus">Boluses (3g to 30g)</option>
+                  <option value="tablet">Tablets (0.5g to 2g)</option>
+                  <option value="herbal">Herbal / Phytogenic Botanical</option>
+                  <option value="custom">Custom Multi-Format Combination</option>
                 </select>
               </div>
 
-              <div class="form-field">
-                <label class="form-label" for="orderQuantity">3. Estimated Batch / Annual Volume *</label>
-                <select id="orderQuantity" class="form-select" required>
+              <div class="form-group">
+                <label class="form-label" for="orderQuantity">3. Estimated Batch / Annual Volume:</label>
+                <select id="orderQuantity" class="form-control" required>
                   <option value="">-- Select Estimated Volume --</option>
-                  <option value="Pilot Trial Batch (< 500 kg / 5,000 boluses)">Pilot Trial Batch (&lt; 500 kg / 5,000 boluses)</option>
-                  <option value="Commercial Run (1 to 5 MT / Month)">Commercial Run (1 to 5 Metric Tonnes / Month)</option>
-                  <option value="High-Volume Commercial (10+ MT / Month)">High-Volume Commercial (10+ MT / Month)</option>
-                  <option value="Long-Term Annual CDMO Supply Contract">Long-Term Annual CDMO Supply Contract</option>
+                  <option value="pilot">Pilot Trial Batch (&lt; 500 kg / 5,000 boluses)</option>
+                  <option value="medium">Commercial Run (1 to 5 Metric Tonnes / Month)</option>
+                  <option value="large">High-Volume Commercial (10+ MT / Month)</option>
+                  <option value="ongoing">Long-Term Annual CDMO Supply Contract</option>
                 </select>
               </div>
             </div>
 
             <!-- Step 3: Challenge Area -->
-            <div class="form-field">
-              <label class="form-label" for="challengeInput">4. Health / Performance Challenge or Objective *</label>
-              <input type="text" id="challengeInput" class="form-input" placeholder="e.g. Broiler FCR, Transition Cow Ketosis, Equine Joint Soundness, Pet Coat Health" required>
+            <div class="form-group">
+              <label class="form-label" for="challengeInput">4. Health / Performance Challenge or Objective:</label>
+              <input type="text" id="challengeInput" class="form-control" placeholder="e.g. Broiler FCR, Transition Cow Ketosis, Equine Joint Soundness, Pet Coat Health" required>
             </div>
 
             <!-- Step 4: Actives & Description -->
-            <div class="form-field">
-              <label class="form-label" for="projectScope">5. Key Active Ingredients or Benchmark Formulation (Optional)</label>
-              <textarea id="projectScope" class="form-textarea" rows="3" placeholder="List any specific vitamins, chelated minerals, probiotics, enzymes, or herbal extracts you would like included..."></textarea>
+            <div class="form-group">
+              <label class="form-label" for="activesInput">5. Key Active Ingredients or Benchmark Formulation (Optional):</label>
+              <textarea id="activesInput" class="form-control" rows="3" placeholder="List any specific vitamins, chelated minerals, probiotics, enzymes, or herbal extracts you would like included..."></textarea>
             </div>
 
             <!-- Step 5: Contact Info -->
-            <div class="form-group-grid">
-              <div class="form-field">
-                <label class="form-label" for="fullName">Your Full Name *</label>
-                <input class="form-input" id="fullName" type="text" placeholder="Dr. / Mr. / Ms. Full Name" required>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nameInput">Your Full Name:</label>
+                <input type="text" id="nameInput" class="form-control" placeholder="Dr. / Mr. / Ms. Full Name" required>
               </div>
-              <div class="form-field">
-                <label class="form-label" for="companyName">Company / Organization *</label>
-                <input class="form-input" id="companyName" type="text" placeholder="Brand / Company Name" required>
+              <div class="form-group">
+                <label class="form-label" for="companyInput">Company / Organization:</label>
+                <input type="text" id="companyInput" class="form-control" placeholder="Brand / Company Name" required>
               </div>
             </div>
 
-            <div class="form-group-grid">
-              <div class="form-field">
-                <label class="form-label" for="workEmail">Business Email Address *</label>
-                <input class="form-input" id="workEmail" type="email" placeholder="name@company.com" required>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="emailInput">Business Email Address:</label>
+                <input type="email" id="emailInput" class="form-control" placeholder="name@company.com" required>
               </div>
-              <div class="form-field">
-                <label class="form-label" for="phoneNumber">Phone / WhatsApp (with Country Code) *</label>
-                <input class="form-input" id="phoneNumber" type="tel" placeholder="+91 98765 43210" required>
+              <div class="form-group">
+                <label class="form-label" for="phoneInput">Phone / WhatsApp (with Country Code):</label>
+                <input type="tel" id="phoneInput" class="form-control" placeholder="+91 98765 43210" required>
               </div>
             </div>
 
             <!-- NDA Checkbox -->
-            <div class="form-field" style="margin-bottom: 24px;">
-              <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--gray-600); cursor: pointer; font-weight: normal;">
-                <input type="checkbox" id="ndaCheck" style="margin-top: 3px; accent-color: var(--orange-bright);">
-                <span>Please send a mutual Non-Disclosure Agreement (NDA) prior to sharing confidential proprietary formulation data.</span>
+            <div class="form-group" style="display:flex; align-items:flex-start; gap:10px; margin-top:10px; margin-bottom:24px;">
+              <input type="checkbox" id="ndaCheck" style="margin-top:4px; accent-color: var(--orange-bright);">
+              <label for="ndaCheck" style="font-size:13.5px; color:var(--gray-600); cursor:pointer; font-weight:normal;">
+                Please send a mutual Non-Disclosure Agreement (NDA) prior to sharing confidential proprietary formulation data.
               </label>
             </div>
 
-            <button type="submit" class="explore-btn" style="width: 100%;">
-              Submit Formulation Enquiry <i class="fa-solid fa-paper-plane"></i>
-            </button>
+            <div style="text-align:center; margin-top:30px;">
+              <button type="submit" class="cta-btn" style="border:none; cursor:pointer; font-size:16px;">
+                Submit Formulation Enquiry <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
           </form>
         </div>
 
@@ -2479,11 +2531,11 @@ a {
         // Auto-select format if detectable
         if (dosageFormat) {
           if (prodLower.includes('liquid') || prodLower.includes('tonic') || prodLower.includes('syrup') || prodLower.includes('drench')) {
-            dosageFormat.value = 'Liquid';
+            dosageFormat.value = dosageFormat.querySelector('option[value="liquid"]') ? 'liquid' : 'Liquid';
           } else if (prodLower.includes('bolus') || prodLower.includes('tablet') || prodLower.includes('chewable')) {
-            dosageFormat.value = 'Bolus';
+            dosageFormat.value = dosageFormat.querySelector('option[value="bolus"]') ? 'bolus' : 'Bolus';
           } else if (prodLower.includes('powder') || prodLower.includes('premix') || prodLower.includes('digestor')) {
-            dosageFormat.value = 'Powder';
+            dosageFormat.value = dosageFormat.querySelector('option[value="powder"]') ? 'powder' : 'Powder';
           }
         }
       } else if (species) {
@@ -2514,24 +2566,26 @@ a {
 
     function handleContactSubmit(e) {
       if (e) e.preventDefault();
-      const name = document.getElementById('fullName') ? document.getElementById('fullName').value.trim() : '';
+      const nameEl = document.getElementById('nameInput') || document.getElementById('fullName');
+      const name = nameEl ? nameEl.value.trim() : '';
       const refCode = 'JH-' + Math.floor(10000 + Math.random() * 90000);
 
-      const form = document.getElementById('contactForm');
+      const form = document.getElementById('contactForm') || document.getElementById('enquireForm') || (e ? e.target : null);
       if (form) form.reset();
 
       if (typeof window.showSubmissionPopup === 'function') {
         window.showSubmissionPopup({
-          pill: '<i class="fa-solid fa-circle-check"></i> Message Received',
+          pill: '<i class="fa-solid fa-circle-check"></i> Formulation Enquiry Received',
           title: name ? `Thank You, ${name}!` : 'Thank You!',
-          message: 'Thank you for reaching out to Jahaaj Healthcare. We have received your inquiry and our team will get back to you shortly.',
+          message: 'Thank you for your formulation enquiry. Our technical team and formulation chemists will review your requirements under mutual NDA protocol and contact you within 24 business hours.',
           refId: refCode,
           buttonText: 'Close'
         });
       } else {
-        alert('Thank you! We have received your enquiry and our team will get back to you shortly.');
+        alert('Thank you! We have received your formulation enquiry and our team will get back to you shortly.');
       }
     }
+    const handleEnquiryFormSubmit = handleContactSubmit;
 
     function handleCareerSubmit(e) {
       if (e) e.preventDefault();
