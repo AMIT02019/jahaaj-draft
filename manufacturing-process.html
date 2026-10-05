@@ -604,11 +604,11 @@ a {
 
 .step-card {
   background: #ffffff;
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-xl);
-  padding: 32px 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 34px 24px;
   text-align: center;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 8px 24px rgba(14, 50, 82, 0.05);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
@@ -631,8 +631,8 @@ a {
 
 .step-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-  border-color: rgba(234, 88, 12, 0.3);
+  box-shadow: 0 20px 40px rgba(14, 50, 82, 0.1);
+  border-color: rgba(234, 88, 12, 0.35);
 }
 
 .step-card:hover::before {
@@ -640,51 +640,56 @@ a {
 }
 
 .step-icon-wrapper {
-  width: 76px;
-  height: 76px;
+  width: 92px;
+  height: 92px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gray-50);
-  border-radius: var(--radius-md);
-  padding: 10px;
-  border: 1px solid var(--gray-200);
-  transition: transform 0.3s ease;
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
 .step-card:hover .step-icon-wrapper {
   transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(14, 50, 82, 0.08);
 }
 
 .step-icon-wrapper img {
   max-height: 100%;
+  max-width: 100%;
   width: auto;
+  height: auto;
   object-fit: contain;
 }
 
 .step-badge {
-  background: var(--navy);
+  background: #0e3252;
   color: #ffffff;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .step-title {
-  font-size: 18px;
+  font-size: 17.5px;
   font-weight: 800;
-  color: var(--navy);
-  margin-bottom: 8px;
+  color: #0e3252;
+  margin-bottom: 10px;
+  line-height: 1.35;
 }
 
 .step-desc {
-  font-size: 13.5px;
-  color: var(--gray-600);
-  line-height: 1.6;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.62;
+  margin: 0;
 }
 
 /* ============ PACKAGING SECTION ============ */
@@ -1612,8 +1617,137 @@ a {
               <rect data-step="12" x="1030" y="570" width="250" height="265" fill="transparent" />
             </g>
           </svg>
+      </div>
+
+      <!-- 12-Step Detailed Breakdown Cards Grid -->
+      <div style="margin-top: 85px;" data-animate="fade-up">
+        <div class="section-header" style="text-align: center; margin-bottom: 48px;">
+          <span class="section-pill">Phase-by-Phase Process</span>
+          <h3 style="font-size: clamp(24px, 3.2vw, 36px); font-weight: 800; color: var(--navy); margin-bottom: 12px; letter-spacing: -0.02em;">Comprehensive 12-Step Workflow Breakdown</h3>
+          <p class="section-desc" style="max-width: 680px; margin: 0 auto;">Every stage is executed under rigorous quality control standards, ensuring consistent bioavailability, purity, and commercial reliability.</p>
         </div>
 
+        <div class="workflow-grid" data-stagger>
+          <!-- Step 1 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_01.png" alt="Step 01: Product Idea Discussion &amp; Briefing" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 01</span>
+            <h4 class="step-title">Product Idea Discussion &amp; Briefing</h4>
+            <p class="step-desc">Collaborative discussion on product vision, target animal species, nutritional goals, dosage formats, and commercial expectations.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_02.png" alt="Step 02: Customized Product Development" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 02</span>
+            <h4 class="step-title">Customized Product Development</h4>
+            <p class="step-desc">In-house veterinary R&amp;D team (40+ years experience) formulates bespoke, synergistic, and bioavailable active recipes.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_03.png" alt="Step 03: Sample Manufacturing" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 03</span>
+            <h4 class="step-title">Sample Manufacturing</h4>
+            <p class="step-desc">Precision pilot batch preparation of lab samples to test physical appearance, taste/palatability, and mixing characteristics.</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_04.png" alt="Step 04: Laboratory Testing" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 04</span>
+            <h4 class="step-title">Laboratory Testing</h4>
+            <p class="step-desc">Rigorous active ingredient assays, physical parameters, stability assessments, and microbiological screening.</p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_05.png" alt="Step 05: Sample Approval from Client" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 05</span>
+            <h4 class="step-title">Sample Approval from Client</h4>
+            <p class="step-desc">Formal client evaluation, sensory sign-off, and final specification lock-in prior to initiating packaging and sourcing.</p>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_06.png" alt="Step 06: Artwork &amp; Label Finalization" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 06</span>
+            <h4 class="step-title">Artwork &amp; Label Finalization</h4>
+            <p class="step-desc">Label artwork adaptation, regulatory compliance checks with domestic and export feed standards, and printing approval.</p>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_07.png" alt="Step 7: Procurement of Packaging Materials" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 07</span>
+            <h4 class="step-title">Procurement of Packaging Materials</h4>
+            <p class="step-desc">Sourcing high-barrier pouches, jars, HDPE containers, blister foils, and carton master shippers engineered for farm stability.</p>
+          </div>
+
+          <!-- Step 8 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_08.png" alt="Step 08: Raw Materials Sourcing" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 08</span>
+            <h4 class="step-title">Raw Materials Sourcing</h4>
+            <p class="step-desc">Procuring validated feed-grade actives, vitamins, and minerals with supplier CoA verification and incoming quarantine testing.</p>
+          </div>
+
+          <!-- Step 9 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_09.png" alt="Step 09: Commercial-Scale Production" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 09</span>
+            <h4 class="step-title">Commercial-Scale Production</h4>
+            <p class="step-desc">Cleanroom blending, rotary bolus compression, or SS-316 liquid manufacturing adhering to strict FAMI-QS &amp; HACCP SOPs.</p>
+          </div>
+
+          <!-- Step 10 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_10.png" alt="Step 10: Quality Inspection of Finished Product" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 10</span>
+            <h4 class="step-title">Quality Inspection of Finished Product</h4>
+            <p class="step-desc">Comprehensive QA inspection including assay potency, weight variation, dissolution, and pathogen screening for release.</p>
+          </div>
+
+          <!-- Step 11 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_11.png" alt="Step 11: Final Product Approval by Customer" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 11</span>
+            <h4 class="step-title">Final Product Approval by Customer</h4>
+            <p class="step-desc">Customer review and verification of batch testing results and Certificate of Analysis (CoA) prior to dispatch.</p>
+          </div>
+
+          <!-- Step 12 -->
+          <div class="step-card demo-card">
+            <div class="step-icon-wrapper">
+              <img src="images/workflow_icons/step_12.png" alt="Step 12: Dispatch of Finished Goods" oncontextmenu="return false;">
+            </div>
+            <span class="step-badge">STEP 12</span>
+            <h4 class="step-title">Dispatch of Finished Goods</h4>
+            <p class="step-desc">Palletized, shrink-wrapped, and barcoded export-ready shipment dispatched through tracked logistics to your warehouse.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
