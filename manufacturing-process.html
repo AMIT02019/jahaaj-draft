@@ -1148,11 +1148,20 @@ a {
   -webkit-user-drag: none;
 }
 
-/* Glowing Liquid Energy Flow Lines */
+/* Crisp Liquid Flow Lines & Guide Tracks */
 .wf-flow-group {
   pointer-events: none;
 }
-.flow-glow-line {
+.flow-base-line {
+  fill: none;
+  stroke: #e2e8f0;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+  opacity: 1;
+}
+.flow-active-line {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -1160,13 +1169,7 @@ a {
   stroke-dashoffset: 1;
   pointer-events: none;
   transition: stroke-dashoffset 0.05s linear;
-}
-.flow-glow-core {
-  filter: url(#neonGlow);
-}
-.flow-glow-under {
-  filter: blur(5px);
-  opacity: 0.65;
+  filter: none !important;
 }
 
 /* Directional Arrowheads */
@@ -1492,50 +1495,41 @@ a {
                 <stop offset="100%" stop-color="#7c3aed" />
               </linearGradient>
 
-              <!-- Laser Glow Filter -->
-              <filter id="neonGlow" x="-25%" y="-25%" width="150%" height="150%">
-                <feGaussianBlur stdDeviation="3.5" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
             </defs>
 
             <!-- 1. Statically Present 12 Blocks (Illustrations + Badges only) -->
             <image id="workflowBaseImage" class="wf-base-image" href="assets/manufacturing-workflow-12-step.png" xlink:href="assets/manufacturing-workflow-12-step.png" width="1379" height="920" mask="url(#blocksOnlyMask)" />
 
-            <!-- 2. Glowing Liquid Flow Conduits with Directional Arrows (Revealed on scroll from Step 1) -->
+            <!-- 2. Crisp Liquid Flow Conduits with Directional Arrows (Revealed on scroll from Step 1) -->
             <g id="flowTracksGroup" class="wf-flow-group">
-              <!-- Underlay Aura Layer -->
-              <g class="flow-underlay-layer">
-                <path id="flow-under-1-2" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="12" d="M 226 227 L 515 227" />
-                <path id="flow-under-2-3" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="12" d="M 555 227 L 828 227" />
-                <path id="flow-under-3-4" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="12" d="M 868 227 L 1135 227" />
-                <path id="flow-under-4-5" class="flow-glow-line flow-glow-under flow-curve" pathLength="1" stroke="url(#flowGrad4-5)" stroke-width="14" d="M 1175 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1172 505" />
-                <path id="flow-under-5-6" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad5-6)" stroke-width="12" d="M 1132 505 L 861 505" />
-                <path id="flow-under-6-7" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad6-7)" stroke-width="12" d="M 821 505 L 552 505" />
-                <path id="flow-under-7-8" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad7-8)" stroke-width="12" d="M 512 505 L 226 505" />
-                <path id="flow-under-8-9" class="flow-glow-line flow-glow-under flow-curve" pathLength="1" stroke="url(#flowGrad8-9)" stroke-width="14" d="M 186 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 188 766" />
-                <path id="flow-under-9-10" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad9-10)" stroke-width="12" d="M 228 766 L 510 766" />
-                <path id="flow-under-10-11" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad10-11)" stroke-width="12" d="M 550 766 L 818 766" />
-                <path id="flow-under-11-12" class="flow-glow-line flow-glow-under" pathLength="1" stroke="url(#flowGrad11-12)" stroke-width="12" d="M 858 766 L 1132 766" />
+              <!-- Subtle Inactive Base Pipeline Track -->
+              <g class="flow-base-track-layer">
+                <path id="flow-under-1-2" class="flow-base-line" stroke="#e2e8f0" stroke-width="6" d="M 226 227 L 515 227" />
+                <path id="flow-under-2-3" class="flow-base-line" stroke="#e2e8f0" stroke-width="6" d="M 555 227 L 828 227" />
+                <path id="flow-under-3-4" class="flow-base-line" stroke="#e2e8f0" stroke-width="6" d="M 868 227 L 1135 227" />
+                <path id="flow-under-4-5" class="flow-base-line flow-curve" stroke="#e2e8f0" stroke-width="6" d="M 1175 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1172 505" />
+                <path id="flow-under-5-6" class="flow-base-line" stroke="#e2e8f0" stroke-width="6" d="M 1132 505 L 861 505" />
+                <path id="flow-under-6-7" class="flow-base-line" stroke="#e2e8f0" stroke-width="6" d="M 821 505 L 552 505" />
+                <path id="flow-under-7-8" class="flow-base-line" stroke="#e2e8f0" stroke-width="6" d="M 512 505 L 226 505" />
+                <path id="flow-under-8-9" class="flow-base-line flow-curve" stroke="#e2e8f0" stroke-width="6" d="M 186 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 188 766" />
+                <path id="flow-under-9-10" class="flow-base-line" stroke="#e2e8f0" stroke-width="6" d="M 228 766 L 510 766" />
+                <path id="flow-under-10-11" class="flow-base-line" stroke="#e2e8f0" stroke-width="6" d="M 550 766 L 818 766" />
+                <path id="flow-under-11-12" class="flow-base-line" stroke="#e2e8f0" stroke-width="6" d="M 858 766 L 1132 766" />
               </g>
 
-              <!-- Core Luminous Beam Layer -->
+              <!-- Core Crisp Active Conduit Layer -->
               <g class="flow-core-layer">
-                <path id="flow-core-1-2" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="6" d="M 226 227 L 515 227" />
-                <path id="flow-core-2-3" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="6" d="M 555 227 L 828 227" />
-                <path id="flow-core-3-4" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="6" d="M 868 227 L 1135 227" />
-                <path id="flow-core-4-5" class="flow-glow-line flow-glow-core flow-curve" pathLength="1" stroke="url(#flowGrad4-5)" stroke-width="7" d="M 1175 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1172 505" />
-                <path id="flow-core-5-6" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad5-6)" stroke-width="6" d="M 1132 505 L 861 505" />
-                <path id="flow-core-6-7" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad6-7)" stroke-width="6" d="M 821 505 L 552 505" />
-                <path id="flow-core-7-8" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad7-8)" stroke-width="6" d="M 512 505 L 226 505" />
-                <path id="flow-core-8-9" class="flow-glow-line flow-glow-core flow-curve" pathLength="1" stroke="url(#flowGrad8-9)" stroke-width="7" d="M 186 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 188 766" />
-                <path id="flow-core-9-10" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad9-10)" stroke-width="6" d="M 228 766 L 510 766" />
-                <path id="flow-core-10-11" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad10-11)" stroke-width="6" d="M 550 766 L 818 766" />
-                <path id="flow-core-11-12" class="flow-glow-line flow-glow-core" pathLength="1" stroke="url(#flowGrad11-12)" stroke-width="6" d="M 858 766 L 1132 766" />
+                <path id="flow-core-1-2" class="flow-active-line" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="7" d="M 226 227 L 515 227" />
+                <path id="flow-core-2-3" class="flow-active-line" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="7" d="M 555 227 L 828 227" />
+                <path id="flow-core-3-4" class="flow-active-line" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="7" d="M 868 227 L 1135 227" />
+                <path id="flow-core-4-5" class="flow-active-line flow-curve" pathLength="1" stroke="url(#flowGrad4-5)" stroke-width="8" d="M 1175 227 L 1272 227 A 50 50 0 0 1 1322 277 L 1322 455 A 50 50 0 0 1 1272 505 L 1172 505" />
+                <path id="flow-core-5-6" class="flow-active-line" pathLength="1" stroke="url(#flowGrad5-6)" stroke-width="7" d="M 1132 505 L 861 505" />
+                <path id="flow-core-6-7" class="flow-active-line" pathLength="1" stroke="url(#flowGrad6-7)" stroke-width="7" d="M 821 505 L 552 505" />
+                <path id="flow-core-7-8" class="flow-active-line" pathLength="1" stroke="url(#flowGrad7-8)" stroke-width="7" d="M 512 505 L 226 505" />
+                <path id="flow-core-8-9" class="flow-active-line flow-curve" pathLength="1" stroke="url(#flowGrad8-9)" stroke-width="8" d="M 186 505 L 108 505 A 50 50 0 0 0 58 555 L 58 716 A 50 50 0 0 0 108 766 L 188 766" />
+                <path id="flow-core-9-10" class="flow-active-line" pathLength="1" stroke="url(#flowGrad9-10)" stroke-width="7" d="M 228 766 L 510 766" />
+                <path id="flow-core-10-11" class="flow-active-line" pathLength="1" stroke="url(#flowGrad10-11)" stroke-width="7" d="M 550 766 L 818 766" />
+                <path id="flow-core-11-12" class="flow-active-line" pathLength="1" stroke="url(#flowGrad11-12)" stroke-width="7" d="M 858 766 L 1132 766" />
               </g>
 
               <!-- Directional Arrowheads -->
@@ -1851,7 +1845,6 @@ a {
 
       // Pre-cache DOM elements for 60fps performance
       const segElements = segments.map(s => ({
-        under: document.getElementById(`flow-under-${s.key}`),
         core: document.getElementById(`flow-core-${s.key}`),
         arrow: document.getElementById(`arrow-${s.key}`)
       }));
@@ -1885,7 +1878,6 @@ a {
 
           const offset = (1 - segP).toFixed(4);
           const el = segElements[idx];
-          if (el.under) el.under.style.strokeDashoffset = offset;
           if (el.core) el.core.style.strokeDashoffset = offset;
 
           if (el.arrow) {
