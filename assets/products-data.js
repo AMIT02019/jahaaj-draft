@@ -1972,7 +1972,7 @@ function renderProductCardHTML(p) {
             <a href="product-detail.html?id=${p.id}" class="jhc-btn-details">
               <i class="fas fa-circle-info"></i> View Specs
             </a>
-            <a href="enquire-formulation.html?product=${encodeURIComponent(p.title)}" class="jhc-btn-quote" title="Request Quote / Sample">
+            <a href="contact.html?product=${encodeURIComponent(p.title)}" class="jhc-btn-quote" title="Request Quote / Sample">
               <i class="fas fa-file-invoice"></i> Quote
             </a>
           </div>
@@ -2055,7 +2055,7 @@ window.openProductQuickModal = function(id) {
         <a href="product-detail.html?id=${p.id}" class="jhc-modal-btn-page">
           <i class="fas fa-arrow-up-right-from-square"></i> Open Full Detail Page
         </a>
-        <a href="enquire-formulation.html?product=${encodeURIComponent(p.title)}" class="jhc-modal-btn-quote">
+        <a href="contact.html?product=${encodeURIComponent(p.title)}" class="jhc-modal-btn-quote">
           <i class="fas fa-paper-plane"></i> Request Sample / Private Label Quote
         </a>
       </div>
