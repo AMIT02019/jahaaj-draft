@@ -1,0 +1,25 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/global-network.html",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/global-network",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/enquire-formulation.html",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/enquire-formulation",
+      "destination": "/contact.html",
+      "permanent": true
+    }
+  ]
+}
