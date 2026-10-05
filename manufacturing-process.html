@@ -1150,10 +1150,7 @@ a {
 
 /* Glowing Liquid Energy Flow Lines */
 .wf-flow-group {
-  transition: opacity 0.45s ease;
-}
-.wf-flow-group.flow-dissolving {
-  opacity: 0;
+  pointer-events: none;
 }
 .flow-glow-line {
   fill: none;
@@ -1161,14 +1158,8 @@ a {
   stroke-linejoin: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
-}
-.flow-glow-line.flow-curve {
-  transition: stroke-dashoffset 0.70s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.flow-glow-line.path-active {
-  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.05s linear;
 }
 .flow-glow-core {
   filter: url(#neonGlow);
@@ -1183,15 +1174,11 @@ a {
   opacity: 0;
   transform: scale(0.6);
   transform-origin: center;
-  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
-}
-.flow-arrow.arrow-active {
-  opacity: 1;
-  transform: scale(1);
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-/* Crisp Vector Step Text Labels (Hidden before scroll, revealed on scroll from Step 1) */
+/* Crisp Vector Step Text Labels */
 .wf-step-label {
   font-family: var(--font-main, 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
   font-weight: 800;
@@ -1201,7 +1188,7 @@ a {
   text-anchor: middle;
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 .wf-step-label.lbl-visible {
@@ -1219,7 +1206,7 @@ a {
   stroke-width: 3.5;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 .pulse-dot.active {
   opacity: 1;
@@ -1230,11 +1217,105 @@ a {
   100% { r: 52; stroke-opacity: 0; stroke-width: 1; }
 }
 
+/* ============ ON-SCROLL PINNED TRACK ============ */
+.wf-scroll-track {
+  position: relative;
+  height: 240vh;
+  margin-top: 10px;
+}
+
+.wf-sticky-container {
+  position: sticky;
+  top: 75px;
+  width: 100%;
+  z-index: 10;
+}
+
+@media (max-width: 991px) {
+  .wf-scroll-track {
+    height: 200vh;
+  }
+  .wf-sticky-container {
+    top: 65px;
+  }
+}
+
 @media (max-width: 768px) {
+  .wf-scroll-track {
+    height: 180vh;
+  }
+  .wf-sticky-container {
+    top: 55px;
+  }
   .wf-interactive-card {
     padding: 16px;
     border-radius: 18px;
   }
+}
+
+/* Scroll Pipeline Control Badge */
+.wf-scroll-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 8px 22px;
+  margin: 0 auto 16px;
+  max-width: 820px;
+  box-shadow: 0 4px 18px rgba(14, 50, 82, 0.05);
+}
+
+.wf-status-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0e3252;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.wf-status-label i {
+  color: #ea580c;
+}
+
+.wf-status-track {
+  flex: 1;
+  height: 6px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.wf-status-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #16a34a, #06b6d4 30%, #7c3aed 65%, #ea580c 100%);
+  border-radius: 999px;
+  transition: width 0.05s ease-out;
+}
+
+.wf-status-percent {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0e3252;
+  min-width: 36px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.wf-scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  margin-left: 4px;
 }
 
 
@@ -1376,17 +1457,33 @@ a {
   </section>
 
   <!-- ================= TECHNICAL PROCESS WORKFLOW DIAGRAM ================= -->
-  <section class="section-wrapper section-wrapper--alt" id="workflow" style="padding: 70px 0;">
+  <section class="section-wrapper section-wrapper--alt" id="workflow" style="padding: 70px 0 30px;">
     <div id="workflow-diagram"></div>
     <div class="container">
-      <div class="section-header" style="text-align: center; margin-bottom: 36px;" data-animate="fade-up">
-        <span class="section-pill">Visual Architecture</span>
+      <div class="section-header" style="text-align: center; margin-bottom: 28px;" data-animate="fade-up">
+        <span class="section-pill"><i class="fa-solid fa-arrows-spin"></i> On-Scroll Interactive Flow</span>
         <h2 class="section-title">End-to-End Manufacturing Workflow Diagram</h2>
-        <p class="section-desc">Our 12-step commercial CDMO production journey from initial discussion to final dispatch.</p>
+        <p class="section-desc">Scroll down to trace our 12-step commercial CDMO production journey in real time.</p>
       </div>
-      <div class="wf-interactive-card" id="animatedWorkflowCard" data-animate="fade-up">
-        <div class="wf-svg-wrap">
-          <svg viewBox="0 0 1379 920" id="workflowSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="12-Step Manufacturing Process Interactive Diagram">
+    </div>
+
+    <!-- Pinned Scroll-Driven Workflow Track -->
+    <div class="wf-scroll-track" id="wfScrollTrack">
+      <div class="wf-sticky-container" id="wfStickyContainer">
+        <div class="container">
+          <!-- Real-Time Scroll Status Bar -->
+          <div class="wf-scroll-status-bar">
+            <span class="wf-status-label"><i class="fa-solid fa-bolt"></i> <span id="wfActiveStepText">Step 1: Product Idea Discussion &amp; Briefing</span></span>
+            <div class="wf-status-track">
+              <div class="wf-status-fill" id="wfStatusFill"></div>
+            </div>
+            <span class="wf-status-percent" id="wfStatusPercent">0%</span>
+            <span class="wf-scroll-hint"><i class="fa-solid fa-angles-down"></i> Scroll</span>
+          </div>
+
+          <div class="wf-interactive-card" id="animatedWorkflowCard">
+            <div class="wf-svg-wrap">
+              <svg viewBox="0 0 1379 920" id="workflowSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="12-Step Manufacturing Process Interactive Diagram">
             <defs>
               <!-- Mask to show ONLY the 12 blocks statically (hiding default connector lines and text) -->
               <mask id="blocksOnlyMask">
@@ -1617,10 +1714,15 @@ a {
               <rect data-step="12" x="1030" y="570" width="250" height="265" fill="transparent" />
             </g>
           </svg>
+        </div>
       </div>
+    </div>
+  </div>
+</div>
 
-      <!-- 12-Step Detailed Breakdown Cards Grid -->
-      <div style="margin-top: 85px;" data-animate="fade-up">
+<div class="container">
+  <!-- 12-Step Detailed Breakdown Cards Grid -->
+  <div style="margin-top: 85px;" data-animate="fade-up">
         <div class="section-header" style="text-align: center; margin-bottom: 48px;">
           <span class="section-pill">Phase-by-Phase Process</span>
           <h3 style="font-size: clamp(24px, 3.2vw, 36px); font-weight: 800; color: var(--navy); margin-bottom: 12px; letter-spacing: -0.02em;">Comprehensive 12-Step Workflow Breakdown</h3>
@@ -1932,211 +2034,171 @@ a {
   <!-- Canonical Navigation Controller -->
   <script src="assets/nav-and-footer.js" defer></script>
 
-  <!-- 12-Step Manufacturing Process Continuous Liquid Looping Flow Controller -->
+  <!-- 12-Step Manufacturing Process Scroll-Driven Flow Controller -->
   <script>
-    (function initSmoothWorkflowLoop() {
-      const svg = document.getElementById('workflowSvg');
-      const flowGroup = document.getElementById('flowTracksGroup');
+    (function initScrollDrivenWorkflow() {
+      const scrollTrack = document.getElementById('wfScrollTrack');
+      const stickyContainer = document.getElementById('wfStickyContainer');
+      const statusFill = document.getElementById('wfStatusFill');
+      const statusPercent = document.getElementById('wfStatusPercent');
+      const statusStepText = document.getElementById('wfActiveStepText');
 
-      const stepData = [
-        { num: 1, flowKey: '1-2', dur: 420, lead: 70 },
-        { num: 2, flowKey: '2-3', dur: 420, lead: 70 },
-        { num: 3, flowKey: '3-4', dur: 420, lead: 70 },
-        { num: 4, flowKey: '4-5', dur: 680, lead: 90, isCurve: true },
-        { num: 5, flowKey: '5-6', dur: 420, lead: 70 },
-        { num: 6, flowKey: '6-7', dur: 420, lead: 70 },
-        { num: 7, flowKey: '7-8', dur: 420, lead: 70 },
-        { num: 8, flowKey: '8-9', dur: 680, lead: 90, isCurve: true },
-        { num: 9, flowKey: '9-10', dur: 420, lead: 70 },
-        { num: 10, flowKey: '10-11', dur: 420, lead: 70 },
-        { num: 11, flowKey: '11-12', dur: 420, lead: 70 },
-        { num: 12, flowKey: null, dur: 0, lead: 0 }
+      if (!scrollTrack || !stickyContainer) return;
+
+      const segments = [
+        { key: '1-2', from: 1, to: 2 },
+        { key: '2-3', from: 2, to: 3 },
+        { key: '3-4', from: 3, to: 4 },
+        { key: '4-5', from: 4, to: 5 },
+        { key: '5-6', from: 5, to: 6 },
+        { key: '6-7', from: 6, to: 7 },
+        { key: '7-8', from: 7, to: 8 },
+        { key: '8-9', from: 8, to: 9 },
+        { key: '9-10', from: 9, to: 10 },
+        { key: '10-11', from: 10, to: 11 },
+        { key: '11-12', from: 11, to: 12 }
       ];
 
-      let currentStep = 1;
-      let activeTimers = [];
-      let hasStarted = false;
-      let isPaused = false;
-      let isHolding = false;
+      const stepTitles = [
+        "Step 1: Product Idea Discussion & Briefing",
+        "Step 2: Customized Product Development",
+        "Step 3: Sample Manufacturing",
+        "Step 4: Laboratory Testing",
+        "Step 5: Sample Approval from Client",
+        "Step 6: Artwork & Label Finalization",
+        "Step 7: Procurement of Packaging Materials",
+        "Step 8: Raw Materials Sourcing",
+        "Step 9: Commercial-Scale Production",
+        "Step 10: Quality Inspection of Finished Product",
+        "Step 11: Final Product Approval by Customer",
+        "Step 12: Dispatch of Finished Goods"
+      ];
 
-      function clearAllTimers() {
-        activeTimers.forEach(t => clearTimeout(t));
-        activeTimers = [];
+      // Pre-cache DOM elements for 60fps performance
+      const segElements = segments.map(s => ({
+        under: document.getElementById(`flow-under-${s.key}`),
+        core: document.getElementById(`flow-core-${s.key}`),
+        arrow: document.getElementById(`arrow-${s.key}`)
+      }));
+
+      const labelElements = [];
+      const pulseElements = [];
+      for (let i = 1; i <= 12; i++) {
+        labelElements.push(document.getElementById(`lbl-${i}`));
+        pulseElements.push(document.getElementById(`pulse-${i}`));
       }
 
-      function scheduleTimeout(fn, delay) {
-        const id = setTimeout(() => {
-          activeTimers = activeTimers.filter(t => t !== id);
-          fn();
-        }, delay);
-        activeTimers.push(id);
-        return id;
-      }
+      let lastP = -1;
+      let isTicking = false;
 
-      function resetFlow() {
-        document.querySelectorAll('.flow-glow-line').forEach(p => p.classList.remove('path-active'));
-        document.querySelectorAll('.flow-arrow').forEach(a => a.classList.remove('arrow-active'));
-        document.querySelectorAll('.pulse-dot').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.wf-step-label').forEach(l => l.classList.remove('lbl-visible'));
-      }
+      function render(p) {
+        const totalSegs = segments.length; // 11
 
-      function revealStepText(stepNum) {
-        const lbl = document.getElementById(`lbl-${stepNum}`);
-        if (lbl) lbl.classList.add('lbl-visible');
-      }
+        // 1. Update Liquid Flow Conduits and Arrows
+        segments.forEach((seg, idx) => {
+          const segStart = idx / totalSegs;
+          const segEnd = (idx + 1) / totalSegs;
+          let segP = 0;
 
-      function activatePulse(stepNum) {
-        document.querySelectorAll('.pulse-dot').forEach(p => p.classList.remove('active'));
-        const p = document.getElementById(`pulse-${stepNum}`);
-        if (p) p.classList.add('active');
-      }
-
-      function setPathActive(flowKey, active) {
-        if (!flowKey) return;
-        const under = document.getElementById(`flow-under-${flowKey}`);
-        const core = document.getElementById(`flow-core-${flowKey}`);
-        const arrow = document.getElementById(`arrow-${flowKey}`);
-        if (under) under.classList.toggle('path-active', active);
-        if (core) core.classList.toggle('path-active', active);
-        if (arrow) arrow.classList.toggle('arrow-active', active);
-      }
-
-      function triggerStep(stepNum) {
-        if (isPaused) {
-          currentStep = stepNum;
-          return;
-        }
-
-        currentStep = stepNum;
-        const config = stepData[stepNum - 1];
-        if (!config) return;
-
-        // 1. Reveal this step's text label & activate pulse
-        revealStepText(stepNum);
-        activatePulse(stepNum);
-
-        // 2. Final Step 12 reached: hold complete connected pipeline then smooth loop restart
-        if (stepNum === 12) {
-          isHolding = true;
-          scheduleTimeout(() => {
-            if (isPaused) return;
-            // Crossfade dissolve out the flow lines & labels (blocks remain 100% visible and static)
-            if (flowGroup) flowGroup.classList.add('flow-dissolving');
-            document.querySelectorAll('.wf-step-label').forEach(l => l.style.opacity = '0');
-
-            scheduleTimeout(() => {
-              if (svg) svg.classList.add('wf-no-transition');
-              resetFlow();
-              document.querySelectorAll('.wf-step-label').forEach(l => l.style.opacity = '');
-              if (svg) void svg.offsetHeight;
-              if (svg) svg.classList.remove('wf-no-transition');
-
-              if (flowGroup) flowGroup.classList.remove('flow-dissolving');
-              isHolding = false;
-
-              // Immediately flow into Step 1 for seamless continuous looping
-              triggerStep(1);
-            }, 450);
-          }, 2600);
-          return;
-        }
-
-        // 3. Fluid progressive flow: start outgoing path, and trigger next step right as beam connects
-        scheduleTimeout(() => {
-          if (isPaused) return;
-          setPathActive(config.flowKey, true);
-
-          const travelTime = Math.max(200, config.dur - 30);
-          scheduleTimeout(() => {
-            if (isPaused) return;
-            triggerStep(stepNum + 1);
-          }, travelTime);
-        }, config.lead);
-      }
-
-      function jumpToStep(targetNum) {
-        clearAllTimers();
-        isHolding = false;
-        if (svg) svg.classList.add('wf-no-transition');
-        resetFlow();
-
-        for (let i = 1; i <= targetNum; i++) {
-          revealStepText(i);
-          if (i < targetNum) {
-            const cfg = stepData[i - 1];
-            if (cfg && cfg.flowKey) setPathActive(cfg.flowKey, true);
+          if (p >= segEnd) {
+            segP = 1;
+          } else if (p <= segStart) {
+            segP = 0;
+          } else {
+            segP = (p - segStart) / (segEnd - segStart);
           }
-        }
-        if (svg) void svg.offsetHeight;
-        if (svg) svg.classList.remove('wf-no-transition');
 
-        currentStep = targetNum;
-        activatePulse(targetNum);
+          const offset = (1 - segP).toFixed(4);
+          const el = segElements[idx];
+          if (el.under) el.under.style.strokeDashoffset = offset;
+          if (el.core) el.core.style.strokeDashoffset = offset;
 
-        if (!isPaused) {
-          scheduleTimeout(() => {
-            if (targetNum < 12) {
-              const cfg = stepData[targetNum - 1];
-              setPathActive(cfg.flowKey, true);
-              scheduleTimeout(() => {
-                triggerStep(targetNum + 1);
-              }, Math.max(200, cfg.dur - 30));
+          if (el.arrow) {
+            if (segP >= 0.90) {
+              el.arrow.style.opacity = '1';
+              el.arrow.style.transform = 'scale(1)';
+            } else if (segP > 0.60) {
+              const a = (segP - 0.60) / 0.30;
+              el.arrow.style.opacity = a.toFixed(2);
+              el.arrow.style.transform = `scale(${(0.6 + 0.4 * a).toFixed(2)})`;
             } else {
-              triggerStep(12);
+              el.arrow.style.opacity = '0';
+              el.arrow.style.transform = 'scale(0.6)';
             }
-          }, 1100);
+          }
+        });
+
+        // 2. Active Step Calculation (1 to 12)
+        const activeStep = Math.min(12, Math.max(1, Math.floor(p * totalSegs) + 1));
+
+        // 3. Reveal Step Text Labels
+        labelElements.forEach((lbl, idx) => {
+          if (!lbl) return;
+          const stepNum = idx + 1;
+          // Step 1 always visible, subsequent steps visible once flow reaches them
+          const isVisible = (stepNum === 1) || (p >= (stepNum - 1) / totalSegs - 0.02);
+          lbl.classList.toggle('lbl-visible', isVisible);
+        });
+
+        // 4. Active Pulse Indicator Beacon
+        pulseElements.forEach((pulse, idx) => {
+          if (!pulse) return;
+          pulse.classList.toggle('active', (idx + 1) === activeStep);
+        });
+
+        // 5. Update Status Control Header
+        if (statusFill) statusFill.style.width = (p * 100).toFixed(1) + '%';
+        if (statusPercent) statusPercent.textContent = Math.round(p * 100) + '%';
+        if (statusStepText) statusStepText.textContent = stepTitles[activeStep - 1];
+      }
+
+      function update() {
+        const trackRect = scrollTrack.getBoundingClientRect();
+        const stickyRect = stickyContainer.getBoundingClientRect();
+        const scrollDistance = scrollTrack.offsetHeight - stickyContainer.offsetHeight;
+
+        let p = 0;
+        if (scrollDistance > 0) {
+          // Progress begins when track reaches top threshold
+          const scrolled = stickyRect.top - trackRect.top;
+          p = scrolled / scrollDistance;
+        }
+        p = Math.max(0, Math.min(1, p));
+
+        if (Math.abs(p - lastP) > 0.0005) {
+          lastP = p;
+          render(p);
+        }
+        isTicking = false;
+      }
+
+      function requestTick() {
+        if (!isTicking) {
+          isTicking = true;
+          requestAnimationFrame(update);
         }
       }
 
-      function startFlow(fromStep = 1) {
-        clearAllTimers();
-        if (fromStep === 1) resetFlow();
-        hasStarted = true;
-        isHolding = false;
-        triggerStep(fromStep);
-      }
+      window.addEventListener('scroll', requestTick, { passive: true });
+      window.addEventListener('resize', requestTick, { passive: true });
 
-      // Viewport IntersectionObserver: starts flow from Step 1 on scroll
-      const targetSection = document.getElementById('workflow') || document.getElementById('workflow-diagram');
-      if (targetSection && 'IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (!hasStarted) {
-                startFlow(1);
-              } else if (!isHolding && !isPaused) {
-                triggerStep(currentStep);
-              }
-            } else {
-              clearAllTimers();
-              if (isHolding) {
-                hasStarted = false;
-                isHolding = false;
-                resetFlow();
-              }
-            }
-          });
-        }, { threshold: 0.15 });
-        observer.observe(targetSection);
-      } else {
-        startFlow(1);
-      }
+      // Initial execution
+      requestAnimationFrame(update);
 
-      // SVG Click Targets
+      // Interactive Click Targets over the 12 Steps (smooth scrolls directly to that step)
       document.querySelectorAll('#step-targets rect').forEach(r => {
         r.addEventListener('click', () => {
-          const targetNum = parseInt(r.getAttribute('data-step'), 10);
-          if (targetNum >= 1 && targetNum <= 12) jumpToStep(targetNum);
+          const targetStep = parseInt(r.getAttribute('data-step'), 10);
+          if (targetStep >= 1 && targetStep <= 12) {
+            const targetP = (targetStep - 1) / 11;
+            const trackRect = scrollTrack.getBoundingClientRect();
+            const trackTop = window.scrollY + trackRect.top;
+            const stickyRect = stickyContainer.getBoundingClientRect();
+            const scrollDistance = scrollTrack.offsetHeight - stickyContainer.offsetHeight;
+            const targetScrollY = trackTop - stickyRect.top + (targetP * scrollDistance);
+            window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
+          }
         });
-      });
-
-      // Page visibility API (pause when tab hidden, resume when visible)
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          clearAllTimers();
-        } else if (!isPaused && hasStarted && !isHolding) {
-          triggerStep(currentStep);
-        }
       });
     })();
   </script>
