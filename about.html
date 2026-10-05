@@ -743,9 +743,9 @@ a {
 
 /* ============ SECTION: PURPOSE & DIRECTION ============ */
 .section-purpose-direction {
-  background: linear-gradient(180deg, #071f33 0%, #0a253e 40%, #0e3252 100%);
-  color: #ffffff;
-  padding: 85px 0 65px;
+  background: #f8fafc;
+  border-top: 1px solid #edf2f7;
+  padding: 90px 0 95px;
   position: relative;
 }
 
@@ -756,13 +756,11 @@ a {
 }
 
 .mv-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 24px;
-  padding: 40px 36px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 16px 40px rgba(0, 15, 35, 0.25);
+  padding: 42px 36px;
+  box-shadow: 0 10px 30px rgba(14, 50, 82, 0.05);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
@@ -770,9 +768,8 @@ a {
 
 .mv-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(234, 88, 12, 0.4);
-  box-shadow: 0 24px 50px rgba(0, 15, 35, 0.35);
+  border-color: rgba(234, 88, 12, 0.35);
+  box-shadow: 0 20px 45px rgba(14, 50, 82, 0.09);
 }
 
 .mv-card-header {
@@ -783,9 +780,9 @@ a {
 }
 
 .mv-icon-badge {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -799,38 +796,36 @@ a {
 }
 
 .mv-icon-badge--vision {
-  background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  box-shadow: 0 0 18px rgba(56, 189, 248, 0.2);
+  background: #e0f2fe;
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.2);
 }
 
 .mv-icon-badge--mission {
-  background: rgba(244, 63, 94, 0.15);
-  color: #fb7185;
-  border: 1px solid rgba(244, 63, 94, 0.3);
-  box-shadow: 0 0 18px rgba(244, 63, 94, 0.2);
+  background: #ffe4e6;
+  color: #e11d48;
+  border: 1px solid rgba(225, 29, 72, 0.2);
 }
 
 .mv-title {
   font-size: clamp(21px, 2.2vw, 25px);
   font-weight: 800;
-  color: #ffffff;
+  color: #0e3252;
   margin: 0;
   line-height: 1.25;
   letter-spacing: -0.015em;
 }
 
 .mv-text {
-  font-size: 16px;
+  font-size: 15.5px;
   line-height: 1.68;
-  color: rgba(226, 232, 240, 0.88);
+  color: #475569;
   margin: 0;
 }
 
 @media (max-width: 768px) {
   .section-purpose-direction {
-    padding: 65px 0 50px;
+    padding: 65px 0 65px;
   }
   .mv-grid {
     grid-template-columns: 1fr;
@@ -1490,8 +1485,10 @@ a {
   <!-- ================= SECTION: PURPOSE & DIRECTION ================= -->
   <section class="section-purpose-direction" id="purpose-direction">
     <div class="container">
-      <div class="section-header" data-animate="fade-up" style="margin-bottom: 44px;">
-        <h2 class="section-title section-title--light">Our Purpose &amp; Direction</h2>
+      <div class="section-header" data-animate="fade-up" style="margin-bottom: 48px;">
+        <span class="section-pill" style="margin-bottom: 12px;">Strategic Horizon</span>
+        <h2 class="section-title">Our Purpose &amp; Direction</h2>
+        <p class="section-desc" style="max-width: 620px; margin: 0 auto;">Guiding our commitment to science-led nutrition, uncompromised quality, and global reach.</p>
       </div>
 
       <div class="mv-grid" data-stagger>
@@ -1519,12 +1516,6 @@ a {
       </div>
     </div>
   </section>
-
-
-
-
-
-
 
   <!-- ================= FOOTER ================= -->
   <footer class="footer-section">
