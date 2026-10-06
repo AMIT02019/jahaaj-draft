@@ -582,17 +582,13 @@ a {
 
 /* ============ SECTION 2: PRIMARY PACKAGING (9 FORMATS IN 2 BALANCED ROWS) ============ */
 .pkg-formats-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   align-items: stretch;
 }
 
 .pkg-format-card {
-  flex: 0 0 calc(20% - 16px);
-  max-width: calc(20% - 16px);
-  min-width: 200px;
   background: #ffffff;
   border: 1px solid var(--gray-200);
   border-radius: 18px;
@@ -634,7 +630,7 @@ a {
 }
 
 .pkg-format-body {
-  padding: 16px 14px 14px;
+  padding: 18px 16px 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -644,41 +640,16 @@ a {
   font-size: 15px;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.3;
 }
 
 .pkg-format-desc {
-  font-size: 12.5px;
+  font-size: 12.8px;
   color: var(--gray-500);
-  line-height: 1.45;
-  margin-bottom: 14px;
+  line-height: 1.5;
+  margin-bottom: 0;
   flex: 1;
-}
-
-.pkg-format-footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: auto;
-}
-
-.pkg-format-arrow {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--orange-light);
-  color: var(--orange-bright);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  transition: all 0.22s ease;
-}
-
-.pkg-format-card:hover .pkg-format-arrow {
-  background: var(--orange-bright);
-  color: #ffffff;
-  transform: translateX(2px);
 }
 
 /* ============ SECTION 3: OUR PACKAGING PROCESS (5 STEPS) ============ */
@@ -1016,22 +987,34 @@ a {
   }
 }
 
+@media (max-width: 1200px) {
+  .pkg-formats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .section-wrapper {
     padding: 60px 0;
   }
   .pkg-formats-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
   .pkg-format-card {
-    flex: 0 0 calc(50% - 6px);
-    max-width: calc(50% - 6px);
     min-width: 0;
   }
   .pkg-step-item {
     flex: 0 0 100%;
     max-width: 320px;
   }
+}
+
+@media (max-width: 480px) {
+  .pkg-formats-grid {
+    grid-template-columns: 1fr;
+  }
+}
   .why-cards-grid {
     grid-template-columns: 1fr;
   }
@@ -1211,9 +1194,6 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Pouches &amp; Foil Packs</h3>
             <p class="pkg-format-desc">Multi-layer moisture and oxygen protection.</p>
-            <div class="pkg-format-footer">
-              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
-            </div>
           </div>
         </div>
 
@@ -1225,9 +1205,6 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Bottles &amp; Jars</h3>
             <p class="pkg-format-desc">HDPE, PET and amber containers for liquids, suspensions and powders.</p>
-            <div class="pkg-format-footer">
-              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
-            </div>
           </div>
         </div>
 
@@ -1239,9 +1216,6 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Containers &amp; Buckets</h3>
             <p class="pkg-format-desc">Heavy-duty containers for large-scale livestock feeding.</p>
-            <div class="pkg-format-footer">
-              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
-            </div>
           </div>
         </div>
 
@@ -1253,9 +1227,6 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Sachets</h3>
             <p class="pkg-format-desc">Single-dose sealed foil units for drinking water solutions, vaccines and boosters.</p>
-            <div class="pkg-format-footer">
-              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
-            </div>
           </div>
         </div>
 
@@ -1267,9 +1238,6 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Vertical Sachet Sticks</h3>
             <p class="pkg-format-desc">Plain vertical sachet stick packs for liquid treats, pastes, and oral dosage powders.</p>
-            <div class="pkg-format-footer">
-              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
-            </div>
           </div>
         </div>
 
@@ -1281,9 +1249,6 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Foils &amp; Blister Packs</h3>
             <p class="pkg-format-desc">Alu-alu foil and push-through blisters for veterinary boluses and tablets.</p>
-            <div class="pkg-format-footer">
-              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
-            </div>
           </div>
         </div>
 
@@ -1295,9 +1260,6 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Jerry Cans &amp; Drums</h3>
             <p class="pkg-format-desc">5L, 20L, 50L, 200L HDPE drums for liquids and feed additives.</p>
-            <div class="pkg-format-footer">
-              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
-            </div>
           </div>
         </div>
 
@@ -1309,9 +1271,6 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Tablet &amp; Bolus Containers</h3>
             <p class="pkg-format-desc">Specialized containers with desiccant caps.</p>
-            <div class="pkg-format-footer">
-              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
-            </div>
           </div>
         </div>
 
@@ -1323,9 +1282,6 @@ a {
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">25 kg Bags &amp; Bulk Sacks</h3>
             <p class="pkg-format-desc">Multi-wall kraft paper and HDPE bags for bulk powder formulations and feed premixes.</p>
-            <div class="pkg-format-footer">
-              <span class="pkg-format-arrow"><i class="fas fa-arrow-right"></i></span>
-            </div>
           </div>
         </div>
       </div>

@@ -1206,74 +1206,128 @@ a {
 }
 
 /* ==========================================================================
-   7. QUALITY ASSURANCE (DARK SECTION WITH CLEAN ICON LIST)
+   7. QUALITY ASSURANCE (LIGHT SECTION WITH CLEAN 2x2 FEATURE CARDS)
    ========================================================================== */
-.fac-quality-dark {
-  background: linear-gradient(135deg, #0e3252 0%, #071f33 100%);
-  color: #ffffff;
-  padding: 100px 0;
+.fac-quality-section {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  color: var(--navy);
+  padding: 95px 0 100px;
   position: relative;
-  overflow: hidden;
-}
-
-.fac-quality-dark::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; width: 450px; height: 100%;
-  background: radial-gradient(circle at 100% 50%, rgba(234, 88, 12, 0.15), transparent 70%);
-  pointer-events: none;
 }
 
 .fac-quality-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
   align-items: center;
+}
+
+.fac-quality-content .fac-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #ffedd5;
+  border-radius: 9999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.fac-quality-content .fac-section-title {
+  color: var(--navy);
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+  margin-bottom: 16px;
 }
 
 .fac-quality-content .fac-section-desc {
+  color: #475569;
+  font-size: 16.5px;
+  line-height: 1.68;
+  max-width: 500px;
   margin-bottom: 32px;
-  max-width: 520px;
+}
+
+.fac-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+  color: #ffffff !important;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 30px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.28);
+  transition: all 0.25s ease;
+}
+
+.fac-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.38);
 }
 
 .fac-quality-features {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
-.fac-q-item {
+.fac-q-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 22px 20px;
+  box-shadow: 0 4px 18px rgba(14, 50, 82, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+}
+
+.fac-q-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(234, 88, 12, 0.35);
+  box-shadow: 0 12px 28px rgba(14, 50, 82, 0.08);
 }
 
 .fac-q-icon {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  border-radius: 14px;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  color: #0284c7;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 19px;
+  font-size: 20px;
   flex-shrink: 0;
   transition: all 0.25s ease;
 }
 
-.fac-q-item:hover .fac-q-icon {
-  background: rgba(234, 88, 12, 0.25);
-  border-color: #ea580c;
-  color: #fb923c;
+.fac-q-card:hover .fac-q-icon {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #ea580c;
   transform: scale(1.08);
 }
 
 .fac-q-text {
-  font-size: 17px;
-  font-weight: 600;
-  color: #ffffff;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
@@ -1281,6 +1335,13 @@ a {
   .fac-quality-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+}
+
+@media (max-width: 580px) {
+  .fac-quality-features {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
@@ -1691,36 +1752,36 @@ a {
   </section>
 
   <!-- ================= 7. QUALITY ASSURANCE ================= -->
-  <section class="fac-section fac-quality-dark" id="quality">
+  <section class="fac-section fac-quality-section" id="quality">
     <div class="container">
       <div class="fac-quality-grid">
-        <div class="fac-quality-content">
-          <span class="fac-eyebrow fac-eyebrow--light">QUALITY ASSURANCE</span>
-          <h2 class="fac-section-title fac-section-title--light">A Facility Committed to Quality</h2>
-          <p class="fac-section-desc fac-section-desc--light">Every stage of our production process is guided by strict quality standards to ensure reliable, safe and high performing products.</p>
-          <a href="qc-qa-systems.html" class="fac-btn-glass">
+        <div class="fac-quality-content" data-animate="fade-up">
+          <span class="fac-eyebrow">QUALITY ASSURANCE</span>
+          <h2 class="fac-section-title">A Facility Committed to Quality</h2>
+          <p class="fac-section-desc">Every stage of our production process is guided by strict quality standards to ensure reliable, safe and high performing products.</p>
+          <a href="qc-qa-systems.html" class="fac-btn-primary">
             <span>OUR QUALITY PROCESS</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
 
-        <div class="fac-quality-features">
-          <div class="fac-q-item">
+        <div class="fac-quality-features" data-stagger>
+          <div class="fac-q-card">
             <div class="fac-q-icon"><i class="fa-solid fa-shield-halved"></i></div>
             <div class="fac-q-text">Standardized Processes</div>
           </div>
 
-          <div class="fac-q-item">
+          <div class="fac-q-card">
             <div class="fac-q-icon"><i class="fa-solid fa-clipboard-check"></i></div>
             <div class="fac-q-text">Regular Inspections</div>
           </div>
 
-          <div class="fac-q-item">
+          <div class="fac-q-card">
             <div class="fac-q-icon"><i class="fa-solid fa-users-gear"></i></div>
             <div class="fac-q-text">Skilled Workforce</div>
           </div>
 
-          <div class="fac-q-item">
+          <div class="fac-q-card">
             <div class="fac-q-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
             <div class="fac-q-text">Continuous Improvement</div>
           </div>
