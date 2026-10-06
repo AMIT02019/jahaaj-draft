@@ -1146,7 +1146,7 @@ a {
 }
 
 .fac-photo-media {
-  aspect-ratio: 16/10;
+  aspect-ratio: 4/3;
   overflow: hidden;
   position: relative;
   background: #0f172a;
@@ -1158,6 +1158,23 @@ a {
   object-fit: cover;
   transition: transform 0.4s ease;
 }
+
+/* Individual framing: Focus on products, machinery & operations instead of the floor */
+.fac-photo-card:nth-child(1) .fac-photo-media img { object-position: center 40%; }
+.fac-photo-card:nth-child(2) .fac-photo-media img { object-position: center 8%; }
+.fac-photo-card:nth-child(3) .fac-photo-media img { object-position: center 25%; }
+.fac-photo-card:nth-child(4) .fac-photo-media img { object-position: center 8%; }
+.fac-photo-card:nth-child(5) .fac-photo-media img { object-position: center 15%; }
+.fac-photo-card:nth-child(6) .fac-photo-media img { object-position: center 25%; }
+.fac-photo-card:nth-child(7) .fac-photo-media img { object-position: center 22%; }
+.fac-photo-card:nth-child(8) .fac-photo-media img { object-position: center 15%; }
+.fac-photo-card:nth-child(9) .fac-photo-media img { object-position: center 35%; }
+.fac-photo-card:nth-child(10) .fac-photo-media img { object-position: center 50%; }
+.fac-photo-card:nth-child(11) .fac-photo-media img { object-position: center 45%; }
+.fac-photo-card:nth-child(12) .fac-photo-media img { object-position: center 55%; }
+.fac-photo-card:nth-child(13) .fac-photo-media img { object-position: center 35%; }
+.fac-photo-card:nth-child(14) .fac-photo-media img { object-position: center 18%; }
+.fac-photo-card:nth-child(15) .fac-photo-media img { object-position: center 8%; }
 
 .fac-photo-card:hover .fac-photo-media img {
   transform: scale(1.06);
