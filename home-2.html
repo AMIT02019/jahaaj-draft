@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <link rel="icon" type="image/png" href="assets/favicon.png">
 <meta charset="utf-8">
@@ -23,10 +23,12 @@
   --primary-navy-trans: rgba(13, 36, 99, 0.92);
   --logo-blue-rich: #0d2463;
   --logo-blue-deep: #07153b;
-  --btn-orange-1: #c2410c;
-  --btn-orange-2: #9a3412;
-  --btn-orange-hover-1: #ea580c;
-  --btn-orange-hover-2: #c2410c;
+  --btn-orange-1: #f97316;
+  --btn-orange-2: #ea580c;
+  --btn-orange-hover-1: #fb923c;
+  --btn-orange-hover-2: #f97316;
+  --btn-shadow: rgba(234, 88, 12, 0.35);
+  --btn-shadow-hover: rgba(234, 88, 12, 0.48);
   --ink: #1a1a1a;
   --ink-muted: #4b5563;
   --line: #e5e7eb;
@@ -239,7 +241,7 @@ button {
   font-weight: 600;
   padding: 10px 22px;
   border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.3);
+  box-shadow: 0 4px 14px var(--btn-shadow);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   position: relative;
@@ -265,7 +267,7 @@ button {
 .nav__cta-btn:hover {
   background: linear-gradient(135deg, var(--btn-orange-hover-1) 0%, var(--btn-orange-hover-2) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(194, 65, 12, 0.45);
+  box-shadow: 0 6px 20px var(--btn-shadow-hover);
 }
 
 .nav__burger {
@@ -392,7 +394,7 @@ button {
   padding: 14px 28px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 6px 18px rgba(194, 65, 12, 0.32);
+  box-shadow: 0 6px 18px var(--btn-shadow);
   transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   cursor: pointer;
@@ -419,12 +421,12 @@ button {
 .explore-btn:hover {
   background: linear-gradient(135deg, var(--btn-orange-hover-1) 0%, var(--btn-orange-hover-2) 100%);
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(194, 65, 12, 0.48);
+  box-shadow: 0 10px 24px var(--btn-shadow-hover);
 }
 
 .explore-btn:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(194, 65, 12, 0.25);
+  box-shadow: 0 2px 8px var(--btn-shadow);
 }
 
 .btn-arrow {
@@ -548,24 +550,161 @@ button {
   margin-top: 34px;
 }
 
-/* ============ SECTION 2: DESCRIPTION (TWO ROWS) ============ */
+/* ============ SECTION 2: DESCRIPTION (TWO ROWS) & THEMES ============ */
 .body-description-section {
-  background: linear-gradient(180deg, #0d2463 0%, #07153b 100%);
-  color: #ffffff;
   padding: 100px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  transition: background 0.35s ease, color 0.35s ease;
 }
 
-.body-description-section::before {
+/* Theme 1: Clean Editorial Light (Default) */
+[data-theme="light"], :root:not([data-theme]) {
+  --btn-orange-1: #f97316;
+  --btn-orange-2: #ea580c;
+  --btn-orange-hover-1: #fb923c;
+  --btn-orange-hover-2: #f97316;
+  --btn-shadow: rgba(234, 88, 12, 0.35);
+  --btn-shadow-hover: rgba(234, 88, 12, 0.48);
+}
+[data-theme="light"] .body-description-section,
+:root:not([data-theme]) .body-description-section {
+  background: #f8fafc;
+  color: #0f172a;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+[data-theme="light"] .body-description-section::before,
+:root:not([data-theme]) .body-description-section::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 10% 20%, rgba(253, 133, 0, 0.09) 0%, transparent 40%),
-              radial-gradient(circle at 90% 80%, rgba(0, 162, 248, 0.16) 0%, transparent 45%);
+  background: radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.06) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.08) 0%, transparent 45%);
   pointer-events: none;
+}
+[data-theme="light"] .description-para-text,
+:root:not([data-theme]) .description-para-text {
+  color: #475569;
+}
+[data-theme="light"] .main-point-para,
+:root:not([data-theme]) .main-point-para {
+  color: #0e3252;
+  font-weight: 800;
+}
+[data-theme="light"] .first-para-image-section,
+[data-theme="light"] .second-para-image-section,
+:root:not([data-theme]) .first-para-image-section,
+:root:not([data-theme]) .second-para-image-section {
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 16px 36px rgba(14, 50, 82, 0.07);
+}
+
+/* Theme 2: Radiant Royal Navy */
+[data-theme="royal"] {
+  --btn-orange-1: #ff782d;
+  --btn-orange-2: #f05305;
+  --btn-orange-hover-1: #ff924d;
+  --btn-orange-hover-2: #ff6b1a;
+  --btn-shadow: rgba(240, 83, 5, 0.45);
+  --btn-shadow-hover: rgba(240, 83, 5, 0.55);
+}
+[data-theme="royal"] .body-description-section {
+  background: linear-gradient(135deg, #091e42 0%, #0c2d6b 50%, #061530 100%);
+  color: #ffffff;
+  border-top: none;
+  border-bottom: none;
+}
+[data-theme="royal"] .body-description-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 15% 25%, rgba(255, 115, 0, 0.16) 0%, transparent 45%),
+              radial-gradient(circle at 85% 75%, rgba(0, 162, 255, 0.22) 0%, transparent 50%);
+  pointer-events: none;
+}
+[data-theme="royal"] .description-para-text {
+  color: rgba(255, 255, 255, 0.88);
+}
+[data-theme="royal"] .main-point-para {
+  color: #ffffff;
+}
+[data-theme="royal"] .first-para-image-section,
+[data-theme="royal"] .second-para-image-section {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 48px rgba(0, 10, 30, 0.45);
+}
+
+/* Theme 3: Bio-Health Emerald */
+[data-theme="emerald"] {
+  --btn-orange-1: #f59e0b;
+  --btn-orange-2: #d97706;
+  --btn-orange-hover-1: #fbbf24;
+  --btn-orange-hover-2: #f59e0b;
+  --btn-shadow: rgba(245, 158, 11, 0.38);
+  --btn-shadow-hover: rgba(245, 158, 11, 0.48);
+}
+[data-theme="emerald"] .body-description-section {
+  background: linear-gradient(145deg, #062b25 0%, #031c18 60%, #083830 100%);
+  color: #ffffff;
+  border-top: none;
+  border-bottom: none;
+}
+[data-theme="emerald"] .body-description-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.18) 0%, transparent 45%),
+              radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.16) 0%, transparent 50%);
+  pointer-events: none;
+}
+[data-theme="emerald"] .description-para-text {
+  color: rgba(240, 253, 250, 0.88);
+}
+[data-theme="emerald"] .main-point-para {
+  color: #ffffff;
+}
+[data-theme="emerald"] .first-para-image-section,
+[data-theme="emerald"] .second-para-image-section {
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 20px 45px rgba(0, 20, 15, 0.45);
+}
+
+/* Theme 4: Tech Slate */
+[data-theme="slate"] {
+  --btn-orange-1: #f43f5e;
+  --btn-orange-2: #e11d48;
+  --btn-orange-hover-1: #fb7185;
+  --btn-orange-hover-2: #f43f5e;
+  --btn-shadow: rgba(244, 63, 94, 0.4);
+  --btn-shadow-hover: rgba(244, 63, 94, 0.5);
+}
+[data-theme="slate"] .body-description-section {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  border-top: none;
+  border-bottom: none;
+}
+[data-theme="slate"] .body-description-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 15% 25%, rgba(56, 189, 248, 0.15) 0%, transparent 45%),
+              radial-gradient(circle at 85% 75%, rgba(244, 63, 94, 0.15) 0%, transparent 45%);
+  pointer-events: none;
+}
+[data-theme="slate"] .description-para-text {
+  color: #cbd5e1;
+}
+[data-theme="slate"] .main-point-para {
+  color: #ffffff;
+}
+[data-theme="slate"] .first-para-image-section,
+[data-theme="slate"] .second-para-image-section {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
 }
 
 .first-para-section {
@@ -1321,8 +1460,88 @@ button {
     flex-wrap: wrap !important;
     justify-content: center !important;
   }
+/* ============ THEME SWITCHER BAR ============ */
+.theme-switcher-bar {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  background: rgba(15, 23, 42, 0.90);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  font-family: var(--font);
 }
-
+.theme-switcher-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+  padding-left: 4px;
+  white-space: nowrap;
+}
+.theme-switcher-options {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.theme-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.theme-pill:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+.theme-pill.active {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.pill-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+@media (max-width: 820px) {
+  .theme-switcher-bar {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .theme-switcher-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -1867,6 +2086,60 @@ button {
       }
       lastScrollY = currentScrollY;
     }, { passive: true });
+  </script>
+
+  <!-- Floating Color Theme Switcher for Home 2 -->
+  <aside class="theme-switcher-bar" aria-label="Color Theme Options">
+    <div class="theme-switcher-label">
+      <span class="material-symbols-outlined" style="font-size:18px;">palette</span>
+      <span>Palette:</span>
+    </div>
+    <div class="theme-switcher-options">
+      <button type="button" class="theme-pill active" data-set-theme="light" title="Option 1: Clean Light & Brand Flame">
+        <span class="pill-dot" style="background:#f8fafc; border:1px solid #94a3b8;"></span>
+        <span class="pill-dot" style="background:#f97316;"></span>
+        <span>Clean Light</span>
+      </button>
+      <button type="button" class="theme-pill" data-set-theme="royal" title="Option 2: Radiant Royal Navy & Tangerine">
+        <span class="pill-dot" style="background:#091e42;"></span>
+        <span class="pill-dot" style="background:#ff782d;"></span>
+        <span>Royal Blue</span>
+      </button>
+      <button type="button" class="theme-pill" data-set-theme="emerald" title="Option 3: Bio-Health Emerald & Warm Gold">
+        <span class="pill-dot" style="background:#062b25;"></span>
+        <span class="pill-dot" style="background:#f59e0b;"></span>
+        <span>Bio-Emerald</span>
+      </button>
+      <button type="button" class="theme-pill" data-set-theme="slate" title="Option 4: Modern Tech Slate & Vivid Coral">
+        <span class="pill-dot" style="background:#0f172a;"></span>
+        <span class="pill-dot" style="background:#f43f5e;"></span>
+        <span>Modern Slate</span>
+      </button>
+    </div>
+  </aside>
+
+  <script>
+    /* ---------- Color Theme Switcher Logic ---------- */
+    (function() {
+      const themePills = document.querySelectorAll('[data-set-theme]');
+      function applyTheme(themeName) {
+        document.documentElement.setAttribute('data-theme', themeName);
+        try { localStorage.setItem('home2_theme', themeName); } catch (e) {}
+        themePills.forEach(pill => {
+          pill.classList.toggle('active', pill.getAttribute('data-set-theme') === themeName);
+        });
+      }
+      let currentTheme = 'light';
+      try {
+        currentTheme = localStorage.getItem('home2_theme') || 'light';
+      } catch (e) {}
+      applyTheme(currentTheme);
+      themePills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          applyTheme(pill.getAttribute('data-set-theme'));
+        });
+      });
+    })();
   </script>
   <!-- Canonical Navigation & Visibility Controller -->
   <script src="assets/nav-and-footer.js" defer></script>
