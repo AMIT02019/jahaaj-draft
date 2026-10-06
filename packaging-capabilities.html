@@ -580,15 +580,19 @@ a {
   border-radius: calc(var(--radius-xl) - 8px);
 }
 
-/* ============ SECTION 2: PRIMARY PACKAGING (7 CARDS) ============ */
+/* ============ SECTION 2: PRIMARY PACKAGING (9 FORMATS IN 2 BALANCED ROWS) ============ */
 .pkg-formats-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   align-items: stretch;
 }
 
 .pkg-format-card {
+  flex: 0 0 calc(20% - 16px);
+  max-width: calc(20% - 16px);
+  min-width: 200px;
   background: #ffffff;
   border: 1px solid var(--gray-200);
   border-radius: 18px;
@@ -974,8 +978,9 @@ a {
 
 /* ============ RESPONSIVE MEDIA QUERIES ============ */
 @media (max-width: 1200px) {
-  .pkg-formats-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .pkg-format-card {
+    flex: 0 0 calc(33.333% - 14px);
+    max-width: calc(33.333% - 14px);
   }
   .secondary-pkg-grid {
     grid-template-columns: 1fr 1fr;
@@ -1016,8 +1021,12 @@ a {
     padding: 60px 0;
   }
   .pkg-formats-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+  }
+  .pkg-format-card {
+    flex: 0 0 calc(50% - 6px);
+    max-width: calc(50% - 6px);
+    min-width: 0;
   }
   .pkg-step-item {
     flex: 0 0 100%;
