@@ -2258,7 +2258,7 @@ a {
   dominant-baseline: middle;
 }
 
-/* Progressive Line Drawing (Starts from start; before that only text is visible) */
+/* Progressive Line Drawing (Controlled onscroll) */
 .flow-draw-line {
   fill: none;
   stroke-width: 5;
@@ -2268,30 +2268,8 @@ a {
   stroke-dashoffset: 1765;
   opacity: 0;
   filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.45));
-  animation: lineDrawFromStart 7.5s linear infinite;
-}
-
-@keyframes lineDrawFromStart {
-  0%, 10% {
-    stroke-dashoffset: 1765;
-    opacity: 0;
-  }
-  12% {
-    stroke-dashoffset: 1765;
-    opacity: 1;
-  }
-  62% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  86% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  95%, 100% {
-    stroke-dashoffset: 0;
-    opacity: 0;
-  }
+  transition: opacity 0.25s ease-out;
+  will-change: stroke-dashoffset, opacity;
 }
 
 /* Origin Start Dot */
@@ -2300,22 +2278,9 @@ a {
   filter: drop-shadow(0 0 6px rgba(234, 179, 8, 0.6));
   opacity: 0;
   transform-origin: 48px 175px;
-  animation: startDotPop 7.5s linear infinite;
-}
-
-@keyframes startDotPop {
-  0%, 9% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  12%, 86% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  94%, 100% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
+  transform: scale(0);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease-out;
+  will-change: transform, opacity;
 }
 
 /* Destination Arrowhead (Appears as line reaches the end) */
@@ -2327,24 +2292,9 @@ a {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-}
-
-.flow-arrowhead.arrow-4 {
-  animation: arrow4Pop 7.5s linear infinite;
-}
-@keyframes arrow4Pop {
-  0%, 60% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  62%, 86% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  94%, 100% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
+  transform: scale(0.4);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease-out;
+  will-change: transform, opacity;
 }
 
 @media (max-width: 768px) {
@@ -3162,24 +3112,75 @@ a {
       lastScrollY = currentScrollY;
     }, { passive: true });
 
-    /* ---------- Product Journey Flow Line Animation ---------- */
-    (function initJourneyFlowAnimation() {
+    /* ---------- Product Journey Flow Line Animation (Scroll-Driven) ---------- */
+    (function initScrollDrivenJourneyFlow() {
       const journeyCard = document.getElementById('journeyCard');
-      if (!journeyCard) return;
+      const drawLine = document.getElementById('journey-draw-path');
+      const startDot = document.getElementById('flow-start-dot');
+      const arrowhead = document.getElementById('arrow-4');
+      if (!journeyCard || !drawLine) return;
 
-      const animatedElements = journeyCard.querySelectorAll('.flow-draw-line, .flow-start-dot, .flow-arrowhead');
+      const totalLength = 1765;
+      let ticking = false;
 
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            const state = entry.isIntersecting ? 'running' : 'paused';
-            animatedElements.forEach(el => {
-              el.style.animationPlayState = state;
-            });
-          });
-        }, { threshold: 0.1 });
-        observer.observe(journeyCard);
+      function updateFlow() {
+        ticking = false;
+        const rect = journeyCard.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+
+        // Start drawing when top of card enters lower screen (82% of viewport)
+        // Complete drawing when card center moves into upper-mid screen (22% of viewport)
+        const startY = vh * 0.82;
+        const endY = vh * 0.22;
+        const rawProgress = (startY - rect.top) / (startY - endY);
+        const progress = Math.min(Math.max(rawProgress, 0), 1);
+
+        // Update stroke draw offset
+        const currentOffset = totalLength * (1 - progress);
+        drawLine.style.strokeDashoffset = currentOffset.toFixed(1);
+
+        if (progress > 0.005) {
+          drawLine.style.opacity = '1';
+        } else {
+          drawLine.style.opacity = '0';
+        }
+
+        // Start dot pop animation
+        if (startDot) {
+          if (progress > 0.01) {
+            const dotScale = Math.min(progress / 0.06, 1);
+            startDot.style.opacity = '1';
+            startDot.style.transform = 'scale(' + dotScale.toFixed(2) + ')';
+          } else {
+            startDot.style.opacity = '0';
+            startDot.style.transform = 'scale(0)';
+          }
+        }
+
+        // Arrowhead pop when flow approaches the end (> 94%)
+        if (arrowhead) {
+          if (progress >= 0.94) {
+            const arrowProgress = (progress - 0.94) / 0.06;
+            const arrowScale = 0.4 + 0.6 * arrowProgress;
+            arrowhead.style.opacity = String(Math.min(arrowProgress * 1.5, 1));
+            arrowhead.style.transform = 'scale(' + arrowScale.toFixed(2) + ')';
+          } else {
+            arrowhead.style.opacity = '0';
+            arrowhead.style.transform = 'scale(0.4)';
+          }
+        }
       }
+
+      function requestTick() {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(updateFlow);
+        }
+      }
+
+      window.addEventListener('scroll', requestTick, { passive: true });
+      window.addEventListener('resize', requestTick, { passive: true });
+      updateFlow();
     })();
 
     /* ---------- Triangular Partnership Interactive Showcase ---------- */
