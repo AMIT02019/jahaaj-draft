@@ -652,6 +652,71 @@ a {
   transform: translateY(3px);
 }
 
+.why-reasons-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+button.why-reasons-pill {
+  font: inherit;
+}
+
+.why-reasons-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, 8px);
+  min-width: 320px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 24px 48px rgba(14, 50, 82, 0.16);
+  padding: 8px;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 60;
+}
+
+.why-reasons-dropdown.open .why-reasons-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.why-reasons-dropdown.open .reasons-pill-arrow {
+  transform: rotate(180deg);
+}
+
+.why-reasons-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--navy);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.why-reasons-item:hover {
+  background: #f1f5f9;
+}
+
+.why-reasons-num {
+  color: #ea580c;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+#ideas, #feed-safety, #journey, #expertise, #partnership, #formats, #packaging {
+  scroll-margin-top: 110px;
+}
+
 @media (max-width: 600px) {
   .why-reasons-bridge {
     margin-top: -20px;
@@ -2349,7 +2414,7 @@ a {
   fill: #eab308;
   filter: drop-shadow(0 0 6px rgba(234, 179, 8, 0.6));
   opacity: 0;
-  transform-origin: 48px 175px;
+  transform-origin: 48px 177px;
   transform: scale(0);
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease-out;
   will-change: transform, opacity;
@@ -2523,11 +2588,22 @@ a {
     <div class="container">
       <!-- 7 Reasons Intro Pill (White Section) -->
       <div class="why-reasons-bridge" data-animate="fade-up">
-        <a href="#ideas" class="why-reasons-pill" aria-label="Explore 7 Reasons to Work With Us">
-          <span class="reasons-pill-badge">7 REASONS</span>
-          <span class="reasons-pill-text">7 Reasons to Work With Us</span>
-          <i class="fa-solid fa-arrow-down reasons-pill-arrow"></i>
-        </a>
+        <div class="why-reasons-dropdown" id="reasonsDropdown">
+          <button type="button" class="why-reasons-pill" id="reasonsToggle" aria-haspopup="true" aria-expanded="false" aria-label="Explore 7 Reasons to Work With Us">
+            <span class="reasons-pill-badge">7 REASONS</span>
+            <span class="reasons-pill-text">7 Reasons to Work With Us</span>
+            <i class="fa-solid fa-arrow-down reasons-pill-arrow"></i>
+          </button>
+          <div class="why-reasons-menu" id="reasonsMenu" role="menu">
+            <a href="#ideas" class="why-reasons-item" role="menuitem"><span class="why-reasons-num">01</span> Product Ideas</a>
+            <a href="#feed-safety" class="why-reasons-item" role="menuitem"><span class="why-reasons-num">02</span> Feed Safety Standards</a>
+            <a href="#journey" class="why-reasons-item" role="menuitem"><span class="why-reasons-num">03</span> Product Journey</a>
+            <a href="#expertise" class="why-reasons-item" role="menuitem"><span class="why-reasons-num">04</span> Expertise &amp; Customization</a>
+            <a href="#partnership" class="why-reasons-item" role="menuitem"><span class="why-reasons-num">05</span> Quality Partnership</a>
+            <a href="#formats" class="why-reasons-item" role="menuitem"><span class="why-reasons-num">06</span> Product Formats</a>
+            <a href="#packaging" class="why-reasons-item" role="menuitem"><span class="why-reasons-num">07</span> Innovation &amp; Packaging</a>
+          </div>
+        </div>
       </div>
 
       <div class="section-header" data-animate="fade-up">
@@ -2562,7 +2638,7 @@ a {
   </section>
 
   <!-- ================= SECTION 2: FAMI-QS CERTIFIED ================= -->
-  <section class="section-wrapper section-wrapper--dark">
+  <section class="section-wrapper section-wrapper--dark" id="feed-safety">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-pill section-pill--light">02 &bull; Feed Safety Standards</span>
@@ -2596,7 +2672,7 @@ a {
   </section>
 
   <!-- ================= SECTION 3: PRODUCT JOURNEY ================= -->
-  <section class="section-wrapper section-wrapper--alt">
+  <section class="section-wrapper section-wrapper--alt" id="journey">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-pill">03 &bull; Product Journey</span>
@@ -2657,20 +2733,27 @@ a {
           </g>
 
           <!-- Progressive Flow Line (Draws smoothly from the start; before that ONLY text is visible) -->
-          <path id="journey-draw-path" class="flow-draw-line" pathLength="1765" fill="none" stroke="url(#streamGrad)" d="M 48 175 L 128 175 C 128 92, 180 48, 253 48 C 325 48, 378 92, 378 175 C 378 258, 430 302, 501 302 C 572 302, 625 258, 625 175 C 625 92, 677 48, 748 48 C 820 48, 872 92, 872 175 C 872 258, 924 302, 995 302 C 1066 302, 1118 258, 1118 175 L 1195 175" />
+          <path class="flow-track-line" d="M 48 177 L 1195 177" fill="none" stroke="#d9e2ea" stroke-width="5" stroke-linecap="round" />
+          <path id="journey-draw-path" class="flow-draw-line" pathLength="1765" fill="none" stroke="url(#streamGrad)" d="M 48 177 L 1195 177" />
+          <g class="flow-step-dots">
+            <circle cx="253" cy="177" r="7" fill="#eab308" stroke="#ffffff" stroke-width="2.5" />
+            <circle cx="501" cy="177" r="7" fill="#16a34a" stroke="#ffffff" stroke-width="2.5" />
+            <circle cx="748" cy="177" r="7" fill="#0284c7" stroke="#ffffff" stroke-width="2.5" />
+            <circle cx="995" cy="177" r="7" fill="#ef4444" stroke="#ffffff" stroke-width="2.5" />
+          </g>
 
           <!-- Origin Start Dot (Pops in right before drawing starts) -->
-          <circle id="flow-start-dot" cx="48" cy="175" r="9" class="flow-start-dot" />
+          <circle id="flow-start-dot" cx="48" cy="177" r="9" class="flow-start-dot" />
 
           <!-- Destination Arrowhead (Pointing right to market delivery) -->
-          <path id="arrow-4" class="flow-arrowhead arrow-4" stroke="#ef4444" fill="none" d="M 1180 163 L 1195 175 L 1180 187" />
+          <path id="arrow-4" class="flow-arrowhead arrow-4" stroke="#ef4444" fill="none" d="M 1181 165 L 1195 177 L 1181 189" />
         </svg>
       </div>
     </div>
   </section>
 
   <!-- ================= SECTION 4: EXPERTISE & CUSTOMIZATION ================= -->
-  <section class="section-wrapper">
+  <section class="section-wrapper" id="expertise">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-pill">04 &bull; Expertise &amp; Customization</span>
@@ -2696,7 +2779,6 @@ a {
             </div>
           </div>
           
-          <p class="exp-intro-text">Formulation expertise contributing to rigorous ingredient selection, active optimization, targeted dosage-form decisions, and rapid commercial manufacturing feasibility.</p>
           
           <div class="exp-pillars">
             <div class="exp-pillar-item">
@@ -2731,7 +2813,6 @@ a {
           </div>
           
           <h3 class="exp-card-title">Customized Formulations</h3>
-          <p class="exp-intro-text">Formulations developed around your exact brand and market requirements - covering all four critical product dimensions with zero off-the-shelf catalog compromises.</p>
           
           <div class="spec-matrix-grid">
             <div class="spec-matrix-tile">
@@ -2936,7 +3017,7 @@ a {
   </section>
 
   <!-- ================= SECTION 6: MULTIPLE PRODUCT FORMATS ================= -->
-  <section class="section-wrapper">
+  <section class="section-wrapper" id="formats">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-pill">06 &bull; Product Formats</span>
@@ -3238,16 +3319,16 @@ a {
           }
         }
 
-        // Arrowhead pop when flow approaches the end (> 94%)
+        // Arrowhead rides the tip of the line, moving horizontally through each step point
         if (arrowhead) {
-          if (progress >= 0.94) {
-            const arrowProgress = (progress - 0.94) / 0.06;
-            const arrowScale = 0.4 + 0.6 * arrowProgress;
-            arrowhead.style.opacity = String(Math.min(arrowProgress * 1.5, 1));
-            arrowhead.style.transform = 'scale(' + arrowScale.toFixed(2) + ')';
+          if (progress > 0.01) {
+            const tipX = 48 + progress * 1147;
+            const shiftX = tipX - 1195;
+            arrowhead.style.opacity = '1';
+            arrowhead.style.transform = 'translateX(' + shiftX.toFixed(1) + 'px)';
           } else {
             arrowhead.style.opacity = '0';
-            arrowhead.style.transform = 'scale(0.4)';
+            arrowhead.style.transform = 'translateX(-1147px)';
           }
         }
       }
@@ -3382,5 +3463,31 @@ a {
   </script>
   <!-- Canonical Navigation Controller -->
   <script src="assets/nav-and-footer.js" defer></script>
+  <script>
+    /* ---------- 7 Reasons Dropdown ---------- */
+    (function initReasonsDropdown() {
+      const dropdown = document.getElementById('reasonsDropdown');
+      const toggle = document.getElementById('reasonsToggle');
+      if (!dropdown || !toggle) return;
+      function close() {
+        dropdown.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const isOpen = dropdown.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      dropdown.querySelectorAll('.why-reasons-item').forEach(function (item) {
+        item.addEventListener('click', close);
+      });
+      document.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target)) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+      });
+    })();
+  </script>
 </body>
 </html>

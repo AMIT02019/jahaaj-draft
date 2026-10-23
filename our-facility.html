@@ -1159,6 +1159,31 @@ a {
   transition: transform 0.4s ease;
 }
 
+.fac-photo-media--dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  background: #ffffff;
+}
+
+.fac-photo-media--dual img {
+  min-width: 0;
+}
+
+.fac-photo-media--empty {
+  background: #eef3f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fac-photo-media--empty i {
+  font-size: 36px;
+  color: #b8c6d1;
+}
+
+.fac-photo-card:nth-child(16) .fac-photo-media img { object-position: center 40%; }
+
 /* Individual framing: Focus on products, machinery & operations instead of the floor */
 .fac-photo-card:nth-child(1) .fac-photo-media img { object-position: center 40%; }
 .fac-photo-card:nth-child(2) .fac-photo-media img { object-position: center center; }
@@ -1609,8 +1634,8 @@ a {
         </div>
 
         <div class="fac-photo-card">
-          <div class="fac-photo-media">
-            <img src="assets/facility/air-conditioned-rm-store.png" alt="2. Raw material receiving area" loading="lazy">
+          <div class="fac-photo-media fac-photo-media--empty">
+            <i class="fa-solid fa-image"></i>
           </div>
           <div class="fac-photo-caption">2. Raw material receiving area</div>
         </div>
@@ -1623,8 +1648,9 @@ a {
         </div>
 
         <div class="fac-photo-card">
-          <div class="fac-photo-media">
-            <img src="assets/facility/bulk-rm-storage.png" alt="4. Raw material storage" loading="lazy">
+          <div class="fac-photo-media fac-photo-media--dual">
+            <img src="assets/facility/air-conditioned-rm-store.png" alt="4. Raw material storage" loading="lazy" style="object-position: center center;">
+            <img src="assets/facility/bulk-rm-storage.png" alt="4. Raw material storage" loading="lazy" style="object-position: center 8%;">
           </div>
           <div class="fac-photo-caption">4. Raw material storage</div>
         </div>
@@ -1645,7 +1671,7 @@ a {
 
         <div class="fac-photo-card">
           <div class="fac-photo-media">
-            <img src="assets/facility/strip-packing-machine.png" alt="7. Compression machine" loading="lazy">
+            <img src="assets/facility/compression-machine.png" alt="7. Compression machine" loading="lazy">
           </div>
           <div class="fac-photo-caption">7. Compression machine</div>
         </div>
@@ -1665,45 +1691,54 @@ a {
         </div>
 
         <div class="fac-photo-card">
-          <div class="fac-photo-media">
-            <img src="assets/facility/micro-lab.jpg" alt="10. Microbiology lab" loading="lazy">
+          <div class="fac-photo-media fac-photo-media--dual">
+            <img src="assets/facility/micro-lab.jpg" alt="10. Microbiology lab" loading="lazy" style="object-position: center 50%;">
+            <img src="assets/facility/micro-lab-1.jpg" alt="10. Microbiology lab" loading="lazy" style="object-position: center 45%;">
           </div>
           <div class="fac-photo-caption">10. Microbiology lab</div>
         </div>
 
         <div class="fac-photo-card">
           <div class="fac-photo-media">
-            <img src="assets/facility/micro-lab-1.jpg" alt="11. PET AHU" loading="lazy">
+            <img src="assets/facility/pet-ahu.png" alt="11. PET AHU" loading="lazy">
           </div>
           <div class="fac-photo-caption">11. PET AHU</div>
         </div>
 
         <div class="fac-photo-card">
-          <div class="fac-photo-media">
-            <img src="assets/facility/packing-dept-first-floor.png" alt="12. Packaging department (first floor)" loading="lazy">
+          <div class="fac-photo-media fac-photo-media--dual">
+            <img src="assets/facility/strip-packing-machine.png" alt="12. Blister strip packing department" loading="lazy" style="object-position: center 22%;">
+            <img src="assets/facility/blister-pack-machine.png" alt="12. Blister strip packing department" loading="lazy" style="object-position: center 18%;">
           </div>
-          <div class="fac-photo-caption">12. Packaging department (first floor)</div>
+          <div class="fac-photo-caption">12. Blister strip packing department</div>
         </div>
 
         <div class="fac-photo-card">
           <div class="fac-photo-media">
-            <img src="assets/facility/packing-floor-passage.jpg" alt="13. Passage area (first floor)" loading="lazy">
+            <img src="assets/facility/packing-dept-first-floor.png" alt="13. Packaging department (first floor)" loading="lazy" style="object-position: center 55%;">
           </div>
-          <div class="fac-photo-caption">13. Passage area (first floor)</div>
+          <div class="fac-photo-caption">13. Packaging department (first floor)</div>
         </div>
 
         <div class="fac-photo-card">
           <div class="fac-photo-media">
-            <img src="assets/facility/blister-pack-machine.png" alt="14. Packaging area (ground floor)" loading="lazy">
+            <img src="assets/facility/packing-floor-passage.jpg" alt="14. Passage area (first floor)" loading="lazy" style="object-position: center 35%;">
           </div>
-          <div class="fac-photo-caption">14. Packaging area (ground floor)</div>
+          <div class="fac-photo-caption">14. Passage area (first floor)</div>
+        </div>
+
+        <div class="fac-photo-card">
+          <div class="fac-photo-media fac-photo-media--empty">
+            <i class="fa-solid fa-image"></i>
+          </div>
+          <div class="fac-photo-caption">15. Packaging area (ground floor)</div>
         </div>
 
         <div class="fac-photo-card">
           <div class="fac-photo-media">
-            <img src="assets/facility/bulk-rm-storage.png" alt="15. Finished good storage" loading="lazy">
+            <img src="assets/facility/finished-good-storage.png" alt="16. Finished good storage" loading="lazy">
           </div>
-          <div class="fac-photo-caption">15. Finished good storage</div>
+          <div class="fac-photo-caption">16. Finished good storage</div>
         </div>
       </div>
     </div>
