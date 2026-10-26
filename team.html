@@ -720,28 +720,19 @@ a {
   line-height: 1.6;
 }
 
-@media (hover: hover) {
-  .team-role {
-    margin-bottom: 0;
-  }
-  .team-bio {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transform: translateY(10px);
-    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                margin-top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    margin-top: 0;
-  }
-  .team-card:hover .team-bio,
-  .team-card:focus-within .team-bio {
-    opacity: 1;
-    max-height: 180px;
-    transform: translateY(0);
-    margin-top: 14px;
-  }
+/* Clean text card styling with fully readable bios */
+.team-role {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+
+.team-bio {
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.6;
+  opacity: 1;
 }
 
 /* ============ HIGH-IMPACT CTA BANNER ============ */
@@ -1216,33 +1207,18 @@ a {
 
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mr. Nikhilesh Hajare - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mr. Nikhilesh Hajare</h3>
           <p class="team-role">Director &amp; Sales and Marketing Head</p>
           <p class="team-bio">Leads sustainable business growth by building strategic customer partnerships and shaping market positioning.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mrs. Apurva Tapre - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mrs. Apurva Tapre</h3>
           <p class="team-role">Director &amp; Purchase Head</p>
           <p class="team-bio">Oversees procurement strategy and administrative operations, ensuring seamless coordination and uninterrupted material supply across the organization.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mr. Prabhakar Thorat - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mr. Prabhakar Thorat</h3>
           <p class="team-role">Head of Product Development</p>
           <p class="team-bio">Leads product innovation and formulation development, ensuring new products meet market needs and quality standards.</p>
@@ -1264,33 +1240,18 @@ a {
 
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mr. Sandesh Bankar - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mr. Sandesh Bankar</h3>
           <p class="team-role">Sales &amp; Business Development Officer</p>
           <p class="team-bio">Expands market reach by generating new business opportunities, building distributor networks, and converting prospects into long-term partnerships.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mr. Akash Divekar - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mr. Akash Divekar</h3>
           <p class="team-role">Techno-Commercial Officer</p>
           <p class="team-bio">Drives revenue growth through corporate sales and strategic client relationships, while supporting product innovation and leading the company's digital transformation initiatives.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Ms. Shelina Shaji - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Ms. Shelina Shaji</h3>
           <p class="team-role">Product Executive</p>
           <p class="team-bio">Coordinates product documentation and cross-functional communication, ensuring accurate, consistent information across marketing, technical, and quality touchpoints.</p>
@@ -1312,33 +1273,18 @@ a {
 
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mr. Javed Inamdar - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mr. Javed Inamdar</h3>
           <p class="team-role">Senior Production Manager</p>
           <p class="team-bio">Leads daily production operations, ensuring process discipline, workforce coordination, and consistent output quality across every batch.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Ms. Gayatri Sutar - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Ms. Gayatri Sutar</h3>
           <p class="team-role">Junior Production Executive</p>
           <p class="team-bio">Coordinates shop-floor activities and production planning, maintaining batch consistency and strict adherence to GMP and safety standards.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Ms. Nehaa Patil - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Ms. Nehaa Patil</h3>
           <p class="team-role">Production Executive</p>
           <p class="team-bio">Executes manufacturing batches with precision, maintaining accurate documentation and material readiness to support efficient plant operations.</p>
@@ -1360,22 +1306,12 @@ a {
 
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mr. Amit Padale - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mr. Amit Padale</h3>
           <p class="team-role">Logistics In-Charge</p>
           <p class="team-bio">Coordinates inbound and outbound logistics, ensuring timely dispatch and delivery while maintaining cost-efficient, reliable transportation across the network.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mr. Sanket Chavan - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mr. Sanket Chavan</h3>
           <p class="team-role">Supply Chain Executive</p>
           <p class="team-bio">Manages end-to-end supply chain coordination, aligning procurement, inventory, and dispatch schedules to ensure uninterrupted production and delivery flow.</p>
@@ -1397,33 +1333,18 @@ a {
 
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mrs. Mrunali Baikar - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mrs. Mrunali Baikar</h3>
           <p class="team-role">QC/QA Officer</p>
           <p class="team-bio">Manages quality control activities including raw material, in-process, and finished product testing while ensuring analytical accuracy, documentation, and batch compliance.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mrs. Rachana Chavan - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mrs. Rachana Chavan</h3>
           <p class="team-role">QC/QA Officer</p>
           <p class="team-bio">Supports quality assurance by conducting routine testing, reviewing batch documentation, monitoring manufacturing compliance, and maintaining quality standards across production.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Ms. Sumitra Rane - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Ms. Sumitra Rane</h3>
           <p class="team-role">Microbiologist &amp; QC Chemist</p>
           <p class="team-bio">Supported by two interns, manages microbiological testing, routine quality checks, sample verification, and proper documentation as per GLP &amp; Regulatory standards.</p>
@@ -1445,22 +1366,12 @@ a {
 
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mrs. Karuna Bhave - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mrs. Karuna Bhave</h3>
           <p class="team-role">Chief Accountant</p>
           <p class="team-bio">Oversees financial operations, statutory compliance, and vendor payments, ensuring accuracy and transparency across all accounting functions.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Ms. Mugdha Railkar - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Ms. Mugdha Railkar</h3>
           <p class="team-role">Senior Account Executive</p>
           <p class="team-bio">Supports daily accounting operations and financial documentation, ensuring accurate records and seamless internal coordination.</p>
@@ -1482,22 +1393,12 @@ a {
 
       <div class="team-grid" data-stagger>
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mr. Sagar Nagrale - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mr. Sagar Nagrale</h3>
           <p class="team-role">Store In-Charge</p>
           <p class="team-bio">Maintains inventory accuracy and material traceability, ensuring controlled storage and uninterrupted supply to support production continuity.</p>
         </div>
 
         <div class="team-card demo-card" tabindex="0">
-          <div class="team-avatar-box">
-            <div class="team-photo-frame">
-              <img src="assets/team-avatar-placeholder.svg" alt="Mr. Rajesh Naik - Photo Placeholder" class="team-photo-img" loading="lazy">
-            </div>
-          </div>
           <h3 class="team-name">Mr. Rajesh Naik</h3>
           <p class="team-role">Maintenance In-Charge</p>
           <p class="team-bio">Ensures machine uptime and facility safety through proactive preventive maintenance and reliable equipment performance across the plant.</p>
