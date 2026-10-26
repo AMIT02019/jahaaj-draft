@@ -1489,92 +1489,230 @@ a {
   transform: translateY(-2px);
 }
 
-/* Key Challenge Areas Split Panel */
+/* ==========================================================================
+   Key Challenge Areas Split Panel - Sticky Scroll Feature
+   ========================================================================== */
 .jhc-challenges-section {
-  padding: 70px 0;
+  position: relative;
   background: #f8fafc;
   border-top: 1px solid var(--gray-200);
   border-bottom: 1px solid var(--gray-200);
+  box-sizing: border-box;
 }
+
+.jhc-ch-sticky-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 92px;
+  height: calc(100vh - 100px);
+  min-height: 580px;
+  max-height: 840px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 0 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.jhc-challenges-section .jhc-section-head {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.jhc-challenges-section .jhc-section-title {
+  font-size: 27px;
+  line-height: 1.25;
+  margin: 8px auto 6px;
+  color: var(--navy);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  max-width: 860px;
+}
+
+.jhc-challenges-section .jhc-section-sub {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--gray-600);
+  margin: 0 auto;
+  max-width: 760px;
+}
+
 .jhc-ch-split {
   display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 36px;
+  grid-template-columns: 380px 1fr;
+  gap: 28px;
   align-items: stretch;
+  height: calc(100vh - 240px);
+  min-height: 440px;
+  max-height: 600px;
 }
-@media (max-width: 900px) {
-  .jhc-ch-split {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
+
 .jhc-ch-list {
   background: #ffffff;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   box-shadow: 0 4px 15px rgba(14, 50, 82, 0.04);
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-300) transparent;
+  height: 100%;
+  position: relative;
 }
+
+.jhc-ch-list::-webkit-scrollbar {
+  width: 6px;
+}
+.jhc-ch-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.jhc-ch-list::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 10px;
+}
+.jhc-ch-list::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+.jhc-ch-list-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 11px 16px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jhc-ch-list-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.jhc-ch-list-title i {
+  color: var(--orange);
+  font-size: 13px;
+}
+
+.jhc-ch-counter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #ffffff;
+  border: 1px solid var(--gray-200);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-700);
+  font-family: monospace;
+}
+
+.jhc-ch-counter-badge .jhc-ch-current-num {
+  color: var(--orange);
+  font-weight: 800;
+}
+
+.jhc-ch-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gray-200);
+}
+
+.jhc-ch-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ea580c, #f97316);
+  width: 8.33%;
+  transition: width 0.28s ease;
+}
+
 .jhc-ch-row {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 13px 18px;
   border-bottom: 1px solid var(--gray-200);
   cursor: pointer;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
 }
+
 .jhc-ch-row:last-child {
   border-bottom: none;
 }
+
 .jhc-ch-row:hover {
-  background: var(--gray-50);
+  background: #f8fafc;
 }
+
 .jhc-ch-row.active {
-  background: var(--navy);
+  background: linear-gradient(135deg, #132b45 0%, #0a1c30 100%);
   color: #ffffff;
-  padding-left: 24px;
+  padding-left: 22px;
 }
+
 .jhc-ch-row.active::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 4px;
-  background: var(--orange);
+  width: 5px;
+  background: linear-gradient(180deg, #ea580c, #c2410c);
   border-radius: 0 4px 4px 0;
 }
+
 .jhc-ch-row-left {
   display: flex;
   align-items: center;
   gap: 12px;
 }
+
 .jhc-ch-row-num {
   font-family: monospace;
   font-weight: 700;
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--orange);
   transition: color 0.2s ease;
 }
+
 .jhc-ch-row.active .jhc-ch-row-num {
   color: #fb923c;
 }
+
 .jhc-ch-row-name {
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--navy);
   transition: color 0.2s ease;
 }
+
 .jhc-ch-row.active .jhc-ch-row-name {
   color: #ffffff;
 }
+
 .jhc-ch-row-arrow {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--gray-400);
-  transition: transform 0.28s ease, color 0.2s ease;
+  transition: transform 0.22s ease, color 0.2s ease;
 }
+
 .jhc-ch-row.active .jhc-ch-row-arrow {
   color: #fb923c;
   transform: translateX(4px);
@@ -1584,37 +1722,39 @@ a {
   position: relative;
   height: 100%;
 }
+
 .jhc-ch-panel {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 110px;
   background: #ffffff;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
-  padding: 36px 40px;
+  padding: 38px 44px;
   box-shadow: 0 10px 30px rgba(14, 50, 82, 0.05);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow-y: auto;
 }
-@media (max-width: 900px) {
-  .jhc-ch-panel {
-    position: static;
-    padding: 24px;
-  }
-}
+
 .jhc-ch-detail {
   display: none;
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(12px);
 }
+
 .jhc-ch-detail.active {
   display: block;
-  animation: jhcCardEnter 0.36s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 1;
+  transform: translateY(0);
+  animation: jhcCardEnter 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes jhcCardEnter {
   0% {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(12px);
   }
   100% {
     opacity: 1;
@@ -1623,16 +1763,16 @@ a {
 }
 
 .jhc-ch-detail.active .jhc-ch-detail-icon {
-  animation: jhcIconPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: jhcIconPop 0.36s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes jhcIconPop {
   0% {
-    transform: scale(0.85);
+    transform: scale(0.88);
     opacity: 0.7;
   }
   70% {
-    transform: scale(1.06);
+    transform: scale(1.05);
   }
   100% {
     transform: scale(1);
@@ -1650,29 +1790,61 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
+
 .jhc-ch-detail h3 {
   font-size: 25px;
   font-weight: 800;
   color: var(--navy);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: -0.01em;
 }
+
 .jhc-ch-detail-hook {
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: 700;
   color: var(--orange);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   font-style: italic;
   display: inline-block;
-  padding-bottom: 4px;
 }
+
 .jhc-ch-detail-desc {
-  font-size: 15.5px;
+  font-size: 15px;
   line-height: 1.75;
   color: var(--gray-700);
   margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .jhc-challenges-section {
+    height: auto !important;
+    padding: 60px 0;
+  }
+  .jhc-ch-sticky-container {
+    position: static;
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+    padding: 0;
+    overflow: visible;
+  }
+  .jhc-ch-split {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+  }
+  .jhc-ch-list {
+    max-height: 340px;
+  }
+  .jhc-ch-panel {
+    padding: 24px;
+    height: auto;
+    overflow-y: visible;
+  }
 }
 
 /* Technical Specification Summary Table */
@@ -2014,17 +2186,23 @@ a {
     </div>
   </section>
 
-  <!-- Key Challenge Areas Split Panel -->
-  <section class="jhc-challenges-section">
-    <div class="jhc-container">
-      <div class="jhc-section-head">
-        <span class="jhc-badge"><i class="fas fa-triangle-exclamation"></i> Production Challenges</span>
-        <h2 class="jhc-section-title">Every Production Challenge Has a Cost. We Help You Reduce It.</h2>
-        <p class="jhc-section-sub">Authoritative veterinary rationale addressing the underlying nutritional and biological causes behind farm performance drops.</p>
-      </div>
+  <!-- Key Challenge Areas Split Panel (Sticky Scroll) -->
+  <section class="jhc-challenges-section" id="production-challenges">
+    <div class="jhc-ch-sticky-container">
+      <div class="jhc-container">
+        <div class="jhc-section-head">
+          <span class="jhc-badge"><i class="fas fa-triangle-exclamation"></i> Production Challenges</span>
+          <h2 class="jhc-section-title">Every Production Challenge Has a Cost. We Help You Reduce It.</h2>
+          <p class="jhc-section-sub">Authoritative veterinary rationale addressing the underlying nutritional and biological causes behind farm performance drops.</p>
+        </div>
 
-      <div class="jhc-ch-split">
-        <div class="jhc-ch-list">
+        <div class="jhc-ch-split">
+          <div class="jhc-ch-list">
+            <div class="jhc-ch-list-header">
+              <span class="jhc-ch-list-title"><i class="fas fa-list-check"></i> Key Challenge Areas</span>
+              <span class="jhc-ch-counter-badge"><span class="jhc-ch-current-num">01</span> / <span class="jhc-ch-total-num">12</span></span>
+              <div class="jhc-ch-progress-bar"><div class="jhc-ch-progress-fill"></div></div>
+            </div>
           
             <div class="jhc-ch-row active" data-idx="0">
               <div class="jhc-ch-row-left">
@@ -2211,9 +2389,11 @@ a {
               <p class="jhc-ch-detail-desc">Even the best vaccine cannot protect a bird that wasn't properly vaccinated. Poor visibility during vaccination can lead to inconsistent application, leaving parts of the flock unprotected and increasing the risk of disease outbreaks. Clear vaccine identification helps improve administration accuracy and ensures more uniform flock protection.</p>
             </div>
 
+          </div>
         </div>
       </div>
     </div>
+  </div>
   </section>
 
 
@@ -2405,78 +2585,137 @@ a {
 
       const rows = Array.from(section.querySelectorAll(".jhc-ch-row"));
       const details = Array.from(section.querySelectorAll(".jhc-ch-detail"));
+      const listContainer = section.querySelector(".jhc-ch-list");
+      const stickyContainer = section.querySelector(".jhc-ch-sticky-container");
+      const currentNumBadge = section.querySelector(".jhc-ch-current-num");
+      const totalNumBadge = section.querySelector(".jhc-ch-total-num");
+      const progressFill = section.querySelector(".jhc-ch-progress-fill");
+
       if (!rows.length || !details.length) return;
 
-      let activeIdx = 0;
-      let isManualClick = false;
-      let clickTimeout = null;
-      let ticking = false;
+      if (totalNumBadge) {
+        totalNumBadge.textContent = String(rows.length).padStart(2, '0');
+      }
 
-      function setActive(idx) {
-        if (idx === activeIdx && rows[idx] && rows[idx].classList.contains("active")) return;
+      let activeIdx = 0;
+      let isClickScrolling = false;
+      let clickTimeout = null;
+
+      function setupTrackHeight() {
+        if (window.innerWidth >= 900) {
+          const scrollDistancePerItem = 220;
+          const totalTrackHeight = window.innerHeight + (rows.length - 1) * scrollDistancePerItem;
+          section.style.height = totalTrackHeight + "px";
+        } else {
+          section.style.height = "auto";
+        }
+      }
+
+      setupTrackHeight();
+      window.addEventListener("resize", setupTrackHeight);
+
+      function setActive(idx, scrollListIntoView) {
+        if (idx < 0 || idx >= rows.length) return;
         activeIdx = idx;
 
         rows.forEach((r, i) => {
           if (i === idx) {
             r.classList.add("active");
+            if (scrollListIntoView && listContainer) {
+              const rowTop = r.offsetTop;
+              const rowBottom = rowTop + r.offsetHeight;
+              const containerTop = listContainer.scrollTop;
+              const containerBottom = containerTop + listContainer.clientHeight;
+
+              if (rowTop < containerTop + 50) {
+                listContainer.scrollTo({ top: Math.max(0, rowTop - 50), behavior: 'smooth' });
+              } else if (rowBottom > containerBottom - 40) {
+                listContainer.scrollTo({ top: rowBottom - listContainer.clientHeight + 40, behavior: 'smooth' });
+              }
+            }
           } else {
             r.classList.remove("active");
           }
         });
 
         details.forEach(d => {
-          if (parseInt(d.dataset.idx, 10) === idx) {
+          const dIdx = parseInt(d.dataset.idx, 10);
+          if (dIdx === idx) {
             d.classList.add("active");
           } else {
             d.classList.remove("active");
           }
         });
+
+        if (currentNumBadge) {
+          currentNumBadge.textContent = String(idx + 1).padStart(2, '0');
+        }
+
+        if (progressFill) {
+          const pct = ((idx + 1) / rows.length) * 100;
+          progressFill.style.width = pct.toFixed(1) + "%";
+        }
       }
 
-      // Manual click with cooldown so scroll does not fight user choice
+      // Manual click
       rows.forEach((row, i) => {
-        row.addEventListener("click", function() {
+        row.addEventListener("click", function () {
           const idx = parseInt(this.dataset.idx !== undefined ? this.dataset.idx : i, 10);
-          isManualClick = true;
-          clearTimeout(clickTimeout);
-          setActive(idx);
-          clickTimeout = setTimeout(() => {
-            isManualClick = false;
-          }, 1200);
+          setActive(idx, true);
+
+          if (window.innerWidth >= 900 && stickyContainer) {
+            isClickScrolling = true;
+            clearTimeout(clickTimeout);
+
+            const trackRect = section.getBoundingClientRect();
+            const sectionTop = window.scrollY + trackRect.top;
+            const pinnedDistance = section.offsetHeight - stickyContainer.offsetHeight;
+
+            if (pinnedDistance > 0) {
+              const progressTarget = (idx + 0.5) / rows.length;
+              const targetScrollY = sectionTop - 92 + (progressTarget * pinnedDistance);
+
+              window.scrollTo({
+                top: targetScrollY,
+                behavior: 'smooth'
+              });
+            }
+
+            clickTimeout = setTimeout(() => {
+              isClickScrolling = false;
+            }, 800);
+          }
         });
       });
 
       // Scroll synchronization
+      let ticking = false;
       function onScroll() {
-        if (isManualClick) return;
+        if (window.innerWidth < 900 || isClickScrolling || !stickyContainer) return;
 
-        const rect = section.getBoundingClientRect();
-        const winHeight = window.innerHeight;
+        const trackRect = section.getBoundingClientRect();
+        const stickyTop = 92;
+        const pinnedDistance = section.offsetHeight - stickyContainer.offsetHeight;
 
-        // Only active when section is in reading zone
-        if (rect.top > winHeight * 0.70 || rect.bottom < winHeight * 0.30) {
+        if (pinnedDistance <= 0) return;
+
+        const scrolledInside = stickyTop - trackRect.top;
+
+        if (scrolledInside <= 0) {
+          if (activeIdx !== 0) setActive(0, true);
           return;
         }
 
-        // Focal line aligned with sticky card position (~40% from top of viewport)
-        const focalY = winHeight * 0.40;
+        if (scrolledInside >= pinnedDistance) {
+          if (activeIdx !== rows.length - 1) setActive(rows.length - 1, true);
+          return;
+        }
 
-        let closestIdx = activeIdx;
-        let minDistance = Infinity;
+        const progress = Math.min(1, Math.max(0, scrolledInside / pinnedDistance));
+        const targetIdx = Math.min(rows.length - 1, Math.floor(progress * rows.length));
 
-        rows.forEach((row, i) => {
-          const rRect = row.getBoundingClientRect();
-          const rowCenter = rRect.top + rRect.height / 2;
-          const distance = Math.abs(rowCenter - focalY);
-
-          if (distance < minDistance) {
-            minDistance = distance;
-            closestIdx = i;
-          }
-        });
-
-        if (closestIdx !== activeIdx) {
-          setActive(closestIdx);
+        if (targetIdx !== activeIdx) {
+          setActive(targetIdx, true);
         }
       }
 
@@ -2489,6 +2728,8 @@ a {
           ticking = true;
         }
       }, { passive: true });
+
+      setActive(0, false);
     }
 
     if (document.readyState === "loading") {
