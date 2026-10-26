@@ -395,7 +395,7 @@
 
 /* ============ CANONICAL UNIFIED FOOTER ============ */
 .footer-section {
-  background-color: #071f33 !important;
+  background: linear-gradient(135deg, #8f3c1b 0%, #68260f 50%, #421607 100%) !important;
   color: #94a3b8 !important;
   padding-top: 80px !important;
   padding-bottom: 40px !important;
