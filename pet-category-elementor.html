@@ -1490,12 +1490,12 @@ a {
 }
 
 /* ==========================================================================
-   Key Challenge Areas Split Panel - Sticky Detail Card & Scrolling Sidebar
+   Key Challenge Areas Split Panel - Fixed/Sticky Card & Scrollable Sidebar
    ========================================================================== */
 .jhc-challenges-section {
   position: relative;
   background: #f8fafc;
-  padding: 80px 0 100px;
+  padding: 70px 0 80px;
   border-top: 1px solid var(--gray-200);
   border-bottom: 1px solid var(--gray-200);
   box-sizing: border-box;
@@ -1503,7 +1503,7 @@ a {
 
 .jhc-challenges-section .jhc-section-head {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .jhc-challenges-section .jhc-section-title {
@@ -1527,13 +1527,14 @@ a {
 .jhc-ch-split {
   display: grid;
   grid-template-columns: 380px 1fr;
-  gap: 36px;
-  align-items: start; /* Allows sticky card to stick alongside scrolling sidebar */
+  gap: 32px;
+  align-items: start;
   position: relative;
 }
 
-/* Left Column: The Scrolling Sidebar */
-.jhc-ch-list {
+/* Left Column: The Scrollable Sidebar */
+.jhc-ch-list-wrapper {
+  position: relative;
   background: #ffffff;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
@@ -1548,6 +1549,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 2;
 }
 
 .jhc-ch-list-title {
@@ -1585,17 +1588,39 @@ a {
   font-weight: 800;
 }
 
+.jhc-ch-list {
+  height: 480px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #ea580c #f1f5f9;
+}
+
+.jhc-ch-list::-webkit-scrollbar {
+  width: 7px;
+}
+.jhc-ch-list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.jhc-ch-list::-webkit-scrollbar-thumb {
+  background: #ea580c;
+  border-radius: 10px;
+}
+.jhc-ch-list::-webkit-scrollbar-thumb:hover {
+  background: #c2410c;
+}
+
 .jhc-ch-row {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 22px;
-  min-height: 76px;
+  padding: 16px 20px;
+  min-height: 60px;
   box-sizing: border-box;
   border-bottom: 1px solid var(--gray-200);
   cursor: pointer;
-  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
 }
 
@@ -1610,7 +1635,7 @@ a {
 .jhc-ch-row.active {
   background: linear-gradient(135deg, #132b45 0%, #0a1c30 100%);
   color: #ffffff;
-  padding-left: 26px;
+  padding-left: 24px;
 }
 
 .jhc-ch-row.active::before {
@@ -1627,7 +1652,7 @@ a {
 .jhc-ch-row-left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .jhc-ch-row-num {
@@ -1656,7 +1681,7 @@ a {
 .jhc-ch-row-arrow {
   font-size: 14px;
   color: var(--gray-400);
-  transition: transform 0.24s ease, color 0.2s ease;
+  transition: transform 0.22s ease, color 0.2s ease;
 }
 
 .jhc-ch-row.active .jhc-ch-row-arrow {
@@ -1664,11 +1689,11 @@ a {
   transform: translateX(4px);
 }
 
-/* Right Column: The Sticky Detail Card */
+/* Right Column: The Fixed/Sticky Detail Card */
 .jhc-ch-panel-wrap {
   position: -webkit-sticky;
   position: sticky;
-  top: 110px;
+  top: 100px;
   align-self: start;
 }
 
@@ -1683,7 +1708,7 @@ a {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  max-height: calc(100vh - 140px);
+  height: 535px;
   overflow-y: auto;
 }
 
@@ -1774,12 +1799,15 @@ a {
     grid-template-columns: 1fr;
     gap: 24px;
   }
+  .jhc-ch-list {
+    height: 380px;
+  }
   .jhc-ch-panel-wrap {
     position: static;
   }
   .jhc-ch-panel {
     padding: 26px;
-    max-height: unset;
+    height: auto;
   }
 }
 
@@ -2132,11 +2160,12 @@ a {
       </div>
 
       <div class="jhc-ch-split">
-        <div class="jhc-ch-list">
+        <div class="jhc-ch-list-wrapper">
           <div class="jhc-ch-list-header">
             <span class="jhc-ch-list-title"><i class="fas fa-list-check"></i> Key Challenge Areas</span>
             <span class="jhc-ch-counter-badge"><span class="jhc-ch-current-num">01</span> / <span class="jhc-ch-total-num">--</span></span>
           </div>
+          <div class="jhc-ch-list" id="jhcChList">
           
             <div class="jhc-ch-row active" data-idx="0">
               <div class="jhc-ch-row-left">
@@ -2194,6 +2223,7 @@ a {
               <span class="jhc-ch-row-arrow">&rarr;</span>
             </div>
 
+          </div>
         </div>
 
         <div class="jhc-ch-panel-wrap">
@@ -2436,25 +2466,27 @@ a {
 
   <script>
 
-    /* ---------- Challenge Split Panel Tabs with Sticky Detail Card & Scrolling Sidebar ---------- */
+    /* ---------- Challenge Split Panel Tabs with Fixed/Sticky Card & Scrollable Sidebar ---------- */
     function initStickyChallengeScroll() {
       const section = document.querySelector(".jhc-challenges-section");
       if (!section) return;
 
       const rows = Array.from(section.querySelectorAll(".jhc-ch-row"));
       const details = Array.from(section.querySelectorAll(".jhc-ch-detail"));
+      const listContainer = section.querySelector(".jhc-ch-list");
+      const panelWrap = section.querySelector(".jhc-ch-panel-wrap");
       const currentNumBadge = section.querySelector(".jhc-ch-current-num");
       const totalNumBadge = section.querySelector(".jhc-ch-total-num");
 
-      if (!rows.length || !details.length) return;
+      if (!rows.length || !details.length || !listContainer) return;
 
       if (totalNumBadge) {
         totalNumBadge.textContent = String(rows.length).padStart(2, '0');
       }
 
       let activeIdx = 0;
-      let isManualScroll = false;
-      let manualTimeout = null;
+      let isProgrammaticScroll = false;
+      let scrollTimeout = null;
 
       function setActive(idx) {
         if (idx < 0 || idx >= rows.length) return;
@@ -2482,46 +2514,38 @@ a {
         }
       }
 
-      // Clicking any row smoothly scrolls the page to align that row with the sticky card
+      // 1. Sidebar Row Click: smooth scroll row to center of sidebar & activate
       rows.forEach((row, i) => {
         row.addEventListener("click", function () {
           const idx = parseInt(this.dataset.idx !== undefined ? this.dataset.idx : i, 10);
           setActive(idx);
 
-          if (window.innerWidth >= 900) {
-            isManualScroll = true;
-            clearTimeout(manualTimeout);
+          isProgrammaticScroll = true;
+          clearTimeout(scrollTimeout);
 
-            const rRect = this.getBoundingClientRect();
-            // Align row with focal point (~260px from top, alongside sticky card)
-            const focalY = 260;
-            const targetY = window.scrollY + rRect.top - focalY;
+          const rowTop = this.offsetTop;
+          const rowHeight = this.offsetHeight;
+          const containerHeight = listContainer.clientHeight;
+          const targetScroll = rowTop - (containerHeight / 2) + (rowHeight / 2);
 
-            window.scrollTo({
-              top: targetY,
-              behavior: 'smooth'
-            });
+          listContainer.scrollTo({
+            top: Math.max(0, targetScroll),
+            behavior: 'smooth'
+          });
 
-            manualTimeout = setTimeout(() => {
-              isManualScroll = false;
-            }, 800);
-          }
+          scrollTimeout = setTimeout(() => {
+            isProgrammaticScroll = false;
+          }, 500);
         });
       });
 
-      // Synchronize active row as the user scrolls the sidebar down the page
+      // 2. Sidebar Scroll Observer: update active item as user scrolls the sidebar list
       let ticking = false;
-      function onScroll() {
-        if (isManualScroll || window.innerWidth < 900) return;
+      function onSidebarScroll() {
+        if (isProgrammaticScroll) return;
 
-        const secRect = section.getBoundingClientRect();
-        const winHeight = window.innerHeight;
-
-        // Only active while section is on screen
-        if (secRect.top > winHeight || secRect.bottom < 0) return;
-
-        // Focal line aligned alongside sticky card (top 260px)
-        const focalY = 260;
+        const listRect = listContainer.getBoundingClientRect();
+        const focalCenterY = listRect.top + listRect.height / 2;
 
         let closestIdx = activeIdx;
         let minDistance = Infinity;
@@ -2529,7 +2553,7 @@ a {
         rows.forEach((row, i) => {
           const rRect = row.getBoundingClientRect();
           const rowCenter = rRect.top + rRect.height / 2;
-          const distance = Math.abs(rowCenter - focalY);
+          const distance = Math.abs(rowCenter - focalCenterY);
 
           if (distance < minDistance) {
             minDistance = distance;
@@ -2542,15 +2566,30 @@ a {
         }
       }
 
-      window.addEventListener("scroll", () => {
+      listContainer.addEventListener("scroll", () => {
         if (!ticking) {
           window.requestAnimationFrame(() => {
-            onScroll();
+            onSidebarScroll();
             ticking = false;
           });
           ticking = true;
         }
       }, { passive: true });
+
+      // 3. Wheel routing: when hovering over the fixed card on desktop, mouse wheel also scrolls the sidebar!
+      if (panelWrap) {
+        panelWrap.addEventListener("wheel", (e) => {
+          if (window.innerWidth >= 900) {
+            const canScrollDown = listContainer.scrollTop < (listContainer.scrollHeight - listContainer.clientHeight - 2);
+            const canScrollUp = listContainer.scrollTop > 2;
+
+            if ((e.deltaY > 0 && canScrollDown) || (e.deltaY < 0 && canScrollUp)) {
+              e.preventDefault();
+              listContainer.scrollTop += e.deltaY;
+            }
+          }
+        }, { passive: false });
+      }
 
       setActive(0);
     }
