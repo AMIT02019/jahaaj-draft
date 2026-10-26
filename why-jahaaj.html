@@ -2442,14 +2442,24 @@ button.why-reasons-pill {
 
 /* Step Labels */
 .pj-step-label {
-  opacity: 0.35;
-  transform: translateY(4px);
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
   pointer-events: none;
 }
 .pj-step-label.lbl-visible {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
+}
+
+.step-icon-group {
+  opacity: 0.45;
+  transition: opacity 0.3s ease;
+}
+.step-icon-group.step-active {
+  opacity: 1;
 }
 
 .pj-step-title {
@@ -3395,9 +3405,11 @@ button.why-reasons-pill {
 
       const labelElements = [];
       const pulseElements = [];
+      const iconElements = [];
       for (let i = 1; i <= 4; i++) {
         labelElements.push(document.getElementById('pj-lbl-' + i));
         pulseElements.push(document.getElementById('pj-pulse-' + i));
+        iconElements.push(document.getElementById('step-icon-' + i));
       }
 
       let lastP = -1;
@@ -3442,12 +3454,19 @@ button.why-reasons-pill {
         // 2. Active Step Calculation (1 to 4)
         const activeStep = Math.min(4, Math.max(1, Math.floor(p * totalSegs) + 1));
 
-        // 3. Step Labels visibility (Step 1 always visible, subsequent reveal as flow arrives)
+        // 3. Step Labels & Icons visibility (Step 1 always visible; steps 2, 3, 4 reveal ONLY when flow completes to that step)
         labelElements.forEach((lbl, idx) => {
           if (!lbl) return;
           const stepNum = idx + 1;
-          const isVisible = (stepNum === 1) || (p >= (stepNum - 1) / totalSegs - 0.05);
+          const targetProgress = (stepNum - 1) / totalSegs;
+          // Step 1 is visible from start; Step 2 only when flow reaches step 2 (p >= 0.33); Step 3 at p >= 0.66; Step 4 at p >= 0.98
+          const isVisible = (stepNum === 1) || (p >= targetProgress - 0.015);
           lbl.classList.toggle('lbl-visible', isVisible);
+
+          const iconEl = iconElements[idx];
+          if (iconEl) {
+            iconEl.classList.toggle('step-active', isVisible);
+          }
         });
 
         // 4. Pulse Indicators
