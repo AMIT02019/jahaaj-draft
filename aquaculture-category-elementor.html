@@ -1490,41 +1490,26 @@ a {
 }
 
 /* ==========================================================================
-   Key Challenge Areas Split Panel - Sticky Scroll Feature
+   Key Challenge Areas Split Panel - Sticky Detail Card & Scrolling Sidebar
    ========================================================================== */
 .jhc-challenges-section {
   position: relative;
   background: #f8fafc;
+  padding: 80px 0 100px;
   border-top: 1px solid var(--gray-200);
   border-bottom: 1px solid var(--gray-200);
   box-sizing: border-box;
 }
 
-.jhc-ch-sticky-container {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 92px;
-  height: calc(100vh - 100px);
-  min-height: 580px;
-  max-height: 840px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 16px 0 20px;
-  box-sizing: border-box;
-  overflow: hidden;
-  z-index: 10;
-}
-
 .jhc-challenges-section .jhc-section-head {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .jhc-challenges-section .jhc-section-title {
-  font-size: 27px;
+  font-size: 28px;
   line-height: 1.25;
-  margin: 8px auto 6px;
+  margin: 10px auto 8px;
   color: var(--navy);
   font-weight: 800;
   letter-spacing: -0.015em;
@@ -1532,8 +1517,8 @@ a {
 }
 
 .jhc-challenges-section .jhc-section-sub {
-  font-size: 14.5px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.55;
   color: var(--gray-600);
   margin: 0 auto;
   max-width: 760px;
@@ -1542,63 +1527,38 @@ a {
 .jhc-ch-split {
   display: grid;
   grid-template-columns: 380px 1fr;
-  gap: 28px;
-  align-items: stretch;
-  height: calc(100vh - 240px);
-  min-height: 440px;
-  max-height: 600px;
+  gap: 36px;
+  align-items: start; /* Allows sticky card to stick alongside scrolling sidebar */
+  position: relative;
 }
 
+/* Left Column: The Scrolling Sidebar */
 .jhc-ch-list {
   background: #ffffff;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   box-shadow: 0 4px 15px rgba(14, 50, 82, 0.04);
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gray-300) transparent;
-  height: 100%;
-  position: relative;
-}
-
-.jhc-ch-list::-webkit-scrollbar {
-  width: 6px;
-}
-.jhc-ch-list::-webkit-scrollbar-track {
-  background: transparent;
-}
-.jhc-ch-list::-webkit-scrollbar-thumb {
-  background: var(--gray-300);
-  border-radius: 10px;
-}
-.jhc-ch-list::-webkit-scrollbar-thumb:hover {
-  background: var(--gray-400);
 }
 
 .jhc-ch-list-header {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 5;
   background: #f8fafc;
   border-bottom: 1px solid var(--gray-200);
-  padding: 11px 16px 12px;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .jhc-ch-list-title {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--navy);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .jhc-ch-list-title i {
@@ -1611,12 +1571,12 @@ a {
   align-items: center;
   gap: 4px;
   background: #ffffff;
-  border: 1px solid var(--gray-200);
+  border: 1px solid var(--gray-300);
   border-radius: 999px;
-  padding: 3px 10px;
+  padding: 3px 12px;
   font-size: 12px;
   font-weight: 700;
-  color: var(--gray-700);
+  color: var(--navy);
   font-family: monospace;
 }
 
@@ -1625,31 +1585,17 @@ a {
   font-weight: 800;
 }
 
-.jhc-ch-progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--gray-200);
-}
-
-.jhc-ch-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #ea580c, #f97316);
-  width: 10%;
-  transition: width 0.28s ease;
-}
-
 .jhc-ch-row {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13px 18px;
+  padding: 20px 22px;
+  min-height: 76px;
+  box-sizing: border-box;
   border-bottom: 1px solid var(--gray-200);
   cursor: pointer;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
 }
 
@@ -1664,7 +1610,7 @@ a {
 .jhc-ch-row.active {
   background: linear-gradient(135deg, #132b45 0%, #0a1c30 100%);
   color: #ffffff;
-  padding-left: 22px;
+  padding-left: 26px;
 }
 
 .jhc-ch-row.active::before {
@@ -1681,13 +1627,13 @@ a {
 .jhc-ch-row-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .jhc-ch-row-num {
   font-family: monospace;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--orange);
   transition: color 0.2s ease;
 }
@@ -1697,7 +1643,7 @@ a {
 }
 
 .jhc-ch-row-name {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 700;
   color: var(--navy);
   transition: color 0.2s ease;
@@ -1708,9 +1654,9 @@ a {
 }
 
 .jhc-ch-row-arrow {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--gray-400);
-  transition: transform 0.22s ease, color 0.2s ease;
+  transition: transform 0.24s ease, color 0.2s ease;
 }
 
 .jhc-ch-row.active .jhc-ch-row-arrow {
@@ -1718,23 +1664,26 @@ a {
   transform: translateX(4px);
 }
 
+/* Right Column: The Sticky Detail Card */
 .jhc-ch-panel-wrap {
-  position: relative;
-  height: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 110px;
+  align-self: start;
 }
 
 .jhc-ch-panel {
   background: #ffffff;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
-  padding: 38px 44px;
+  padding: 42px 46px;
   box-shadow: 0 10px 30px rgba(14, 50, 82, 0.05);
-  height: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+  max-height: calc(100vh - 140px);
   overflow-y: auto;
 }
 
@@ -1781,8 +1730,8 @@ a {
 }
 
 .jhc-ch-detail-icon {
-  width: 52px;
-  height: 52px;
+  width: 54px;
+  height: 54px;
   border-radius: 12px;
   background: rgba(194, 65, 12, 0.1);
   color: var(--orange);
@@ -1790,60 +1739,47 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .jhc-ch-detail h3 {
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 800;
   color: var(--navy);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   letter-spacing: -0.01em;
 }
 
 .jhc-ch-detail-hook {
-  font-size: 15.5px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--orange);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   font-style: italic;
   display: inline-block;
 }
 
 .jhc-ch-detail-desc {
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 15.5px;
+  line-height: 1.8;
   color: var(--gray-700);
   margin-bottom: 0;
 }
 
 @media (max-width: 900px) {
   .jhc-challenges-section {
-    height: auto !important;
     padding: 60px 0;
-  }
-  .jhc-ch-sticky-container {
-    position: static;
-    height: auto;
-    min-height: unset;
-    max-height: unset;
-    padding: 0;
-    overflow: visible;
   }
   .jhc-ch-split {
     grid-template-columns: 1fr;
-    gap: 20px;
-    height: auto;
-    min-height: unset;
-    max-height: unset;
+    gap: 24px;
   }
-  .jhc-ch-list {
-    max-height: 340px;
+  .jhc-ch-panel-wrap {
+    position: static;
   }
   .jhc-ch-panel {
-    padding: 24px;
-    height: auto;
-    overflow-y: visible;
+    padding: 26px;
+    max-height: unset;
   }
 }
 
@@ -2186,23 +2122,21 @@ a {
     </div>
   </section>
 
-  <!-- Key Challenge Areas Split Panel (Sticky Scroll) -->
+  <!-- Key Challenge Areas Split Panel (Sticky Detail Card & Scrolling Sidebar) -->
   <section class="jhc-challenges-section" id="production-challenges">
-    <div class="jhc-ch-sticky-container">
-      <div class="jhc-container">
-        <div class="jhc-section-head">
-          <span class="jhc-badge"><i class="fas fa-triangle-exclamation"></i> Production Challenges</span>
-          <h2 class="jhc-section-title">Every Production Challenge Has a Cost. We Help You Reduce It.</h2>
-          <p class="jhc-section-sub">Authoritative veterinary rationale addressing the underlying nutritional and biological causes behind farm performance drops.</p>
-        </div>
+    <div class="jhc-container">
+      <div class="jhc-section-head">
+        <span class="jhc-badge"><i class="fas fa-triangle-exclamation"></i> Production Challenges</span>
+        <h2 class="jhc-section-title">Every Production Challenge Has a Cost. We Help You Reduce It.</h2>
+        <p class="jhc-section-sub">Authoritative veterinary rationale addressing the underlying nutritional and biological causes behind farm performance drops.</p>
+      </div>
 
-        <div class="jhc-ch-split">
-          <div class="jhc-ch-list">
-            <div class="jhc-ch-list-header">
-              <span class="jhc-ch-list-title"><i class="fas fa-list-check"></i> Key Challenge Areas</span>
-              <span class="jhc-ch-counter-badge"><span class="jhc-ch-current-num">01</span> / <span class="jhc-ch-total-num">--</span></span>
-              <div class="jhc-ch-progress-bar"><div class="jhc-ch-progress-fill"></div></div>
-            </div>
+      <div class="jhc-ch-split">
+        <div class="jhc-ch-list">
+          <div class="jhc-ch-list-header">
+            <span class="jhc-ch-list-title"><i class="fas fa-list-check"></i> Key Challenge Areas</span>
+            <span class="jhc-ch-counter-badge"><span class="jhc-ch-current-num">01</span> / <span class="jhc-ch-total-num">--</span></span>
+          </div>
           
             <div class="jhc-ch-row active" data-idx="0">
               <div class="jhc-ch-row-left">
@@ -2288,7 +2222,6 @@ a {
         </div>
       </div>
     </div>
-  </div>
   </section>
 
 
@@ -2473,18 +2406,15 @@ a {
 
   <script>
 
-    /* ---------- Challenge Split Panel Tabs with Sticky Scroll Animation ---------- */
+    /* ---------- Challenge Split Panel Tabs with Sticky Detail Card & Scrolling Sidebar ---------- */
     function initStickyChallengeScroll() {
       const section = document.querySelector(".jhc-challenges-section");
       if (!section) return;
 
       const rows = Array.from(section.querySelectorAll(".jhc-ch-row"));
       const details = Array.from(section.querySelectorAll(".jhc-ch-detail"));
-      const listContainer = section.querySelector(".jhc-ch-list");
-      const stickyContainer = section.querySelector(".jhc-ch-sticky-container");
       const currentNumBadge = section.querySelector(".jhc-ch-current-num");
       const totalNumBadge = section.querySelector(".jhc-ch-total-num");
-      const progressFill = section.querySelector(".jhc-ch-progress-fill");
 
       if (!rows.length || !details.length) return;
 
@@ -2493,41 +2423,16 @@ a {
       }
 
       let activeIdx = 0;
-      let isClickScrolling = false;
-      let clickTimeout = null;
+      let isManualScroll = false;
+      let manualTimeout = null;
 
-      function setupTrackHeight() {
-        if (window.innerWidth >= 900) {
-          const scrollDistancePerItem = 220;
-          const totalTrackHeight = window.innerHeight + (rows.length - 1) * scrollDistancePerItem;
-          section.style.height = totalTrackHeight + "px";
-        } else {
-          section.style.height = "auto";
-        }
-      }
-
-      setupTrackHeight();
-      window.addEventListener("resize", setupTrackHeight);
-
-      function setActive(idx, scrollListIntoView) {
+      function setActive(idx) {
         if (idx < 0 || idx >= rows.length) return;
         activeIdx = idx;
 
         rows.forEach((r, i) => {
           if (i === idx) {
             r.classList.add("active");
-            if (scrollListIntoView && listContainer) {
-              const rowTop = r.offsetTop;
-              const rowBottom = rowTop + r.offsetHeight;
-              const containerTop = listContainer.scrollTop;
-              const containerBottom = containerTop + listContainer.clientHeight;
-
-              if (rowTop < containerTop + 50) {
-                listContainer.scrollTo({ top: Math.max(0, rowTop - 50), behavior: 'smooth' });
-              } else if (rowBottom > containerBottom - 40) {
-                listContainer.scrollTo({ top: rowBottom - listContainer.clientHeight + 40, behavior: 'smooth' });
-              }
-            }
           } else {
             r.classList.remove("active");
           }
@@ -2545,72 +2450,65 @@ a {
         if (currentNumBadge) {
           currentNumBadge.textContent = String(idx + 1).padStart(2, '0');
         }
-
-        if (progressFill) {
-          const pct = ((idx + 1) / rows.length) * 100;
-          progressFill.style.width = pct.toFixed(1) + "%";
-        }
       }
 
-      // Manual click
+      // Clicking any row smoothly scrolls the page to align that row with the sticky card
       rows.forEach((row, i) => {
         row.addEventListener("click", function () {
           const idx = parseInt(this.dataset.idx !== undefined ? this.dataset.idx : i, 10);
-          setActive(idx, true);
+          setActive(idx);
 
-          if (window.innerWidth >= 900 && stickyContainer) {
-            isClickScrolling = true;
-            clearTimeout(clickTimeout);
+          if (window.innerWidth >= 900) {
+            isManualScroll = true;
+            clearTimeout(manualTimeout);
 
-            const trackRect = section.getBoundingClientRect();
-            const sectionTop = window.scrollY + trackRect.top;
-            const pinnedDistance = section.offsetHeight - stickyContainer.offsetHeight;
+            const rRect = this.getBoundingClientRect();
+            // Align row with focal point (~260px from top, alongside sticky card)
+            const focalY = 260;
+            const targetY = window.scrollY + rRect.top - focalY;
 
-            if (pinnedDistance > 0) {
-              const progressTarget = (idx + 0.5) / rows.length;
-              const targetScrollY = sectionTop - 92 + (progressTarget * pinnedDistance);
+            window.scrollTo({
+              top: targetY,
+              behavior: 'smooth'
+            });
 
-              window.scrollTo({
-                top: targetScrollY,
-                behavior: 'smooth'
-              });
-            }
-
-            clickTimeout = setTimeout(() => {
-              isClickScrolling = false;
+            manualTimeout = setTimeout(() => {
+              isManualScroll = false;
             }, 800);
           }
         });
       });
 
-      // Scroll synchronization
+      // Synchronize active row as the user scrolls the sidebar down the page
       let ticking = false;
       function onScroll() {
-        if (window.innerWidth < 900 || isClickScrolling || !stickyContainer) return;
+        if (isManualScroll || window.innerWidth < 900) return;
 
-        const trackRect = section.getBoundingClientRect();
-        const stickyTop = 92;
-        const pinnedDistance = section.offsetHeight - stickyContainer.offsetHeight;
+        const secRect = section.getBoundingClientRect();
+        const winHeight = window.innerHeight;
 
-        if (pinnedDistance <= 0) return;
+        // Only active while section is on screen
+        if (secRect.top > winHeight || secRect.bottom < 0) return;
 
-        const scrolledInside = stickyTop - trackRect.top;
+        // Focal line aligned alongside sticky card (top 260px)
+        const focalY = 260;
 
-        if (scrolledInside <= 0) {
-          if (activeIdx !== 0) setActive(0, true);
-          return;
-        }
+        let closestIdx = activeIdx;
+        let minDistance = Infinity;
 
-        if (scrolledInside >= pinnedDistance) {
-          if (activeIdx !== rows.length - 1) setActive(rows.length - 1, true);
-          return;
-        }
+        rows.forEach((row, i) => {
+          const rRect = row.getBoundingClientRect();
+          const rowCenter = rRect.top + rRect.height / 2;
+          const distance = Math.abs(rowCenter - focalY);
 
-        const progress = Math.min(1, Math.max(0, scrolledInside / pinnedDistance));
-        const targetIdx = Math.min(rows.length - 1, Math.floor(progress * rows.length));
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIdx = i;
+          }
+        });
 
-        if (targetIdx !== activeIdx) {
-          setActive(targetIdx, true);
+        if (closestIdx !== activeIdx) {
+          setActive(closestIdx);
         }
       }
 
@@ -2624,7 +2522,7 @@ a {
         }
       }, { passive: true });
 
-      setActive(0, false);
+      setActive(0);
     }
 
     if (document.readyState === "loading") {
