@@ -163,10 +163,10 @@ button {
 }
 
 .nav__link.active {
-  color: #000000;
+  color: #c2410c;
   font-weight: 700;
-  background: #f1f3f5;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  background: rgba(194, 65, 12, 0.08);
+  box-shadow: none;
 }
 
 .nav__link svg {
@@ -266,6 +266,18 @@ button {
   background: linear-gradient(135deg, var(--btn-orange-hover-1) 0%, var(--btn-orange-hover-2) 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(194, 65, 12, 0.45);
+}
+
+.nav__cta-btn--connect {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18) !important;
+}
+
+.nav__cta-btn--connect:hover {
+  background: #1e293b !important;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.28) !important;
 }
 
 .nav__burger {
@@ -480,25 +492,26 @@ button {
 
 /* ============ SECTION 1: HERO ============ */
 .hero-section {
-  position: relative;
-  min-height: 88vh;
+  box-sizing: border-box;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 140px 72px 90px;
-  background-color: #fefefe;
+  width: 100%;
+  min-height: 88vh;
+  padding: 130px 72px 80px;
+  position: relative;
   overflow: hidden;
 }
 
 .hero-bckgrnd {
   position: absolute;
-  top: 20px;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
-  transition: transform 0.2s cubic-bezier(0,0,0.2,1);
+  overflow: hidden;
 }
 
 .hero-bckgrnd img {
@@ -506,38 +519,72 @@ button {
   height: 100%;
   object-fit: cover;
   object-position: right center;
+  filter: contrast(1.06) saturate(1.15) brightness(1.02);
+  transform: scale(1.01);
+  transform-origin: 100% 50%;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s;
+}
+
+.hero-gradient-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, #fffffff5 0%, #ffffffd9 24%, #ffffff4d 42%, #ffffff0d 54%, rgba(255, 255, 255, 0) 65%);
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
 }
 
 .hero-tagline {
-  position: relative;
-  z-index: 2;
-  font-family: 'Outfit', sans-serif !important;
-  font-size: clamp(28px, 3.4vw, 42px);
+  font-family: var(--font-heading, "Raleway", "Outfit", sans-serif) !important;
+  font-size: clamp(36px, 4vw, 52px);
   font-weight: 800;
-  color: #1a1a1a;
-  max-width: 600px;
-  line-height: 1.22;
-  letter-spacing: -0.02em;
+  color: #0f172a;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin: 0;
 }
 
-.hero-para {
-  position: relative;
-  z-index: 2;
-  font-size: clamp(18px, 2vw, 22px);
-  color: #333333;
-  line-height: 1.5;
-  max-width: 580px;
+.hero-gradient-text {
+  background: linear-gradient(135deg, #c2410c 0%, #d97706 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+}
+
+.hero-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin-top: 24px;
 }
 
-.hero-para p {
-  margin: 4px 0;
+.narrative-item {
+  color: #475569;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.narrative-item p {
+  margin: 0;
+}
+
+.narrative-item.narrative-active {
+  color: #0f172a;
+  font-weight: 700;
 }
 
 .hero-special-para {
-  font-weight: 900;
-  color: #111111;
-  position: relative;
+  font-family: var(--font-heading, "Raleway", "Outfit", sans-serif) !important;
+  color: #0f172a;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
   display: inline-block;
 }
 
@@ -545,7 +592,79 @@ button {
   position: relative;
   z-index: 2;
   width: fit-content;
-  margin-top: 34px;
+  margin-top: 32px;
+}
+
+.hero-explore-btn {
+  box-sizing: border-box;
+  color: #ffffff;
+  font-family: var(--font-heading, "Raleway", "Outfit", sans-serif);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.35);
+}
+
+.hero-explore-btn:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(194, 65, 12, 0.45);
+}
+
+.hero-explore-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(194, 65, 12, 0.25);
+}
+
+.hero-explore-btn .btn-arrow {
+  font-size: 16px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-explore-btn:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height: auto;
+    padding: 120px 40px 60px;
+  }
+  .hero-tagline {
+    font-size: 40px;
+  }
+  .hero-desktop-break {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 110px 24px 50px;
+  }
+  .hero-tagline {
+    font-size: 32px;
+  }
+  .hero-gradient-scrim {
+    background: rgba(255, 255, 255, 0.94);
+  }
+  .hero-btn-wrapper {
+    width: 100%;
+  }
+  .hero-explore-btn {
+    width: 100%;
+  }
 }
 
 /* ============ SECTION 2: DESCRIPTION (TWO ROWS) ============ */
@@ -1436,6 +1555,29 @@ button {
     .material-symbols-outlined {
       font-family: 'Material Symbols Outlined' !important;
     }
+    /* Floating Nav styling matching demo reference */
+    .nav__link.active {
+      color: #c2410c !important;
+      font-weight: 700 !important;
+      background: rgba(194, 65, 12, 0.08) !important;
+      box-shadow: none !important;
+    }
+    .nav__cta-btn.nav__cta-btn--connect {
+      background: #0f172a !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      border: none !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.22) !important;
+    }
+    .nav__cta-btn.nav__cta-btn--connect::after {
+      display: none !important;
+    }
+    .nav__cta-btn.nav__cta-btn--connect:hover {
+      background: #1e293b !important;
+      color: #ffffff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.32) !important;
+    }
   </style>
 </head>
 <body>
@@ -1495,7 +1637,7 @@ button {
       <div class="nav__item"><a class="nav__link " href="contact.html">Contact Us</a></div>
     </nav>
 
-    <a class="nav__cta-btn" href="contact.html">Start With Us</a>
+    <a class="nav__cta-btn nav__cta-btn--connect" href="contact.html">Connect</a>
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
   </header>
 
@@ -1539,30 +1681,33 @@ button {
 
       <div class="mnav__group"><a class="mnav__top" href="contact.html">Contact Us</a></div>
 
-      <a class="nav__cta-btn mnav__cta" href="contact.html">Start With Us</a>
+      <a class="nav__cta-btn mnav__cta nav__cta-btn--connect" href="contact.html">Connect</a>
     </div>
   </div>
 
 <main>
   <!-- ================= SECTION 1: HERO ================= -->
-  <section class="hero-section">
-    <h1 class="hero-tagline" data-animate="fade-up">From Healthier Animals<br>to Healthier Lives</h1>
-    
-    <div class="hero-para" data-animate="fade-up" style="transition-delay: 150ms;">
-      <p>You Have the Ambition</p>
-      <p>You're Ready to Invest</p>
-      <p class="hero-special-para">Now Let's Turn it into Something Real</p>
+  <section class="hero-section" aria-label="Hero Overview">
+    <div class="hero-bckgrnd" id="heroBg" aria-hidden="true">
+      <img src="assets/hero_background-CYrEynHd.png" alt="From Healthier Animals to Healthier Lives - Species Watercolor Art" loading="eager" oncontextmenu="return false;">
+      <div class="hero-gradient-scrim"></div>
     </div>
-    
-    <div class="hero-btn-wrapper" data-animate="fade-up" style="transition-delay: 300ms;">
-      <a href="contact.html" class="explore-btn">
-        <span>Start With Us</span>
-        <span class="btn-arrow">&rarr;</span>
-      </a>
-    </div>
-    
-    <div class="hero-bckgrnd" id="heroBg">
-      <img src="assets/hero_background-CYrEynHd.png" alt="Hero Banner" oncontextmenu="return false;">
+
+    <div class="hero-content-wrapper">
+      <h1 class="hero-tagline" data-animate="fade-up">From Healthier Animals <br class="hero-desktop-break">to <span class="hero-gradient-text">Healthier Lives</span></h1>
+      
+      <div class="hero-narrative" data-animate="fade-up" style="transition-delay: 150ms;">
+        <div class="narrative-item"><p>You have the ambition</p></div>
+        <div class="narrative-item"><p>You're ready to invest</p></div>
+        <div class="narrative-item narrative-active"><p class="hero-special-para">Now let's turn it into something real</p></div>
+      </div>
+      
+      <div class="hero-btn-wrapper" data-animate="fade-up" style="transition-delay: 300ms;">
+        <a href="contact.html" class="hero-explore-btn">
+          <span>Start With Us</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
     </div>
   </section>
 
