@@ -2419,12 +2419,12 @@ button.why-reasons-pill {
 
 /* Step Labels (Nested cleanly inside wave arches & valleys) */
 .pj-step-label {
-  opacity: 0.3;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
   pointer-events: none;
 }
-.pj-step-label.lbl-visible {
-  opacity: 1;
+.pj-step-label.active-step text.pj-wave-title {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.12));
 }
 
 .pj-wave-title {
@@ -2680,23 +2680,26 @@ button.why-reasons-pill {
           <!-- Interactive Liquid Conduit Product Journey Card -->
           <div class="journey-interactive-card" id="journeyInteractiveCard">
             <div class="pj-svg-wrap">
-              <svg viewBox="0 0 1200 370" id="pjSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="4-Step Product Journey Interactive Diagram">
+              <svg viewBox="0 0 1200 420" id="pjSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="4-Step Product Journey Interactive Diagram">
                 <defs>
                   <!-- Liquid Flow Gradients between the 4 steps -->
-                  <linearGradient id="waveFlowGrad1" x1="60" y1="185" x2="400" y2="185" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="waveGrad1" x1="40" y1="210" x2="350" y2="210" gradientUnits="userSpaceOnUse">
                     <stop offset="0%" stop-color="#f59e0b" />
+                    <stop offset="85%" stop-color="#f59e0b" />
                     <stop offset="100%" stop-color="#10b981" />
                   </linearGradient>
-                  <linearGradient id="waveFlowGrad2" x1="400" y1="185" x2="650" y2="185" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="waveGrad2" x1="350" y1="210" x2="610" y2="210" gradientUnits="userSpaceOnUse">
                     <stop offset="0%" stop-color="#10b981" />
+                    <stop offset="85%" stop-color="#10b981" />
                     <stop offset="100%" stop-color="#0284c7" />
                   </linearGradient>
-                  <linearGradient id="waveFlowGrad3" x1="650" y1="185" x2="900" y2="185" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="waveGrad3" x1="610" y1="210" x2="870" y2="210" gradientUnits="userSpaceOnUse">
                     <stop offset="0%" stop-color="#0284c7" />
-                    <stop offset="100%" stop-color="#ea580c" />
+                    <stop offset="85%" stop-color="#0284c7" />
+                    <stop offset="100%" stop-color="#e11d48" />
                   </linearGradient>
-                  <linearGradient id="waveFlowGrad4" x1="900" y1="185" x2="1140" y2="260" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#ea580c" />
+                  <linearGradient id="waveGrad4" x1="870" y1="210" x2="1180" y2="210" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#e11d48" />
                     <stop offset="100%" stop-color="#e11d48" />
                   </linearGradient>
 
@@ -2707,94 +2710,100 @@ button.why-reasons-pill {
                 </defs>
 
                 <!-- 1. BASE INACTIVE CONDUIT TRACK -->
-                <g class="flow-base-track" stroke="#d8e2eb" stroke-width="5" fill="none" stroke-linecap="round">
-                  <!-- Lead-in -->
-                  <line x1="65" y1="185" x2="150" y2="185" />
-                  <!-- Arch 1 (Idea & Concept - Curves UP) -->
-                  <path d="M 150 185 C 150 100, 205 55, 275 55 C 345 55, 400 100, 400 185" />
-                  <!-- Valley 2 (Formulation & R&D - Curves DOWN) -->
-                  <path d="M 400 185 C 400 270, 455 315, 525 315 C 595 315, 650 270, 650 185" />
-                  <!-- Arch 3 (Trial & Optimization - Curves UP) -->
-                  <path d="M 650 185 C 650 100, 705 55, 775 55 C 845 55, 900 100, 900 185" />
-                  <!-- Valley 4 (Manufacturing & Commercialization - Curves DOWN) -->
-                  <path d="M 900 185 C 900 270, 955 315, 1025 315 C 1075 315, 1115 295, 1135 265" />
+                <g class="flow-base-track" stroke="#d8e2eb" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Lead-in line -->
+                  <line x1="40" y1="210" x2="90" y2="210" />
+                  <!-- Arch 1 (Idea & Concept - curves UP) -->
+                  <path d="M 90 210 C 90 122, 148 50, 220 50 C 292 50, 350 122, 350 210" />
+                  <!-- Valley 2 (Formulation & R&D - curves DOWN) -->
+                  <path d="M 350 210 C 350 298, 408 370, 480 370 C 552 370, 610 298, 610 210" />
+                  <!-- Arch 3 (Trial & Optimization - curves UP) -->
+                  <path d="M 610 210 C 610 122, 668 50, 740 50 C 812 50, 870 122, 870 210" />
+                  <!-- Valley 4 (Manufacturing & Commercialization - curves DOWN) -->
+                  <path d="M 870 210 C 870 298, 928 370, 1000 370 C 1072 370, 1130 298, 1130 210" />
+                  <!-- Lead-out line & arrow -->
+                  <line x1="1130" y1="210" x2="1175" y2="210" />
+                  <path d="M 1167 204 L 1180 210 L 1167 216 Z" fill="#d8e2eb" stroke="none" />
                 </g>
 
                 <!-- 2. ACTIVE LIQUID FLOW CONDUIT LAYER (Animated along the wave) -->
-                <g class="flow-active-track" stroke-width="5.5" fill="none" stroke-linecap="round">
+                <g class="flow-active-track" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <!-- Segment 1: Lead-in & Arch 1 -->
-                  <path id="flow-core-1" class="flow-active-line" pathLength="1" stroke="url(#waveFlowGrad1)"
-                    d="M 65 185 L 150 185 C 150 100, 205 55, 275 55 C 345 55, 400 100, 400 185" />
+                  <path id="flow-core-1" class="flow-active-line" pathLength="1" stroke="url(#waveGrad1)"
+                    d="M 40 210 L 90 210 C 90 122, 148 50, 220 50 C 292 50, 350 122, 350 210" />
                   <!-- Segment 2: Valley 2 -->
-                  <path id="flow-core-2" class="flow-active-line" pathLength="1" stroke="url(#waveFlowGrad2)"
-                    d="M 400 185 C 400 270, 455 315, 525 315 C 595 315, 650 270, 650 185" />
+                  <path id="flow-core-2" class="flow-active-line" pathLength="1" stroke="url(#waveGrad2)"
+                    d="M 350 210 C 350 298, 408 370, 480 370 C 552 370, 610 298, 610 210" />
                   <!-- Segment 3: Arch 3 -->
-                  <path id="flow-core-3" class="flow-active-line" pathLength="1" stroke="url(#waveFlowGrad3)"
-                    d="M 650 185 C 650 100, 705 55, 775 55 C 845 55, 900 100, 900 185" />
-                  <!-- Segment 4: Valley 4 -->
-                  <path id="flow-core-4" class="flow-active-line" pathLength="1" stroke="url(#waveFlowGrad4)"
-                    d="M 900 185 C 900 270, 955 315, 1025 315 C 1075 315, 1115 295, 1135 265" />
+                  <path id="flow-core-3" class="flow-active-line" pathLength="1" stroke="url(#waveGrad3)"
+                    d="M 610 210 C 610 122, 668 50, 740 50 C 812 50, 870 122, 870 210" />
+                  <!-- Segment 4: Valley 4 + Lead-out -->
+                  <path id="flow-core-4" class="flow-active-line" pathLength="1" stroke="url(#waveGrad4)"
+                    d="M 870 210 C 870 298, 928 370, 1000 370 C 1072 370, 1130 298, 1130 210 L 1175 210" />
                 </g>
 
                 <!-- Start Pin / Origin Bullet -->
-                <circle cx="65" cy="185" r="7" fill="#f59e0b" filter="url(#glowDot)" />
-                <circle cx="65" cy="185" r="3.5" fill="#ffffff" />
+                <circle cx="40" cy="210" r="7.5" fill="#f59e0b" filter="url(#glowDot)" />
+                <circle cx="40" cy="210" r="3.5" fill="#ffffff" />
 
-                <!-- 3. STEP TEXT LABELS (Nested inside the up-and-down curves) -->
-                <!-- Step 1: Idea & Concept (Inside Arch 1) -->
-                <g id="pj-lbl-1" class="pj-step-label" text-anchor="middle">
-                  <text x="275" y="152" class="pj-wave-title" fill="#d97706" font-size="18.5" font-weight="800">
-                    <tspan x="275" dy="0">Idea &amp;</tspan>
-                    <tspan x="275" dy="24">Concept</tspan>
+                <!-- Terminal Arrowhead (Active) -->
+                <path id="flow-arrow-end" d="M 1167 204 L 1180 210 L 1167 216 Z" fill="#e11d48" />
+
+                <!-- 3. STEP TEXT LABELS -->
+                <!-- Step 1: Idea & Concept (Arch 1 curves OVER this) -->
+                <g id="pj-lbl-1" class="pj-step-label lbl-visible" text-anchor="middle">
+                  <text x="220" y="178" class="pj-wave-title" fill="#d97706" font-size="19" font-weight="800">
+                    <tspan x="220" dy="0">Idea &amp;</tspan>
+                    <tspan x="220" dy="25">Concept</tspan>
                   </text>
-                  <text x="275" y="208" class="pj-wave-desc" font-size="13.5" font-weight="500">
-                    <tspan x="275" dy="0">Define vision and</tspan>
-                    <tspan x="275" dy="19">feasibility</tspan>
+                  <text x="220" y="238" class="pj-wave-desc" font-size="13.5" font-weight="500">
+                    <tspan x="220" dy="0">Define vision and</tspan>
+                    <tspan x="220" dy="20">feasibility</tspan>
                   </text>
                 </g>
 
-                <!-- Step 2: Formulation & R&D (Inside Valley 2) -->
-                <g id="pj-lbl-2" class="pj-step-label" text-anchor="middle">
-                  <text x="525" y="152" class="pj-wave-title" fill="#059669" font-size="18.5" font-weight="800">
-                    <tspan x="525" dy="0">Formulation &amp;</tspan>
-                    <tspan x="525" dy="24">R&amp;D</tspan>
+                <!-- Step 2: Formulation & R&D (Valley 2 curves UNDER this) -->
+                <g id="pj-lbl-2" class="pj-step-label lbl-visible" text-anchor="middle">
+                  <text x="480" y="178" class="pj-wave-title" fill="#059669" font-size="19" font-weight="800">
+                    <tspan x="480" dy="0">Formulation &amp;</tspan>
+                    <tspan x="480" dy="25">R&amp;D</tspan>
                   </text>
-                  <text x="525" y="208" class="pj-wave-desc" font-size="13.5" font-weight="500">
-                    <tspan x="525" dy="0">Develop formula</tspan>
-                    <tspan x="525" dy="19">&amp; lab testing</tspan>
-                  </text>
-                </g>
-
-                <!-- Step 3: Trial & Optimization (Inside Arch 3) -->
-                <g id="pj-lbl-3" class="pj-step-label" text-anchor="middle">
-                  <text x="775" y="152" class="pj-wave-title" fill="#0284c7" font-size="18.5" font-weight="800">
-                    <tspan x="775" dy="0">Trial &amp;</tspan>
-                    <tspan x="775" dy="24">Optimization</tspan>
-                  </text>
-                  <text x="775" y="208" class="pj-wave-desc" font-size="13.5" font-weight="500">
-                    <tspan x="775" dy="0">Scale-up trials &amp;</tspan>
-                    <tspan x="775" dy="19">refine process</tspan>
+                  <text x="480" y="238" class="pj-wave-desc" font-size="13.5" font-weight="500">
+                    <tspan x="480" dy="0">Develop formulas</tspan>
+                    <tspan x="480" dy="20">and lab testing</tspan>
                   </text>
                 </g>
 
-                <!-- Step 4: Manufacturing & Commercialization (Inside Valley 4) -->
-                <g id="pj-lbl-4" class="pj-step-label" text-anchor="middle">
-                  <text x="1025" y="152" class="pj-wave-title" fill="#ea580c" font-size="18.5" font-weight="800">
-                    <tspan x="1025" dy="0">Manufacturing &amp;</tspan>
-                    <tspan x="1025" dy="24">Commercialization</tspan>
+                <!-- Step 3: Trial & Optimization (Arch 3 curves OVER this) -->
+                <g id="pj-lbl-3" class="pj-step-label lbl-visible" text-anchor="middle">
+                  <text x="740" y="178" class="pj-wave-title" fill="#0284c7" font-size="19" font-weight="800">
+                    <tspan x="740" dy="0">Trial &amp;</tspan>
+                    <tspan x="740" dy="25">Optimization</tspan>
                   </text>
-                  <text x="1025" y="208" class="pj-wave-desc" font-size="13.5" font-weight="500">
-                    <tspan x="1025" dy="0">Produce at scale</tspan>
-                    <tspan x="1025" dy="19">and launch</tspan>
+                  <text x="740" y="238" class="pj-wave-desc" font-size="13.5" font-weight="500">
+                    <tspan x="740" dy="0">Scale-up trials and</tspan>
+                    <tspan x="740" dy="20">refine process</tspan>
+                  </text>
+                </g>
+
+                <!-- Step 4: Manufacturing & Commercialization (Valley 4 curves UNDER this) -->
+                <g id="pj-lbl-4" class="pj-step-label lbl-visible" text-anchor="middle">
+                  <text x="1000" y="178" class="pj-wave-title" fill="#e11d48" font-size="19" font-weight="800">
+                    <tspan x="1000" dy="0">Manufacturing &amp;</tspan>
+                    <tspan x="1000" dy="25">Commercialization</tspan>
+                  </text>
+                  <text x="1000" y="238" class="pj-wave-desc" font-size="13.5" font-weight="500">
+                    <tspan x="1000" dy="0">Produce at scale</tspan>
+                    <tspan x="1000" dy="20">and launch</tspan>
                   </text>
                 </g>
 
                 <!-- Interactive click targets -->
                 <g id="pj-step-targets" style="cursor: pointer;">
-                  <rect data-step="1" x="140" y="45" width="260" height="270" fill="transparent" />
-                  <rect data-step="2" x="400" y="55" width="250" height="270" fill="transparent" />
-                  <rect data-step="3" x="650" y="45" width="250" height="270" fill="transparent" />
-                  <rect data-step="4" x="900" y="55" width="250" height="270" fill="transparent" />
+                  <rect data-step="1" x="90" y="40" width="260" height="340" fill="transparent" />
+                  <rect data-step="2" x="350" y="40" width="260" height="340" fill="transparent" />
+                  <rect data-step="3" x="610" y="40" width="260" height="340" fill="transparent" />
+                  <rect data-step="4" x="870" y="40" width="260" height="340" fill="transparent" />
                 </g>
               </svg>
             </div>
@@ -3371,6 +3380,10 @@ button.why-reasons-pill {
           const offset = (1 - segP).toFixed(4);
           const el = segElements[idx];
           if (el && el.core) el.core.style.strokeDashoffset = offset;
+          if (idx === 3) {
+            const arrowEnd = document.getElementById('flow-arrow-end');
+            if (arrowEnd) arrowEnd.style.opacity = segP >= 0.98 ? '1' : '0.2';
+          }
         });
 
         // 2. Step Labels visibility (Step 1 always visible; steps 2, 3, 4 reveal smoothly as flow reaches them)
