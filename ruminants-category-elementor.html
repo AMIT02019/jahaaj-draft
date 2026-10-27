@@ -1498,6 +1498,7 @@ a {
   border-top: 1px solid var(--gray-200);
   border-bottom: 1px solid var(--gray-200);
   box-sizing: border-box;
+  padding-bottom: 60px;
 }
 
 .jhc-ch-sticky-frame {
@@ -1510,7 +1511,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 16px 0 20px;
+  padding: 20px 0 70px;
   box-sizing: border-box;
   overflow: hidden;
   z-index: 10;
@@ -1613,6 +1614,7 @@ a {
   overflow-y: hidden;
   scroll-behavior: smooth;
   position: relative;
+  padding-bottom: 24px;
 }
 
 .jhc-ch-list-wrapper::after {
@@ -2562,7 +2564,8 @@ a {
       function setupTrack() {
         if (window.innerWidth >= 900) {
           const scrollDistancePerItem = 200;
-          const totalTrackHeight = window.innerHeight + (rows.length - 1) * scrollDistancePerItem;
+          const extraBottomBuffer = 180;
+          const totalTrackHeight = window.innerHeight + (rows.length - 1) * scrollDistancePerItem + extraBottomBuffer;
           section.style.height = totalTrackHeight + "px";
         } else {
           section.style.height = "auto";
