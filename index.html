@@ -669,136 +669,154 @@ button {
 
 /* ============ SECTION 2: DESCRIPTION (TWO ROWS) ============ */
 .body-description-section {
+  box-sizing: border-box;
   background: linear-gradient(135deg, #8f3c1b 0%, #68260f 50%, #421607 100%);
   color: #ffffff;
-  padding: 100px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 70px;
+  padding: 90px 72px;
+  transition: background 0.4s, color 0.4s;
   position: relative;
   overflow: hidden;
 }
 
-.body-description-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 10% 20%, rgba(251, 146, 60, 0.12) 0%, transparent 40%),
-              radial-gradient(circle at 90% 80%, rgba(234, 88, 12, 0.16) 0%, transparent 40%);
-  pointer-events: none;
-}
-
-.first-para-section {
+.para-row {
+  z-index: 1;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 64px;
+  align-items: center;
+  gap: 60px;
   width: 100%;
   max-width: 1200px;
   position: relative;
-  z-index: 2;
 }
 
-.first-para-image-section {
-  width: 450px;
-  height: 310px;
+.para-row-reversed {
+  flex-direction: row;
+}
+
+.image-frame-wrapper {
   flex-shrink: 0;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  width: 480px;
   position: relative;
 }
 
-.first-para-image-section:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+.para-image-container {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #ffffff;
 }
 
-.first-para-image-section img {
+.para-image-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 45px -8px rgba(0, 0, 0, 0.45);
+}
+
+.para-image-container img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  background: #ffffff;
-  transition: transform 0.6s ease;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.first-para-image-section:hover img {
-  transform: scale(1.05);
+.para-image-container:hover img {
+  transform: scale(1.03);
 }
 
-.first-para-text-section {
+.para-text-card {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.description-para-text {
-  font-size: 20px;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.92);
-  margin-bottom: 4px;
-  font-weight: 300;
-}
-
-.main-point-para {
-  font-weight: 800;
+.para-heading {
+  font-family: var(--font-heading, "Raleway", "Outfit", sans-serif);
+  letter-spacing: -0.02em;
   color: #ffffff;
-  font-size: 23px;
-  margin-top: 10px;
+  margin: 0 0 18px;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
 }
 
-.second-para-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 64px;
-  width: 100%;
-  max-width: 1200px;
-  margin-top: 80px;
-  position: relative;
-  z-index: 2;
-}
-
-.second-para-text-section {
-  flex: 1;
+.narrative-list {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-.second-para-image-section {
-  width: 450px;
-  height: 310px;
-  flex-shrink: 0;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+.narrative-line {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
-.second-para-image-section:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+.para-lead {
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 28px;
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
-.second-para-image-section img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: #ffffff;
-  transition: transform 0.6s ease;
+.action-row {
+  width: fit-content;
 }
 
-.second-para-image-section:hover img {
-  transform: scale(1.05);
+@media (max-width: 1024px) {
+  .body-description-section {
+    gap: 50px;
+    padding: 70px 40px;
+  }
+  .para-row {
+    gap: 36px;
+  }
+  .image-frame-wrapper {
+    width: 380px;
+  }
+  .para-image-container {
+    height: 280px;
+  }
+  .para-heading {
+    font-size: 28px;
+  }
 }
 
-.second-para-redirect-btn {
-  margin-top: 12px;
+@media (max-width: 768px) {
+  .body-description-section {
+    gap: 40px;
+    padding: 60px 24px;
+  }
+  .para-row,
+  .para-row-reversed {
+    flex-direction: column;
+    gap: 28px;
+    text-align: center;
+  }
+  .image-frame-wrapper {
+    width: 100%;
+  }
+  .para-image-container {
+    height: 240px;
+  }
+  .para-heading {
+    font-size: 24px;
+  }
+  .action-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 /* ============ SECTION 3: BEYOND MANUFACTURING (3D CAROUSEL CARDS) ============ */
@@ -1207,24 +1225,7 @@ button {
   .idea-section {
     padding: 70px 32px;
   }
-  .first-para-section,
-  .second-para-section {
-    flex-direction: column;
-    gap: 36px;
-    text-align: center;
-  }
-  .second-para-section {
-    flex-direction: column-reverse;
-  }
-  .first-para-image-section,
-  .second-para-image-section {
-    width: 100%;
-    max-width: 480px;
-    height: 260px;
-  }
-  .second-para-text-section {
-    align-items: center;
-  }
+
   .footer-first-section {
     flex-direction: column;
     gap: 36px;
@@ -1712,35 +1713,41 @@ button {
   </section>
 
   <!-- ================= SECTION 2: DESCRIPTION (TWO ROWS) ================= -->
-  <section class="body-description-section">
+  <section class="body-description-section" aria-label="How We Partner">
     <!-- Row 1 -->
-    <div class="first-para-section">
-      <div class="first-para-image-section" data-animate="fade-left">
-        <img src="assets/desc_img_1-Bqu7_K-n.png" alt="Collaborative veterinary formulation development" oncontextmenu="return false;">
+    <div class="para-row">
+      <div class="image-frame-wrapper" data-animate="fade-left">
+        <div class="para-image-container">
+          <img src="assets/desc_img_1-Bqu7_K-n.png" alt="Formulation and discovery process" loading="lazy" oncontextmenu="return false;">
+        </div>
       </div>
-      <div class="first-para-text-section" data-animate="fade-right">
-        <div class="description-para-text">You don't need to come to us with a finished idea.</div>
-        <div class="description-para-text">Maybe you have a product in mind.</div>
-        <div class="description-para-text">Maybe you see an opportunity.</div>
-        <div class="description-para-text">Maybe you simply want to build a business in animal healthcare supplements.</div>
-        <div class="description-para-text main-point-para">We'll help you figure out the rest.</div>
+      <div class="para-text-card" data-animate="fade-right">
+        <h2 class="para-heading">You don't need to come to us with a finished idea.</h2>
+        <div class="narrative-list">
+          <div class="narrative-line"><span>Maybe you have a product in mind.</span></div>
+          <div class="narrative-line"><span>Maybe you see an opportunity.</span></div>
+          <div class="narrative-line"><span>Maybe you simply want to build a business in animal healthcare supplements.</span></div>
+          <div class="narrative-line"><span>We'll help you figure out the rest.</span></div>
+        </div>
       </div>
     </div>
 
     <!-- Row 2 -->
-    <div class="second-para-section">
-      <div class="second-para-text-section" data-animate="fade-left">
-        <div class="description-para-text main-point-para">You Bring the Idea. We Build the Product.</div>
-        <div class="description-para-text">From formulation and R&amp;D to manufacturing and launch, we help turn animal-health ideas into market-ready products.</div>
-        <div class="second-para-redirect-btn">
-          <a href="manufacturing-process.html" class="explore-btn">
+    <div class="para-row para-row-reversed">
+      <div class="para-text-card" data-animate="fade-left">
+        <h2 class="para-heading">You Bring the Idea. We Build the Product.</h2>
+        <p class="para-lead">From formulation and R&amp;D to manufacturing and launch, we help turn animal-health ideas into market-ready products.</p>
+        <div class="action-row">
+          <a href="manufacturing-process.html" class="hero-explore-btn">
             <span>Explore Our Capabilities</span>
-            <span class="btn-arrow">&rarr;</span>
+            <span class="btn-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </div>
-      <div class="second-para-image-section" data-animate="fade-right">
-        <img src="assets/desc_img_2-CtmvfYCl.png" alt="End-to-end CDMO manufacturing and launch workflow" oncontextmenu="return false;">
+      <div class="image-frame-wrapper" data-animate="fade-right">
+        <div class="para-image-container">
+          <img src="assets/desc_img_2-CtmvfYCl.png" alt="High precision manufacturing facility" loading="lazy" oncontextmenu="return false;">
+        </div>
       </div>
     </div>
   </section>
