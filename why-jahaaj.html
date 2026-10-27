@@ -2396,17 +2396,20 @@ button.why-reasons-pill {
   display: block;
 }
 
-/* Conduit Lines */
+/* Product Journey Serpentine Wave & Conduit Lines */
+.flow-base-track path,
+.flow-base-track line,
 .flow-base-line {
   fill: none;
-  stroke: #d9e2ea;
-  stroke-width: 6;
+  stroke: #d8e2eb;
+  stroke-width: 5;
   stroke-linecap: round;
   pointer-events: none;
 }
 
 .flow-active-line {
   fill: none;
+  stroke-width: 5.5;
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
@@ -2414,67 +2417,27 @@ button.why-reasons-pill {
   transition: stroke-dashoffset 0.05s linear;
 }
 
-/* Directional Arrowheads */
-.flow-arrow {
-  opacity: 0;
-  transform: scale(0.6);
-  transform-origin: center;
-  pointer-events: none;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-
-/* Active Pulse Ring (identical to 12-step manufacturing process) */
-.pj-pulse-dot {
-  fill: none;
-  stroke-width: 3.5;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-.pj-pulse-dot.active {
-  opacity: 1;
-  animation: pjPulseAnim 1.25s infinite ease-out;
-}
-@keyframes pjPulseAnim {
-  0% { r: 21; stroke-opacity: 0.95; stroke-width: 3.5; }
-  100% { r: 52; stroke-opacity: 0; stroke-width: 1; }
-}
-
-/* Step Labels */
+/* Step Labels (Nested cleanly inside wave arches & valleys) */
 .pj-step-label {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px);
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+  opacity: 0.3;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 .pj-step-label.lbl-visible {
   opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
 }
 
-.step-icon-group {
-  opacity: 0.45;
-  transition: opacity 0.3s ease;
-}
-.step-icon-group.step-active {
-  opacity: 1;
-}
-
-.pj-step-title {
+.pj-wave-title {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 800;
-  font-size: 15.5px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   text-anchor: middle;
 }
 
-.pj-step-desc {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+.pj-wave-desc {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
-  font-size: 13.5px;
-  fill: #475569;
+  fill: #64748b;
   text-anchor: middle;
 }
 
@@ -2717,148 +2680,121 @@ button.why-reasons-pill {
           <!-- Interactive Liquid Conduit Product Journey Card -->
           <div class="journey-interactive-card" id="journeyInteractiveCard">
             <div class="pj-svg-wrap">
-              <svg viewBox="0 0 1280 385" id="pjSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="4-Step Product Journey Interactive Diagram">
+              <svg viewBox="0 0 1200 370" id="pjSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="4-Step Product Journey Interactive Diagram">
                 <defs>
-                  <!-- Liquid Flow Gradients between the 4 steps (curved up-and-down wave) -->
-                  <linearGradient id="flowGrad1-2" x1="208" y1="165" x2="472" y2="245" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#e5a800" />
-                    <stop offset="100%" stop-color="#16a34a" />
+                  <!-- Liquid Flow Gradients between the 4 steps -->
+                  <linearGradient id="waveFlowGrad1" x1="60" y1="185" x2="400" y2="185" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#f59e0b" />
+                    <stop offset="100%" stop-color="#10b981" />
                   </linearGradient>
-                  <linearGradient id="flowGrad2-3" x1="508" y1="245" x2="772" y2="165" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#16a34a" />
+                  <linearGradient id="waveFlowGrad2" x1="400" y1="185" x2="650" y2="185" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#10b981" />
                     <stop offset="100%" stop-color="#0284c7" />
                   </linearGradient>
-                  <linearGradient id="flowGrad3-4" x1="808" y1="165" x2="1072" y2="245" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="waveFlowGrad3" x1="650" y1="185" x2="900" y2="185" gradientUnits="userSpaceOnUse">
                     <stop offset="0%" stop-color="#0284c7" />
                     <stop offset="100%" stop-color="#ea580c" />
                   </linearGradient>
+                  <linearGradient id="waveFlowGrad4" x1="900" y1="185" x2="1140" y2="260" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#ea580c" />
+                    <stop offset="100%" stop-color="#e11d48" />
+                  </linearGradient>
 
-                  <!-- Filter for soft icon drop shadows -->
-                  <filter id="iconShadow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0e3252" flood-opacity="0.08" />
+                  <!-- Glowing dot filter -->
+                  <filter id="glowDot" x="-50%" y="-50%" width="200%" height="200%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#f59e0b" flood-opacity="0.45" />
                   </filter>
                 </defs>
 
-                <!-- 1. BASE INACTIVE CONDUIT TRACK (Curved Up-and-Down S-Waves) -->
-                <g class="flow-base-track-layer">
-                  <path id="flow-under-1-2" class="flow-base-line" d="M 208 165 C 330 165, 350 245, 472 245" />
-                  <path id="flow-under-2-3" class="flow-base-line" d="M 508 245 C 630 245, 650 165, 772 165" />
-                  <path id="flow-under-3-4" class="flow-base-line" d="M 808 165 C 930 165, 950 245, 1072 245" />
+                <!-- 1. BASE INACTIVE CONDUIT TRACK -->
+                <g class="flow-base-track" stroke="#d8e2eb" stroke-width="5" fill="none" stroke-linecap="round">
+                  <!-- Lead-in -->
+                  <line x1="65" y1="185" x2="150" y2="185" />
+                  <!-- Arch 1 (Idea & Concept - Curves UP) -->
+                  <path d="M 150 185 C 150 100, 205 55, 275 55 C 345 55, 400 100, 400 185" />
+                  <!-- Valley 2 (Formulation & R&D - Curves DOWN) -->
+                  <path d="M 400 185 C 400 270, 455 315, 525 315 C 595 315, 650 270, 650 185" />
+                  <!-- Arch 3 (Trial & Optimization - Curves UP) -->
+                  <path d="M 650 185 C 650 100, 705 55, 775 55 C 845 55, 900 100, 900 185" />
+                  <!-- Valley 4 (Manufacturing & Commercialization - Curves DOWN) -->
+                  <path d="M 900 185 C 900 270, 955 315, 1025 315 C 1075 315, 1115 295, 1135 265" />
                 </g>
 
-                <!-- 2. ACTIVE LIQUID FLOW CONDUIT LAYER (Animated Along Curves) -->
-                <g class="flow-core-layer">
-                  <path id="flow-core-1-2" class="flow-active-line" pathLength="1" stroke="url(#flowGrad1-2)" stroke-width="7" d="M 208 165 C 330 165, 350 245, 472 245" />
-                  <path id="flow-core-2-3" class="flow-active-line" pathLength="1" stroke="url(#flowGrad2-3)" stroke-width="7" d="M 508 245 C 630 245, 650 165, 772 165" />
-                  <path id="flow-core-3-4" class="flow-active-line" pathLength="1" stroke="url(#flowGrad3-4)" stroke-width="7" d="M 808 165 C 930 165, 950 245, 1072 245" />
+                <!-- 2. ACTIVE LIQUID FLOW CONDUIT LAYER (Animated along the wave) -->
+                <g class="flow-active-track" stroke-width="5.5" fill="none" stroke-linecap="round">
+                  <!-- Segment 1: Lead-in & Arch 1 -->
+                  <path id="flow-core-1" class="flow-active-line" pathLength="1" stroke="url(#waveFlowGrad1)"
+                    d="M 65 185 L 150 185 C 150 100, 205 55, 275 55 C 345 55, 400 100, 400 185" />
+                  <!-- Segment 2: Valley 2 -->
+                  <path id="flow-core-2" class="flow-active-line" pathLength="1" stroke="url(#waveFlowGrad2)"
+                    d="M 400 185 C 400 270, 455 315, 525 315 C 595 315, 650 270, 650 185" />
+                  <!-- Segment 3: Arch 3 -->
+                  <path id="flow-core-3" class="flow-active-line" pathLength="1" stroke="url(#waveFlowGrad3)"
+                    d="M 650 185 C 650 100, 705 55, 775 55 C 845 55, 900 100, 900 185" />
+                  <!-- Segment 4: Valley 4 -->
+                  <path id="flow-core-4" class="flow-active-line" pathLength="1" stroke="url(#waveFlowGrad4)"
+                    d="M 900 185 C 900 270, 955 315, 1025 315 C 1075 315, 1115 295, 1135 265" />
                 </g>
 
-                <!-- 3. DIRECTIONAL ARROWHEADS (Tangential at destination) -->
-                <g class="flow-arrows-layer">
-                  <path id="arrow-1-2" class="flow-arrow" fill="#16a34a" d="M 460 239 L 472 245 L 460 251 Z" />
-                  <path id="arrow-2-3" class="flow-arrow" fill="#0284c7" d="M 760 159 L 772 165 L 760 171 Z" />
-                  <path id="arrow-3-4" class="flow-arrow" fill="#ea580c" d="M 1060 239 L 1072 245 L 1060 251 Z" />
+                <!-- Start Pin / Origin Bullet -->
+                <circle cx="65" cy="185" r="7" fill="#f59e0b" filter="url(#glowDot)" />
+                <circle cx="65" cy="185" r="3.5" fill="#ffffff" />
+
+                <!-- 3. STEP TEXT LABELS (Nested inside the up-and-down curves) -->
+                <!-- Step 1: Idea & Concept (Inside Arch 1) -->
+                <g id="pj-lbl-1" class="pj-step-label" text-anchor="middle">
+                  <text x="275" y="152" class="pj-wave-title" fill="#d97706" font-size="18.5" font-weight="800">
+                    <tspan x="275" dy="0">Idea &amp;</tspan>
+                    <tspan x="275" dy="24">Concept</tspan>
+                  </text>
+                  <text x="275" y="208" class="pj-wave-desc" font-size="13.5" font-weight="500">
+                    <tspan x="275" dy="0">Define vision and</tspan>
+                    <tspan x="275" dy="19">feasibility</tspan>
+                  </text>
                 </g>
 
-                <!-- 4. STEP ILLUSTRATION CARDS / CIRCLES -->
-                <!-- Step 1: Idea & Concept (UP - Peak cy=75) -->
-                <g class="step-icon-group" id="step-icon-1">
-                  <circle cx="190" cy="75" r="48" fill="#ffffff" stroke="#e5a800" stroke-width="2.5" filter="url(#iconShadow)" />
-                  <circle cx="190" cy="75" r="41" fill="rgba(229, 168, 0, 0.08)" />
-                  <!-- Vector Icon: Lightbulb Idea -->
-                  <g transform="translate(169, 54) scale(0.82)">
-                    <path fill="#e5a800" d="M25.6 0C11.5 0 0 11.5 0 25.6c0 8.7 4.4 16.4 11.1 21v8.5c0 2.8 2.3 5.1 5.1 5.1h18.8c2.8 0 5.1-2.3 5.1-5.1v-8.5c6.7-4.6 11.1-12.3 11.1-21C51.2 11.5 39.7 0 25.6 0zm-8.8 54.6v-3.7h17.6v3.7c0 .8-.6 1.4-1.4 1.4H18.2c-.8 0-1.4-.6-1.4-1.4zm23.6-13.4l-2.6 1.8v5h-24v-5l-2.6-1.8C5.5 37.3 2.6 31.7 2.6 25.6 2.6 12.9 12.9 2.6 25.6 2.6s23 10.3 23 23c0 6.1-2.9 11.7-8.2 15.6z"/>
-                    <rect x="20.5" y="60" width="10.2" height="3" rx="1.5" fill="#e5a800" />
-                  </g>
+                <!-- Step 2: Formulation & R&D (Inside Valley 2) -->
+                <g id="pj-lbl-2" class="pj-step-label" text-anchor="middle">
+                  <text x="525" y="152" class="pj-wave-title" fill="#059669" font-size="18.5" font-weight="800">
+                    <tspan x="525" dy="0">Formulation &amp;</tspan>
+                    <tspan x="525" dy="24">R&amp;D</tspan>
+                  </text>
+                  <text x="525" y="208" class="pj-wave-desc" font-size="13.5" font-weight="500">
+                    <tspan x="525" dy="0">Develop formula</tspan>
+                    <tspan x="525" dy="19">&amp; lab testing</tspan>
+                  </text>
                 </g>
 
-                <!-- Step 2: Formulation & R&D (DOWN - Valley cy=155) -->
-                <g class="step-icon-group" id="step-icon-2">
-                  <circle cx="490" cy="155" r="48" fill="#ffffff" stroke="#16a34a" stroke-width="2.5" filter="url(#iconShadow)" />
-                  <circle cx="490" cy="155" r="41" fill="rgba(22, 163, 74, 0.08)" />
-                  <!-- Vector Icon: Flask Lab -->
-                  <g transform="translate(469, 134) scale(0.82)">
-                    <path fill="#16a34a" d="M49.2 40.5L34.1 16.9V3.8h2.6c1.1 0 1.9-.9 1.9-1.9S37.7 0 36.7 0H14.5c-1.1 0-1.9.9-1.9 1.9s.9 1.9 1.9 1.9h2.6v13.1L2 40.5C.4 43-.1 46.1.7 49c.8 2.9 3 5.1 5.9 5.8 1.1.3 2.2.4 3.3.4h31.4c3.9 0 7.4-2.5 8.7-6.2 1.3-3.7.1-7.8-2.6-10.4l1.8-1.9zm-4.7 9.8c-.8 2.2-2.8 3.7-5.1 3.7H9.9c-2.3 0-4.3-1.5-5.1-3.7-.8-2.2-.2-4.6 1.4-6.3L20 22.8v-19h11.2v19l13.8 17.9c1.6 1.7 2.2 4.1 1.4 6.3z"/>
-                    <circle cx="25.6" cy="38" r="3.5" fill="#16a34a"/>
-                    <circle cx="19" cy="45" r="2.5" fill="#16a34a"/>
-                    <circle cx="33" cy="44" r="2.8" fill="#16a34a"/>
-                  </g>
+                <!-- Step 3: Trial & Optimization (Inside Arch 3) -->
+                <g id="pj-lbl-3" class="pj-step-label" text-anchor="middle">
+                  <text x="775" y="152" class="pj-wave-title" fill="#0284c7" font-size="18.5" font-weight="800">
+                    <tspan x="775" dy="0">Trial &amp;</tspan>
+                    <tspan x="775" dy="24">Optimization</tspan>
+                  </text>
+                  <text x="775" y="208" class="pj-wave-desc" font-size="13.5" font-weight="500">
+                    <tspan x="775" dy="0">Scale-up trials &amp;</tspan>
+                    <tspan x="775" dy="19">refine process</tspan>
+                  </text>
                 </g>
 
-                <!-- Step 3: Trial & Optimization (UP - Peak cy=75) -->
-                <g class="step-icon-group" id="step-icon-3">
-                  <circle cx="790" cy="75" r="48" fill="#ffffff" stroke="#0284c7" stroke-width="2.5" filter="url(#iconShadow)" />
-                  <circle cx="790" cy="75" r="41" fill="rgba(2, 132, 199, 0.08)" />
-                  <!-- Vector Icon: Scale-up & Analytics -->
-                  <g transform="translate(768, 53) scale(0.84)">
-                    <path fill="#0284c7" d="M48 42H6a2 2 0 0 1-2-2V4a2 2 0 0 1 4 0v34h40a2 2 0 0 1 0 4z"/>
-                    <path fill="#0284c7" d="M14 34a2 2 0 0 1-1.4-3.4l10-10a2 2 0 0 1 2.8 0l6 6 12-12a2 2 0 1 1 2.8 2.8l-13.4 13.4a2 2 0 0 1-2.8 0l-6-6-8.6 8.6A2 2 0 0 1 14 34z"/>
-                    <circle cx="44" cy="14" r="3.5" fill="#0284c7"/>
-                    <circle cx="31.4" cy="26.6" r="3" fill="#0284c7"/>
-                  </g>
+                <!-- Step 4: Manufacturing & Commercialization (Inside Valley 4) -->
+                <g id="pj-lbl-4" class="pj-step-label" text-anchor="middle">
+                  <text x="1025" y="152" class="pj-wave-title" fill="#ea580c" font-size="18.5" font-weight="800">
+                    <tspan x="1025" dy="0">Manufacturing &amp;</tspan>
+                    <tspan x="1025" dy="24">Commercialization</tspan>
+                  </text>
+                  <text x="1025" y="208" class="pj-wave-desc" font-size="13.5" font-weight="500">
+                    <tspan x="1025" dy="0">Produce at scale</tspan>
+                    <tspan x="1025" dy="19">and launch</tspan>
+                  </text>
                 </g>
 
-                <!-- Step 4: Manufacturing & Commercialization (DOWN - Valley cy=155) -->
-                <g class="step-icon-group" id="step-icon-4">
-                  <circle cx="1090" cy="155" r="48" fill="#ffffff" stroke="#ea580c" stroke-width="2.5" filter="url(#iconShadow)" />
-                  <circle cx="1090" cy="155" r="41" fill="rgba(234, 88, 12, 0.08)" />
-                  <!-- Vector Icon: Commercial Production & Delivery -->
-                  <g transform="translate(1068, 133) scale(0.84)">
-                    <path fill="#ea580c" d="M48 28h-6V12a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v28a2 2 0 0 0 2 2h3.1a6.9 6.9 0 0 0 13.8 0h14.2a6.9 6.9 0 0 0 13.8 0H50a2 2 0 0 0 2-2v-8a6 6 0 0 0-4-6zm-34 16a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm28 0a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-14h-6v-8h4a2 2 0 0 1 2 2v6z"/>
-                    <rect x="10" y="16" width="12" height="12" rx="1.5" fill="#ea580c"/>
-                  </g>
-                </g>
-
-                <!-- 5. NUMBERED CONDUIT STEP BADGES (Placed directly on wave peaks & valleys) -->
-                <circle cx="190" cy="165" r="18" fill="#e5a800" stroke="#ffffff" stroke-width="3" filter="url(#iconShadow)" />
-                <text x="190" y="170" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="13" font-weight="800" text-anchor="middle">1</text>
-
-                <circle cx="490" cy="245" r="18" fill="#16a34a" stroke="#ffffff" stroke-width="3" filter="url(#iconShadow)" />
-                <text x="490" y="250" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="13" font-weight="800" text-anchor="middle">2</text>
-
-                <circle cx="790" cy="165" r="18" fill="#0284c7" stroke="#ffffff" stroke-width="3" filter="url(#iconShadow)" />
-                <text x="790" y="170" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="13" font-weight="800" text-anchor="middle">3</text>
-
-                <circle cx="1090" cy="245" r="18" fill="#ea580c" stroke="#ffffff" stroke-width="3" filter="url(#iconShadow)" />
-                <text x="1090" y="250" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="13" font-weight="800" text-anchor="middle">4</text>
-
-                <!-- 6. ACTIVE PULSE INDICATOR BEACONS -->
-                <circle id="pj-pulse-1" class="pj-pulse-dot" cx="190" cy="165" r="21" stroke="#e5a800" />
-                <circle id="pj-pulse-2" class="pj-pulse-dot" cx="490" cy="245" r="21" stroke="#16a34a" />
-                <circle id="pj-pulse-3" class="pj-pulse-dot" cx="790" cy="165" r="21" stroke="#0284c7" />
-                <circle id="pj-pulse-4" class="pj-pulse-dot" cx="1090" cy="245" r="21" stroke="#ea580c" />
-
-                <!-- 7. STEP TEXT LABELS (Reveal with flow) -->
-                <!-- Step 1 (UP) -->
-                <g id="pj-lbl-1" class="pj-step-label">
-                  <text x="190" y="214" class="pj-step-title" fill="#e5a800">IDEA &amp; CONCEPT</text>
-                  <text x="190" y="238" class="pj-step-desc">Define vision and feasibility</text>
-                </g>
-
-                <!-- Step 2 (DOWN) -->
-                <g id="pj-lbl-2" class="pj-step-label">
-                  <text x="490" y="294" class="pj-step-title" fill="#16a34a">FORMULATION &amp; R&amp;D</text>
-                  <text x="490" y="318" class="pj-step-desc">Develop formulas &amp; lab testing</text>
-                </g>
-
-                <!-- Step 3 (UP) -->
-                <g id="pj-lbl-3" class="pj-step-label">
-                  <text x="790" y="214" class="pj-step-title" fill="#0284c7">TRIAL &amp; OPTIMIZATION</text>
-                  <text x="790" y="238" class="pj-step-desc">Scale-up trials &amp; refine process</text>
-                </g>
-
-                <!-- Step 4 (DOWN) -->
-                <g id="pj-lbl-4" class="pj-step-label">
-                  <text x="1090" y="294" class="pj-step-title" fill="#ea580c">MANUFACTURING &amp; COMMERCIALIZATION</text>
-                  <text x="1090" y="318" class="pj-step-desc">Produce at scale and launch</text>
-                </g>
-
-                <!-- 8. INTERACTIVE CLICK TARGETS -->
+                <!-- Interactive click targets -->
                 <g id="pj-step-targets" style="cursor: pointer;">
-                  <rect data-step="1" x="70" y="15" width="240" height="240" fill="transparent" />
-                  <rect data-step="2" x="370" y="95" width="240" height="240" fill="transparent" />
-                  <rect data-step="3" x="670" y="15" width="240" height="240" fill="transparent" />
-                  <rect data-step="4" x="970" y="95" width="240" height="240" fill="transparent" />
+                  <rect data-step="1" x="140" y="45" width="260" height="270" fill="transparent" />
+                  <rect data-step="2" x="400" y="55" width="250" height="270" fill="transparent" />
+                  <rect data-step="3" x="650" y="45" width="250" height="270" fill="transparent" />
+                  <rect data-step="4" x="900" y="55" width="250" height="270" fill="transparent" />
                 </g>
               </svg>
             </div>
@@ -3397,32 +3333,28 @@ button.why-reasons-pill {
       if (!scrollTrack || !stickyContainer) return;
 
       const segments = [
-        { key: '1-2', from: 1, to: 2 },
-        { key: '2-3', from: 2, to: 3 },
-        { key: '3-4', from: 3, to: 4 }
+        { key: '1', step: 1 },
+        { key: '2', step: 2 },
+        { key: '3', step: 3 },
+        { key: '4', step: 4 }
       ];
 
       const segElements = segments.map(s => ({
-        core: document.getElementById('flow-core-' + s.key),
-        arrow: document.getElementById('arrow-' + s.key)
+        core: document.getElementById('flow-core-' + s.key)
       }));
 
       const labelElements = [];
-      const pulseElements = [];
-      const iconElements = [];
       for (let i = 1; i <= 4; i++) {
         labelElements.push(document.getElementById('pj-lbl-' + i));
-        pulseElements.push(document.getElementById('pj-pulse-' + i));
-        iconElements.push(document.getElementById('step-icon-' + i));
       }
 
       let lastP = -1;
       let isTicking = false;
 
       function render(p) {
-        const totalSegs = segments.length; // 3 segments
+        const totalSegs = segments.length; // 4 segments
 
-        // 1. Update conduits and arrows
+        // 1. Update liquid conduits along the 4 wave segments
         segments.forEach((seg, idx) => {
           const segStart = idx / totalSegs;
           const segEnd = (idx + 1) / totalSegs;
@@ -3438,45 +3370,16 @@ button.why-reasons-pill {
 
           const offset = (1 - segP).toFixed(4);
           const el = segElements[idx];
-          if (el.core) el.core.style.strokeDashoffset = offset;
-
-          if (el.arrow) {
-            if (segP >= 0.90) {
-              el.arrow.style.opacity = '1';
-              el.arrow.style.transform = 'scale(1)';
-            } else if (segP > 0.60) {
-              const a = (segP - 0.60) / 0.30;
-              el.arrow.style.opacity = a.toFixed(2);
-              el.arrow.style.transform = 'scale(' + (0.6 + 0.4 * a).toFixed(2) + ')';
-            } else {
-              el.arrow.style.opacity = '0';
-              el.arrow.style.transform = 'scale(0.6)';
-            }
-          }
+          if (el && el.core) el.core.style.strokeDashoffset = offset;
         });
 
-        // 2. Active Step Calculation (1 to 4)
-        const activeStep = Math.min(4, Math.max(1, Math.floor(p * totalSegs) + 1));
-
-        // 3. Step Labels & Icons visibility (Step 1 always visible; steps 2, 3, 4 reveal ONLY when flow completes to that step)
+        // 2. Step Labels visibility (Step 1 always visible; steps 2, 3, 4 reveal smoothly as flow reaches them)
         labelElements.forEach((lbl, idx) => {
           if (!lbl) return;
           const stepNum = idx + 1;
           const targetProgress = (stepNum - 1) / totalSegs;
-          // Step 1 is visible from start; Step 2 only when flow reaches step 2 (p >= 0.33); Step 3 at p >= 0.66; Step 4 at p >= 0.98
-          const isVisible = (stepNum === 1) || (p >= targetProgress - 0.015);
+          const isVisible = (stepNum === 1) || (p >= targetProgress - 0.05);
           lbl.classList.toggle('lbl-visible', isVisible);
-
-          const iconEl = iconElements[idx];
-          if (iconEl) {
-            iconEl.classList.toggle('step-active', isVisible);
-          }
-        });
-
-        // 4. Pulse Indicators
-        pulseElements.forEach((pulse, idx) => {
-          if (!pulse) return;
-          pulse.classList.toggle('active', (idx + 1) === activeStep);
         });
       }
 
