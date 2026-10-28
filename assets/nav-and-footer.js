@@ -80,16 +80,10 @@
       });
     }
 
-    // Mobile Drawer Accordions
-    document.querySelectorAll('.mnav__top').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        const sub = this.nextElementSibling;
-        if (sub && sub.classList.contains('mnav__sub')) {
-          const isOpened = sub.classList.toggle('open');
-          this.setAttribute('aria-expanded', isOpened);
-        }
-      });
-    });
+    // NOTE: Mobile drawer accordions are handled ONLY by the inline script
+    // at the end of each page. A second toggle here cancelled the first
+    // (both flipped .mnav__sub.open), so tapping a group never opened it.
+    // Do not re-add a .mnav__top handler here.
 
     // Top Scroll Progress Bar & Header Auto-Hide / Reveal Animation
     const progressBar = document.getElementById('scrollProgress');
