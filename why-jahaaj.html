@@ -2354,29 +2354,58 @@ button.why-reasons-pill {
 
 
 /* ============ SECTION 3: ANIMATED PRODUCT JOURNEY FLOW (Scroll-Driven Conduit) ============ */
+#journey.section-wrapper {
+  padding: 10px 0 20px;
+}
+
+#journey .section-header {
+  margin: 0 auto 12px;
+  max-width: 820px;
+}
+
+#journey .section-pill {
+  padding: 4px 14px;
+  font-size: 11px;
+  margin-bottom: 6px;
+  letter-spacing: 0.07em;
+}
+
+#journey .section-title {
+  font-size: clamp(20px, 2.3vw, 28px);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+#journey .section-desc {
+  font-size: 13.5px;
+  line-height: 1.45;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
 .pj-scroll-track {
   position: relative;
-  height: 180vh;
-  margin-top: 10px;
+  height: 160vh;
+  margin-top: 6px;
 }
 
 .pj-sticky-container {
   position: -webkit-sticky;
   position: sticky;
-  top: 70px;
+  top: 60px;
   width: 100%;
   z-index: 10;
 }
 
 .journey-interactive-card {
   width: 100%;
-  max-width: 1120px;
+  max-width: 940px;
   margin: 0 auto;
   background: #eef3f6;
   border: 1px solid #dce5ec;
-  border-radius: 24px;
-  padding: 24px 20px 20px;
-  box-shadow: 0 14px 40px rgba(14, 50, 82, 0.06);
+  border-radius: 20px;
+  padding: 14px 16px 12px;
+  box-shadow: 0 10px 30px rgba(14, 50, 82, 0.05);
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -2392,7 +2421,7 @@ button.why-reasons-pill {
 .pj-svg-wrap svg {
   width: 100%;
   height: auto;
-  max-height: calc(100vh - 180px);
+  max-height: min(290px, calc(100vh - 220px));
   display: block;
 }
 
@@ -2443,18 +2472,19 @@ button.why-reasons-pill {
 
 @media (max-width: 900px) {
   .pj-scroll-track {
-    height: 160vh;
+    height: 150vh;
   }
   .pj-sticky-container {
-    top: 60px;
+    top: 55px;
   }
   .journey-interactive-card {
-    padding: 16px 12px;
+    padding: 12px 10px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
   .pj-svg-wrap svg {
-    min-width: 700px;
+    min-width: 620px;
+    max-height: 250px;
   }
 }
 </style>
@@ -2666,7 +2696,7 @@ button.why-reasons-pill {
   </section>
 
   <!-- ================= SECTION 3: PRODUCT JOURNEY ================= -->
-  <section class="section-wrapper section-wrapper--alt" id="journey" style="padding: 20px 0 30px;">
+  <section class="section-wrapper section-wrapper--alt" id="journey" style="padding: 10px 0 20px;">
     <!-- Pinned Scroll-Driven Product Journey Track -->
     <div class="pj-scroll-track" id="pjScrollTrack">
       <div class="pj-sticky-container" id="pjStickyContainer">
