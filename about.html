@@ -741,6 +741,68 @@ a {
   line-height: 1.6;
 }
 
+.val-letter {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 5px 13px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  margin-bottom: 14px;
+}
+
+.val-letter--r { color: #0f3556; }
+.val-letter--i { color: #0e7490; }
+.val-letter--s { color: #c2410c; }
+.val-letter--e { color: #111827; }
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.client-card {
+  background: #ffffff;
+  border: 1px solid #ede0da;
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 24px rgba(14, 50, 82, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  min-height: 180px;
+}
+
+.client-logo {
+  max-height: 64px;
+  max-width: 210px;
+  object-fit: contain;
+}
+
+.client-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f3556;
+  margin: 0;
+}
+
+.client-name--text {
+  font-size: 22px;
+}
+
+.client-note {
+  font-size: 13px;
+  color: #475569;
+  margin: 0;
+}
+
 /* ============ SECTION: PURPOSE & DIRECTION ============ */
 .section-purpose-direction {
   background: #f8fafc;
@@ -1420,6 +1482,46 @@ a {
     </div>
   </section>
 
+  <!-- ================= SECTION: OUR MAJOR CLIENTS ================= -->
+  <section class="section-wrapper">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title">Our Major Clients</h2>
+      </div>
+
+      <div class="clients-grid" data-stagger>
+        <div class="client-card">
+          <img class="client-logo" src="assets/client-vvaan.png" alt="Vvaan Lifescience Private Limited">
+          <p class="client-name">Vvaan Lifescience Private Limited</p>
+        </div>
+
+        <div class="client-card">
+          <img class="client-logo" src="assets/client-corel.png" alt="Corel Lifecare Private Limited">
+          <p class="client-name">Corel Lifecare Private Limited</p>
+          <p class="client-note">As seen on SHARK TANK INDIA S5</p>
+        </div>
+
+        <div class="client-card">
+          <img class="client-logo" src="assets/client-sapience.png" alt="Sapience">
+          <p class="client-name">Sapience</p>
+        </div>
+
+        <div class="client-card">
+          <img class="client-logo" src="assets/client-vetbiochem.png" alt="Vetbiochem">
+          <p class="client-name">Vetbiochem</p>
+        </div>
+
+        <div class="client-card">
+          <p class="client-name client-name--text">Elegance India</p>
+        </div>
+
+        <div class="client-card">
+          <p class="client-name client-name--text">Swati Enterprises</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= SECTION 1: CORE VALUES ================= -->
   <section class="section-wrapper section-wrapper--alt">
     <div class="container">
@@ -1433,6 +1535,7 @@ a {
           <div class="val-icon-box">
             <img src="assets/rise-reliability.png" alt="Reliability" class="val-icon-img">
           </div>
+          <span class="val-letter val-letter--r">R</span>
           <h3 class="val-title">Reliability</h3>
           <p class="val-text">We believe in honest business practices, building trust through transparency and fairness.</p>
         </div>
@@ -1442,6 +1545,7 @@ a {
           <div class="val-icon-box">
             <img src="assets/rise-innovation.png" alt="Innovation" class="val-icon-img">
           </div>
+          <span class="val-letter val-letter--i">I</span>
           <h3 class="val-title">Innovation</h3>
           <p class="val-text">We believe in innovating animal nutrition for healthier livestock &amp; empowered farmers.</p>
         </div>
@@ -1451,6 +1555,7 @@ a {
           <div class="val-icon-box">
             <img src="assets/rise-synergy.png" alt="Synergy" class="val-icon-img">
           </div>
+          <span class="val-letter val-letter--s">S</span>
           <h3 class="val-title">Synergy</h3>
           <p class="val-text">Farming harmonies - with farmers, distributors, and customers - creating shared value and lasting relationships.</p>
         </div>
@@ -1460,6 +1565,7 @@ a {
           <div class="val-icon-box">
             <img src="assets/rise-efficiency.png" alt="Efficiency" class="val-icon-img">
           </div>
+          <span class="val-letter val-letter--e">E</span>
           <h3 class="val-title">Efficiency</h3>
           <p class="val-text">At Jahaaj - Efficiency meets affordability raising the standard of livestock health.</p>
         </div>
@@ -1570,7 +1676,7 @@ a {
       &copy; 2026 Jahaaj Healthcare Pvt. Ltd. All rights reserved.
     </span>
     <div class="footer-made-tag">
-      <span>Built for What's Next in Animal Health</span>
+      <span>Building for What's Next in Animal Health</span>
     </div>
   </div>
 </footer>

@@ -946,6 +946,10 @@ a {
   line-height: 1.55;
 }
 
+.why-cards-grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 
 /* ============ RESPONSIVE MEDIA QUERIES ============ */
 @media (max-width: 1200px) {
@@ -1244,7 +1248,7 @@ a {
         <!-- Card 5: Foils & Blister Packs -->
         <div class="pkg-format-card">
           <div class="pkg-format-img-wrap">
-            <img src="assets/pkg_foils_blisters.jpg" alt="Foils and Blister Packs">
+            <img src="assets/pkg_blister_samples.jpg" alt="Foils and Blister Packs">
           </div>
           <div class="pkg-format-body">
             <h3 class="pkg-format-title">Foils &amp; Blister Packs</h3>
@@ -1301,7 +1305,7 @@ a {
         </div>
 
         <div class="secondary-pallet-wrap">
-          <img src="assets/pkg_secondary_pallet.jpg" alt="Warehouse Pallet Storage & Shipping Cartons" class="secondary-pallet-img">
+          <img src="assets/pkg_strapped_pallets.jpg" alt="Warehouse Pallet Storage & Shipping Cartons" class="secondary-pallet-img">
         </div>
 
         <div class="secondary-stack">
@@ -1373,20 +1377,49 @@ a {
             <tr>
               <td><span class="format-badge">Tablets</span></td>
               <td><span class="size-badge">1 g – 2 g</span></td>
-              <td>Blister cards (10s, 30s, 60s, 100s), Alu-Alu strips, HDPE jars</td>
+              <td>Blister packs, Alu-Alu strips, HDPE jars</td>
             </tr>
             <tr>
               <td><span class="format-badge">Boluses</span></td>
               <td><span class="size-badge">3 g – 30 g</span></td>
-              <td>Individual strips (2s, 4s), blister packs, bulk plastic tubs</td>
+              <td>Individual strips (2s, 4s), blister packs, bolus tubes/cans, bulk plastic tubs</td>
             </tr>
             <tr>
               <td><span class="format-badge">Bulk Supply</span></td>
-              <td><span class="size-badge">25 - 50 kg bags | 200 L drums</span></td>
-              <td>Multi-wall paper bags, HDPE drums, IBC totes, custom industrial sizes</td>
+              <td><span class="size-badge">25 - 50 kg bags</span></td>
+              <td>Multi-wall paper bags, HDPE drums, custom industrial sizes</td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 6: WHY CHOOSE JAHAAJ ================= -->
+  <section class="section-wrapper section-wrapper--alt">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title-large">Why Choose Jahaaj</h2>
+      </div>
+
+      <div class="why-cards-grid why-cards-grid--three" data-stagger>
+        <div class="why-card">
+          <div class="why-card-icon"><i class="fas fa-bullseye"></i></div>
+          <h3 class="why-card-title">Precision in Every Dose</h3>
+          <p class="why-card-desc">Convenient blister and strip packaging designed for accurate dosing, product protection, and ease of administration.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-icon"><i class="fas fa-star"></i></div>
+          <h3 class="why-card-title">Distinctive by Design</h3>
+          <p class="why-card-desc">Premium, customized packaging that enhances shelf appeal, reinforces brand recognition, and supports product stability.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-icon"><i class="fas fa-lightbulb"></i></div>
+          <h3 class="why-card-title">Innovation Beyond the Pack</h3>
+          <p class="why-card-desc">Practical packaging formats designed around the needs of veterinarians, farmers, and livestock professionals.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1461,7 +1494,7 @@ a {
       &copy; 2026 Jahaaj Healthcare Pvt. Ltd. All rights reserved.
     </span>
     <div class="footer-made-tag">
-      <span>Built for What's Next in Animal Health</span>
+      <span>Building for What's Next in Animal Health</span>
     </div>
   </div>
 </footer>
