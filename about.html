@@ -803,6 +803,27 @@ a {
   margin: 0;
 }
 
+/* ============ CLIENTS CAROUSEL ============ */
+.clients-carousel { position: relative; }
+.cc-viewport { overflow: hidden; }
+.cc-track { display: flex; gap: 24px; transition: transform 0.5s ease; will-change: transform; }
+.cc-card { flex: 0 0 calc((100% - 48px) / 3); max-width: calc((100% - 48px) / 3); box-sizing: border-box; }
+.cc-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1px solid #ede0da; background: #ffffff; color: #0f3556; font-size: 26px; line-height: 1; cursor: pointer; box-shadow: 0 8px 24px rgba(14, 50, 82, 0.10); z-index: 2; }
+.cc-prev { left: -12px; }
+.cc-next { right: -12px; }
+.cc-arrow:disabled { opacity: 0.35; cursor: default; }
+.cc-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+.cc-dot { width: 10px; height: 10px; border-radius: 50%; border: none; background: #d6dee8; cursor: pointer; padding: 0; }
+.cc-dot.active { background: #c2410c; }
+@media (max-width: 820px) {
+  .cc-card { flex: 0 0 calc((100% - 24px) / 2); max-width: calc((100% - 24px) / 2); }
+}
+@media (max-width: 520px) {
+  .cc-card { flex: 0 0 100%; max-width: 100%; }
+  .cc-prev { left: 4px; }
+  .cc-next { right: 4px; }
+}
+
 /* ============ SECTION: PURPOSE & DIRECTION ============ */
 .section-purpose-direction {
   background: #f8fafc;
@@ -1482,47 +1503,7 @@ a {
     </div>
   </section>
 
-  <!-- ================= SECTION: OUR MAJOR CLIENTS ================= -->
-  <section class="section-wrapper">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title">Our Major Clients</h2>
-      </div>
-
-      <div class="clients-grid" data-stagger>
-        <div class="client-card">
-          <img class="client-logo" src="assets/client-vvaan.png" alt="Vvaan Lifescience Private Limited">
-          <p class="client-name">Vvaan Lifescience Private Limited</p>
-        </div>
-
-        <div class="client-card">
-          <img class="client-logo" src="assets/client-corel.png" alt="Corel Lifecare Private Limited">
-          <p class="client-name">Corel Lifecare Private Limited</p>
-          <p class="client-note">As seen on SHARK TANK INDIA S5</p>
-        </div>
-
-        <div class="client-card">
-          <img class="client-logo" src="assets/client-sapience.png" alt="Sapience">
-          <p class="client-name">Sapience</p>
-        </div>
-
-        <div class="client-card">
-          <img class="client-logo" src="assets/client-vetbiochem.png" alt="Vetbiochem">
-          <p class="client-name">Vetbiochem</p>
-        </div>
-
-        <div class="client-card">
-          <img class="client-logo" src="assets/client-elegance.png" alt="Elegance India">
-          <p class="client-name">Elegance India</p>
-        </div>
-
-        <div class="client-card">
-          <img class="client-logo" src="assets/client-swati.png" alt="Swati Enterprises">
-          <p class="client-name">Swati Enterprises</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ================= SECTION 1: CORE VALUES ================= -->
   <section class="section-wrapper section-wrapper--alt">
@@ -1606,6 +1587,55 @@ a {
           </div>
           <p class="mv-text">To enhance animal health through science-driven nutrition, delivered with uncompromising quality and ethical practices.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION: OUR MAJOR CLIENTS (CAROUSEL, LAST SECTION) ================= -->
+  <section class="section-wrapper">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title">Our Major Clients</h2>
+      </div>
+
+      <div class="clients-carousel">
+      <div class="cc-viewport">
+        <div class="cc-track" id="clientsTrack">
+        <div class="client-card cc-card">
+          <img class="client-logo" src="assets/client-vvaan.png" alt="Vvaan Lifescience Private Limited">
+          <p class="client-name">Vvaan Lifescience Private Limited</p>
+        </div>
+
+        <div class="client-card cc-card">
+          <img class="client-logo" src="assets/client-corel.png" alt="Corel Lifecare Private Limited">
+          <p class="client-name">Corel Lifecare Private Limited</p>
+          <p class="client-note">As seen on SHARK TANK INDIA S5</p>
+        </div>
+
+        <div class="client-card cc-card">
+          <img class="client-logo" src="assets/client-sapience.png" alt="Sapience">
+          <p class="client-name">Sapience</p>
+        </div>
+
+        <div class="client-card cc-card">
+          <img class="client-logo" src="assets/client-vetbiochem.png" alt="Vetbiochem">
+          <p class="client-name">Vetbiochem</p>
+        </div>
+
+        <div class="client-card cc-card">
+          <img class="client-logo" src="assets/client-elegance.png" alt="Elegance India">
+          <p class="client-name">Elegance India</p>
+        </div>
+
+        <div class="client-card cc-card">
+          <img class="client-logo" src="assets/client-swati.png" alt="Swati Enterprises">
+          <p class="client-name">Swati Enterprises</p>
+        </div>
+        </div>
+      </div>
+      <button class="cc-arrow cc-prev" type="button" aria-label="Previous clients">&#8249;</button>
+      <button class="cc-arrow cc-next" type="button" aria-label="Next clients">&#8250;</button>
+      <div class="cc-dots" id="clientsDots"></div>
       </div>
     </div>
   </section>
@@ -1784,6 +1814,58 @@ a {
       }
       lastScrollY = currentScrollY;
     }, { passive: true });
+  </script>
+  <script>
+    /* ---------- Clients Carousel ---------- */
+    (function () {
+      var track = document.getElementById('clientsTrack');
+      if (!track) return;
+      var cards = track.children.length;
+      var prev = document.querySelector('.cc-prev');
+      var next = document.querySelector('.cc-next');
+      var dotsWrap = document.getElementById('clientsDots');
+      var page = 0, pages = 1;
+      function perView() {
+        if (window.innerWidth <= 520) return 1;
+        if (window.innerWidth <= 820) return 2;
+        return 3;
+      }
+      function render() {
+        pages = Math.max(1, cards - perView() + 1);
+        if (page > pages - 1) page = pages - 1;
+        var step = track.children[0].getBoundingClientRect().width + 24;
+        track.style.transform = 'translateX(' + (-page * step) + 'px)';
+        prev.disabled = page === 0;
+        next.disabled = page === pages - 1;
+        dotsWrap.innerHTML = '';
+        for (var i = 0; i < pages; i++) {
+          (function (i) {
+            var d = document.createElement('button');
+            d.type = 'button';
+            d.className = 'cc-dot' + (i === page ? ' active' : '');
+            d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            d.addEventListener('click', function () { page = i; render(); });
+            dotsWrap.appendChild(d);
+          })(i);
+        }
+      }
+      prev.addEventListener('click', function () { if (page > 0) { page--; render(); } });
+      next.addEventListener('click', function () { if (page < pages - 1) { page++; render(); } });
+      var startX = null;
+      track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', function (e) {
+        if (startX === null) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) {
+          if (dx < 0 && page < pages - 1) page++;
+          else if (dx > 0 && page > 0) page--;
+          render();
+        }
+        startX = null;
+      }, { passive: true });
+      window.addEventListener('resize', render);
+      render();
+    })();
   </script>
   <!-- Canonical Navigation Controller -->
   <script src="assets/nav-and-footer.js" defer></script>
