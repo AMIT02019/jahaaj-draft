@@ -714,20 +714,6 @@ a {
   box-shadow: 0 6px 18px rgba(234, 88, 12, 0.16);
 }
 
-.val-letter {
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--orange);
-  background: var(--orange-light);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  display: inline-block;
-  margin-bottom: 12px;
-  align-self: flex-start;
-}
-
 .val-title {
   font-size: 20px;
   font-weight: 800;
@@ -741,23 +727,31 @@ a {
   line-height: 1.6;
 }
 
-.val-letter {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 30px;
+.rise-letter {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  font-size: 56px;
   font-weight: 800;
   line-height: 1;
-  padding: 5px 13px;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 12px;
-  background: #ffffff;
-  margin-bottom: 14px;
+  color: #f97316;
+  text-shadow: 0 0 6px rgba(59, 130, 246, 0.9), 0 0 18px rgba(59, 130, 246, 0.65), 0 2px 0 rgba(59, 130, 246, 0.35);
+  pointer-events: none;
 }
-
-.val-letter--r { color: #0f3556; }
-.val-letter--i { color: #0e7490; }
-.val-letter--s { color: #c2410c; }
-.val-letter--e { color: #111827; }
+.rise-letter::after {
+  content: attr(data-letter);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: scaleY(-1);
+  opacity: 0.28;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent 75%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent 75%);
+}
+.rise-title-letter { color: #e11d48; }
+@media (max-width: 520px) {
+  .rise-letter { font-size: 44px; top: 16px; right: 16px; }
+}
 
 .clients-grid {
   display: grid;
@@ -1521,8 +1515,8 @@ a {
           <div class="val-icon-box">
             <img src="assets/rise-reliability.png" alt="Reliability" class="val-icon-img">
           </div>
-          <span class="val-letter val-letter--r">R</span>
-          <h3 class="val-title">Reliability</h3>
+          <span class="rise-letter" data-letter="R">R</span>
+          <h3 class="val-title"><span class="rise-title-letter">R</span>eliability</h3>
           <p class="val-text">We believe in honest business practices, building trust through transparency and fairness.</p>
         </div>
 
@@ -1531,8 +1525,8 @@ a {
           <div class="val-icon-box">
             <img src="assets/rise-innovation.png" alt="Innovation" class="val-icon-img">
           </div>
-          <span class="val-letter val-letter--i">I</span>
-          <h3 class="val-title">Innovation</h3>
+          <span class="rise-letter" data-letter="I">I</span>
+          <h3 class="val-title"><span class="rise-title-letter">I</span>nnovation</h3>
           <p class="val-text">We believe in innovating animal nutrition for healthier livestock &amp; empowered farmers.</p>
         </div>
 
@@ -1541,8 +1535,8 @@ a {
           <div class="val-icon-box">
             <img src="assets/rise-synergy.png" alt="Synergy" class="val-icon-img">
           </div>
-          <span class="val-letter val-letter--s">S</span>
-          <h3 class="val-title">Synergy</h3>
+          <span class="rise-letter" data-letter="S">S</span>
+          <h3 class="val-title"><span class="rise-title-letter">S</span>ynergy</h3>
           <p class="val-text">Farming harmonies - with farmers, distributors, and customers - creating shared value and lasting relationships.</p>
         </div>
 
@@ -1551,8 +1545,8 @@ a {
           <div class="val-icon-box">
             <img src="assets/rise-efficiency.png" alt="Efficiency" class="val-icon-img">
           </div>
-          <span class="val-letter val-letter--e">E</span>
-          <h3 class="val-title">Efficiency</h3>
+          <span class="rise-letter" data-letter="E">E</span>
+          <h3 class="val-title"><span class="rise-title-letter">E</span>fficiency</h3>
           <p class="val-text">At Jahaaj - Efficiency meets affordability raising the standard of livestock health.</p>
         </div>
       </div>
